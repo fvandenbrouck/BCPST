@@ -1,4 +1,4 @@
-# Prompt — Construire le reste de la Phase 1 SVT (site Strates)
+# Prompt — Poursuivre le site Strates (Phase 1 SVT)
 
 > Prompt prêt à coller tel quel en tout début d'une nouvelle session Claude Code, dans le dépôt `/Users/francoisvandenbrouck/Documents/FV/perso/alix/OnBoardingBCPST`.
 
@@ -7,82 +7,34 @@
 Tu travailles sur **Strates**, un site de révisions BCPST1 statique (HTML/CSS/JS vanilla, sans framework ni build) pour une élève qui entre en BCPST1 sans avoir suivi la spécialité SVT en Terminale. Le dépôt est `/Users/francoisvandenbrouck/Documents/FV/perso/alix/OnBoardingBCPST`, poussé sur `https://github.com/fvandenbrouck/BCPST` (public) et déployé en continu sur `https://fvandenbrouck.github.io/BCPST/` (GitHub Pages actif, se redéploie automatiquement à chaque push sur `main`).
 
 **Avant toute chose, lis dans cet ordre** :
-1. `SYNTHESE_SESSION.md` — état réel du projet, décisions déjà prises, conventions à respecter. C'est la source de vérité la plus à jour.
-2. `CAHIER_DES_CHARGES.md` §0 (principes non négociables), §2 (plan de construction SVT), §6 (identité visuelle) — le brief initial complet, stable.
-3. `svt/ch05-datation-relative.html` et `svt/ch06-datation-absolue.html` — les deux modules déjà construits, à utiliser comme gabarit de référence exact (structure des données, ton, niveau de détail).
+1. **[`SYNTHESE_SESSION.md`](SYNTHESE_SESSION.md), en entier, en commençant par son §0** ("État actuel en un coup d'œil"). C'est la source de vérité la plus à jour : état du dépôt, décisions prises en session, conventions techniques, ce qui reste à faire. Ne pas se fier à ce prompt-ci pour ces détails s'ils divergent de `SYNTHESE_SESSION.md` — ce fichier est mis à jour à chaque session, pas forcément ce prompt.
+2. [`CAHIER_DES_CHARGES.md`](CAHIER_DES_CHARGES.md) §0 (principes non négociables), §2 (plan de construction SVT), §6 (identité visuelle) — le brief initial complet, stable, jamais modifié.
+3. **[`svt/ch17-cellule-musculaire-atp.html`](svt/ch17-cellule-musculaire-atp.html)** — le module SVT le plus récent, à utiliser comme gabarit de référence exact (structure des données, ton, niveau de détail, boilerplate KaTeX en tête de fichier). C'est l'exemple le plus complet et le plus à jour des conventions accumulées au fil des modules précédents.
 
 ## Objectif de cette session
 
-Construire **tous les modules SVT restants de la Phase 1**, dans l'ordre ci-dessous, un par un, en validant chaque module avant de passer au suivant. Ne pas commencer la Physique-Chimie ni les Mathématiques (Phases 2/3) : ce prompt ne couvre que la Phase 1 SVT.
+Continuer à construire les modules SVT restants de la Phase 1, **un par un**, dans l'ordre indiqué au §4 de `SYNTHESE_SESSION.md`, en testant et en committant chaque module avant de passer au suivant. Au moment de la rédaction de ce prompt, **7 modules sur 13 sont faits** (Ch.5, Ch.6, Ch.7, Ch.8, Ch.9, Ch.11, Ch.17) ; le prochain est **Ch.18 — Contrôle des flux de glucose (p.450-473)**, dernier chapitre du thème "corps humain et santé" cité par les recommandations. Vérifier ce constat dans `SYNTHESE_SESSION.md` §0/§4 avant de commencer, au cas où il aurait changé depuis.
 
-| Ordre | Module | Chapitre manuel | Pages | Articulation à respecter |
-|---|---|---|---|---|
-| ✅ fait | Datation relative | Ch.5 | 122-141 | — |
-| ✅ fait | Datation absolue | Ch.6 | 144-161 | — |
-| 3 | Traces du passé mouvementé de la Terre | Ch.7 | 164-190 | Clôt le thème "passé géologique" ; le carnet de terrain du Chenaillet (`carnet-de-terrain/chenaillet.html`) référence déjà ce chapitre (tags `SVT-Ch7-U2`, `SVT-Ch7-U3`) — vérifier la cohérence des unités et ajouter le badge de renvoi "🏔️ Vu sur le terrain" une fois ce module construit (cf. §5 de `SYNTHESE_SESSION.md`) |
-| 4 | Organisation des plantes à fleurs | Ch.8 | 196-217 | Ouvre le thème "plante domestiquée" ; le carnet du Lautaret y renvoie aussi (tags `SVT-Ch8-U1`) — même remarque sur le badge |
-| 5 | La plante productrice de matière organique | Ch.9 | 220-241 | Lien direct avec BCPST1 (bilans d'énergie, cycle du carbone) et avec le thème E de physique-chimie |
-| 6 | La domestication des plantes | Ch.11 | 268-282 | Dernier point Terminale explicitement cité par les recommandations sur ce thème |
-| 7 | Cellule musculaire, ATP | Ch.17 | 422-447 | Ouvre "corps humain et santé" |
-| 8 | Contrôle des flux de glucose | Ch.18 | 450-473 | Dernier point Terminale explicitement listé |
-| 9-10 | Génétique de base + Géologie interne (modules "Première", sans manuel) | — | — | Contenu 100% original, pas de renvoi de page |
-| 11 (bonus) | L'origine du phénotype (méiose, brassage) | Ch.1 | 30-53 | Priorité secondaire |
-| 12 (bonus tertiaire) | Le climat au Cénozoïque | Ch.12 | 292-315 | Hors recommandations officielles, ajouté seulement parce que le carnet du Lautaret y renvoie. À construire uniquement après les modules 1-11, sans engagement de calendrier |
-| 13 (bonus tertiaire) | Le changement climatique actuel | Ch.14 | 342-366 | Idem — même origine, même absence de priorité |
+Ne pas commencer la Physique-Chimie ni les Mathématiques (Phases 2/3) sauf demande explicite de l'utilisateur — ce prompt couvre la suite de la Phase 1 SVT.
 
-Le point qui restait ouvert sur `SVT-Ch12`/`SVT-Ch14` (tags du carnet de terrain sans module correspondant) est tranché : ces deux chapitres sont maintenant dans la feuille de route officielle (`CAHIER_DES_CHARGES.md` §2), en tout dernier rang. Ne pas les construire avant d'avoir terminé 1 à 11.
+## Méthode de travail (identique à chaque module déjà construit)
 
-## Ce que chaque module doit contenir (gabarit à 4 onglets, inchangé)
+1. Rédiger le contenu du chapitre (cours en 4 unités, 10-12 flashcards, 15-20 QCM, carte mentale modèle, bridge Première→Terminale→BCPST1) en respectant exactement le contrat de données et les conventions déjà en place — copier la structure d'un module existant (`ch17` recommandé) plutôt que la réinventer.
+2. Choisir 1 à 3 illustrations *seulement si elles apportent une vraie plus-value* : photo réelle sous licence CC (Wikimedia Commons, avec `credit`) pour un objet concret, ou schéma SVG original (`assets/img/chXX/*.svg`) pour un scénario abstrait/fictif — **vérifier visuellement le rendu du SVG avant de l'intégrer** (chevauchements de texte déjà rencontrés plusieurs fois ; prévoir un espacement vertical généreux entre chaque bloc de labels).
+3. Ajouter l'entrée du module dans `assets/js/modules-registry.js` (`status:'available'`, `href` renseigné).
+4. Tester dans le navigateur : les 4 onglets s'affichent, aucune erreur console, le QCM se score correctement (répondre "juste" à toutes les questions doit donner 100%), puis vider `localStorage` (données de test) avant de committer.
+5. Committer et pousser, puis **vérifier que le déploiement GitHub Pages a réussi avant de répondre à l'utilisateur** (méthode exacte donnée dans `SYNTHESE_SESSION.md` §7 — boucle `until` sur `gh api .../pages/builds/latest` lancée en arrière-plan). Ne jamais se contenter du push local : l'utilisateur a déjà signalé une fois "ne rien voir" alors que c'était juste un cache navigateur — la vérification du build évite de perdre du temps sur ce genre de fausse alerte.
+6. Mettre à jour `SYNTHESE_SESSION.md` (§4 avancement, §7 état du dépôt, et une nouvelle décision numérotée en §2 si quelque chose de nouveau a été tranché).
 
-- **Cours** : une fiche par unité du chapitre, rédaction 100% originale (jamais de texte recopié du manuel Belin Éducation ni d'aucune source protégée — renvois de page en index uniquement), tag `p.NN` par fiche.
-- **Flashcards** : 10-12 cartes recto/verso, notion associée à chaque carte.
-- **QCM** : 15-20 questions (≥10 connaissance, ≥5 raisonnement), chaque question de raisonnement a un `hint` qui donne une piste de méthode, **jamais la réponse**. Le moteur (`qcm-engine.js`) mélange déjà l'ordre d'affichage des options automatiquement — ne te soucie pas de la position de `correct` dans les données.
-- **Carte mentale** : `mindmapModel` fourni comme carte de référence, jamais pré-remplie pour l'élève (elle construit d'abord de mémoire, puis compare).
-- **Bridge Première → Terminale → BCPST1** : champ `bridge:{from, to}` obligatoire en tête de chaque module — d'où vient la notion, où elle est réinvestie en BCPST1.
-- **Illustrations QCM (optionnel, `question.image`)** : à ajouter *seulement quand ça apporte une vraie plus-value* (jamais systématique). Deux sources possibles :
-  - Photo d'objet réel : cherche sur Wikimedia Commons, vérifie la licence CC sur la page du fichier, utilise l'URL directe `upload.wikimedia.org/...`, renseigne `credit` avec l'attribution exacte.
-  - Schéma de scénario fictif/abstrait (coupe géologique inventée, diagramme) : dessine un SVG original dans `assets/img/chXX/`, sans `credit` (contenu original). Utilise des couleurs hexadécimales en dur (un SVG chargé via `<img>` n'hérite pas des variables CSS de la page) — reprends la palette de `assets/css/strates.css` §6 du cahier des charges.
-- **Formules mathématiques : toujours en LaTeX**, jamais en notation texte brute (`N(t) = N0e^(-lt)`). Écrire `$...$` (en ligne) ou `$$...$$` (isolée) directement dans les chaînes de `paragraphs`, `bullets`, `bridge`, `q`, `options`, `hint`, `recto`/`verso`, labels de `mindmapModel` — le rendu est automatique (KaTeX), aucun autre traitement nécessaire. Voir `svt/ch06-datation-absolue.html` (fiche "Zoom") pour des exemples concrets. Chaque module HTML doit inclure, dans son `<head>` (avant `</head>`, non `async`/non `defer`) :
-  ```html
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-  ```
-  et charger `<script src="../assets/js/math-render.js"></script>` juste après `storage.js`. C'est indispensable pour Physique-Chimie et Mathématiques (Phases 2/3), à inclure dès le premier module de ces phases.
+## Rappels non négociables (détaillés dans `SYNTHESE_SESSION.md` §6)
 
-## Contrat de données exact (copier la structure de ch06, pas la réinventer)
+- Jamais de texte recopié du manuel Belin Éducation ni d'aucune source protégée — renvois de page en index uniquement.
+- Ton toujours encourageant dans les diagnostics QCM, jamais culpabilisant.
+- Carte mentale : jamais de modèle pré-rempli affiché par défaut.
+- QCM : ne pas se soucier de la position de la bonne réponse dans les données — le moteur mélange l'affichage automatiquement.
+- Formules mathématiques : toujours en LaTeX (`$...$`), jamais en texte brut — inclure le boilerplate KaTeX en tête de chaque nouveau fichier de module (voir `ch17` pour l'exemple exact).
+- `references/` ne doit jamais être poussé sur GitHub (gitignoré).
 
-```js
-const MODULE = {
-  id, chapNum, subjectLabel: "Géologie" | "Biologie végétale" | "Physiologie" | ...,
-  accent: 'var(--rust)',   // SVT reste rouille
-  title, pages, backHref: '../index.html',
-  bridge: {from, to},
-  fiches: [{unit, page, title, paragraphs:[...], bullets:[...]}],
-  flashcards: [{id, recto, verso, notion}],
-  qcmMeta: {
-    order: ['connaissance','raisonnement'],
-    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
-    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
-  },
-  diagnostic: {unitNames:{...}, bilanPage, exosPage, bacPage, nextStep},
-  qcm: [{id, type, difficulty, notion, q, options, correct, hint?, image?}],
-  mindmapModel: {label, children:[...]}
-};
-ModulePage.init(MODULE);
-```
+## Points en attente, non bloquants (détail au §5 de `SYNTHESE_SESSION.md`)
 
-## Décisions déjà prises en session (ne pas les rouvrir)
-
-- Stockage : `localStorage` via `Storage.get/set` (`assets/js/storage.js`), pas de `window.storage`.
-- Manuel de référence : **Belin Éducation**, pas Hachette (déjà corrigé partout).
-- Le moteur QCM mélange l'ordre des options tout seul — ne rééquilibre pas manuellement la position des bonnes réponses.
-- `references/` est gitignoré : jamais poussé sur GitHub, mais consultable localement pour vérifier l'exactitude scientifique.
-- GitHub Pages est déjà activé et se redéploie automatiquement — pas besoin de redemander confirmation avant de pousser un commit.
-
-## Méthode de travail attendue
-
-1. Un module à la fois. Pour chacun : écrire le fichier `svt/chXX-....html`, ajouter l'entrée correspondante dans `assets/js/modules-registry.js` (`status:'available'`, `href` renseigné), tester dans le navigateur (les 4 onglets, absence d'erreur console, score QCM juste), vider `localStorage` de test, puis committer.
-2. Vérifie l'exactitude scientifique du contenu par tes connaissances générales (et par recherche web si besoin), jamais en recopiant une source protégée.
-3. Ton toujours encourageant dans les diagnostics, jamais culpabilisant — reprends le style déjà rédigé dans `qcm-engine.js` (`buildDiagnostic`).
-4. À la fin de la session (ou à intervalles réguliers si le fil devient long), **mets à jour `SYNTHESE_SESSION.md`** : modules construits, nouvelles décisions, points en attente — pour qu'une session future puisse reprendre sans perte d'information.
+Deux questions factuelles sur le carnet de terrain restent ouvertes (itinéraire précis du Chenaillet, horaires d'ouverture du Jardin du Lautaret) — à poser à l'utilisateur si l'occasion se présente, mais elles ne bloquent en rien la construction des modules SVT restants.
