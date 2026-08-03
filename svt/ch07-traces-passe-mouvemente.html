@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch.7 — Traces du passé mouvementé de la Terre · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/flashcards-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'ch7',
+  chapNum: "Chapitre 7",
+  subjectLabel: "Géologie",
+  accent: 'var(--rust)',
+  title: "Traces du passé mouvementé de la Terre",
+  pages: "p.164 à 190",
+  backHref: '../index.html',
+  bridge: {
+    from: "La notion de limite de plaques (dorsale, zone de subduction) a été introduite en Seconde (Terre, planète habitable), sans étudier les traces géologiques qui permettent de reconstituer leur histoire passée. Un module dédié à la géologie interne (Première, contenu original) viendra consolider ce vocabulaire de base sur ce site.",
+    to: "En BCPST1, ces indices de terrain (plis, failles, nappes, ophiolites) seront directement réinvestis pour lire des coupes géologiques et des cartes structurales dans le thème Terre — dynamique et évolution, en les recoupant avec les méthodes de datation relative et absolue déjà vues (Ch.5, Ch.6)."
+  },
+
+  fiches: [
+    {
+      unit:'Unité 1', page:166,
+      title:"Les déformations des roches, traces d'une histoire mouvementée",
+      paragraphs:[
+        "Une roche soumise à des contraintes tectoniques (compression, extension) se déforme de deux façons selon la profondeur et la température : de façon cassante (fracturation, failles) en surface, où la roche est froide et rigide, ou de façon ductile (plissement) en profondeur, où la roche, plus chaude, se déforme sans se rompre.",
+        "Ces déformations, observées aujourd'hui figées dans le paysage, sont donc des indices directs des contraintes qu'a subies une région au cours de son histoire géologique."
+      ],
+      bullets:[
+        "Un pli est une déformation ductile : une couche à l'origine plane est courbée, formant une voûte (anticlinal) ou une cuvette (synclinal).",
+        "Une faille est une déformation cassante : les deux blocs de roche de part et d'autre de la cassure ont glissé l'un par rapport à l'autre.",
+        "Une nappe de charriage est une faille de chevauchement de très faible pente, qui a transporté un terrain ancien sur de grandes distances, jusqu'à le faire reposer sur un terrain plus jeune — une exception apparente au principe de superposition, en réalité cohérente avec lui une fois le charriage identifié.",
+        "L'intensité et le style des déformations (failles isolées, plis serrés, empilement de nappes) renseignent sur l'intensité de la collision qui les a produites."
+      ]
+    },
+    {
+      unit:'Unité 2', page:170,
+      title:"Les ophiolites, vestiges d'un océan disparu",
+      paragraphs:[
+        "Dans certaines chaînes de montagnes, on retrouve un assemblage caractéristique de roches appelé ophiolite, qui correspond à un fragment de lithosphère océanique aujourd'hui exposé sur un continent.",
+        "Une ophiolite complète reconstitue, de bas en haut, l'organisation d'une croûte océanique : péridotite (et sa forme hydratée, la serpentinite) du manteau supérieur, gabbro issu du refroidissement lent du magma en profondeur, basaltes en coussins formés au contact de l'eau de mer, puis radiolarites, sédiments marins accumulés sur le plancher océanique."
+      ],
+      bullets:[
+        "La présence d'une ophiolite dans une chaîne de montagnes est donc la preuve directe qu'un océan a existé, puis disparu, à cet endroit.",
+        "Chaque roche de la séquence apporte un indice complémentaire : la serpentinite montre que le manteau a été exposé, les pillow-lavas que le magma a refroidi sous l'eau, les radiolarites que des sédiments marins se sont déposés durablement.",
+        "Le massif du Chenaillet, dans les Hautes-Alpes, est un exemple particulièrement complet et accessible de cette séquence ophiolitique."
+      ],
+      terrainBadge: {href:"../carnet-de-terrain/chenaillet.html", label:"observe la séquence ophiolitique au Chenaillet"}
+    },
+    {
+      unit:'Unité 3', page:176,
+      title:"De la subduction à la collision : le cycle de Wilson",
+      paragraphs:[
+        "L'histoire d'un océan suit un cycle en plusieurs étapes, appelé cycle de Wilson : ouverture par rifting continental, expansion océanique le long d'une dorsale, puis, lorsque la lithosphère océanique refroidit et s'alourdit, fermeture par subduction (plongement de la lithosphère océanique sous une autre plaque).",
+        "Si la subduction se poursuit jusqu'à la disparition complète de l'océan, les deux continents qu'il séparait finissent par entrer en collision, ce qui épaissit la croûte continentale et forme une chaîne de montagnes."
+      ],
+      bullets:[
+        "La subduction est le devenir le plus fréquent d'une lithosphère océanique : plus dense que l'asthénosphère sous-jacente en refroidissant, elle plonge et est recyclée dans le manteau.",
+        "L'obduction est un mécanisme plus rare : un fragment de lithosphère océanique est arraché et charrié sur la croûte continentale au lieu de plonger, ce qui permet à des ophiolites comme celle du Chenaillet de rester préservées en surface plutôt que d'être recyclées.",
+        "La collision continentale marque la fin du cycle : les deux marges continentales, désormais en contact direct, se déforment ensemble (plis, failles, nappes) pour former la chaîne de montagnes."
+      ],
+      terrainBadge: {href:"../carnet-de-terrain/chenaillet.html", label:"repère les traces d'obduction au sommet du Chenaillet"}
+    },
+    {
+      unit:'Unité 4', page:182,
+      title:"Reconstituer l'histoire d'une chaîne de montagnes",
+      paragraphs:[
+        "Reconstituer l'histoire géologique d'une chaîne de montagnes consiste à combiner plusieurs types d'indices trouvés sur le terrain : la nature et l'organisation des roches (ophiolites, granites, roches métamorphiques), les déformations qu'elles portent (plis, failles, nappes) et leur âge (datation relative et absolue, Ch.5 et Ch.6).",
+        "Cette démarche permet de retracer, étape par étape, l'histoire d'un domaine océanique depuis son ouverture jusqu'à sa fermeture complète et la collision qui a suivi."
+      ],
+      bullets:[
+        "Dans les Alpes, la présence d'ophiolites comme celle du Chenaillet atteste de l'existence passée d'un océan, appelé océan alpin (ou téthys alpine), aujourd'hui totalement refermé.",
+        "Les nappes de charriage empilées dans les Alpes montrent l'intensité de la collision qui a suivi la fermeture de cet océan.",
+        "Cette reconstitution est un exemple concret de démarche scientifique : combiner des indices de nature différente (pétrologique, structurale, chronologique) pour proposer un scénario cohérent, toujours révisable si de nouveaux indices apparaissent."
+      ]
+    }
+  ],
+
+  flashcards: [
+    {id:'f1', recto:"Pli", verso:"Déformation ductile d'une couche à l'origine plane, formant une voûte (anticlinal) ou une cuvette (synclinal).", notion:'u1'},
+    {id:'f2', recto:"Faille", verso:"Déformation cassante : les deux blocs de roche de part et d'autre de la cassure ont glissé l'un par rapport à l'autre.", notion:'u1'},
+    {id:'f3', recto:"Nappe de charriage", verso:"Faille de chevauchement de très faible pente ayant transporté un terrain ancien sur une grande distance, jusqu'à le faire reposer sur un terrain plus jeune.", notion:'u1'},
+    {id:'f4', recto:"Déformation cassante / ductile", verso:"Cassante en surface (roche froide et rigide) ; ductile en profondeur (roche chaude, se déforme sans se rompre).", notion:'u1'},
+    {id:'f5', recto:"Ophiolite", verso:"Fragment de lithosphère océanique aujourd'hui exposé et préservé sur un continent.", notion:'u2'},
+    {id:'f6', recto:"Séquence ophiolitique (de bas en haut)", verso:"Péridotite/serpentinite (manteau) → gabbro → basaltes en coussins → radiolarites.", notion:'u2'},
+    {id:'f7', recto:"Serpentinite", verso:"Péridotite hydratée ; sa présence en surface est la preuve que le manteau a été exposé.", notion:'u2'},
+    {id:'f8', recto:"Cycle de Wilson", verso:"Cycle de vie d'un océan : ouverture (rifting), expansion (dorsale), subduction, puis collision continentale.", notion:'u3'},
+    {id:'f9', recto:"Subduction", verso:"Plongement de la lithosphère océanique, devenue plus dense en refroidissant, sous une autre plaque.", notion:'u3'},
+    {id:'f10', recto:"Obduction", verso:"Mécanisme rare où un fragment de lithosphère océanique est charrié sur la croûte continentale au lieu de subduire.", notion:'u3'},
+    {id:'f11', recto:"Collision continentale", verso:"Rencontre de deux marges continentales après la fermeture complète d'un océan ; épaissit la croûte et forme une chaîne de montagnes.", notion:'u3'},
+    {id:'f12', recto:"Océan alpin (téthys alpine)", verso:"Ancien océan aujourd'hui totalement refermé, dont l'ophiolite du Chenaillet est un vestige.", notion:'u4'}
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {u1:'Unité 1 — Déformations des roches (p.166)', u2:'Unité 2 — Ophiolites (p.170)', u3:'Unité 3 — Cycle de Wilson (p.176)', u4:"Unité 4 — Reconstitution d'une chaîne (p.182)"},
+    bilanPage: 186, exosPage: 188, bacPage: 190,
+    nextStep: "Enchaîne sur le chapitre suivant (organisation des plantes à fleurs) dès qu'il sera prêt."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"Une déformation cassante se forme plutôt :", options:["en profondeur, où la roche est chaude","en surface, où la roche est froide et rigide","uniquement sous l'océan"], correct:1,
+      image:{src:"https://upload.wikimedia.org/wikipedia/commons/4/47/Folded_Rock_on_Belle-Ile_Brittany_France.jpg", alt:"Roches plissées à Belle-Île, Bretagne", credit:"Photo : youen (geodiversite.net), Wikimedia Commons, CC BY-SA 3.0"}},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"Un pli formant une voûte est appelé :", options:["synclinal","anticlinal","chevauchement"], correct:1},
+    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"Une nappe de charriage correspond à :", options:["une faille verticale sans déplacement","une faille de chevauchement de faible pente ayant transporté un terrain sur une grande distance","un pli synclinal"], correct:1},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u1', q:"Le style et l'intensité des déformations observées dans une région renseignent sur :", options:["son climat actuel","l'intensité des contraintes tectoniques qu'elle a subies","la composition chimique de son atmosphère passée"], correct:1},
+    {id:'q5', type:'connaissance', difficulty:1, notion:'u2', q:"Une ophiolite est :", options:["une roche magmatique récente formée en contexte continental","un fragment de lithosphère océanique préservé sur un continent","un type de fossile marin"], correct:1},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u2', q:"Dans une séquence ophiolitique complète, en partant du manteau vers la surface, on trouve dans l'ordre :", options:["radiolarites, basaltes, gabbro, péridotite","péridotite, gabbro, basaltes, radiolarites","gabbro, péridotite, radiolarites, basaltes"], correct:1,
+      image:{src:"../assets/img/ch07/ophiolite-colonne.svg", alt:"Colonne stratigraphique schématique d'une séquence ophiolitique"}},
+    {id:'q7', type:'connaissance', difficulty:2, notion:'u2', q:"La présence de pillow-lavas dans une ophiolite indique que le magma a refroidi :", options:["en profondeur, lentement","au contact direct de l'eau de mer","dans une chambre magmatique continentale"], correct:1},
+    {id:'q8', type:'connaissance', difficulty:1, notion:'u3', q:"Le devenir le plus fréquent d'une lithosphère océanique, du fait de sa densité croissante en refroidissant, est :", options:["l'obduction","la subduction","la fusion immédiate en surface"], correct:1},
+    {id:'q9', type:'connaissance', difficulty:2, notion:'u3', q:"L'obduction se distingue de la subduction car :", options:["la lithosphère océanique plonge dans le manteau","un fragment de lithosphère océanique est charrié sur la croûte continentale au lieu de plonger","elle ne concerne que des continents entre eux"], correct:1},
+    {id:'q10', type:'connaissance', difficulty:1, notion:'u4', q:"L'océan qui séparait autrefois les blocs continentaux aujourd'hui réunis dans la chaîne alpine est appelé :", options:["océan Atlantique","océan alpin (ou téthys alpine)","océan Pacifique"], correct:1},
+
+    {id:'r1', type:'raisonnement', difficulty:3, notion:'u1', q:"Sur un affleurement, une couche de calcaire clairement plus ancienne (datée par ses fossiles) repose au-dessus d'une couche de grès plus jeune, en contradiction apparente avec le principe de superposition. Quelle structure explique le plus probablement cette observation ?",
+      options:["Une érosion qui aurait inversé les couches","Une nappe de charriage ayant transporté le calcaire ancien par-dessus le grès plus jeune","Une erreur de datation, à corriger"], correct:1,
+      hint:"Repense à ce qui peut faire reposer un terrain ancien sur un terrain plus jeune sans que le principe de superposition soit réellement violé — quelle structure du chapitre permet cela ?",
+      image:{src:"../assets/img/ch07/nappe-charriage.svg", alt:"Schéma d'une nappe de charriage : terrain ancien transporté sur un terrain plus jeune"}},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u2', q:"Un géologue trouve, au sommet d'une montagne, des pillow-lavas directement surmontés de radiolarites, elles-mêmes recouvertes de sédiments continentaux plus récents. Que peut-on en déduire sur l'histoire de ce site ?",
+      options:["Il s'agissait d'un désert qui s'est ensuite recouvert d'eau", "Le site a d'abord été un fond océanique, puis a émergé et est devenu continental", "Il n'y a jamais eu d'océan à cet endroit"], correct:1,
+      hint:"Relie chaque roche à son milieu de formation (basaltes en coussins et radiolarites d'un côté, sédiments continentaux de l'autre) et ordonne-les selon le principe de superposition."},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u3', q:"Deux blocs continentaux, séparés par un océan en cours de fermeture par subduction, continuent de converger après la disparition complète de cet océan. Que se passe-t-il ensuite le plus probablement ?",
+      options:["Les deux blocs continentaux entrent en collision et forment une chaîne de montagnes","La subduction continue indéfiniment entre les deux continents","Un nouvel océan s'ouvre immédiatement entre eux"], correct:0,
+      hint:"Que devient la convergence des plaques une fois qu'il n'y a plus de lithosphère océanique dense à faire plonger entre les deux continents ?"},
+    {id:'r4', type:'raisonnement', difficulty:3, notion:'u3', q:"Le massif du Chenaillet est une ophiolite bien préservée, alors que la plupart des lithosphères océaniques anciennes ont totalement disparu par subduction. Quelle explication mécanique rend compte de cette préservation exceptionnelle ?",
+      options:["Le Chenaillet n'a jamais fait partie d'un océan","Un mécanisme d'obduction a charrié ce fragment de lithosphère océanique sur la croûte continentale au lieu de le laisser subduire","Le Chenaillet s'est formé directement en surface, sans jamais être océanique"], correct:1,
+      hint:"Rappelle-toi la différence entre le devenir habituel d'une lithosphère océanique et le mécanisme plus rare qui, exceptionnellement, la préserve en surface."},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u4', q:"Dans une chaîne de montagnes, on trouve à la fois des ophiolites, des nappes de charriage empilées, et des roches métamorphiques attestant de fortes pressions. Quel scénario cohérent ces indices suggèrent-ils ensemble ?",
+      options:["Un simple soulèvement de la croûte continentale, sans jamais d'océan impliqué","La fermeture complète d'un ancien océan par subduction, suivie d'une collision continentale intense","Une origine volcanique isolée, sans lien avec la tectonique des plaques"], correct:1,
+      hint:"Combine les trois indices un par un (ophiolite, nappes, métamorphisme de pression), puis cherche quel scénario global les relie tous."},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u1', q:"Un même massif présente, du bas vers le haut : un socle granitique peu déformé, puis une zone de plis serrés, puis, tout en haut, une nappe de charriage constituée de roches très différentes de celles du dessous. Comment interpréter cette organisation ?",
+      options:["La déformation a été uniforme à toutes les profondeurs", "L'intensité et le type de déformation varient avec la profondeur et la proximité de la zone de collision, la partie supérieure ayant subi le transport le plus important", "Cette organisation ne permet aucune interprétation tectonique"], correct:1,
+      hint:"Repense à la différence entre déformation cassante/ductile selon la profondeur, et au fait qu'une nappe de charriage implique un transport sur une grande distance, donc une intensité de déformation particulière."}
+  ],
+
+  mindmapModel: {
+    label:"Traces du passé mouvementé",
+    children:[
+      {label:"Déformations", children:[
+        {label:"Pli (anticlinal / synclinal)"},{label:"Faille"},{label:"Nappe de charriage"},{label:"Cassant vs ductile"}
+      ]},
+      {label:"Ophiolites", children:[
+        {label:"Péridotite / serpentinite"},{label:"Gabbro"},{label:"Basaltes en coussins"},{label:"Radiolarites"}
+      ]},
+      {label:"Cycle de Wilson", children:[
+        {label:"Ouverture / expansion"},{label:"Subduction"},{label:"Obduction"},{label:"Collision"}
+      ]},
+      {label:"Reconstitution", children:[
+        {label:"Océan alpin"},{label:"Chaîne de montagnes →"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>

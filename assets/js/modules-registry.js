@@ -7,7 +7,7 @@ window.MODULES = [
   // ---------- SVT ----------
   {id:'ch5', subject:'svt', subjectLabel:'SVT', cat:'Géologie — Terminale (manuel)', title:"Ch.5 — La datation relative", pages:"p.122-141", status:'available', accent:'var(--rust)', href:'svt/ch05-datation-relative.html'},
   {id:'ch6', subject:'svt', subjectLabel:'SVT', cat:'Géologie — Terminale (manuel)', title:"Ch.6 — La datation absolue", pages:"p.144-161", status:'available', accent:'var(--rust)', href:'svt/ch06-datation-absolue.html'},
-  {id:'ch7', subject:'svt', subjectLabel:'SVT', cat:'Géologie — Terminale (manuel)', title:"Ch.7 — Traces du passé mouvementé de la Terre", pages:"p.164-190", status:'soon', accent:'var(--rust)', href:null},
+  {id:'ch7', subject:'svt', subjectLabel:'SVT', cat:'Géologie — Terminale (manuel)', title:"Ch.7 — Traces du passé mouvementé de la Terre", pages:"p.164-190", status:'available', accent:'var(--rust)', href:'svt/ch07-traces-passe-mouvemente.html'},
   {id:'ch8', subject:'svt', subjectLabel:'SVT', cat:'Biologie végétale — Terminale (manuel)', title:"Ch.8 — Organisation des plantes à fleurs", pages:"p.196-217", status:'soon', accent:'var(--rust)', href:null},
   {id:'ch9', subject:'svt', subjectLabel:'SVT', cat:'Biologie végétale — Terminale (manuel)', title:"Ch.9 — La plante productrice de matière organique", pages:"p.220-241", status:'soon', accent:'var(--rust)', href:null},
   {id:'ch11', subject:'svt', subjectLabel:'SVT', cat:'Biologie végétale — Terminale (manuel)', title:"Ch.11 — La domestication des plantes", pages:"p.268-282", status:'soon', accent:'var(--rust)', href:null},

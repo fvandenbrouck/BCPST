@@ -32,6 +32,7 @@
         <h3>${esc(f.unit)} — ${esc(f.title)} <span class="page-tag">p.${f.page}</span></h3>
         ${f.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}
         <ul>${f.bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>
+        ${f.terrainBadge ? `<a class="terrain-badge" href="${f.terrainBadge.href}">🏔️ Vu sur le terrain — ${esc(f.terrainBadge.label)}</a>` : ''}
       </div>`;
     });
     html += `<button class="btn primary" id="markRead">${state.progress.coursRead ? '✓ Cours marqué comme lu' : 'Marquer le cours comme lu'}</button>`;

@@ -152,6 +152,11 @@ a{color:var(--rust-deep);}
   font-size:11px;color:#fff;background:var(--slate);
   padding:2px 7px;border-radius:5px;margin-left:6px;vertical-align:middle;
 }
+.terrain-badge{
+  display:inline-block;margin-top:10px;font-family:'IBM Plex Mono',monospace;
+  font-size:12px;color:var(--moss);background:#EAF0DF;border:1px dashed var(--moss);
+  border-radius:20px;padding:5px 12px;text-decoration:none;
+}
 
 /* ---------- FLASHCARDS ---------- */
 .flash-progress{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);margin-bottom:10px;}
