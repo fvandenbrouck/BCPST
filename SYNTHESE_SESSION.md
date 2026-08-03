@@ -27,6 +27,9 @@ Le cahier des charges laissait plusieurs points ouverts. Voici comment ils ont �
    - Ne pas illustrer systématiquement toutes les questions : seulement quand un visuel apporte une réelle clarté (objet concret identifiable, ou scénario géométrique/graphique difficile à se représenter par le texte seul).
 8. **GitHub Pages activé** (cf. décision #4) — mise à jour a posteriori : contrairement à ce que disait la première version de ce fichier, l'utilisateur a explicitement demandé l'activation immédiate le 2026-08-03 ("active le site et donne-moi le lien"), avant la fin de la Phase 1. C'est fait, cf. décision #4 ci-dessus qui a été mise à jour en conséquence. Ne pas re-proposer d'attendre la fin de Phase 1 pour ça.
 9. **Quatrième type de module : "Carnet de terrain"** (2026-08-03), sur spécification complète fournie par l'utilisateur — voir [`CARNET_DE_TERRAIN.md`](CARNET_DE_TERRAIN.md) (copie verbatim, même traitement que `CAHIER_DES_CHARGES.md`). Contrairement aux modules SVT/PC/Maths : pas de score, pas de bonne réponse, observation libre horodatée + éclairage révélé après coup. Implémenté dans `carnet-de-terrain/` (`index.html` sélecteur + `chenaillet.html` + `lautaret.html`) et `assets/js/carnet-engine.js` (moteur volontairement séparé de `qcm-engine.js`, réutilise `storage.js` avec les clés `carnet:chenaillet` / `carnet:lautaret`). Accessible depuis la page d'accueil via une carte dédiée hors registre/jauge ("Avant la rentrée"), **volontairement exclu de `modules-registry.js`** et de la jauge en strates (ce n'est pas un module noté). Testé dans le navigateur : saisie, activation du bouton éclairage après texte, persistance après rechargement — OK sur les deux sites.
+10. **Cahier des charges mis à jour par l'utilisateur (2026-08-03)** : deux ajouts propagés dans `CAHIER_DES_CHARGES.md` et `assets/js/modules-registry.js`.
+    - **Pagination confirmée** : l'utilisateur a fourni une capture du sommaire réel (Ch.5, Unités 1-4, Bilan p.136, Exercices p.138, Objectif BAC p.141) qui correspond exactement au tableau §2 déjà utilisé. Seul le nom de l'éditeur était faux (cf. décision #6) — la pagination de Ch.6 à Ch.18 peut être utilisée sans réserve, à corriger au cas par cas si un écart apparaît en construisant un chapitre précis.
+    - **Ch.12 (Le climat au Cénozoïque, p.292-315) et Ch.14 (Le changement climatique actuel, p.342-366)** ajoutés à la feuille de route SVT en rangs 12-13, marqués **"bonus tertiaire"** : hors périmètre des recommandations officielles Berthelot, ajoutés uniquement parce que le carnet de terrain du Jardin du Lautaret y fait référence. Aucun engagement de calendrier — à construire seulement après les modules 1 à 11. Déjà ajoutés à `modules-registry.js` avec `status:'soon'`. Ça résout le point qui restait ouvert au §5 (badges de renvoi Ch.12/Ch.14 sans module correspondant).
 
 ## 3. Architecture technique (résumé)
 
@@ -74,6 +77,8 @@ SYNTHESE_SESSION.md               ce fichier
 8. Ch.18 — Contrôle des flux de glucose (p.450-473)
 9-10. Modules "Première" sans manuel (génétique de base ; géologie interne) — contenu 100% original, pas de renvoi de page
 11 (bonus). Ch.1 — L'origine du phénotype (p.30-53)
+12 (bonus tertiaire, priorité la plus basse). Ch.12 — Le climat au Cénozoïque (p.292-315)
+13 (bonus tertiaire, priorité la plus basse). Ch.14 — Le changement climatique actuel (p.342-366)
 
 Chaque nouvel id de module doit être ajouté à `assets/js/modules-registry.js` (passer `status` de `'soon'` à `'available'` et renseigner `href`) en plus de la création du fichier HTML — sinon il n'apparaît pas comme disponible sur la page d'accueil.
 
@@ -86,12 +91,12 @@ L'idée d'"Observations" évoquée en cours de session a été précisée par l'
 **Reste à faire**, repris du §5 de `CARNET_DE_TERRAIN.md` (rien de bloquant, mais à ne pas oublier) :
 1. Vérifier avec l'utilisateur l'itinéraire précis du Chenaillet (départ Cervières ou Montgenèvre) et réordonner chen-01→08 si besoin — pas de changement de contenu, juste l'ordre `ordre` dans `chenaillet.html`.
 2. Vérifier les horaires d'ouverture du Jardin du Lautaret au moment du séjour ; si fermé, laut-05 et une partie de laut-06 ne seront pas utilisables tels quels.
-3. **Ajouter les badges de renvoi** "🏔️ Vu sur le terrain" sur les futurs modules Ch.7, Ch.8, Ch.12, Ch.14 (et Ch.4 en option) une fois ces modules SVT construits (aucun des deux modules actuels, Ch.5/Ch.6, n'est concerné par ces tags). Lien bidirectionnel léger vers l'entrée du carnet correspondante — ne pas fusionner les gabarits.
-4. Les tags `SVT-Ch4/Ch7/Ch8-U1/Ch12/Ch14` dans les données des points sont déjà là, prêts à être exploités pour ces badges quand les modules existeront.
+3. **Ajouter les badges de renvoi** "🏔️ Vu sur le terrain" sur les futurs modules Ch.7, Ch.8, Ch.12, Ch.14 (et Ch.4 en option, qui n'est même pas dans la feuille de route — cf. §4) une fois ces modules SVT construits (aucun des deux modules actuels, Ch.5/Ch.6, n'est concerné par ces tags). Lien bidirectionnel léger vers l'entrée du carnet correspondante — ne pas fusionner les gabarits.
+4. Les tags `SVT-Ch4/Ch7/Ch8-U1/Ch12/Ch14` dans les données des points sont déjà là, prêts à être exploités pour ces badges quand les modules existeront. Ch.7, Ch.8, Ch.12, Ch.14 sont désormais tous dans la feuille de route officielle (§4) — Ch.12/Ch.14 en toute fin, priorité la plus basse (cf. décision #10). Ch.4 reste hors plan, jamais mentionné ailleurs que dans ce tag optionnel du carnet.
 
 ## 6. Conventions et consignes utiles pour la suite
 
-- **Droit d'auteur** : ne jamais recopier le texte du manuel Hachette ni d'autres sources protégées ; renvois de page en index uniquement (cahier des charges §0.1).
+- **Droit d'auteur** : ne jamais recopier le texte du manuel Belin Éducation ni d'autres sources protégées ; renvois de page en index uniquement (cahier des charges §0.1).
 - **Ton des diagnostics** : toujours encourageant, jamais culpabilisant (§0.2) — les 4 paliers déjà rédigés dans `qcm-engine.js` (`buildDiagnostic`) servent de modèle de ton à reproduire pour les futurs modules.
 - **Articulation Première → Terminale → BCPST1** : toujours présente en tête de module (bloc "Déjà vu / En BCPST1", champ `MODULE.bridge` dans le contrat de données).
 - **Carte mentale** : jamais de modèle pré-rempli affiché par défaut, l'élève construit d'abord de mémoire (déjà respecté par `mindmap-engine.js`, ne pas changer ce comportement).
@@ -105,4 +110,4 @@ L'idée d'"Observations" évoquée en cours de session a été précisée par l'
 
 - Dépôt distant : [github.com/fvandenbrouck/BCPST](https://github.com/fvandenbrouck/BCPST) (public), branche `main` trackée.
 - **GitHub Pages actif : https://fvandenbrouck.github.io/BCPST/** (activé le 2026-08-03, cf. décision #4/#8).
-- Commits poussés jusqu'ici : initialisation (Ch.5/Ch.6 + moteur), fix de mélange des QCM + doc de session, correction éditeur Belin + illustrations QCM. Le module carnet de terrain (`carnet-de-terrain/`, `assets/js/carnet-engine.js`, `CARNET_DE_TERRAIN.md`) est sur le point d'être committé et poussé dans la foulée de cette mise à jour. Si un nouveau fil de discussion trouve `git log` sans ce commit, c'est qu'il reste à faire — vérifier avec `git status` / `git log --oneline`.
+- Commits poussés jusqu'ici : initialisation (Ch.5/Ch.6 + moteur), fix de mélange des QCM + doc de session, correction éditeur Belin + illustrations QCM, module carnet de terrain, prompt de reprise Phase 1 SVT. La mise à jour du cahier des charges (pagination confirmée, ajout Ch.12/Ch.14 bonus tertiaire dans `modules-registry.js`) est sur le point d'être committée dans la foulée de cette mise à jour. Si un nouveau fil de discussion trouve `git log` sans ce commit, c'est qu'il reste à faire — vérifier avec `git status` / `git log --oneline`.

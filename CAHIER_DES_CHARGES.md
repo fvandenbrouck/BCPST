@@ -16,7 +16,8 @@ Ces règles s'appliquent à **toutes** les matières et à tous les modules cons
 
 ### 0.1 Droit d'auteur
 
-- Le manuel *Planète SVT Terminale spécialité* (Hachette) est une œuvre protégée : **jamais** de reproduction de son texte, de ses énoncés, de ses schémas. Seuls des renvois "page X / chapitre Y" (pur index) sont autorisés.
+- Le manuel de SVT utilisé par l'élève (**Belin Éducation**) est une œuvre protégée : **jamais** de reproduction de son texte, de ses énoncés, de ses schémas. Seuls des renvois "page X / chapitre Y" (pur index) sont autorisés.
+- ✅ **Pagination confirmée.** Capture d'écran du sommaire réel fournie par l'utilisateur : Ch.5 "La datation relative" p.122, Unité 1 p.124, Unité 2 p.126, Unité 3 p.128, Unité 4 p.130, "Plus d'activités expérimentales" p.132, Objectif Oral p.134, Bilan p.136, Exercices p.138, Objectif BAC p.141 — correspondance exacte, à l'unité près, avec le tableau du §2. La confusion précédente ne portait donc que sur le nom de l'éditeur, pas sur la pagination elle-même (tout le sommaire ayant été transcrit dans la même session, à partir des mêmes photos). Le tableau du §2 peut être utilisé sans réserve pour Ch.6 à Ch.18. Si un écart apparaît malgré tout sur un chapitre précis lors de la construction, le corriger à ce moment-là plutôt que de tout re-vérifier par avance.
 - Les programmes officiels (BO, annexes du Ministère) ne sont pas soumis à la même contrainte de propriété qu'un manuel commercial, mais on n'en recopie pas non plus de longs passages : ils servent de **référentiel de notions et de vocabulaire**, reformulé et illustré par du contenu pédagogique original écrit pour ce site.
 - Le cahier de calcul BCPST (Lycée Berthelot / adaptation d'un cahier collectif CPGE) est un document pédagogique existant : on **cite ses numéros de fiche comme index** (comme pour le manuel SVT), mais les exercices proposés sur le site sont rédigés spécifiquement pour le site, pas recopiés du cahier.
 - Aucune image, aucun schéma scanné d'un ouvrage tiers n'est jamais intégré au site.
@@ -98,6 +99,10 @@ Ordre de construction recommandé (issu du croisement recommandations Berthelot 
 | 8 | Contrôle des flux de glucose | Ch.18 | 450-473 | dernier point Terminale explicitement listé |
 | 9-10 | Modules "Première" sans manuel (génétique de base ; géologie interne) | — | — | contenu 100 % original, pas de renvoi de page — cf. gabarit §2 de la synthèse initiale, inchangé |
 | 11 (bonus) | Origine du phénotype (méiose, brassage) | Ch.1 | 30-53 | priorité secondaire, déjà exploré en tout début de projet |
+| 12 (bonus tertiaire) | Le climat au Cénozoïque | Ch.12 | 292-315 | hors périmètre des recommandations officielles Berthelot (le thème climat n'y est pas cité) — ajouté ici uniquement parce que le carnet de terrain du Jardin du Lautaret y fait référence de façon informative (cf. `CARNET_DE_TERRAIN_MONETIER.md`) ; aucun engagement de calendrier |
+| 13 (bonus tertiaire) | Le changement climatique actuel : s'informer et agir | Ch.14 | 342-366 | idem ; même origine (carnet de terrain), même absence de priorité dans les recommandations officielles |
+
+Les modules 12 et 13 sont volontairement au rang le plus bas de la feuille de route : ils ne seront construits, le cas échéant, qu'une fois les modules 1 à 11 terminés. Tant qu'ils n'existent pas, le carnet de terrain ne promet aucun badge de renvoi cliquable à leur sujet (cf. décision dans `CARNET_DE_TERRAIN_MONETIER.md`) — leur présence ici sert seulement à ne pas perdre le lien identifié, pas à en garantir la construction à court terme.
 
 Construire dans cet ordre, un module à la fois, en validant chaque module (relecture rapide du cours + test du QCM) avant de passer au suivant.
 
@@ -241,7 +246,7 @@ Prioriser dans l'ordre des recommandations :
 2. Initialiser le dépôt Git dans `/Users/francoisvandenbrouck/Documents/FV/perso/alix/OnBoardingBCPST`, créer le dépôt distant `fvandenbrouck/BCPST` (ou nom équivalent), premier commit avec l'arborescence de `§1` et le module pilote SVT réintégré.
 3. Construire dans l'ordre : **Phase 1** SVT (modules du tableau `§2`, un par un, avec relecture) → **Phase 2** Physique-Chimie (boîte à outils, puis analyse dimensionnelle et nomenclature, puis les 6 modules de révision Terminale) → **Phase 3** Mathématiques (dans l'ordre du tableau `§4.3`).
 4. Après chaque module, vérifier : absence de tout contenu recopié d'une source protégée, cohérence du renvoi (page/fiche/code), fonctionnement du stockage persistant, exactitude scientifique du contenu (recouper avec les documents `references/` sans les citer).
-5. Déployer via GitHub Pages une fois la Phase 1 terminée (premher jalon utilisable), puis mettre à jour au fil des phases suivantes.
+5. Déployer via GitHub Pages une fois la Phase 1 terminée (premier jalon utilisable), puis mettre à jour au fil des phases suivantes.
 
 ---
 
@@ -265,4 +270,4 @@ Prioriser dans l'ordre des recommandations :
 
 ## Note de provenance
 
-Ce fichier est la copie verbatim du cahier des charges fourni par l'utilisateur en tout début de projet (message initial de la session du 2026-08-03). Il ne doit pas être modifié au fil de l'avancement — c'est le référentiel stable. Les décisions prises en session (y compris celles qui répondent aux questions laissées ouvertes ci-dessus, comme le choix `localStorage` ou le nom du dépôt GitHub) sont documentées séparément dans `SYNTHESE_SESSION.md`, à consulter en complément pour avoir l'état réel et à jour du projet.
+Ce fichier est la copie verbatim du cahier des charges fourni par l'utilisateur, mis à jour au fil de la session avec les corrections et compléments qu'il a lui-même apportés (éditeur du manuel confirmé Belin Éducation, pagination confirmée, ajout des modules bonus tertiaires Ch.12/Ch.14). Il reste le référentiel stable du projet — les décisions et l'avancement réel sont documentés séparément dans `SYNTHESE_SESSION.md`, à consulter en complément.

@@ -27,8 +27,10 @@ Construire **tous les modules SVT restants de la Phase 1**, dans l'ordre ci-dess
 | 8 | Contrôle des flux de glucose | Ch.18 | 450-473 | Dernier point Terminale explicitement listé |
 | 9-10 | Génétique de base + Géologie interne (modules "Première", sans manuel) | — | — | Contenu 100% original, pas de renvoi de page |
 | 11 (bonus) | L'origine du phénotype (méiose, brassage) | Ch.1 | 30-53 | Priorité secondaire |
+| 12 (bonus tertiaire) | Le climat au Cénozoïque | Ch.12 | 292-315 | Hors recommandations officielles, ajouté seulement parce que le carnet du Lautaret y renvoie. À construire uniquement après les modules 1-11, sans engagement de calendrier |
+| 13 (bonus tertiaire) | Le changement climatique actuel | Ch.14 | 342-366 | Idem — même origine, même absence de priorité |
 
-**Point à trancher avec l'utilisateur avant ou pendant cette session** : `CARNET_DE_TERRAIN.md` utilise aussi des tags `SVT-Ch12` et `SVT-Ch14` (changement climatique, glaciers) pour le Jardin du Lautaret, mais ces chapitres n'apparaissent dans aucune des deux listes ci-dessus. Demande à l'utilisateur s'il faut les ajouter au plan de construction (et avec quel contenu manuel), ou si ces observations resteront sans module de cours correspondant.
+Le point qui restait ouvert sur `SVT-Ch12`/`SVT-Ch14` (tags du carnet de terrain sans module correspondant) est tranché : ces deux chapitres sont maintenant dans la feuille de route officielle (`CAHIER_DES_CHARGES.md` §2), en tout dernier rang. Ne pas les construire avant d'avoir terminé 1 à 11.
 
 ## Ce que chaque module doit contenir (gabarit à 4 onglets, inchangé)
 
