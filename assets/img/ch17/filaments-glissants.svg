@@ -1,0 +1,38 @@
+<svg viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif" font-size="12.5">
+  <rect x="0" y="0" width="440" height="300" fill="#FBF8F0"/>
+
+  <!-- Panneau 1 : au repos -->
+  <text x="30" y="26" font-weight="bold" fill="#262319">Sarcomère au repos</text>
+  <line x1="30" y1="40" x2="30" y2="140" stroke="#4C5B66" stroke-width="4"/>
+  <line x1="195" y1="40" x2="195" y2="140" stroke="#4C5B66" stroke-width="4"/>
+  <text x="15" y="155" font-size="11" fill="#4C5B66">Strie Z</text>
+  <text x="180" y="155" font-size="11" fill="#4C5B66">Strie Z</text>
+
+  <!-- Myosine (épais, centré) -->
+  <rect x="75" y="82" width="75" height="16" fill="#A6512B"/>
+  <!-- Actine (fines lignes depuis chaque strie Z) -->
+  <line x1="30" y1="90" x2="105" y2="90" stroke="#5F6F42" stroke-width="3"/>
+  <line x1="195" y1="90" x2="120" y2="90" stroke="#5F6F42" stroke-width="3"/>
+
+  <!-- Panneau 2 : contraction -->
+  <text x="260" y="26" font-weight="bold" fill="#262319">Sarcomère contracté</text>
+  <line x1="255" y1="40" x2="255" y2="140" stroke="#4C5B66" stroke-width="4"/>
+  <line x1="380" y1="40" x2="380" y2="140" stroke="#4C5B66" stroke-width="4"/>
+  <text x="240" y="155" font-size="11" fill="#4C5B66">Strie Z</text>
+  <text x="365" y="155" font-size="11" fill="#4C5B66">Strie Z</text>
+
+  <rect x="280" y="82" width="75" height="16" fill="#A6512B"/>
+  <line x1="255" y1="90" x2="340" y2="90" stroke="#5F6F42" stroke-width="3"/>
+  <line x1="380" y1="90" x2="295" y2="90" stroke="#5F6F42" stroke-width="3"/>
+
+  <!-- Explication (bloc dédié, sous les deux panneaux) -->
+  <text x="220" y="180" font-size="12" fill="#524c3e" text-anchor="middle">Les stries Z se rapprochent : le chevauchement actine-myosine</text>
+  <text x="220" y="197" font-size="12" fill="#524c3e" text-anchor="middle">augmente, sans que les filaments eux-mêmes ne raccourcissent.</text>
+
+  <!-- Légende (bloc dédié, en bas, bien séparé de l'explication) -->
+  <line x1="20" y1="235" x2="380" y2="235" stroke="#D8CDAF"/>
+  <rect x="20" y="248" width="18" height="10" fill="#A6512B"/>
+  <text x="44" y="257" fill="#262319">Filament de myosine (épais, fixe)</text>
+  <line x1="20" y1="278" x2="38" y2="278" stroke="#5F6F42" stroke-width="3"/>
+  <text x="44" y="282" fill="#262319">Filament d'actine (fin, ancré à la strie Z, glisse)</text>
+</svg>

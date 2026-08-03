@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch.17 — Cellule musculaire, ATP · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/flashcards-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'ch17',
+  chapNum: "Chapitre 17",
+  subjectLabel: "Physiologie",
+  accent: 'var(--rust)',
+  title: "Cellule musculaire, ATP",
+  pages: "p.422 à 447",
+  backHref: '../index.html',
+  bridge: {
+    from: "La notion de contraction musculaire et le rôle général de l'ATP comme « monnaie énergétique » cellulaire ont été introduits en Seconde et en enseignement scientifique, sans étudier le mécanisme moléculaire du glissement des filaments ni les voies métaboliques de régénération de l'ATP.",
+    to: "En BCPST1, ce chapitre sera directement réinvesti dans l'étude de la physiologie de l'effort et des bilans bioénergétiques (couplage entre voies métaboliques productrices d'ATP et besoins d'un tissu), avec le même formalisme de bilan de matière et d'énergie déjà rencontré pour la photosynthèse (Ch.9)."
+  },
+
+  fiches: [
+    {
+      unit:'Unité 1', page:424,
+      title:"La fibre musculaire striée squelettique",
+      paragraphs:[
+        "Le muscle squelettique est formé de cellules très particulières, les fibres musculaires : cellules allongées, plurinucléées (formées par fusion de cellules précurseurs, les myoblastes, au cours du développement), pouvant atteindre plusieurs centimètres de long.",
+        "Le cytoplasme de la fibre musculaire est presque entièrement occupé par des myofibrilles, structures cylindriques parallèles à l'axe de la fibre."
+      ],
+      bullets:[
+        "Chaque myofibrille est constituée d'une succession d'unités contractiles répétées, les sarcomères, délimités par des stries appelées stries Z.",
+        "Le sarcomère contient deux types de filaments protéiques parallèles qui s'interpénètrent partiellement : des filaments fins d'actine, ancrés aux stries Z, et des filaments épais de myosine, au centre du sarcomère.",
+        "Cette organisation alternée est responsable de l'aspect strié du muscle observé au microscope, qui donne son nom au muscle « strié squelettique »."
+      ]
+    },
+    {
+      unit:'Unité 2', page:428,
+      title:"Le mécanisme moléculaire de la contraction",
+      paragraphs:[
+        "La contraction musculaire résulte du raccourcissement de chaque sarcomère, lui-même dû au glissement relatif des filaments d'actine le long des filaments de myosine (théorie des filaments glissants) : la longueur des filaments eux-mêmes ne change pas, seul leur degré de chevauchement augmente.",
+        "Ce glissement est produit par les têtes de myosine, qui forment des ponts avec l'actine, exercent une traction, se détachent, puis se rattachent plus loin, répétant ce cycle de nombreuses fois par seconde."
+      ],
+      bullets:[
+        "Chaque cycle d'attachement-traction-détachement d'une tête de myosine consomme une molécule d'ATP, hydrolysée en ADP + phosphate : l'ATP fournit l'énergie de la traction et permet aussi le détachement de la tête de myosine.",
+        "En l'absence d'ATP, actine et myosine restent liées de façon rigide — c'est ce qui explique la rigidité cadavérique après la mort, quand la production d'ATP cesse.",
+        "L'accès des têtes de myosine aux sites de fixation sur l'actine est contrôlé par le calcium (Ca2+) : au repos, une protéine (la tropomyosine) masque ces sites ; un message nerveux provoque la libération de Ca2+ depuis un réservoir interne (le réticulum sarcoplasmique), ce qui déplace la tropomyosine et démasque les sites, autorisant la contraction."
+      ]
+    },
+    {
+      unit:'Unité 3', page:434,
+      title:"Renouvellement de l'ATP pendant l'effort",
+      paragraphs:[
+        "La contraction musculaire consomme un flux considérable d'ATP, mais la réserve d'ATP disponible dans la fibre musculaire est infime, suffisant à peine quelques secondes d'effort intense : l'ATP doit donc être régénéré en permanence à partir d'ADP et de phosphate, au même rythme qu'il est consommé.",
+        "Plusieurs voies métaboliques assurent ce renouvellement, mobilisées selon l'intensité et la durée de l'effort."
+      ],
+      bullets:[
+        "Voie anaérobie alactique : la phosphocréatine, réserve d'énergie immédiatement disponible dans la fibre, cède son phosphate à l'ADP pour régénérer très rapidement de l'ATP, sans dioxygène — mais ce stock s'épuise en quelques secondes.",
+        "Voie anaérobie lactique (fermentation) : dégradation partielle du glucose (glycolyse) sans dioxygène, produisant de l'ATP rapidement mais en faible quantité, et de l'acide lactique comme déchet — mobilisée pour des efforts intenses de quelques dizaines de secondes à quelques minutes.",
+        "Voie aérobie (respiration cellulaire) : dégradation complète du glucose et des acides gras dans les mitochondries, en présence de dioxygène, produisant beaucoup plus d'ATP mais de mise en route plus lente — voie privilégiée des efforts prolongés d'intensité modérée."
+      ]
+    },
+    {
+      unit:'Unité 4', page:440,
+      title:"Adaptation à l'effort, types de fibres musculaires",
+      paragraphs:[
+        "Un même muscle contient des fibres musculaires de types différents, aux propriétés métaboliques distinctes : les fibres lentes (dites « rouges »), riches en mitochondries et bien vascularisées, favorisent la voie aérobie et sont adaptées aux efforts prolongés (endurance) ; les fibres rapides (dites « blanches »), pauvres en mitochondries, se contractent plus rapidement et fortement mais se fatiguent vite, adaptées aux efforts brefs et intenses (voie anaérobie).",
+        "La proportion de ces différents types de fibres varie selon les muscles et les individus (composante génétique), mais peut aussi être modulée par l'entraînement."
+      ],
+      bullets:[
+        "Un entraînement d'endurance régulier augmente le nombre de mitochondries et la vascularisation des fibres sollicitées (biogenèse mitochondriale, angiogenèse), améliorant la capacité de la voie aérobie.",
+        "Cette plasticité illustre un principe déjà rencontré ailleurs dans le programme : un tissu peut s'adapter, au cours de la vie d'un individu, à la fonction qui lui est demandée de façon répétée.",
+        "Ce principe sera repris et généralisé en BCPST1 lors de l'étude de la physiologie de l'effort et des bilans bioénergétiques."
+      ]
+    }
+  ],
+
+  flashcards: [
+    {id:'f1', recto:"Fibre musculaire", verso:"Cellule musculaire allongée et plurinucléée, formée par fusion de myoblastes.", notion:'u1'},
+    {id:'f2', recto:"Myofibrille / sarcomère", verso:"La myofibrille est constituée d'une succession de sarcomères, unités contractiles délimitées par les stries Z.", notion:'u1'},
+    {id:'f3', recto:"Filaments d'actine / myosine", verso:"Actine : filaments fins ancrés aux stries Z. Myosine : filaments épais au centre du sarcomère.", notion:'u1'},
+    {id:'f4', recto:"Théorie des filaments glissants", verso:"La contraction résulte du glissement de l'actine le long de la myosine, sans raccourcissement des filaments eux-mêmes.", notion:'u2'},
+    {id:'f5', recto:"Cycle de la tête de myosine", verso:"Attachement à l'actine, traction, détachement, ré-attachement plus loin — répété grâce à l'hydrolyse d'ATP.", notion:'u2'},
+    {id:'f6', recto:"Rôle de l'ATP dans la contraction", verso:"Fournit l'énergie de la traction ET permet le détachement de la tête de myosine (sans ATP : rigidité, ex. cadavérique).", notion:'u2'},
+    {id:'f7', recto:"Rôle du calcium (Ca2+) et de la tropomyosine", verso:"Au repos, la tropomyosine masque les sites de fixation sur l'actine ; le Ca2+ libéré la déplace et autorise la contraction.", notion:'u2'},
+    {id:'f8', recto:"Voie anaérobie alactique", verso:"Régénération très rapide de l'ATP via la phosphocréatine, sans O2 ; stock épuisé en quelques secondes.", notion:'u3'},
+    {id:'f9', recto:"Voie anaérobie lactique", verso:"Glycolyse sans O2, ATP rapide mais en faible quantité, production d'acide lactique ; quelques dizaines de secondes à minutes.", notion:'u3'},
+    {id:'f10', recto:"Voie aérobie", verso:"Respiration cellulaire mitochondriale avec O2, rendement élevé en ATP, mise en route plus lente ; efforts prolongés.", notion:'u3'},
+    {id:'f11', recto:"Fibres lentes / fibres rapides", verso:"Lentes (rouges, riches en mitochondries) : endurance. Rapides (blanches, pauvres en mitochondries) : efforts brefs et intenses.", notion:'u4'},
+    {id:'f12', recto:"Adaptation à l'entraînement", verso:"L'entraînement d'endurance augmente la biogenèse mitochondriale et l'angiogenèse dans les fibres sollicitées.", notion:'u4'}
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {u1:'Unité 1 — Fibre musculaire (p.424)', u2:'Unité 2 — Mécanisme de la contraction (p.428)', u3:"Unité 3 — Renouvellement de l'ATP (p.434)", u4:'Unité 4 — Types de fibres et adaptation (p.440)'},
+    bilanPage: 444, exosPage: 446, bacPage: 447,
+    nextStep: "Enchaîne sur le module suivant (contrôle des flux de glucose) dès qu'il sera prêt."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"La fibre musculaire striée squelettique est :", options:["une cellule mononucléée classique", "une cellule plurinucléée formée par fusion de myoblastes", "un tissu conjonctif dépourvu de cellules"], correct:1},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"Le sarcomère est :", options:["l'unité contractile répétée d'une myofibrille", "une autre appellation de la fibre musculaire entière", "une protéine spécifique du muscle"], correct:0},
+    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"L'aspect strié du muscle squelettique provient de :", options:["la présence de vaisseaux sanguins", "l'agencement régulier alterné des filaments d'actine et de myosine", "la présence de plusieurs noyaux"], correct:1,
+      image:{src:"https://upload.wikimedia.org/wikipedia/commons/5/56/Skeletal_muscle_-_longitudinal_section.jpg", alt:"Coupe longitudinale de muscle squelettique, montrant les stries", credit:"Photo : Department of Histology, Jagiellonian University Medical College, Wikimedia Commons, CC BY-SA 3.0"}},
+    {id:'q4', type:'connaissance', difficulty:2, notion:'u2', q:"Selon la théorie des filaments glissants, la contraction résulte de :", options:["un raccourcissement des filaments d'actine et de myosine eux-mêmes", "un glissement relatif des filaments d'actine le long des filaments de myosine, sans changement de leur longueur", "une rupture des filaments d'actine"], correct:1,
+      image:{src:"../assets/img/ch17/filaments-glissants.svg", alt:"Schéma d'un sarcomère au repos et contracté, montrant le glissement des filaments"}},
+    {id:'q5', type:'connaissance', difficulty:2, notion:'u2', q:"L'ATP est indispensable à la contraction musculaire car il permet :", options:["uniquement la traction de la tête de myosine", "à la fois la traction et le détachement de la tête de myosine", "uniquement le détachement de la tête de myosine"], correct:1},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u2', q:"Au repos, l'accès des têtes de myosine aux sites de fixation sur l'actine est bloqué par :", options:["le calcium", "la tropomyosine", "l'ATP"], correct:1},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u3', q:"La réserve d'ATP directement disponible dans la fibre musculaire permet de soutenir un effort intense pendant :", options:["plusieurs heures", "quelques secondes seulement", "plusieurs jours"], correct:1},
+    {id:'q8', type:'connaissance', difficulty:2, notion:'u3', q:"La voie anaérobie lactique produit de l'ATP :", options:["rapidement mais en faible quantité, avec production d'acide lactique", "lentement mais en grande quantité, sans aucun déchet", "uniquement en présence de dioxygène"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u3', q:"La voie aérobie (respiration cellulaire) se déroule principalement :", options:["dans le noyau, sans dioxygène", "dans les mitochondries, en présence de dioxygène", "dans le cytoplasme uniquement, sans dioxygène"], correct:1},
+    {id:'q10', type:'connaissance', difficulty:1, notion:'u4', q:"Les fibres musculaires lentes (« rouges ») sont particulièrement adaptées :", options:["aux efforts brefs et très intenses", "aux efforts prolongés d'endurance, grâce à leur richesse en mitochondries", "à l'absence totale de contraction"], correct:1},
+
+    {id:'r1', type:'raisonnement', difficulty:2, notion:'u2', q:"Après la mort d'un individu, la production d'ATP cesse rapidement dans les cellules musculaires, ce qui provoque la rigidité cadavérique (les muscles restent contractés et rigides). Comment expliquer ce phénomène à partir du rôle de l'ATP dans le cycle de la tête de myosine ?",
+      options:["Sans ATP, les têtes de myosine restent fixées à l'actine car l'ATP est nécessaire à leur détachement, ce qui bloque les sarcomères en position raccourcie", "Sans ATP, les filaments d'actine se désintègrent complètement, provoquant la rigidité", "La rigidité cadavérique n'a aucun lien avec l'ATP ou la myosine"], correct:0,
+      hint:"Repense aux deux rôles de l'ATP dans le cycle de la tête de myosine : lequel de ces deux rôles, s'il n'est plus assuré, laisserait les ponts actine-myosine bloqués en position fixée ?"},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u3', q:"Un sprinteur effectue une course de 100 mètres en une dizaine de secondes, à intensité maximale. Quelle voie métabolique de régénération de l'ATP est la plus sollicitée pendant cet effort très bref et très intense, et pourquoi ?",
+      options:["La voie aérobie, car elle est la plus rapide à se mettre en route", "La voie anaérobie alactique (phosphocréatine), car elle fournit de l'ATP quasi instantanément, sans attendre la mise en route de voies plus lentes", "La voie anaérobie lactique exclusivement, car elle ne s'épuise jamais"], correct:1,
+      hint:"Compare la durée de l'effort décrit (quelques secondes) à la durée typique de disponibilité de chacune des voies métaboliques présentées dans ce chapitre."},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u3', q:"Un coureur de marathon maintient un effort d'intensité modérée pendant plusieurs heures. Quelle voie métabolique soutient majoritairement cet effort prolongé, et quelle contrainte cela impose-t-il à l'organisme pendant la course ?",
+      options:["La voie anaérobie lactique, qui ne nécessite aucun apport particulier", "La voie aérobie, qui nécessite un apport continu de dioxygène et de nutriments pendant toute la durée de l'effort", "La voie anaérobie alactique, indéfiniment renouvelable"], correct:1,
+      hint:"Repense à ce que consomme la voie aérobie (respiration cellulaire mitochondriale) pour fonctionner en continu, et à ce que cela implique pour les systèmes respiratoire et circulatoire pendant un effort de plusieurs heures."},
+    {id:'r4', type:'raisonnement', difficulty:2, notion:'u4', q:"Deux athlètes s'entraînent différemment : l'un pratique exclusivement la course d'endurance depuis plusieurs années, l'autre exclusivement des sprints courts et intenses. Une biopsie musculaire révèle des différences dans la densité de mitochondries et la vascularisation de leurs fibres musculaires. Comment expliquer ces différences ?",
+      options:["Elles sont uniquement d'origine génétique, l'entraînement n'a aucun effet", "L'entraînement d'endurance a favorisé une biogenèse mitochondriale et une angiogenèse dans les fibres sollicitées, adaptant le tissu à la demande métabolique répétée de la voie aérobie", "Les fibres musculaires ne peuvent jamais changer au cours de la vie d'un individu"], correct:1,
+      hint:"Repense au principe de plasticité présenté en fin de chapitre : un tissu peut-il s'adapter, au cours de la vie d'un individu, à une sollicitation fonctionnelle répétée ?"},
+    {id:'r5', type:'raisonnement', difficulty:3, notion:'u2', q:"Une personne atteinte d'une maladie rare empêchant toute libération de calcium par le réticulum sarcoplasmique de ses fibres musculaires tente de contracter volontairement un muscle. Que peut-on prévoir, même si l'ATP est disponible en quantité normale dans ses cellules musculaires ?",
+      options:["La contraction se déroule normalement, le calcium n'ayant aucun rôle dans ce mécanisme", "La contraction est impossible ou très fortement réduite, car sans Ca2+ la tropomyosine continue de masquer les sites de fixation de la myosine sur l'actine, quelle que soit la disponibilité de l'ATP", "La contraction devient au contraire permanente et incontrôlable"], correct:1,
+      hint:"Distingue bien les deux conditions nécessaires à la contraction : l'énergie (ATP) d'un côté, l'autorisation d'accès aux sites de fixation (calcium, tropomyosine) de l'autre. Que se passe-t-il si seule la seconde condition n'est pas remplie ?"},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u1', q:"On observe au microscope électronique un sarcomère dont la zone de chevauchement entre filaments d'actine et de myosine a augmenté par rapport à l'état de repos, sans que la longueur totale des filaments n'ait changé. Que peut-on en conclure sur l'état de ce sarcomère ?",
+      options:["Le sarcomère est en train de se contracter (les filaments glissent l'un sur l'autre, augmentant leur zone de chevauchement)", "Le sarcomère est en train de s'allonger de façon anormale", "Les filaments d'actine sont en train de se dupliquer"], correct:0,
+      hint:"Repense à ce que prédit la théorie des filaments glissants sur l'évolution de la zone de chevauchement entre actine et myosine au cours de la contraction, sachant que la longueur des filaments eux-mêmes ne change pas."}
+  ],
+
+  mindmapModel: {
+    label:"Cellule musculaire, ATP",
+    children:[
+      {label:"Structure", children:[
+        {label:"Fibre musculaire (plurinucléée)"},{label:"Myofibrille / sarcomère"},{label:"Actine / myosine"}
+      ]},
+      {label:"Mécanisme de la contraction", children:[
+        {label:"Filaments glissants"},{label:"Tête de myosine"},{label:"ATP (traction + détachement)"},{label:"Ca2+ / tropomyosine"}
+      ]},
+      {label:"Renouvellement de l'ATP", children:[
+        {label:"Anaérobie alactique (phosphocréatine)"},{label:"Anaérobie lactique (fermentation)"},{label:"Aérobie (mitochondries, O2)"}
+      ]},
+      {label:"Adaptation à l'effort", children:[
+        {label:"Fibres lentes / rapides"},{label:"Entraînement → biogenèse mitochondriale →"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>
