@@ -277,3 +277,6 @@ textarea{width:100%;min-height:80px;resize:vertical;line-height:1.5;}
 .reset-btn{background:none;border:none;color:var(--ink-soft);font-size:12px;text-decoration:underline;margin-top:8px;}
 
 @media (prefers-reduced-motion: reduce){ * { transition:none !important; } }
+
+/* ---------- FORMULES (KaTeX) ---------- */
+.katex{ margin:0 .12em; }

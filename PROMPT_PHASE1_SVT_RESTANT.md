@@ -42,6 +42,13 @@ Le point qui restait ouvert sur `SVT-Ch12`/`SVT-Ch14` (tags du carnet de terrain
 - **Illustrations QCM (optionnel, `question.image`)** : à ajouter *seulement quand ça apporte une vraie plus-value* (jamais systématique). Deux sources possibles :
   - Photo d'objet réel : cherche sur Wikimedia Commons, vérifie la licence CC sur la page du fichier, utilise l'URL directe `upload.wikimedia.org/...`, renseigne `credit` avec l'attribution exacte.
   - Schéma de scénario fictif/abstrait (coupe géologique inventée, diagramme) : dessine un SVG original dans `assets/img/chXX/`, sans `credit` (contenu original). Utilise des couleurs hexadécimales en dur (un SVG chargé via `<img>` n'hérite pas des variables CSS de la page) — reprends la palette de `assets/css/strates.css` §6 du cahier des charges.
+- **Formules mathématiques : toujours en LaTeX**, jamais en notation texte brute (`N(t) = N0e^(-lt)`). Écrire `$...$` (en ligne) ou `$$...$$` (isolée) directement dans les chaînes de `paragraphs`, `bullets`, `bridge`, `q`, `options`, `hint`, `recto`/`verso`, labels de `mindmapModel` — le rendu est automatique (KaTeX), aucun autre traitement nécessaire. Voir `svt/ch06-datation-absolue.html` (fiche "Zoom") pour des exemples concrets. Chaque module HTML doit inclure, dans son `<head>` (avant `</head>`, non `async`/non `defer`) :
+  ```html
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  ```
+  et charger `<script src="../assets/js/math-render.js"></script>` juste après `storage.js`. C'est indispensable pour Physique-Chimie et Mathématiques (Phases 2/3), à inclure dès le premier module de ces phases.
 
 ## Contrat de données exact (copier la structure de ch06, pas la réinventer)
 

@@ -48,6 +48,7 @@
     </div>`;
 
     target.innerHTML = html;
+    MathRender.render(target);
     const flipBtn = target.querySelector('#flipBtn');
     if(flipBtn) flipBtn.addEventListener('click', ()=>{ state.flashFlipped=true; render(target, mod, state, persist); });
     target.querySelectorAll('[data-rate]').forEach(b=>{

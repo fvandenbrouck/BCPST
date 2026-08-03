@@ -42,6 +42,7 @@
     });
     html += `<button class="btn primary" id="markRead">${state.progress.coursRead ? '✓ Cours marqué comme lu' : 'Marquer le cours comme lu'}</button>`;
     target.innerHTML = html;
+    MathRender.render(target);
     target.querySelector('#markRead').addEventListener('click', async ()=>{
       state.progress.coursRead = true;
       await persist();
@@ -79,6 +80,7 @@
       </div>
       <div id="tabContent"></div>`;
       app.innerHTML = html;
+      MathRender.render(app);
       app.querySelectorAll('.tab').forEach(t=>{
         t.addEventListener('click', ()=>{ state.tab = t.dataset.tab; renderShell(); });
       });

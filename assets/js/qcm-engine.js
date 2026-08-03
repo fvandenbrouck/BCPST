@@ -169,6 +169,7 @@
     }
 
     target.innerHTML = html;
+    MathRender.render(target);
 
     target.querySelectorAll('[data-hint]').forEach(b=>{
       b.addEventListener('click', ()=>{

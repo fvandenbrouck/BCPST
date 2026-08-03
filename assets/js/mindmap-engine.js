@@ -51,6 +51,7 @@
       </div>`;
     }
     target.innerHTML = html;
+    MathRender.render(target);
 
     target.querySelector('#addNode').addEventListener('click', async ()=>{
       const label = target.querySelector('#nodeLabel').value.trim();
