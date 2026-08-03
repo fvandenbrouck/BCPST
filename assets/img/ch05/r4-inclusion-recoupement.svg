@@ -1,0 +1,23 @@
+<svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect x="0" y="0" width="320" height="220" fill="#FBF8F0"/>
+
+  <!-- Roche sédimentaire encaissante (la plus ancienne) -->
+  <rect x="20" y="20" width="280" height="180" fill="#EAE1CB" stroke="#D8CDAF"/>
+  <text x="30" y="40" font-size="12" fill="#262319">Roche sédimentaire</text>
+
+  <!-- Roche volcanique (intrusion), recoupe la roche sédimentaire -->
+  <path d="M170,20 C230,40 260,90 245,140 C230,190 170,200 150,190
+           C130,170 140,110 150,70 C155,45 160,30 170,20 Z"
+        fill="#C89B3C" fill-opacity="0.55" stroke="#7E3A1D" stroke-width="1.5"/>
+  <text x="180" y="60" font-size="12" fill="#262319">Roche</text>
+  <text x="178" y="75" font-size="12" fill="#262319">volcanique</text>
+
+  <!-- Fragments anguleux de roche sédimentaire inclus dans la roche volcanique -->
+  <polygon points="195,110 212,102 222,118 210,130 197,124" fill="#EAE1CB" stroke="#524c3e" stroke-width="1"/>
+  <polygon points="180,150 195,145 200,160 185,168 175,160" fill="#EAE1CB" stroke="#524c3e" stroke-width="1"/>
+  <text x="230" y="150" font-size="11" fill="#524c3e">fragments inclus</text>
+
+  <!-- Faille F, recoupe l'ensemble -->
+  <line x1="40" y1="200" x2="290" y2="35" stroke="#A6512B" stroke-width="3"/>
+  <text x="255" y="45" font-size="13" font-weight="bold" fill="#7E3A1D">F</text>
+</svg>

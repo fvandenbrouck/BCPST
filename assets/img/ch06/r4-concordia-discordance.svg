@@ -1,0 +1,27 @@
+<svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect x="0" y="0" width="320" height="240" fill="#FBF8F0"/>
+
+  <!-- Axes -->
+  <line x1="50" y1="20" x2="50" y2="200" stroke="#524c3e" stroke-width="1.5"/>
+  <line x1="50" y1="200" x2="290" y2="200" stroke="#524c3e" stroke-width="1.5"/>
+  <text x="8" y="24" font-size="11" fill="#262319">207Pb/235U</text>
+  <text x="225" y="216" font-size="11" fill="#262319">206Pb/238U</text>
+
+  <!-- Courbe concordia (âges concordants) -->
+  <path d="M60,190 Q150,150 270,40" fill="none" stroke="#5F6F42" stroke-width="2.5"/>
+  <text x="255" y="30" font-size="10" fill="#5F6F42">concordia</text>
+
+  <!-- Deux âges de référence sur la courbe -->
+  <circle cx="110" cy="175" r="4" fill="#5F6F42"/>
+  <text x="95" y="192" font-size="10" fill="#262319">t1</text>
+  <circle cx="235" cy="72" r="4" fill="#5F6F42"/>
+  <text x="240" y="65" font-size="10" fill="#262319">t2</text>
+
+  <!-- Droite discordia, reliant t1 et t2 -->
+  <line x1="90" y1="185" x2="255" y2="60" stroke="#4C5B66" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="60" y="205" font-size="10" fill="#4C5B66">discordia</text>
+
+  <!-- Point mesuré, sur la discordia mais hors de la concordia : âges discordants -->
+  <circle cx="170" cy="128" r="6" fill="#A6512B" stroke="#7E3A1D" stroke-width="1"/>
+  <text x="178" y="132" font-size="10" fill="#7E3A1D">zircon mesuré</text>
+</svg>

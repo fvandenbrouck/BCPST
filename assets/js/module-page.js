@@ -62,7 +62,7 @@
       <div class="module-head">
         <p class="m-tag">${esc(mod.chapNum)} · ${esc(mod.subjectLabel)}</p>
         <h1>${esc(mod.title)}</h1>
-        <p class="m-pages">Manuel Hachette, ${esc(mod.pages)}</p>
+        <p class="m-pages">Manuel Belin Éducation, ${esc(mod.pages)}</p>
         ${mod.bridge ? `<div class="m-bridge" style="--card-accent:${mod.accent||'var(--rust)'}"><b>Déjà vu :</b> ${esc(mod.bridge.from)}<br><b>En BCPST1 :</b> ${esc(mod.bridge.to)}</div>` : ''}
       </div>
       <div class="tabs">

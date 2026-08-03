@@ -5,7 +5,12 @@
  * par tous les modules SVT (et, plus tard, adapté aux onglets d'évaluation PC/Maths).
  *
  * Contrat attendu sur l'objet module :
- *   module.qcm: [{id, type, difficulty, notion, q, options, correct, hint?}]
+ *   module.qcm: [{id, type, difficulty, notion, q, options, correct, hint?, image?}]
+ *   image (optionnel) : {src, alt, credit?} — illustration affichée au-dessus de la
+ *     question quand elle apporte une réelle plus-value (photo d'un objet réel,
+ *     schéma d'un scénario fictif décrit dans l'énoncé...). `credit` est affiché en
+ *     petit sous l'image (obligatoire pour toute photo externe sous licence CC ;
+ *     omis pour les schémas originaux dessinés pour le site).
  *   module.qcmMeta: {
  *     order: [typeA, typeB],                       // ex. ['connaissance','raisonnement']
  *     labels: {[type]: 'Connaissance'},             // libellé du badge par question
@@ -45,6 +50,12 @@
         <p class="q-title">${i+1}. ${esc(q.q)}</p>
         <span class="q-tag ${isB?'cat-b':'cat-a'}">${esc(meta.labels[q.type])}</span>
       </div>`;
+    if(q.image){
+      h += `<figure class="q-figure">
+        <img src="${q.image.src}" alt="${esc(q.image.alt)}" loading="lazy">
+        ${q.image.credit ? `<figcaption>${esc(q.image.credit)}</figcaption>` : ''}
+      </figure>`;
+    }
     if(q.hint && !submitted){
       h += `<button class="hint-btn" data-hint="${q.id}">${state.hintsShown[q.id] ? "Masquer l'indice" : '💡 Voir un indice'}</button>`;
       if(state.hintsShown[q.id]) h += `<div class="hint-box">${esc(q.hint)}</div>`;

@@ -1,0 +1,27 @@
+<svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect x="0" y="0" width="320" height="240" fill="#FBF8F0"/>
+
+  <!-- Axes -->
+  <line x1="50" y1="20" x2="50" y2="200" stroke="#524c3e" stroke-width="1.5"/>
+  <line x1="50" y1="200" x2="290" y2="200" stroke="#524c3e" stroke-width="1.5"/>
+  <text x="8" y="24" font-size="11" fill="#262319">87Sr/86Sr</text>
+  <text x="230" y="216" font-size="11" fill="#262319">87Rb/86Sr</text>
+
+  <!-- Droite isochrone, prolongée jusqu'à l'ordonnée à l'origine -->
+  <line x1="50" y1="190" x2="270" y2="80" stroke="#A6512B" stroke-width="2.5"/>
+  <circle cx="50" cy="190" r="3" fill="#7E3A1D"/>
+  <text x="8" y="188" font-size="10" fill="#7E3A1D">rapport initial</text>
+
+  <!-- Minéraux d'une même roche, alignés sur la droite -->
+  <circle cx="90" cy="170" r="5" fill="#4C5B66"/>
+  <text x="80" y="160" font-size="10" fill="#262319">biotite</text>
+
+  <circle cx="150" cy="140" r="5" fill="#4C5B66"/>
+  <text x="140" y="130" font-size="10" fill="#262319">muscovite</text>
+
+  <circle cx="210" cy="110" r="5" fill="#4C5B66"/>
+  <text x="198" y="100" font-size="10" fill="#262319">feldspath</text>
+
+  <circle cx="255" cy="88" r="5" fill="#4C5B66"/>
+  <text x="220" y="76" font-size="10" fill="#262319">roche totale</text>
+</svg>
