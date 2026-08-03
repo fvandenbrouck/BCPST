@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch.9 — La plante productrice de matière organique · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/flashcards-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'ch9',
+  chapNum: "Chapitre 9",
+  subjectLabel: "Biologie végétale",
+  accent: 'var(--rust)',
+  title: "La plante productrice de matière organique",
+  pages: "p.220 à 241",
+  backHref: '../index.html',
+  bridge: {
+    from: "La photosynthèse a été abordée au collège et en Seconde de façon qualitative (la plante produit de la matière organique grâce à la lumière), sans étudier le rôle du chloroplaste ni le détail des deux phases (photochimique et chimique).",
+    to: "En BCPST1, les bilans de matière et d'énergie de la photosynthèse seront repris et quantifiés — en SVT (cycle du carbone, flux d'énergie dans les écosystèmes) et en Physique-Chimie (thème E, bilans d'énergie pour un système thermodynamique) — avec le même formalisme que pour tout autre système producteur/consommateur d'énergie."
+  },
+
+  fiches: [
+    {
+      unit:'Unité 1', page:222,
+      title:"La photosynthèse : principe général",
+      paragraphs:[
+        "Les plantes chlorophylliennes sont autotrophes pour le carbone : elles produisent leur propre matière organique à partir de matière minérale (CO2, eau, sels minéraux) et d'énergie lumineuse, contrairement aux organismes hétérotrophes qui doivent puiser leur matière organique déjà formée dans leur environnement.",
+        "La réaction bilan de la photosynthèse peut se résumer ainsi : du dioxyde de carbone et de l'eau, en présence d'énergie lumineuse, sont convertis en matière organique (représentée par le glucose) et en dioxygène."
+      ],
+      bullets:[
+        "Cette réaction se déroule dans un organite spécifique des cellules chlorophylliennes : le chloroplaste, présent en grand nombre dans les feuilles.",
+        "Le chloroplaste est organisé en deux compartiments aux rôles complémentaires : les thylakoïdes, membranes internes empilées en granum, qui portent les pigments photosynthétiques ; et le stroma, la matrice liquide qui les entoure.",
+        "Ces deux compartiments sont respectivement le siège des deux phases de la photosynthèse détaillées dans les unités suivantes : la phase photochimique (thylakoïdes) et la phase chimique (stroma)."
+      ]
+    },
+    {
+      unit:'Unité 2', page:226,
+      title:"La phase photochimique : capter l'énergie lumineuse",
+      paragraphs:[
+        "Les pigments photosynthétiques (chlorophylles et caroténoïdes), situés dans les membranes des thylakoïdes, absorbent l'énergie lumineuse — principalement dans le bleu et le rouge, en réfléchissant le vert, ce qui explique la couleur verte des feuilles.",
+        "Cette énergie captée permet la photolyse de l'eau, c'est-à-dire sa rupture en dioxygène, protons et électrons. C'est cette réaction qui explique le dégagement de dioxygène par les plantes chlorophylliennes à la lumière."
+      ],
+      bullets:[
+        "Les électrons et protons libérés, associés à l'énergie lumineuse captée, servent à produire deux composés riches en énergie : l'ATP (transporteur d'énergie chimique) et le NADPH,H+ (transporteur de pouvoir réducteur).",
+        "Cette phase se déroule exclusivement à la lumière et ne consomme pas de CO2 : elle prépare les ressources énergétiques (ATP, NADPH,H+) nécessaires à la phase suivante.",
+        "L'ATP et le NADPH,H+ produits ici migrent des thylakoïdes vers le stroma, où ils sont utilisés par la phase chimique (Unité 3)."
+      ]
+    },
+    {
+      unit:'Unité 3', page:230,
+      title:"La phase chimique : fixer le carbone (cycle de Calvin)",
+      paragraphs:[
+        "Dans le stroma du chloroplaste se déroule la phase chimique, ou cycle de Calvin, qui utilise l'ATP et le NADPH,H+ produits par la phase photochimique pour réduire le CO2 atmosphérique en matière organique.",
+        "Une enzyme clé, la RuBisCO, catalyse la première étape du cycle : la fixation du CO2 sur un accepteur à cinq carbones. Les étapes suivantes du cycle utilisent l'ATP et le NADPH,H+ pour réduire ce carbone fixé et produire, au final, du glucose."
+      ],
+      bullets:[
+        "Contrairement à la phase photochimique, cette phase ne nécessite pas directement de lumière — on l'appelle parfois, à tort, « phase sombre » : elle dépend en réalité indirectement de la lumière, puisqu'elle consomme l'ATP et le NADPH,H+ qui ne sont produits qu'à la lumière.",
+        "Le glucose produit peut être utilisé immédiatement par la cellule (respiration), stocké sous forme d'amidon, ou exporté vers d'autres organes de la plante sous forme de saccharose.",
+        "Les deux phases sont donc couplées : la phase chimique dépend entièrement des produits de la phase photochimique pour fonctionner."
+      ]
+    },
+    {
+      unit:'Unité 4', page:236,
+      title:"Facteurs limitants et bilan à l'échelle de l'écosystème",
+      paragraphs:[
+        "L'intensité de la photosynthèse dépend de plusieurs facteurs, dits facteurs limitants : l'intensité lumineuse, la concentration en CO2, et la température (qui influence l'activité des enzymes, notamment la RuBisCO). Un facteur est dit limitant lorsque son augmentation, toutes choses égales par ailleurs, permet à la photosynthèse d'augmenter — preuve qu'il freinait la réaction jusque-là.",
+        "Le bilan de matière de la photosynthèse (consommation de CO2, production d'O2 et de matière organique) fait des plantes chlorophylliennes les producteurs primaires de la plupart des écosystèmes : elles sont à la base des chaînes alimentaires, en fournissant la matière organique dont dépendent les organismes hétérotrophes."
+      ],
+      bullets:[
+        "À l'échelle de la planète, la photosynthèse est un maillon essentiel du cycle du carbone : elle prélève du CO2 atmosphérique, tandis que la respiration de l'ensemble des êtres vivants (plantes comprises) et la combustion en restituent.",
+        "Ce bilan de matière s'accompagne d'un bilan d'énergie : l'énergie lumineuse captée est convertie et stockée sous forme d'énergie chimique dans les liaisons de la matière organique produite.",
+        "Ce même formalisme de bilan d'énergie sera repris et quantifié en BCPST1, aussi bien en SVT (flux d'énergie dans les écosystèmes) qu'en physique-chimie (thème E, bilans d'énergie d'un système thermodynamique)."
+      ]
+    }
+  ],
+
+  flashcards: [
+    {id:'f1', recto:"Autotrophie pour le carbone", verso:"Capacité à produire sa propre matière organique à partir de matière minérale (CO2, eau) et d'énergie lumineuse, sans en puiser dans l'environnement.", notion:'u1'},
+    {id:'f2', recto:"Réaction bilan de la photosynthèse", verso:"CO2 + eau, en présence de lumière, sont convertis en matière organique (glucose) et en dioxygène.", notion:'u1'},
+    {id:'f3', recto:"Chloroplaste : thylakoïdes / stroma", verso:"Thylakoïdes (membranes empilées) : siège de la phase photochimique. Stroma (matrice liquide) : siège de la phase chimique.", notion:'u1'},
+    {id:'f4', recto:"Pigments photosynthétiques", verso:"Chlorophylles et caroténoïdes, situés dans les thylakoïdes, absorbent la lumière (bleu, rouge) et réfléchissent le vert.", notion:'u2'},
+    {id:'f5', recto:"Photolyse de l'eau", verso:"Rupture de la molécule d'eau grâce à l'énergie lumineuse captée, libérant protons, électrons et dioxygène.", notion:'u2'},
+    {id:'f6', recto:"ATP et NADPH,H⁺", verso:"Composés riches en énergie produits par la phase photochimique (à la lumière), utilisés ensuite par la phase chimique.", notion:'u2'},
+    {id:'f7', recto:"Phase chimique (cycle de Calvin)", verso:"Se déroule dans le stroma ; utilise l'ATP et le NADPH,H+ pour réduire le CO2 fixé en matière organique.", notion:'u3'},
+    {id:'f8', recto:"RuBisCO", verso:"Enzyme qui catalyse la fixation du CO2 sur un accepteur à 5 carbones, première étape du cycle de Calvin.", notion:'u3'},
+    {id:'f9', recto:"Couplage des deux phases", verso:"La phase chimique dépend entièrement de l'ATP et du NADPH,H+ produits par la phase photochimique pour fonctionner.", notion:'u3'},
+    {id:'f10', recto:"Facteur limitant", verso:"Facteur dont l'augmentation permet à la photosynthèse d'augmenter, révélant qu'il freinait la réaction (ex. lumière, CO2, température).", notion:'u4'},
+    {id:'f11', recto:"Producteur primaire", verso:"Organisme (plante chlorophyllienne) qui produit de la matière organique à partir de matière minérale, à la base des chaînes alimentaires.", notion:'u4'},
+    {id:'f12', recto:"Photosynthèse et cycle du carbone", verso:"La photosynthèse prélève du CO2 atmosphérique ; la respiration et la combustion en restituent — équilibre du cycle du carbone.", notion:'u4'}
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {u1:'Unité 1 — Principe général (p.222)', u2:'Unité 2 — Phase photochimique (p.226)', u3:'Unité 3 — Phase chimique, cycle de Calvin (p.230)', u4:'Unité 4 — Facteurs limitants et bilan (p.236)'},
+    bilanPage: 238, exosPage: 240, bacPage: 241,
+    nextStep: "Enchaîne sur le chapitre suivant (la domestication des plantes) dès qu'il sera prêt."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"Une plante chlorophyllienne est dite autotrophe pour le carbone car elle :", options:["doit consommer de la matière organique pour survivre","produit sa propre matière organique à partir de matière minérale et de lumière","ne contient aucun carbone"], correct:1},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"L'organite responsable de la photosynthèse dans la cellule végétale est :", options:["la mitochondrie","le chloroplaste","le noyau"], correct:1},
+    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"Le chloroplaste est organisé en deux compartiments principaux :", options:["le noyau et le cytoplasme","les thylakoïdes et le stroma","la vacuole et la paroi"], correct:1,
+      image:{src:"https://upload.wikimedia.org/wikipedia/commons/4/45/Chloroplast_30000x_%283660656624%29.jpg", alt:"Chloroplaste vu au microscope électronique, avec ses granum de thylakoïdes visibles", credit:"Photo : Bela Hausmann, Wikimedia Commons, CC BY-SA 2.0"}},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u2', q:"La phase photochimique de la photosynthèse a lieu :", options:["dans le stroma, en absence de lumière","dans les thylakoïdes, à la lumière","dans le noyau, à toute heure"], correct:1},
+    {id:'q5', type:'connaissance', difficulty:2, notion:'u2', q:"Le dégagement de dioxygène par une plante chlorophyllienne à la lumière provient :", options:["de la respiration cellulaire","de la photolyse de l'eau lors de la phase photochimique","de la dégradation directe du glucose"], correct:1},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u2', q:"Les produits de la phase photochimique, utilisés ensuite par la phase chimique, sont :", options:["le glucose et le dioxygène","l'ATP et le NADPH,H+","le CO2 et l'eau"], correct:1},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u3', q:"La RuBisCO est une enzyme qui catalyse :", options:["la photolyse de l'eau","la fixation du CO2 sur un accepteur à 5 carbones","la synthèse de chlorophylle"], correct:1},
+    {id:'q8', type:'connaissance', difficulty:2, notion:'u3', q:"La phase chimique (cycle de Calvin) se déroule :", options:["dans les thylakoïdes, uniquement en pleine lumière","dans le stroma, en utilisant l'ATP et le NADPH,H+ produits par la phase photochimique","dans le noyau, indépendamment de la lumière"], correct:1},
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u4', q:"Un facteur limitant de la photosynthèse est un facteur qui :", options:["n'a jamais d'effet sur la photosynthèse","empêche la photosynthèse d'augmenter tant qu'il reste insuffisant","provoque toujours l'arrêt total et définitif de la photosynthèse"], correct:1},
+    {id:'q10', type:'connaissance', difficulty:1, notion:'u4', q:"Dans les chaînes alimentaires, les plantes chlorophylliennes occupent la position de :", options:["consommateurs primaires","producteurs primaires","décomposeurs"], correct:1},
+
+    {id:'r1', type:'raisonnement', difficulty:2, notion:'u2', q:"On place une plante à l'obscurité pendant plusieurs jours, puis on mesure ses échanges gazeux : elle rejette du CO2 et absorbe du O2, sans effectuer l'inverse. Comment interpréter cette observation ?",
+      options:["La plante a cessé toute activité biologique", "En absence de lumière, la phase photochimique (et donc toute la photosynthèse) s'arrête ; seule la respiration cellulaire, commune à toutes les cellules vivantes, se poursuit", "La plante est devenue définitivement hétérotrophe"], correct:1,
+      hint:"Repense à ce qui dépend strictement de la lumière (phase photochimique) et à ce qui se poursuit en permanence, indépendamment de la lumière (respiration cellulaire)."},
+    {id:'r2', type:'raisonnement', difficulty:3, notion:'u3', q:"Un chercheur bloque expérimentalement la phase photochimique d'une cellule chlorophyllienne, sans agir directement sur le stroma. Quel effet peut-on prévoir sur le cycle de Calvin ?",
+      options:["Aucun effet : les deux phases sont indépendantes", "Le cycle de Calvin s'arrête rapidement, faute d'ATP et de NADPH,H+ qu'il ne peut plus recevoir", "Le cycle de Calvin s'accélère pour compenser"], correct:1,
+      hint:"Rappelle-toi quels composés produits par la phase photochimique sont indispensables au fonctionnement du cycle de Calvin.",
+      image:{src:"../assets/img/ch09/deux-phases.svg", alt:"Schéma du couplage entre phase photochimique et phase chimique de la photosynthèse"}},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u4', q:"Dans une serre, on augmente la concentration en CO2 tout en gardant la lumière et la température constantes, et la vitesse de photosynthèse augmente nettement. Que peut-on en conclure sur les conditions initiales de l'expérience ?",
+      options:["Le CO2 était un facteur limitant dans les conditions initiales", "La lumière était nécessairement le seul facteur limitant", "Le CO2 n'a aucune influence sur la photosynthèse"], correct:0,
+      hint:"Un facteur est révélé comme limitant précisément quand son augmentation, toutes choses égales par ailleurs, permet à la vitesse du processus d'augmenter."},
+    {id:'r4', type:'raisonnement', difficulty:3, notion:'u4', q:"Une forêt tropicale mature, à l'équilibre, est parfois qualifiée de « poumon de la planète ». En te basant sur le bilan de matière de la photosynthèse, pourquoi cette expression est-elle scientifiquement discutable si l'on considère le bilan net en O2/CO2 sur une année ?",
+      options:["Une forêt mature, à l'équilibre, consomme par la respiration de l'ensemble de ses organismes (plantes comprises) une part importante du CO2 qu'elle a fixé, ce qui limite son bilan net annuel", "Une forêt ne produit jamais de dioxygène", "Une forêt mature absorbe du CO2 en quantité illimitée, sans aucune contrepartie"], correct:0,
+      hint:"Repense à la différence entre la photosynthèse brute d'un écosystème et son bilan net, une fois soustraite la respiration de l'ensemble des organismes vivants qui le composent."},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u1', q:"Une plante d'intérieur, placée loin de toute fenêtre, jaunit puis dépérit progressivement même si elle est arrosée régulièrement. Quelle explication, cohérente avec ce chapitre, rend compte de ce dépérissement ?",
+      options:["L'eau seule ne suffit pas : sans lumière suffisante, la photosynthèse ne peut pas produire assez de matière organique pour couvrir les besoins de la plante", "L'arrosage régulier aurait dû suffire indépendamment de la lumière", "Le jaunissement n'a aucun lien avec la photosynthèse"], correct:0,
+      hint:"Repense à ce qu'apporte l'eau (un des réactifs) par rapport à ce qu'apporte la lumière (la source d'énergie indispensable à la réaction globale)."},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u3', q:"Un inhibiteur bloque spécifiquement l'activité de la RuBisCO. Quel est l'effet le plus direct attendu sur la cellule chlorophyllienne, à la lumière ?",
+      options:["La phase photochimique s'arrête immédiatement elle aussi", "La fixation du CO2 est bloquée, empêchant la production de matière organique par le cycle de Calvin, même si l'ATP et le NADPH,H+ continuent d'être produits", "Aucun effet : une autre enzyme prend immédiatement le relais"], correct:1,
+      hint:"Repense au rôle précis de la RuBisCO dans le cycle de Calvin, et distingue ce qui se passe dans le stroma de ce qui se passe dans les thylakoïdes."}
+  ],
+
+  mindmapModel: {
+    label:"Photosynthèse",
+    children:[
+      {label:"Principe général", children:[
+        {label:"Autotrophie (carbone)"},{label:"Chloroplaste"},{label:"Thylakoïdes / stroma"}
+      ]},
+      {label:"Phase photochimique", children:[
+        {label:"Pigments (chlorophylle)"},{label:"Photolyse de l'eau"},{label:"ATP, NADPH,H⁺"},{label:"O₂ dégagé"}
+      ]},
+      {label:"Phase chimique (Calvin)", children:[
+        {label:"RuBisCO"},{label:"Fixation du CO₂"},{label:"Glucose"}
+      ]},
+      {label:"Facteurs limitants & bilan", children:[
+        {label:"Lumière, CO₂, température"},{label:"Producteur primaire"},{label:"Cycle du carbone →"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>

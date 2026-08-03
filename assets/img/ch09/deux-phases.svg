@@ -1,0 +1,51 @@
+<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif" font-size="13">
+  <rect x="0" y="0" width="400" height="280" fill="#FBF8F0"/>
+
+  <!-- Boîte 1 : phase photochimique -->
+  <rect x="20" y="70" width="160" height="140" rx="10" fill="#C89B3C" fill-opacity="0.2" stroke="#7E3A1D" stroke-width="1.5"/>
+  <text x="30" y="60" font-weight="bold" fill="#7E3A1D">Phase photochimique</text>
+  <text x="30" y="90" font-size="12" fill="#524c3e">(thylakoïdes)</text>
+
+  <!-- Boîte 2 : phase chimique -->
+  <rect x="220" y="70" width="160" height="140" rx="10" fill="#5F6F42" fill-opacity="0.2" stroke="#3f4a2c" stroke-width="1.5"/>
+  <text x="230" y="60" font-weight="bold" fill="#3f4a2c">Phase chimique</text>
+  <text x="230" y="90" font-size="12" fill="#524c3e">(stroma — cycle de Calvin)</text>
+
+  <!-- Entrées boîte 1 -->
+  <line x1="60" y1="30" x2="60" y2="68" stroke="#262319" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="25" y="24" fill="#262319">Lumière</text>
+  <line x1="8" y1="140" x2="18" y2="140" stroke="#262319" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="8" y="125" fill="#262319">H₂O</text>
+
+  <!-- Sortie boîte 1 : O2 -->
+  <line x1="60" y1="212" x2="60" y2="245" stroke="#262319" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="35" y="260" fill="#262319">O₂</text>
+
+  <!-- Navette ATP/NADPH,H+ vers la droite -->
+  <line x1="182" y1="120" x2="218" y2="120" stroke="#A6512B" stroke-width="2" marker-end="url(#arrowRust)"/>
+  <text x="184" y="112" font-size="11.5" fill="#7E3A1D">ATP, NADPH,H⁺</text>
+
+  <!-- Retour ADP/NADP+ vers la gauche -->
+  <line x1="218" y1="160" x2="182" y2="160" stroke="#4C5B66" stroke-width="2" marker-end="url(#arrowSlate)"/>
+  <text x="184" y="175" font-size="11.5" fill="#4C5B66">ADP, NADP⁺</text>
+
+  <!-- Entrée boîte 2 : CO2 -->
+  <line x1="300" y1="30" x2="300" y2="68" stroke="#262319" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="280" y="24" fill="#262319">CO₂</text>
+
+  <!-- Sortie boîte 2 : glucose -->
+  <line x1="300" y1="212" x2="300" y2="245" stroke="#262319" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="240" y="260" fill="#262319">Matière organique (glucose)</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#262319"/>
+    </marker>
+    <marker id="arrowRust" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#A6512B"/>
+    </marker>
+    <marker id="arrowSlate" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#4C5B66"/>
+    </marker>
+  </defs>
+</svg>
