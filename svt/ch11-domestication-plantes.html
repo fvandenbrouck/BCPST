@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch.11 — La domestication des plantes · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/flashcards-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'ch11',
+  chapNum: "Chapitre 11",
+  subjectLabel: "Biologie végétale",
+  accent: 'var(--rust)',
+  title: "La domestication des plantes",
+  pages: "p.268 à 282",
+  backHref: '../index.html',
+  bridge: {
+    from: "La notion de sélection agissant sur la variabilité génétique existante d'une population (mutation, recombinaison) a été abordée en Première à propos de l'évolution biologique et de la sélection naturelle ; ce chapitre applique la même logique à une sélection exercée, cette fois, par l'être humain.",
+    to: "En BCPST1, les mécanismes de sélection (naturelle ou artificielle) agissant sur la variabilité génétique d'une population seront formalisés en génétique des populations, et réinvestis dans l'étude de l'amélioration variétale et de l'agrobiodiversité."
+  },
+
+  fiches: [
+    {
+      unit:'Unité 1', page:270,
+      title:"La domestication, une sélection exercée par l'être humain",
+      paragraphs:[
+        "La domestication d'une plante désigne le processus par lequel l'être humain a favorisé, au fil des générations, la reproduction des individus présentant des caractères qui lui étaient utiles (rendement, facilité de récolte, goût...), conduisant à une divergence génétique progressive entre les plantes cultivées et leurs ancêtres sauvages.",
+        "Ce processus est donc bien plus qu'une simple culture ou un soin apporté aux plantes : il implique une modification héréditaire, transmise de génération en génération, de la population cultivée."
+      ],
+      bullets:[
+        "La domestication repose sur la variabilité génétique déjà présente dans les populations sauvages (mutations spontanées, recombinaisons) : l'être humain ne crée pas de nouveaux allèles, il sélectionne parmi ceux qui existent déjà.",
+        "Il s'agit d'une forme de sélection artificielle, à mettre en parallèle avec la sélection naturelle : même logique de tri différentiel de la reproduction selon un critère, mais ce critère est ici fixé par l'être humain et non par les contraintes du milieu.",
+        "Cette sélection s'exerce génération après génération, ce qui explique pourquoi la domestication est un processus progressif, observable sur l'échelle de temps de l'agriculture humaine (quelques milliers d'années)."
+      ]
+    },
+    {
+      unit:'Unité 2', page:274,
+      title:"Le syndrome de domestication",
+      paragraphs:[
+        "Malgré la grande diversité des espèces domestiquées, on observe des caractères convergents récurrents chez les plantes domestiquées par rapport à leurs ancêtres sauvages, y compris pour des espèces domestiquées indépendamment sur des continents différents : c'est ce qu'on appelle le syndrome de domestication.",
+        "Ces caractères partagent tous une même logique : ils rendent la plante plus facile à cultiver, à récolter ou à consommer pour l'être humain, quitte à réduire ses capacités de survie autonome à l'état sauvage."
+      ],
+      bullets:[
+        "Perte de la dissémination naturelle des graines : chez l'ancêtre sauvage, les graines ou fruits se détachent spontanément à maturité pour se disperser ; chez la plante domestiquée, ils restent attachés, ce qui facilite grandement la récolte.",
+        "Gigantisme des organes récoltés : grains, fruits ou tubercules nettement plus gros que chez l'ancêtre sauvage.",
+        "Perte ou réduction de la dormance des graines (germination plus rapide et plus uniforme, utile pour une culture programmée) et synchronisation de la floraison et de la maturation (récolte groupée plutôt qu'échelonnée).",
+        "Réduction des mécanismes de défense (épines, composés toxiques ou amers), devenus inutiles, voire gênants, une fois la plante protégée et cultivée par l'être humain."
+      ]
+    },
+    {
+      unit:'Unité 3', page:278,
+      title:"Exemple du maïs et de son ancêtre sauvage, la téosinte",
+      paragraphs:[
+        "Le maïs cultivé (Zea mays) descend d'une graminée sauvage originaire du Mexique, la téosinte, dont l'architecture est pourtant très différente : la téosinte présente de nombreuses tiges latérales portant chacune un petit épi dur, tandis que le maïs cultivé présente un épi terminal unique, gros, aux grains nus et soudés.",
+        "Cette transformation radicale de l'architecture de la plante, obtenue en quelques milliers d'années de sélection, s'explique principalement par des modifications touchant un petit nombre de gènes à effet majeur sur le développement (comme le gène tb1, impliqué dans la ramification et le développement des inflorescences), et non par l'accumulation indépendante de milliers de mutations réparties sur l'ensemble du génome."
+      ],
+      bullets:[
+        "Cet exemple illustre un principe important : un changement morphologique spectaculaire peut résulter de modifications discrètes touchant des gènes qui contrôlent le développement (gènes architecturaux), plutôt que d'une refonte complète du patrimoine génétique.",
+        "Ce mécanisme permet d'expliquer la rapidité, à l'échelle des temps évolutifs, avec laquelle la domestication a pu transformer l'architecture d'une plante.",
+        "Le maïs est aujourd'hui l'une des trois céréales les plus cultivées au monde, illustrant l'ampleur des conséquences agricoles d'une domestication réussie."
+      ]
+    },
+    {
+      unit:'Unité 4', page:280,
+      title:"De la sélection empirique à la sélection variétale raisonnée",
+      paragraphs:[
+        "Pendant l'essentiel de l'histoire agricole, la domestication et l'amélioration des plantes ont reposé sur une sélection empirique : les agriculteurs choisissaient, saison après saison, les graines des individus aux caractères les plus favorables, sans connaissance du support génétique de ces caractères.",
+        "Depuis le XXe siècle, la sélection variétale moderne s'appuie sur la génétique : croisements dirigés entre variétés aux qualités complémentaires, puis marquage moléculaire pour repérer précocement, dès les jeunes stades de développement, les individus porteurs des gènes d'intérêt recherchés — sans attendre l'observation directe du caractère sur la plante adulte."
+      ],
+      bullets:[
+        "Cette intensification de la sélection, en concentrant la culture sur un nombre réduit de variétés très performantes, s'accompagne d'un enjeu de conservation de l'agrobiodiversité.",
+        "Les variétés anciennes et les espèces sauvages apparentées aux plantes cultivées constituent un réservoir de variabilité génétique (résistance aux maladies, tolérance à la sécheresse...) précieux pour l'amélioration variétale future.",
+        "Ce chapitre clôt le thème de biologie végétale de Terminale ; les mécanismes présentés ici (sélection sur variabilité existante, syndrome convergent) seront repris en BCPST1 en génétique des populations et dans l'étude de l'évolution sous contrainte de sélection."
+      ]
+    }
+  ],
+
+  flashcards: [
+    {id:'f1', recto:"Domestication", verso:"Sélection exercée par l'être humain sur des générations successives, modifiant héréditairement une population cultivée par rapport à son ancêtre sauvage.", notion:'u1'},
+    {id:'f2', recto:"Sélection artificielle vs sélection naturelle", verso:"Même logique de tri différentiel de la reproduction selon un critère, mais le critère est fixé par l'être humain (artificielle) plutôt que par le milieu (naturelle).", notion:'u1'},
+    {id:'f3', recto:"Variabilité génétique préexistante", verso:"La domestication sélectionne des allèles déjà présents dans la population sauvage ; elle n'en crée pas de nouveaux.", notion:'u1'},
+    {id:'f4', recto:"Syndrome de domestication", verso:"Ensemble de caractères convergents observés chez de nombreuses plantes domestiquées indépendamment, facilitant leur culture et leur récolte.", notion:'u2'},
+    {id:'f5', recto:"Perte de dissémination naturelle", verso:"Les graines/fruits restent attachés à la plante à maturité au lieu de se détacher seuls, facilitant la récolte.", notion:'u2'},
+    {id:'f6', recto:"Gigantisme des organes récoltés", verso:"Grains, fruits ou tubercules nettement plus gros chez la plante domestiquée que chez son ancêtre sauvage.", notion:'u2'},
+    {id:'f7', recto:"Perte de dormance / synchronisation de maturation", verso:"Germination plus rapide et uniforme, floraison et maturation groupées : utile pour une culture programmée et une récolte groupée.", notion:'u2'},
+    {id:'f8', recto:"Téosinte", verso:"Graminée sauvage mexicaine, ancêtre du maïs cultivé, à l'architecture très différente (nombreuses tiges, petits épis durs).", notion:'u3'},
+    {id:'f9', recto:"Gène architectural (ex. tb1)", verso:"Gène à effet majeur sur le développement, dont la modification peut transformer radicalement l'architecture d'une plante en peu de temps.", notion:'u3'},
+    {id:'f10', recto:"Sélection empirique", verso:"Sélection traditionnelle fondée sur l'observation directe des caractères, sans connaissance du support génétique sous-jacent.", notion:'u4'},
+    {id:'f11', recto:"Sélection variétale raisonnée", verso:"Sélection moderne combinant croisements dirigés et marquage moléculaire pour repérer précocement les gènes d'intérêt.", notion:'u4'},
+    {id:'f12', recto:"Agrobiodiversité", verso:"Diversité génétique des variétés cultivées et espèces sauvages apparentées, réservoir précieux pour l'amélioration variétale future.", notion:'u4'}
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {u1:'Unité 1 — Principe de la domestication (p.270)', u2:'Unité 2 — Syndrome de domestication (p.274)', u3:'Unité 3 — Maïs et téosinte (p.278)', u4:'Unité 4 — Sélection variétale moderne (p.280)'},
+    bilanPage: 280, exosPage: 281, bacPage: 282,
+    nextStep: "Enchaîne sur le module suivant dès qu'il sera prêt."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"La domestication d'une plante désigne :", options:["tout simplement le fait de la cultiver dans un jardin", "une sélection exercée par l'être humain, modifiant héréditairement la population cultivée au fil des générations", "l'apparition spontanée de nouvelles espèces sans intervention humaine"], correct:1},
+    {id:'q2', type:'connaissance', difficulty:2, notion:'u1', q:"La domestication agit :", options:["en créant de nouveaux allèles inexistants auparavant", "en sélectionnant des caractères parmi la variabilité génétique déjà présente dans la population sauvage", "uniquement par modification directe de l'ADN par l'être humain"], correct:1},
+    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"La sélection artificielle se distingue de la sélection naturelle par :", options:["un mécanisme génétique sous-jacent totalement différent", "le critère de sélection, fixé par l'être humain plutôt que par le milieu", "l'absence totale de variabilité génétique nécessaire"], correct:1},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u2', q:"Le syndrome de domestication désigne :", options:["un ensemble de caractères convergents observés chez de nombreuses plantes domestiquées indépendamment", "une maladie spécifique aux plantes cultivées", "l'ensemble des techniques agricoles modernes"], correct:0,
+      image:{src:"../assets/img/ch11/syndrome-domestication.svg", alt:"Tableau comparatif : caractères de l'ancêtre sauvage et de la plante domestiquée"}},
+    {id:'q5', type:'connaissance', difficulty:1, notion:'u2', q:"Chez une plante domestiquée, par rapport à son ancêtre sauvage, on observe typiquement :", options:["une dissémination naturelle des graines facilitée", "des graines qui restent attachées à la plante, facilitant la récolte", "une toxicité accrue des graines"], correct:1},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u2', q:"La perte de dormance des graines chez les plantes domestiquées permet :", options:["une germination plus rapide et plus uniforme, utile pour une culture programmée", "une résistance accrue au gel", "une dissémination sur de plus longues distances"], correct:0},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u3', q:"L'ancêtre sauvage du maïs cultivé est :", options:["le blé sauvage", "la téosinte", "le riz sauvage"], correct:1,
+      image:{src:"https://upload.wikimedia.org/wikipedia/commons/e/e8/Teosinte_and_Modern_Corn_Comparison_%283745571067%29.jpg", alt:"Comparaison entre un épi de téosinte et un épi de maïs moderne", credit:"Photo : National Science Foundation (domaine public)"}},
+    {id:'q8', type:'connaissance', difficulty:2, notion:'u3', q:"La transformation radicale de l'architecture entre la téosinte et le maïs cultivé s'explique principalement par :", options:["des modifications touchant un petit nombre de gènes à effet majeur sur le développement", "l'apparition de plusieurs milliers de mutations indépendantes réparties sur tout le génome", "un changement du nombre de chromosomes"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u4', q:"La sélection variétale moderne, comparée à la sélection empirique traditionnelle, s'appuie notamment sur :", options:["le seul hasard des croisements naturels", "des croisements dirigés et un marquage moléculaire des gènes d'intérêt", "l'abandon de toute connaissance génétique"], correct:1},
+    {id:'q10', type:'connaissance', difficulty:2, notion:'u4', q:"La conservation des variétés anciennes et des espèces sauvages apparentées aux plantes cultivées est un enjeu important car :", options:["elles sont plus faciles à cultiver que les variétés modernes", "elles constituent un réservoir de variabilité génétique utile à l'amélioration variétale future", "elles ne présentent aucun intérêt scientifique"], correct:1},
+
+    {id:'r1', type:'raisonnement', difficulty:2, notion:'u2', q:"Deux plantes cultivées d'espèces différentes, domestiquées indépendamment sur deux continents différents, présentent toutes deux des graines qui ne se dispersent plus spontanément à maturité. Comment expliquer cette ressemblance sans lien de parenté direct entre les deux domestications ?",
+      options:["Il s'agit forcément d'un échange de graines entre les deux continents avant toute domestication", "La même pression de sélection humaine (faciliter la récolte) a favorisé, indépendamment, le même type de caractère avantageux dans les deux cas : c'est une convergence du syndrome de domestication", "Les deux espèces partagent nécessairement un ancêtre commun très récent"], correct:1,
+      hint:"Repense à ce que signifie « syndrome de domestication » : les mêmes contraintes exercées par l'être humain peuvent-elles produire des solutions similaires chez des espèces non apparentées ?"},
+    {id:'r2', type:'raisonnement', difficulty:3, notion:'u3', q:"Si la différence d'architecture entre le maïs et la téosinte était due à l'accumulation indépendante de mutations sur des milliers de gènes sans lien entre eux, quelle serait la principale difficulté pour expliquer la domestication du maïs en seulement quelques milliers d'années ?",
+      options:["Aucune difficulté particulière, ce processus serait tout aussi rapide", "Une telle accumulation aléatoire de milliers de mutations indépendantes serait beaucoup trop lente pour expliquer un changement aussi radical en si peu de temps", "Les mutations se seraient produites plus vite chez le maïs que chez les autres espèces"], correct:1,
+      hint:"Repense à ce que l'exemple du gène architectural tb1 permet d'expliquer plus efficacement qu'une accumulation de mutations indépendantes sur l'ensemble du génome, en termes de rapidité du changement."},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u2', q:"Une graine de plante sauvage germe de façon échelonnée sur plusieurs mois, tandis que la variété domestiquée de la même espèce germe en quelques jours, de façon synchrone. Quel avantage cela procure-t-il à l'agriculteur, et quel inconvénient potentiel cela représente-t-il pour la survie de la plante à l'état sauvage ?",
+      options:["Avantage : récolte groupée et prévisible. Inconvénient à l'état sauvage : une germination synchrone expose l'ensemble de la descendance au même risque climatique ponctuel, sans étalement du risque dans le temps", "Aucun avantage ni inconvénient, cela ne change rien", "Avantage uniquement pour la plante sauvage, aucun pour l'agriculteur"], correct:0,
+      hint:"Pense à ce qui rend une culture plus facile à gérer (une récolte groupée) et, à l'inverse, à ce qui rend une population sauvage plus résiliente face à un aléa climatique ponctuel (un étalement du risque dans le temps)."},
+    {id:'r4', type:'raisonnement', difficulty:2, notion:'u4', q:"Une variété de blé moderne, très productive, se révèle extrêmement sensible à un nouveau champignon pathogène qui n'existait pas au moment de sa sélection. Vers quelle ressource les sélectionneurs se tournent-ils le plus souvent pour trouver un gène de résistance à introduire dans cette variété ?",
+      options:["Vers les variétés anciennes ou les espèces sauvages apparentées, qui conservent une variabilité génétique perdue dans la variété moderne très sélectionnée", "Vers l'invention directe d'un nouveau gène sans rapport avec le blé existant", "Il n'existe aucune solution possible dans ce cas"], correct:0,
+      hint:"Repense à ce que représente, en termes de variabilité génétique, une variété très sélectionnée et concentrée sur peu de caractères, comparée à une variété ancienne ou une espèce sauvage apparentée."},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u1', q:"Un agriculteur sélectionne chaque année, depuis plusieurs générations, les plants de tomates aux fruits les plus gros pour en ressemer les graines. Au bout de plusieurs dizaines de générations, la taille moyenne des fruits a nettement augmenté. Quelle condition, concernant la population initiale, est indispensable pour que cette sélection soit efficace au fil du temps ?",
+      options:["Il faut qu'il existe, dès le départ, une variabilité génétique héréditaire pour la taille du fruit dans la population, sur laquelle la sélection peut agir génération après génération", "Il suffit de bien arroser les plants chaque année, sans autre condition", "La sélection fonctionnerait de la même façon même si tous les plants avaient exactement le même patrimoine génétique"], correct:0,
+      hint:"Repense au principe de base de toute sélection (naturelle ou artificielle) : sur quoi doit-elle nécessairement s'appuyer pour produire un effet héréditaire cumulatif au fil des générations ?"},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u4', q:"Deux variétés de blé, l'une résistante à la sécheresse mais peu productive, l'autre très productive mais sensible à la sécheresse, sont croisées délibérément par des sélectionneurs, qui utilisent ensuite un marquage moléculaire pour repérer précocement, parmi la descendance, les individus combinant les deux qualités. En quoi cette démarche diffère-t-elle de la sélection empirique traditionnelle ?",
+      options:["Elle ne diffère pas : c'est exactement la même démarche que celle des agriculteurs traditionnels", "Elle cible délibérément le croisement de caractères complémentaires connus et utilise un outil génétique pour accélérer le tri de la descendance, plutôt que d'attendre l'observation directe des caractères sur la plante adulte", "Elle repose uniquement sur le hasard, comme la sélection naturelle"], correct:1,
+      hint:"Compare ce que « voit » un sélectionneur utilisant un marquage moléculaire (l'information génétique elle-même, tôt dans le développement) à ce que voyait un agriculteur traditionnel (uniquement les caractères visibles sur la plante adulte, après récolte)."}
+  ],
+
+  mindmapModel: {
+    label:"Domestication des plantes",
+    children:[
+      {label:"Principe", children:[
+        {label:"Sélection artificielle"},{label:"Variabilité génétique préexistante"},{label:"vs sélection naturelle"}
+      ]},
+      {label:"Syndrome de domestication", children:[
+        {label:"Perte de dissémination"},{label:"Gigantisme des organes récoltés"},{label:"Perte de dormance"},{label:"Synchronisation de la maturation"},{label:"Réduction des défenses"}
+      ]},
+      {label:"Exemple : maïs / téosinte", children:[
+        {label:"Changement d'architecture"},{label:"Gène architectural (tb1)"}
+      ]},
+      {label:"Sélection variétale moderne", children:[
+        {label:"Croisements dirigés"},{label:"Marquage moléculaire"},{label:"Enjeu : agrobiodiversité →"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>
