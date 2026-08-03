@@ -80,9 +80,9 @@ SYNTHESE_SESSION.md               ce fichier
 - ✅ Ch.5 — La datation relative (module pilote, réintégré tel quel depuis le prototype `references/revisions-bcpst.html`)
 - ✅ Ch.6 — La datation absolue (nouveau, contenu original : décroissance radioactive, système clos, couples Rb-Sr/K-Ar/U-Pb, isochrone, concordance/discordance — vérifié scientifiquement par connaissance générale, pas de source dédiée dans `references/` pour ce sujet précis)
 - ✅ Ch.7 — Traces du passé mouvementé de la Terre (nouveau, contenu original : plis/failles/nappes de charriage, séquence ophiolitique, cycle de Wilson, subduction/obduction, reconstitution d'une chaîne de montagnes — vérifié scientifiquement par connaissance générale. Deux badges "🏔️ Vu sur le terrain" vers `carnet-de-terrain/chenaillet.html`, cf. décision #11)
+- ✅ Ch.8 — Organisation des plantes à fleurs (nouveau, contenu original : appareil végétatif/reproducteur, phytomère, méristèmes et croissance primaire/secondaire, structure florale, double fécondation, adaptation architecturale au milieu. Un badge "🏔️ Vu sur le terrain" vers `carnet-de-terrain/lautaret.html` sur l'Unité 4. Illustrations : photo de cernes de croissance (Wikimedia CC BY-SA 2.5) + schéma SVG original de coupe de fleur (`assets/img/ch08/fleur-coupe.svg`))
 
 **Reste à faire, dans l'ordre du cahier des charges §2 :**
-4. Ch.8 — Organisation des plantes à fleurs (p.196-217)
 5. Ch.9 — La plante productrice de matière organique (p.220-241)
 6. Ch.11 — La domestication des plantes (p.268-282)
 7. Ch.17 — Cellule musculaire, ATP (p.422-447)
@@ -103,7 +103,7 @@ L'idée d'"Observations" évoquée en cours de session a été précisée par l'
 **Reste à faire**, repris du §5 de `CARNET_DE_TERRAIN.md` (rien de bloquant, mais à ne pas oublier) :
 1. Vérifier avec l'utilisateur l'itinéraire précis du Chenaillet (départ Cervières ou Montgenèvre) et réordonner chen-01→08 si besoin — pas de changement de contenu, juste l'ordre `ordre` dans `chenaillet.html`.
 2. Vérifier les horaires d'ouverture du Jardin du Lautaret au moment du séjour ; si fermé, laut-05 et une partie de laut-06 ne seront pas utilisables tels quels.
-3. **Badges de renvoi "🏔️ Vu sur le terrain"** : ✅ fait pour Ch.7 (cf. décision #11). **Reste à ajouter** sur Ch.8 (renvoi vers `carnet-de-terrain/lautaret.html`) une fois ce module construit, et plus tard sur Ch.12/Ch.14 (et Ch.4 en option, qui n'est même pas dans la feuille de route — cf. §4). Réutiliser le champ `fiche.terrainBadge:{href,label}`, déjà implémenté dans `module-page.js` — ne pas réinventer le mécanisme.
+3. **Badges de renvoi "🏔️ Vu sur le terrain"** : ✅ fait pour Ch.7 (Chenaillet) et Ch.8 (Lautaret, cf. décision #11). **Reste à ajouter**, plus tard, sur Ch.12/Ch.14 (et Ch.4 en option, qui n'est même pas dans la feuille de route — cf. §4). Réutiliser le champ `fiche.terrainBadge:{href,label}`, déjà implémenté dans `module-page.js` — ne pas réinventer le mécanisme.
 4. Les tags `SVT-Ch4/Ch7/Ch8-U1/Ch12/Ch14` dans les données des points du carnet sont prêts à être exploités pour ces badges. Ch.7, Ch.8, Ch.12, Ch.14 sont désormais tous dans la feuille de route officielle (§4) — Ch.12/Ch.14 en toute fin, priorité la plus basse (cf. décision #10). Ch.4 reste hors plan, jamais mentionné ailleurs que dans ce tag optionnel du carnet.
 
 ## 6. Conventions et consignes utiles pour la suite
@@ -122,4 +122,4 @@ L'idée d'"Observations" évoquée en cours de session a été précisée par l'
 
 - Dépôt distant : [github.com/fvandenbrouck/BCPST](https://github.com/fvandenbrouck/BCPST) (public), branche `main` trackée.
 - **GitHub Pages actif : https://fvandenbrouck.github.io/BCPST/** (activé le 2026-08-03, cf. décision #4/#8).
-- Commits poussés jusqu'ici : initialisation (Ch.5/Ch.6 + moteur), fix de mélange des QCM + doc de session, correction éditeur Belin + illustrations QCM, module carnet de terrain, prompt de reprise Phase 1 SVT, mise à jour cahier des charges (pagination confirmée + Ch.12/Ch.14 bonus tertiaire), Ch.7 (contenu + badges terrain + illustrations), patch Ch.6 (fiche Zoom isochrone, champ `fiche.badge`). Le rendu LaTeX (KaTeX, `assets/js/math-render.js`, formules de Ch.6 converties) est sur le point d'être committé dans la foulée de cette mise à jour. Si un nouveau fil de discussion trouve `git log` sans ce commit, c'est qu'il reste à faire — vérifier avec `git status` / `git log --oneline`.
+- Commits poussés jusqu'ici : initialisation (Ch.5/Ch.6 + moteur), fix de mélange des QCM + doc de session, correction éditeur Belin + illustrations QCM, module carnet de terrain, prompt de reprise Phase 1 SVT, mise à jour cahier des charges (pagination confirmée + Ch.12/Ch.14 bonus tertiaire), Ch.7 (contenu + badges terrain + illustrations), patch Ch.6 (fiche Zoom isochrone, champ `fiche.badge`), rendu LaTeX (KaTeX + formules Ch.6). Ch.8 (contenu + badge terrain Lautaret + illustrations) est sur le point d'être committé dans la foulée de cette mise à jour. Si un nouveau fil de discussion trouve `git log` sans ce commit, c'est qu'il reste à faire — vérifier avec `git status` / `git log --oneline`.

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch.8 — Organisation des plantes à fleurs · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/flashcards-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'ch8',
+  chapNum: "Chapitre 8",
+  subjectLabel: "Biologie végétale",
+  accent: 'var(--rust)',
+  title: "Organisation des plantes à fleurs",
+  pages: "p.196 à 217",
+  backHref: '../index.html',
+  bridge: {
+    from: "Les organes végétatifs (racine, tige, feuille) et l'idée d'une reproduction par graine ont été vus au collège et en Seconde de façon descriptive, sans étudier les méristèmes ni la structure florale en détail.",
+    to: "En BCPST1, la croissance végétale (méristèmes, croissance primaire/secondaire) et la reproduction des angiospermes seront reprises et approfondies en biologie végétale, et réinvesties directement dans l'étude de la domestication des plantes (Ch.11) et de la production de matière organique (Ch.9)."
+  },
+
+  fiches: [
+    {
+      unit:'Unité 1', page:198,
+      title:"Plan d'organisation d'une plante à fleurs",
+      paragraphs:[
+        "Le corps d'une plante à fleurs (angiosperme) est organisé en deux grands appareils : l'appareil végétatif (racine, tige, feuilles), dédié à la nutrition et à la croissance, et l'appareil reproducteur (fleur, fruit, graine), dédié à la reproduction sexuée.",
+        "Contrairement à un animal, dont le plan d'organisation est fixé tôt dans le développement, une plante construit son corps tout au long de sa vie par répétition d'un module de base : le phytomère, association d'un nœud (portant une feuille et un bourgeon axillaire) et de l'entre-nœud qui le sépare du suivant."
+      ],
+      bullets:[
+        "L'empilement de phytomères le long de la tige constitue l'appareil caulinaire ; le système racinaire assure l'ancrage et l'absorption d'eau et de sels minéraux.",
+        "Chaque bourgeon (terminal ou axillaire) est un site potentiel de croissance : il peut rester en dormance ou se développer en une nouvelle tige, selon des signaux physiologiques.",
+        "Cette organisation modulaire, répétée et ouverte, est la base de la plasticité architecturale des plantes, développée dans l'Unité 4."
+      ]
+    },
+    {
+      unit:'Unité 2', page:202,
+      title:"La croissance des plantes à fleurs",
+      paragraphs:[
+        "À la différence des animaux, dont la croissance est définie (elle s'arrête à un âge donné), les plantes à fleurs ont une croissance indéfinie : tant que ses méristèmes restent actifs, une plante continue de produire de nouveaux organes.",
+        "Un méristème est un tissu formé de cellules indifférenciées à division active. Le méristème apical caulinaire, à l'extrémité de la tige, et le méristème apical racinaire, à l'extrémité de la racine, assurent la croissance primaire : l'allongement de la plante par production de nouveaux phytomères."
+      ],
+      bullets:[
+        "Chez les plantes ligneuses (arbres, arbustes), un méristème secondaire, le cambium, dispose en anneau autour de la tige et de la racine et assure la croissance secondaire : il produit du bois vers l'intérieur et du liber vers l'extérieur, augmentant le diamètre de la tige.",
+        "L'activité cyclique (saisonnière) du cambium forme les cernes annuels visibles sur une coupe transversale de tronc, chacun correspondant à une saison de croissance.",
+        "Le bourgeon terminal exerce souvent une inhibition sur les bourgeons axillaires voisins (dominance apicale) ; la lever (taille, blessure) permet à ces bourgeons de se développer et à la plante de se ramifier."
+      ]
+    },
+    {
+      unit:'Unité 3', page:208,
+      title:"La fleur et la formation de la graine",
+      paragraphs:[
+        "La fleur est l'organe reproducteur des angiospermes. Elle est organisée en verticilles concentriques : les sépales (ensemble = calice), qui protègent le bouton floral ; les pétales (ensemble = corolle), qui attirent souvent les pollinisateurs ; les étamines, appareil reproducteur mâle, qui produisent le pollen (grains contenant les gamètes mâles) ; le pistil (ou carpelle(s)), appareil reproducteur femelle, qui contient les ovules dans l'ovaire.",
+        "La pollinisation est le transfert du pollen d'une étamine jusqu'au stigmate du pistil (par le vent, l'eau ou, le plus souvent, des pollinisateurs animaux). Elle précède la fécondation, qui a lieu après germination du grain de pollen et croissance d'un tube pollinique jusqu'à l'ovule."
+      ],
+      bullets:[
+        "Les angiospermes réalisent une double fécondation, caractéristique du groupe : un gamète mâle féconde l'oosphère et forme l'embryon, tandis qu'un second gamète mâle féconde les noyaux polaires et forme l'albumen, un tissu de réserve nutritive pour l'embryon.",
+        "Après la fécondation, l'ovule se transforme en graine (embryon + réserves + tégument protecteur), tandis que l'ovaire se transforme en fruit, qui protège puis souvent favorise la dispersion des graines.",
+        "Cette séquence pollinisation → fécondation → graine/fruit est l'objet d'étude central du chapitre suivant sur la domestication des plantes (Ch.11), où la sélection humaine a modifié plusieurs de ces étapes."
+      ]
+    },
+    {
+      unit:'Unité 4', page:212,
+      title:"Diversité et adaptation des appareils végétatifs aux milieux",
+      paragraphs:[
+        "Le port d'une plante — arbre, arbuste ou plante herbacée — dépend en grande partie de l'importance de sa croissance secondaire (production de bois) par rapport à sa croissance primaire. La plasticité de l'organisation modulaire (Unité 1) permet aussi à une même espèce d'ajuster son architecture selon les contraintes du milieu.",
+        "Dans les milieux contraignants (haute montagne, milieux ouverts et venteux), on observe des adaptations architecturales récurrentes : port compact en coussin (limite la surface exposée au vent et au froid, crée un microclimat plus favorable), pilosité ou duvet sur les feuilles (limite les pertes en eau, filtre une partie du rayonnement UV), et une taille de fleur importante par rapport à la taille de la plante (pour rester visible des rares pollinisateurs sur une saison de reproduction très courte)."
+      ],
+      bullets:[
+        "Ces adaptations ne remettent pas en cause le plan d'organisation de base (Unité 1) : elles en sont des variations, rendues possibles par la plasticité de la croissance modulaire.",
+        "Elles illustrent un principe déjà rencontré dans ce chapitre : la même contrainte de milieu peut favoriser des solutions architecturales convergentes chez des espèces non apparentées.",
+        "Cette plasticité architecturale est aussi ce qui a permis, historiquement, la sélection par l'être humain de formes cultivées très différentes de leurs ancêtres sauvages — objet du chapitre suivant (Ch.11, la domestication des plantes)."
+      ],
+      terrainBadge: {href:"../carnet-de-terrain/lautaret.html", label:"observe ces adaptations sur les plantes alpines du Lautaret"}
+    }
+  ],
+
+  flashcards: [
+    {id:'f1', recto:"Appareil végétatif / appareil reproducteur", verso:"Appareil végétatif (racine, tige, feuilles) : nutrition et croissance. Appareil reproducteur (fleur, fruit, graine) : reproduction sexuée.", notion:'u1'},
+    {id:'f2', recto:"Phytomère", verso:"Module de base répété le long de la tige : un nœud (feuille + bourgeon axillaire) et l'entre-nœud qui le précède.", notion:'u1'},
+    {id:'f3', recto:"Méristème apical", verso:"Tissu de cellules indifférenciées à division active, situé à l'extrémité de la tige (caulinaire) ou de la racine, assurant la croissance primaire (allongement).", notion:'u2'},
+    {id:'f4', recto:"Croissance indéfinie", verso:"Croissance qui se poursuit tant que les méristèmes restent actifs, contrairement à la croissance définie des animaux.", notion:'u2'},
+    {id:'f5', recto:"Cambium", verso:"Méristème secondaire en anneau, responsable de la croissance en épaisseur (bois vers l'intérieur, liber vers l'extérieur) chez les plantes ligneuses.", notion:'u2'},
+    {id:'f6', recto:"Dominance apicale", verso:"Inhibition des bourgeons axillaires par le bourgeon terminal ; sa suppression permet à la plante de se ramifier.", notion:'u2'},
+    {id:'f7', recto:"Verticilles de la fleur", verso:"De l'extérieur vers l'intérieur : sépales (calice), pétales (corolle), étamines (appareil mâle), pistil (appareil femelle).", notion:'u3'},
+    {id:'f8', recto:"Pollinisation", verso:"Transfert du pollen d'une étamine jusqu'au stigmate du pistil, préalable à la fécondation.", notion:'u3'},
+    {id:'f9', recto:"Double fécondation", verso:"Caractéristique des angiospermes : un gamète mâle féconde l'oosphère (→ embryon), un autre féconde les noyaux polaires (→ albumen, tissu de réserve).", notion:'u3'},
+    {id:'f10', recto:"Devenir de l'ovule et de l'ovaire après fécondation", verso:"L'ovule devient la graine (embryon + réserves + tégument) ; l'ovaire devient le fruit (protection et dispersion des graines).", notion:'u3'},
+    {id:'f11', recto:"Port d'une plante (arbre / arbuste / herbe)", verso:"Dépend principalement de l'importance de la croissance secondaire par rapport à la croissance primaire.", notion:'u4'},
+    {id:'f12', recto:"Adaptation architecturale au milieu (ex. port en coussin alpin)", verso:"Variation de l'organisation modulaire de base permise par la plasticité de la croissance, favorisée par les contraintes du milieu (vent, froid, saison courte).", notion:'u4'}
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {u1:"Unité 1 — Plan d'organisation (p.198)", u2:'Unité 2 — Croissance (p.202)', u3:'Unité 3 — Fleur et graine (p.208)', u4:'Unité 4 — Adaptation des appareils végétatifs (p.212)'},
+    bilanPage: 214, exosPage: 216, bacPage: 217,
+    nextStep: "Enchaîne sur le chapitre suivant (la plante productrice de matière organique) dès qu'il sera prêt."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"Le corps d'une plante à fleurs est organisé en :", options:["un seul appareil polyvalent","deux appareils distincts : végétatif et reproducteur","trois appareils totalement indépendants"], correct:1},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"Le phytomère est :", options:["le nom donné à la fleur","le module de base (nœud + entre-nœud + feuille + bourgeon) répété le long de la tige","un type particulier de racine"], correct:1},
+    {id:'q3', type:'connaissance', difficulty:1, notion:'u2', q:"La croissance en longueur d'une tige ou d'une racine est assurée par :", options:["des cellules différenciées matures","un méristème apical, tissu de cellules indifférenciées à division active","la totalité des cellules de la plante"], correct:1},
+    {id:'q4', type:'connaissance', difficulty:2, notion:'u2', q:"Contrairement aux animaux, les plantes à fleurs ont une croissance :", options:["définie, s'arrêtant à un âge donné","indéfinie, poursuivie tant que les méristèmes sont actifs","uniquement souterraine"], correct:1},
+    {id:'q5', type:'connaissance', difficulty:2, notion:'u2', q:"Le cambium est un méristème :", options:["apical, responsable de la croissance en longueur","secondaire, responsable de la croissance en épaisseur","présent uniquement dans les racines"], correct:1,
+      image:{src:"https://upload.wikimedia.org/wikipedia/commons/4/42/Tree_rings.jpg", alt:"Cernes de croissance annuels sur une coupe de tronc", credit:"Photo : Arnoldius, Wikimedia Commons, CC BY-SA 2.5"}},
+    {id:'q6', type:'connaissance', difficulty:1, notion:'u3', q:"Chez une fleur, l'organe qui produit le pollen (gamètes mâles) est :", options:["le pistil","l'étamine","le sépale"], correct:1,
+      image:{src:"../assets/img/ch08/fleur-coupe.svg", alt:"Coupe schématique d'une fleur avec ses verticilles"}},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u3', q:"La pollinisation désigne :", options:["la fécondation directe de l'oosphère","le transfert du pollen de l'étamine vers le stigmate du pistil","la formation du fruit"], correct:1},
+    {id:'q8', type:'connaissance', difficulty:2, notion:'u3', q:"La double fécondation, caractéristique des plantes à fleurs, aboutit à la formation de :", options:["deux embryons identiques","un embryon et un tissu de réserve (l'albumen)","deux graines totalement séparées"], correct:1},
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u3', q:"Après la fécondation, l'ovaire de la fleur devient :", options:["la graine","le fruit","le grain de pollen"], correct:1},
+    {id:'q10', type:'connaissance', difficulty:2, notion:'u4', q:"Le port d'une plante (arbre, arbuste, herbe) dépend principalement de :", options:["la couleur de ses fleurs","l'importance de sa croissance secondaire par rapport à sa croissance primaire","la taille de ses graines"], correct:1},
+
+    {id:'r1', type:'raisonnement', difficulty:2, notion:'u2', q:"Un jardinier coupe le bourgeon terminal (apical) d'un arbuste. Après quelques semaines, l'arbuste développe plusieurs branches latérales là où il n'y en avait pas avant. Quelle interprétation est la plus cohérente ?",
+      options:["Couper le bourgeon apical a levé la dominance apicale, permettant aux bourgeons axillaires de se développer","Couper le bourgeon apical a créé de nouveaux méristèmes par mutation","Ce phénomène n'a aucun lien avec les méristèmes"], correct:0,
+      hint:"Le bourgeon apical exerce normalement une inhibition sur les bourgeons axillaires voisins. Que se passe-t-il pour ces bourgeons quand la source de cette inhibition disparaît ?"},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u2', q:"En coupant transversalement le tronc d'un arbre, on observe des cernes concentriques annuels. Quelle structure de la plante est directement responsable de la formation de ces cernes ?",
+      options:["Le méristème apical caulinaire","Le cambium, méristème secondaire produisant du bois de façon cyclique","Les racines fasciculées"], correct:1,
+      hint:"Repense à quel méristème est responsable de la croissance en épaisseur (et non en longueur), et au caractère saisonnier de son activité."},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u3', q:"Une fleur ne possède aucune étamine mais un pistil fonctionnel. Peut-elle produire des graines par ses propres moyens, sans apport de pollen extérieur ?",
+      options:["Oui, une fleur peut toujours s'autoféconder quelle que soit sa structure","Non : sans étamine elle ne produit pas de pollen, elle dépend d'un apport de pollen extérieur pour être fécondée","Non, une fleur sans étamine ne peut jamais produire de fruit même avec du pollen extérieur"], correct:1,
+      hint:"Rappelle-toi quel organe floral produit les gamètes mâles, et ce qui est indispensable à la fécondation de l'oosphère."},
+    {id:'r4', type:'raisonnement', difficulty:2, notion:'u3', q:"Une graine contient un embryon entouré de tissus de réserve riches en amidon. À quelle étape du cycle de reproduction ces réserves ont-elles été mises en place ?",
+      options:["Avant la pollinisation, dans l'ovule non fécondé","Lors de la double fécondation, par la formation de l'albumen","Après la germination de la graine"], correct:1,
+      hint:"Rappelle-toi ce que produit le second événement de la double fécondation, en plus de l'embryon."},
+    {id:'r5', type:'raisonnement', difficulty:3, notion:'u4', q:"Deux populations de la même espèce végétale poussent, l'une en plaine, l'autre en haute montagne. La population de montagne présente des tiges beaucoup plus courtes et des fleurs proportionnellement plus grandes. Quelle interprétation est la plus cohérente avec ce chapitre ?",
+      options:["Un pur hasard sans lien avec le milieu","Une adaptation architecturale aux contraintes du milieu alpin (vent, froid, saison de reproduction courte)","Une anomalie génétique sans avantage adaptatif"], correct:1,
+      hint:"Repense aux adaptations observées sur le terrain (carnet du Lautaret) : port compact, grandes fleurs proportionnellement à la taille de la plante — à quoi ces traits répondent-ils en altitude ?"},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u1', q:"Une bouture de tige, plantée en terre, développe de nouvelles racines à sa base puis devient une plante autonome. Qu'est-ce que cela révèle sur l'organisation modulaire de la plante ?",
+      options:["Chaque phytomère porte un potentiel de développement (bourgeons) qui permet à un fragment de tige de régénérer une plante entière","Les tiges contiennent déjà des racines miniatures invisibles avant le bouturage","Ce phénomène ne concerne que les plantes à fleurs les plus primitives"], correct:0,
+      hint:"Repense à ce que porte chaque phytomère, et à la différence fondamentale entre l'organisation modulaire répétée des plantes et l'organisation figée des animaux."}
+  ],
+
+  mindmapModel: {
+    label:"Organisation des plantes à fleurs",
+    children:[
+      {label:"Plan d'organisation", children:[
+        {label:"Appareil végétatif"},{label:"Appareil reproducteur"},{label:"Phytomère"}
+      ]},
+      {label:"Croissance", children:[
+        {label:"Méristème apical (primaire)"},{label:"Cambium (secondaire)"},{label:"Croissance indéfinie"},{label:"Dominance apicale"}
+      ]},
+      {label:"Fleur et graine", children:[
+        {label:"Étamine → pollen"},{label:"Pistil → ovule"},{label:"Pollinisation"},{label:"Double fécondation"},{label:"Graine / fruit"}
+      ]},
+      {label:"Adaptation des appareils végétatifs", children:[
+        {label:"Port (arbre/arbuste/herbe)"},{label:"Adaptations au milieu (ex. Lautaret) →"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>

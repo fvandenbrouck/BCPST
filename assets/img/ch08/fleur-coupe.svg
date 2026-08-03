@@ -1,0 +1,49 @@
+<svg viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif" font-size="14">
+  <rect x="0" y="0" width="380" height="300" fill="#FBF8F0"/>
+
+  <!-- Sépales (verticille externe) -->
+  <path d="M190,255 C150,248 118,222 112,180 C138,202 168,225 190,255 Z" fill="#5F6F42" fill-opacity="0.55" stroke="#5F6F42"/>
+  <path d="M190,255 C230,248 262,222 268,180 C242,202 212,225 190,255 Z" fill="#5F6F42" fill-opacity="0.55" stroke="#5F6F42"/>
+
+  <!-- Pétales (verticille suivant, plus internes) -->
+  <path d="M190,248 C162,228 145,196 152,158 C172,180 188,212 190,248 Z" fill="#C89B3C" fill-opacity="0.6" stroke="#7E3A1D"/>
+  <path d="M190,248 C218,228 235,196 228,158 C208,180 192,212 190,248 Z" fill="#C89B3C" fill-opacity="0.6" stroke="#7E3A1D"/>
+
+  <!-- Étamines : filet + anthère -->
+  <line x1="172" y1="245" x2="150" y2="120" stroke="#524c3e" stroke-width="2"/>
+  <ellipse cx="150" cy="113" rx="11" ry="15" fill="#A6512B"/>
+  <line x1="208" y1="245" x2="232" y2="125" stroke="#524c3e" stroke-width="2"/>
+  <ellipse cx="232" cy="118" rx="11" ry="15" fill="#A6512B"/>
+
+  <!-- Pistil central : ovaire + style + stigmate -->
+  <ellipse cx="190" cy="235" rx="17" ry="14" fill="#4C5B66" fill-opacity="0.7" stroke="#262319"/>
+  <rect x="184" y="150" width="12" height="85" fill="#4C5B66" fill-opacity="0.7" stroke="#262319"/>
+  <ellipse cx="190" cy="142" rx="10" ry="9" fill="#4C5B66"/>
+
+  <!-- Réceptacle -->
+  <rect x="175" y="255" width="30" height="16" rx="4" fill="#524c3e"/>
+
+  <!-- Labels colonne gauche : pistil (stigmate / style / ovaire), du haut vers le bas -->
+  <line x1="60" y1="140" x2="180" y2="142" stroke="#262319" stroke-width="1"/>
+  <text x="8" y="145" fill="#262319">Stigmate</text>
+
+  <line x1="60" y1="190" x2="183" y2="192" stroke="#262319" stroke-width="1"/>
+  <text x="8" y="195" fill="#262319">Style</text>
+
+  <line x1="60" y1="235" x2="173" y2="235" stroke="#262319" stroke-width="1"/>
+  <text x="8" y="240" fill="#262319">Ovaire (ovules)</text>
+
+  <!-- Labels colonne droite : étamine / pétale / sépale, du haut vers le bas -->
+  <line x1="320" y1="105" x2="243" y2="115" stroke="#7E3A1D" stroke-width="1"/>
+  <text x="325" y="100" fill="#7E3A1D">Étamine</text>
+  <text x="325" y="118" font-size="12" fill="#524c3e">(anthère : pollen)</text>
+
+  <line x1="320" y1="175" x2="225" y2="180" stroke="#7E3A1D" stroke-width="1"/>
+  <text x="325" y="180" fill="#7E3A1D">Pétale</text>
+
+  <line x1="320" y1="220" x2="262" y2="195" stroke="#3f4a2c" stroke-width="1"/>
+  <text x="325" y="225" fill="#3f4a2c">Sépale</text>
+
+  <text x="150" y="290" fill="#262319">Réceptacle</text>
+  <line x1="180" y1="285" x2="188" y2="273" stroke="#262319" stroke-width="1"/>
+</svg>
