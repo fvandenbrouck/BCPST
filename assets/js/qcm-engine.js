@@ -20,9 +20,26 @@
 (function(){
   function esc(s){ return (s+'').replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
 
+  // Mélange l'ordre d'affichage des options de chaque question, pour que la bonne
+  // réponse ne se retrouve pas systématiquement à la même position (indépendant de
+  // l'ordre dans lequel les options sont écrites dans les données du module).
+  function ensureOptionOrder(mod, state){
+    if(!state.qcmOptionOrder) state.qcmOptionOrder = {};
+    mod.qcm.forEach(q=>{
+      if(state.qcmOptionOrder[q.id]) return;
+      const idx = q.options.map((_,i)=>i);
+      for(let i=idx.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [idx[i],idx[j]] = [idx[j],idx[i]];
+      }
+      state.qcmOptionOrder[q.id] = idx;
+    });
+  }
+
   function questionBlock(mod, q, i, submitted, state){
     const meta = mod.qcmMeta;
     const isB = q.type === meta.order[1];
+    const order = state.qcmOptionOrder[q.id];
     let h = `<div class="q-block">
       <div class="q-head">
         <p class="q-title">${i+1}. ${esc(q.q)}</p>
@@ -33,13 +50,13 @@
       if(state.hintsShown[q.id]) h += `<div class="hint-box">${esc(q.hint)}</div>`;
     }
     if(!submitted){
-      h += q.options.map((o,oi)=>`<button class="q-opt ${state.qcmAnswers[q.id]===oi?'selected':''}" data-qid="${q.id}" data-oi="${oi}">${esc(o)}</button>`).join('');
+      h += order.map(oi=>`<button class="q-opt ${state.qcmAnswers[q.id]===oi?'selected':''}" data-qid="${q.id}" data-oi="${oi}">${esc(q.options[oi])}</button>`).join('');
     } else {
-      h += q.options.map((o,oi)=>{
+      h += order.map(oi=>{
         let cls='q-opt';
         if(oi===q.correct) cls+=' correct';
         else if(state.qcmAnswers[q.id]===oi) cls+=' incorrect';
-        return `<div class="${cls}">${esc(o)}</div>`;
+        return `<div class="${cls}">${esc(q.options[oi])}</div>`;
       }).join('');
       if(q.hint) h += `<div class="hint-box"><b>Piste de raisonnement :</b> ${esc(q.hint)}</div>`;
     }
@@ -96,6 +113,7 @@
 
   function render(target, mod, state, persist){
     const meta = mod.qcmMeta, d = mod.diagnostic;
+    ensureOptionOrder(mod, state);
     let html = '';
 
     if(!state.qcmSubmitted){
@@ -170,7 +188,7 @@
       });
     } else {
       target.querySelector('#retryQcm').addEventListener('click', ()=>{
-        state.qcmAnswers={}; state.qcmSubmitted=false; state.hintsShown={};
+        state.qcmAnswers={}; state.qcmSubmitted=false; state.hintsShown={}; state.qcmOptionOrder={};
         render(target, mod, state, persist);
       });
     }

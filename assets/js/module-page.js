@@ -49,7 +49,7 @@
       progress:{flashcards:{}, qcmAttempts:[]},
       mindmap:{nodes:[{id:'root', label:mod.title, parentId:null}]},
       flashIndex:0, flashFlipped:false, flashOnlyDue:false,
-      qcmAnswers:{}, qcmSubmitted:false, hintsShown:{}, showModel:false
+      qcmAnswers:{}, qcmSubmitted:false, qcmOptionOrder:{}, hintsShown:{}, showModel:false
     };
     const persist = async ()=>{ await saveProgress(mod.id, state.progress); };
     const persistMindmap = async ()=>{ await saveMindmap(mod, state.mindmap); };
