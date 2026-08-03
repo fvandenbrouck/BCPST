@@ -25,6 +25,8 @@ Le cahier des charges laissait plusieurs points ouverts. Voici comment ils ont �
    - **Photos d'objets réels** : cherchées sur Wikimedia Commons (licence CC vérifiée sur la page du fichier avant usage), hotlinkées directement via l'URL `upload.wikimedia.org` (pas de téléchargement local), avec `credit` obligatoire au format "Photo : Auteur, Wikimedia Commons, licence". Exemples déjà utilisés : fossile d'ammonite (Ch.5 q9, CC BY 2.0, James St. John) et cristal de zircon (Ch.6 q10, CC BY-SA 3.0, Rob Lavinsky/iRocks.com).
    - **Schémas de scénarios fictifs ou abstraits** (coupes géologiques inventées pour une question, diagrammes isochrone/concordia) : dessinés à la main en SVG original, stockés dans `assets/img/chXX/*.svg`, référencés en `src` relatif, sans `credit` (contenu 100% original, pas de problème de droit d'auteur). Palette de couleurs reprise en dur (hex, pas de `var(--...)` — un SVG chargé via `<img src>` n'hérite pas des variables CSS de la page). Exemples : `assets/img/ch05/r1-coupe-faille.svg`, `r4-inclusion-recoupement.svg`, `assets/img/ch06/r2-isochrone.svg`, `r4-concordia-discordance.svg`.
    - Ne pas illustrer systématiquement toutes les questions : seulement quand un visuel apporte une réelle clarté (objet concret identifiable, ou scénario géométrique/graphique difficile à se représenter par le texte seul).
+8. **GitHub Pages activé** (cf. décision #4) — mise à jour a posteriori : contrairement à ce que disait la première version de ce fichier, l'utilisateur a explicitement demandé l'activation immédiate le 2026-08-03 ("active le site et donne-moi le lien"), avant la fin de la Phase 1. C'est fait, cf. décision #4 ci-dessus qui a été mise à jour en conséquence. Ne pas re-proposer d'attendre la fin de Phase 1 pour ça.
+9. **Quatrième type de module : "Carnet de terrain"** (2026-08-03), sur spécification complète fournie par l'utilisateur — voir [`CARNET_DE_TERRAIN.md`](CARNET_DE_TERRAIN.md) (copie verbatim, même traitement que `CAHIER_DES_CHARGES.md`). Contrairement aux modules SVT/PC/Maths : pas de score, pas de bonne réponse, observation libre horodatée + éclairage révélé après coup. Implémenté dans `carnet-de-terrain/` (`index.html` sélecteur + `chenaillet.html` + `lautaret.html`) et `assets/js/carnet-engine.js` (moteur volontairement séparé de `qcm-engine.js`, réutilise `storage.js` avec les clés `carnet:chenaillet` / `carnet:lautaret`). Accessible depuis la page d'accueil via une carte dédiée hors registre/jauge ("Avant la rentrée"), **volontairement exclu de `modules-registry.js`** et de la jauge en strates (ce n'est pas un module noté). Testé dans le navigateur : saisie, activation du bouton éclairage après texte, persistance après rechargement — OK sur les deux sites.
 
 ## 3. Architecture technique (résumé)
 
@@ -41,8 +43,15 @@ assets/js/mindmap-engine.js       moteur carte mentale : construction libre + co
 svt/chXX-....html                 une page HTML autonome par module SVT
 physique-chimie/....html          (à venir, Phase 2)
 maths/....html                    (à venir, Phase 3)
+carnet-de-terrain/                4e type de module : observation de terrain, pas de score (cf. §5 et CARNET_DE_TERRAIN.md)
+  ├── index.html                  sélecteur de site (Chenaillet / Lautaret)
+  ├── chenaillet.html
+  └── lautaret.html
+assets/js/carnet-engine.js         moteur dédié au carnet de terrain, séparé de qcm-engine.js
+assets/img/chXX/*.svg              schémas originaux utilisés comme illustrations QCM (cf. décision #7)
 references/                       PDFs sources — GITIGNORÉ, jamais poussé sur GitHub
 CAHIER_DES_CHARGES.md             brief initial, verbatim, stable
+CARNET_DE_TERRAIN.md              spec du module carnet de terrain, verbatim, stable
 SYNTHESE_SESSION.md               ce fichier
 ```
 
@@ -70,14 +79,15 @@ Chaque nouvel id de module doit être ajouté à `assets/js/modules-registry.js`
 
 **Puis, dans l'ordre :** activer GitHub Pages (cf. décision #4 ci-dessus) → Phase 2 Physique-Chimie → Phase 3 Mathématiques. Détail complet des deux phases dans `CAHIER_DES_CHARGES.md` §3 et §4.
 
-## 5. Idée en attente d'arbitrage — Observations de terrain (Monêtier-les-Bains)
+## 5. Carnet de terrain — fait, reste des finitions
 
-Proposition de l'utilisateur (2026-08-03) : une sous-partie "Observations" liée à un séjour à Monêtier-les-Bains (Hautes-Alpes, massif des Écrins) avant la rentrée, pour de l'observation de terrain (flore, paysages).
+L'idée d'"Observations" évoquée en cours de session a été précisée par l'utilisateur dans un document de spec complet ([`CARNET_DE_TERRAIN.md`](CARNET_DE_TERRAIN.md)) et **implémentée le 2026-08-03** (cf. décision #9). Deux sites : Le Chenaillet (8 points, géologie, prolonge Ch.7) et le Jardin du Lautaret (9 points, botanique alpine, prolonge Ch.8/Ch.12/Ch.14).
 
-**Pas encore validée ni construite.** Piste de réflexion évoquée par Claude : un module volontairement différent du gabarit à 4 onglets habituel (pas de QCM à réponse unique, mais des consignes d'observation façon carnet de terrain — étagement de la végétation alpine, indices géologiques du paysage type superposition/recoupement en écho à Ch.5-6, éventuellement les sources thermales du Monêtier comme accroche). Points à trancher avec l'utilisateur avant tout développement :
-- Forme exacte : checklist cochable ? champ de notes/photos libres ? les deux ?
-- Reste-t-on dans le gabarit à 4 onglets (avec un 5e onglet "Observations" en option) ou est-ce un type de module à part entière, avec son propre registre dans `modules-registry.js` (subject `'svt'` mais catégorie distincte, ex. "Terrain — avant la rentrée") ?
-- Lien explicite à faire avec les modules Ch.5/Ch.6 déjà construits (les principes de terrain vus en cours peuvent être un guide d'observation directement réutilisable).
+**Reste à faire**, repris du §5 de `CARNET_DE_TERRAIN.md` (rien de bloquant, mais à ne pas oublier) :
+1. Vérifier avec l'utilisateur l'itinéraire précis du Chenaillet (départ Cervières ou Montgenèvre) et réordonner chen-01→08 si besoin — pas de changement de contenu, juste l'ordre `ordre` dans `chenaillet.html`.
+2. Vérifier les horaires d'ouverture du Jardin du Lautaret au moment du séjour ; si fermé, laut-05 et une partie de laut-06 ne seront pas utilisables tels quels.
+3. **Ajouter les badges de renvoi** "🏔️ Vu sur le terrain" sur les futurs modules Ch.7, Ch.8, Ch.12, Ch.14 (et Ch.4 en option) une fois ces modules SVT construits (aucun des deux modules actuels, Ch.5/Ch.6, n'est concerné par ces tags). Lien bidirectionnel léger vers l'entrée du carnet correspondante — ne pas fusionner les gabarits.
+4. Les tags `SVT-Ch4/Ch7/Ch8-U1/Ch12/Ch14` dans les données des points sont déjà là, prêts à être exploités pour ces badges quand les modules existeront.
 
 ## 6. Conventions et consignes utiles pour la suite
 
@@ -89,9 +99,10 @@ Proposition de l'utilisateur (2026-08-03) : une sous-partie "Observations" liée
 - **Actions sensibles** : avant de committer/pousser sur GitHub, ou de changer un réglage de dépôt (comme activer Pages), demander confirmation — sauf instruction déjà donnée explicitement en session (ex. décision #4 ci-dessus, qui autorise l'activation de Pages *à la fin de la Phase 1*, sans redemander à ce moment précis).
 - **`references/`** ne doit jamais être poussé sur GitHub (gitignoré) — vérifier `git status` avant tout commit si des fichiers y ont été ajoutés/modifiés.
 - **Tester dans le navigateur** avant de considérer un module terminé : ouvrir le fichier, tester les 4 onglets, vérifier l'absence d'erreur console, vérifier que le score QCM se calcule juste, puis vider `localStorage` (données de test) avant de committer.
+- **Carnet de terrain** : ne jamais lui ajouter de score ni de correction automatique — c'est le principe fondateur de ce type de module (cf. §5, `CARNET_DE_TERRAIN.md` §1.3). Ne pas le fusionner avec `modules-registry.js`/`progress-gauge.js` (registre des modules notés) : il vit à part, lié depuis `index.html` par une simple carte de navigation.
 
 ## 7. État du dépôt au moment de la rédaction de ce fichier
 
 - Dépôt distant : [github.com/fvandenbrouck/BCPST](https://github.com/fvandenbrouck/BCPST) (public), branche `main` trackée.
-- Dernier commit **poussé** au moment d'écrire ces lignes : `Initialise le site Strates : moteur commun + modules SVT Ch.5-6` (contient Ch.5, Ch.6, **sans** le fix de mélange des options QCM).
-- Ce fichier, `CAHIER_DES_CHARGES.md` et le fix de mélange des QCM (`assets/js/qcm-engine.js`, `assets/js/module-page.js`) sont sur le point d'être committés et poussés dans la foulée de la rédaction de cette synthèse. Si un nouveau fil de discussion trouve `git log` sans ce commit, c'est qu'il reste à faire — vérifier avec `git status` / `git log --oneline`.
+- **GitHub Pages actif : https://fvandenbrouck.github.io/BCPST/** (activé le 2026-08-03, cf. décision #4/#8).
+- Commits poussés jusqu'ici : initialisation (Ch.5/Ch.6 + moteur), fix de mélange des QCM + doc de session, correction éditeur Belin + illustrations QCM. Le module carnet de terrain (`carnet-de-terrain/`, `assets/js/carnet-engine.js`, `CARNET_DE_TERRAIN.md`) est sur le point d'être committé et poussé dans la foulée de cette mise à jour. Si un nouveau fil de discussion trouve `git log` sans ce commit, c'est qu'il reste à faire — vérifier avec `git status` / `git log --oneline`.

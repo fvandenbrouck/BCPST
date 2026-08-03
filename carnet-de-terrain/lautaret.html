@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jardin du Lautaret · Carnet de terrain · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/carnet-engine.js"></script>
+<script>
+const SITE = {
+  id: 'lautaret',
+  title: "Le Jardin du Lautaret",
+  altitude: "2100 m · Col du Lautaret, Monêtier-les-Bains",
+  contexte: `<p>Le Jardin du Lautaret est un jardin botanique alpin de l'Université Grenoble Alpes et du CNRS, situé au col du Lautaret (2100 m), sur la commune du Monêtier-les-Bains, face aux glaciers de la Meije. Il rassemble près de 2000 espèces de plantes de montagne du monde entier, organisées par grandes régions (Himalaya, Andes, Caucase, Nouvelle-Zélande…), et sert aussi de station de recherche sur les effets du changement climatique en altitude. Ouvert en général de début juin à début septembre ; en dehors de ces dates, plusieurs observations restent possibles dans la flore naturelle du col lui-même.</p>`,
+
+  points: [
+    {
+      id:'laut-01', ordre:1, lieu:"Entrée du jardin, vue d'ensemble",
+      prompt:"Le jardin regroupe des plantes venues de massifs très différents (Alpes, Himalaya, Andes, Nouvelle-Zélande…) qui n'ont souvent aucun lien de parenté directe. Repère deux espèces de régions différentes qui te semblent pourtant se ressembler beaucoup dans leur forme générale.",
+      eclairage:"C'est un exemple de <b>convergence évolutive</b> : des espèces sans lien de parenté proche, confrontées aux mêmes contraintes (froid, vent, altitude, saison de croissance très courte), développent indépendamment des formes similaires. C'est un bon contre-exemple à garder en tête pour la diversification du vivant : la ressemblance de forme ne signifie pas toujours une proche parenté.",
+      tags:['SVT-Ch4']
+    },
+    {
+      id:'laut-02', ordre:2, lieu:"Devant une plante en coussin compact",
+      prompt:"Cherche une plante formant un coussin dense et arrondi, presque comme une pierre couverte de mousse, avec des tiges très courtes et serrées. Touche-la (sans l'arracher) : que remarques-tu sur sa compacité ?",
+      eclairage:"Cette forme « en coussin » limite la surface exposée au vent et au froid et crée un microclimat plus chaud et plus humide au cœur de la touffe, où la plante concentre son énergie de croissance sur un volume minimal. C'est une adaptation directe aux contraintes de l'étage alpin.",
+      tags:['SVT-Ch8-U1']
+    },
+    {
+      id:'laut-03', ordre:3, lieu:"Devant une plante à feuillage duveteux ou laineux",
+      prompt:"Trouve une plante dont les feuilles ou les tiges sont recouvertes d'un fin duvet blanchâtre (l'edelweiss en est l'exemple le plus connu, mais il y en a d'autres dans le jardin). À quoi ce duvet pourrait-il servir, à cette altitude ?",
+      eclairage:"Ce duvet réfléchit une partie du rayonnement UV, souvent intense en altitude, et limite la perte d'eau par le vent tout en piégeant une fine couche d'air isolante contre le froid — plusieurs fonctions pour une seule adaptation morphologique.",
+      tags:['SVT-Ch8-U1']
+    },
+    {
+      id:'laut-04', ordre:4, lieu:"N'importe où dans le jardin, en comparant plusieurs espèces",
+      prompt:"Compare la taille des fleurs à la taille globale de plusieurs plantes basses que tu croises. Que remarques-tu sur la proportion fleur/plante ?",
+      eclairage:"Beaucoup de plantes alpines investissent une part disproportionnée de leur énergie dans des fleurs grandes et colorées malgré une taille globale réduite : la saison de reproduction est très courte en altitude, et il faut attirer efficacement les rares pollinisateurs disponibles pendant cette fenêtre.",
+      tags:['SVT-Ch8-U1']
+    },
+    {
+      id:'laut-05', ordre:5, lieu:"Panneau d'information sur la recherche du jardin (s'il y en a un accessible)",
+      prompt:"Cherche une information sur ce que les chercheurs du jardin étudient concrètement (dates de floraison, migration d'espèces, effets du changement climatique…). Note ce que tu trouves.",
+      eclairage:"Le Jardin du Lautaret héberge une station de recherche qui suit depuis des décennies des indicateurs comme la date de floraison ou la remontée en altitude de certaines espèces — des données directement utilisées pour documenter le changement climatique actuel en milieu de montagne, exactement le sujet du Ch.14.",
+      tags:['SVT-Ch14']
+    },
+    {
+      id:'laut-06', ordre:6, lieu:"Vue sur les glaciers de la Meije (si visible depuis le jardin)",
+      prompt:"Observe l'étendue de glace visible et, si tu peux comparer avec une photo ancienne trouvée sur place ou avec tes souvenirs d'un précédent passage, note ce qui te semble avoir changé.",
+      eclairage:"Les glaciers alpins comme ceux de la Meije sont parmi les indicateurs les plus visibles du réchauffement récent : leur recul rapide depuis la fin du Petit Âge Glaciaire (XIXe siècle) illustre concrètement l'échelle de temps très courte du changement climatique actuel, à mettre en regard des variations climatiques bien plus lentes étudiées pour les époques géologiques passées.",
+      tags:['SVT-Ch12','SVT-Ch14']
+    },
+    {
+      id:'laut-07', ordre:7, lieu:"En sortant du jardin, sur les pentes naturelles alentour",
+      prompt:"En marchant sur le col, observe si la végétation change avec l'altitude ou l'exposition (versant au soleil / versant à l'ombre) sur une courte distance.",
+      eclairage:"Cette zonation sur quelques dizaines de mètres de dénivelé illustre à petite échelle un principe général : la végétation de montagne est extrêmement sensible à des variations fines de température et d'ensoleillement, ce qui en fait un système d'alerte précoce très étudié pour le suivi du climat.",
+      tags:['SVT-Ch8-U1','SVT-Ch14']
+    },
+    {
+      id:'laut-08', ordre:8, lieu:"Bilan géologie/flore (pont entre les deux carnets)",
+      prompt:"Le jardin se situe à la rencontre de deux massifs très différents : les Écrins (roches cristallines) au sud et le Galibier (roches sédimentaires) au nord. Si tu as aussi fait le carnet du Chenaillet, cherche si tu observes une différence de couleur ou de texture du sol/des roches entre les deux côtés du col.",
+      eclairage:"La diversité géologique locale contribue directement à la diversité floristique : un sol issu de roches cristallines et un sol issu de roches sédimentaires n'offrent pas les mêmes nutriments ni le même pH, ce qui favorise des cortèges de plantes différents. C'est un rappel utile que la biologie végétale et la géologie, souvent enseignées séparément, s'expliquent mutuellement sur le terrain — l'esprit même de la démarche BCPST.",
+      tags:['SVT-Ch7','SVT-Ch8-U1']
+    },
+    {
+      id:'laut-09', ordre:9, lieu:"Bilan de fin de visite (à remplir plus tard, au calme)",
+      prompt:"En une ou deux phrases, résume dans tes mots pourquoi les plantes alpines ont des formes si particulières comparées aux plantes de plaine.",
+      eclairage:"Pas d'éclairage « modèle » ici, volontairement — même logique que pour le Chenaillet : reformule seul, puis compare avec le cours du Ch.8 une fois de retour.",
+      tags:['SVT-Ch8-U1']
+    }
+  ]
+};
+
+CarnetEngine.init(SITE);
+</script>
+</body>
+</html>
