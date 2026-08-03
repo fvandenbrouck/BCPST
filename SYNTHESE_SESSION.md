@@ -7,6 +7,16 @@ Dernière mise à jour : **2026-08-03**.
 
 ---
 
+## 0. État actuel en un coup d'œil (résumé rapide pour reprendre vite)
+
+- **7 modules SVT sur 13 construits, testés et en ligne** : Ch.5, Ch.6, Ch.7, Ch.8, Ch.9, Ch.11, Ch.17. Tous validés (rendu, QCM/score, flashcards, carte mentale, aucune erreur console, `localStorage` de test vidé, commit + push + build GitHub Pages confirmé).
+- **Prochaine action attendue** : construire **Ch.18 — Contrôle des flux de glucose (p.450-473)**, en suivant exactement le même processus que les modules précédents (cf. §4 et le contrat de données §3). C'est la suite naturelle si l'utilisateur dit "chapitre suivant" ou équivalent.
+- **Site public** : https://fvandenbrouck.github.io/BCPST/ — à jour, vérifié en ligne (pas seulement poussé sur `git`).
+- **Rien de bloquant en attente.** Les seuls points ouverts sont mineurs et non bloquants : cf. §5 (deux questions factuelles sur le carnet de terrain, à poser à l'utilisateur le moment venu, pas urgent) et §4 (Phase 2 Physique-Chimie / Phase 3 Mathématiques, pas commencées, gabarits différents à construire quand on y arrivera).
+- Lire dans l'ordre pour un contexte complet : ce fichier en entier, puis [`CAHIER_DES_CHARGES.md`](CAHIER_DES_CHARGES.md) §0/§2/§6, puis un module existant comme référence de code (ex. [`svt/ch17-cellule-musculaire-atp.html`](svt/ch17-cellule-musculaire-atp.html), le plus récent et le plus complet en exemples).
+
+---
+
 ## 1. Contexte en une phrase
 
 Site de révisions statique (HTML/CSS/JS vanilla, pas de framework, pas de build) pour une élève qui entre en BCPST1 sans avoir suivi la spécialité SVT en Terminale. Trois matières à terme (SVT, Physique-Chimie, Mathématiques), déployé en autonome sur GitHub Pages.
@@ -122,5 +132,11 @@ L'idée d'"Observations" évoquée en cours de session a été précisée par l'
 
 - Dépôt distant : [github.com/fvandenbrouck/BCPST](https://github.com/fvandenbrouck/BCPST) (public), branche `main` trackée.
 - **GitHub Pages actif : https://fvandenbrouck.github.io/BCPST/** (activé le 2026-08-03, cf. décision #4/#8).
-- Commits poussés jusqu'ici : initialisation (Ch.5/Ch.6 + moteur), fix de mélange des QCM + doc de session, correction éditeur Belin + illustrations QCM, module carnet de terrain, prompt de reprise Phase 1 SVT, mise à jour cahier des charges (pagination confirmée + Ch.12/Ch.14 bonus tertiaire), Ch.7 (contenu + badges terrain + illustrations), patch Ch.6 (fiche Zoom isochrone, champ `fiche.badge`), rendu LaTeX (KaTeX + formules Ch.6), Ch.8 (contenu + badge terrain Lautaret + illustrations), Ch.9 (photosynthèse + illustrations), Ch.11 (domestication + illustrations, clôt le thème biologie végétale). Ch.17 (cellule musculaire, ATP + illustrations, ouvre le thème "corps humain et santé") est sur le point d'être committé dans la foulée de cette mise à jour. Si un nouveau fil de discussion trouve `git log` sans ce commit, c'est qu'il reste à faire — vérifier avec `git status` / `git log --oneline`.
-- ⚠️ **Rappel important, déjà observé plusieurs fois en session** : après un `git push`, vérifier que le site public reflète bien le changement (`gh api repos/fvandenbrouck/BCPST/pages/builds/latest` doit pointer sur le dernier commit avec `status:"built"`) avant de répondre à l'utilisateur. Si l'utilisateur signale ne "rien voir" alors que git/Pages confirment que c'est en ligne, c'est presque toujours un cache navigateur côté utilisateur (déjà arrivé deux fois : carnet de terrain, puis Ch.9) — lui suggérer un rechargement forcé (Cmd+Maj+R) plutôt que de re-committer inutilement.
+- Commits poussés jusqu'ici (du plus ancien au plus récent) : initialisation (Ch.5/Ch.6 + moteur), fix de mélange des QCM + doc de session, correction éditeur Belin + illustrations QCM, module carnet de terrain, prompt de reprise Phase 1 SVT, mise à jour cahier des charges (pagination confirmée + Ch.12/Ch.14 bonus tertiaire), Ch.7 (contenu + badges terrain + illustrations), patch Ch.6 (fiche Zoom isochrone, champ `fiche.badge`), rendu LaTeX (KaTeX + formules Ch.6), Ch.8 (contenu + badge terrain Lautaret + illustrations), Ch.9 (photosynthèse + illustrations), Ch.11 (domestication + illustrations, clôt le thème biologie végétale), **Ch.17 (cellule musculaire, ATP + illustrations, ouvre le thème "corps humain et santé") — dernier commit poussé, build GitHub Pages confirmé `"status":"built"` sur ce commit.** `git status` est clean à la fin de cette session. Si un nouveau fil de discussion trouve `git log --oneline -1` différent de `74054e2`, c'est qu'un autre module a été construit depuis — se fier à `git log`, pas à ce texte, pour l'état exact.
+- ⚠️ **Rappel important, observé plusieurs fois en session** : après un `git push`, vérifier que le site public reflète bien le changement avant de répondre à l'utilisateur — ne pas se contenter du push local. Méthode fiable utilisée en session (à réutiliser telle quelle) :
+  ```bash
+  until [ "$(gh api repos/fvandenbrouck/BCPST/pages/builds/latest --jq .status)" != "building" ]; do sleep 3; done
+  gh api repos/fvandenbrouck/BCPST/pages/builds/latest --jq '{status, commit, error}'
+  ```
+  Lancer cette commande via Bash avec `run_in_background: true` juste après le push (le build prend 30-60s) plutôt que d'enchaîner des `sleep` — une seule notification arrive quand c'est prêt. Vérifier que `commit` correspond bien au dernier commit poussé et que `status` vaut `"built"` (pas `"errored"`).
+  Si l'utilisateur signale ne "rien voir" alors que git/Pages confirment que c'est en ligne, c'est presque toujours un cache navigateur côté utilisateur (déjà arrivé deux fois : carnet de terrain, puis Ch.9) — lui suggérer un rechargement forcé (Cmd+Maj+R) plutôt que de re-committer inutilement.
