@@ -1,0 +1,8 @@
+# Sources protégées / volumineuses : jamais publiées (droit d'auteur, cf. cahier des charges §0.1)
+# Consultées localement par Claude Code pour vérifier l'exactitude scientifique du contenu,
+# mais jamais recopiées ni versionnées.
+references/
+
+# Artefacts système
+.DS_Store
+.claude/settings.local.json

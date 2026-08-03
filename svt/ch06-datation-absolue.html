@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch.6 — La datation absolue · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/flashcards-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'ch6',
+  chapNum: "Chapitre 6",
+  subjectLabel: "Géologie",
+  accent: 'var(--rust)',
+  title: "La datation absolue",
+  pages: "p.144 à 161",
+  backHref: '../index.html',
+  bridge: {
+    from: "La décroissance radioactive et la notion de demi-vie ont été introduites en Enseignement scientifique de Première/Terminale (tronc commun), notamment via la datation au carbone 14 — sans être approfondies pour des radiochronomètres à très longue période.",
+    to: "En BCPST1, la loi de décroissance N = N₀e^(−λt) et son traitement (exponentielle, logarithme, temps caractéristique) seront formalisés en Mathématiques (Analyse) et réutilisés en Sciences de la Terre chaque fois qu'un âge de roche sera à établir."
+  },
+
+  fiches: [
+    {
+      unit:'Unité 1', page:146,
+      title:"Le principe de la datation absolue",
+      paragraphs:[
+        "La datation absolue attribue un âge en années à un événement géologique, contrairement à la datation relative qui ne fournit qu'un ordre chronologique. Elle repose sur la décroissance radioactive : certains isotopes, dits radioactifs ou instables (l'isotope « père »), se désintègrent spontanément et aléatoirement au cours du temps pour former un isotope « fils » stable.",
+        "La quantité d'isotope père restant décroît selon une loi exponentielle du temps : plus le temps écoulé est long, plus la proportion d'isotope père transformée en isotope fils est grande. Le temps de demi-vie (ou période radioactive) est la durée nécessaire pour que la moitié d'une quantité donnée d'isotope père se désintègre."
+      ],
+      bullets:[
+        "Pour dater une roche, il faut mesurer les quantités d'isotope père restant et d'isotope fils accumulé dans un minéral, puis en déduire le temps écoulé depuis la fermeture du système.",
+        "Un système est dit clos lorsque, depuis sa formation, le minéral n'a ni perdu ni gagné d'isotopes père ou fils par un phénomène extérieur (fusion, altération, échange chimique) : c'est une condition indispensable à la fiabilité de l'âge calculé.",
+        "Le choix du radiochronomètre dépend de l'âge présumé de l'échantillon : sa demi-vie doit être du même ordre de grandeur que cet âge pour que la mesure soit précise."
+      ]
+    },
+    {
+      unit:'Unité 2', page:148,
+      title:"Dater avec le radiochronomètre rubidium (Rb) / strontium (Sr)",
+      paragraphs:[
+        "Le rubidium-87 (87Rb), isotope père radioactif, se désintègre en strontium-87 (87Sr), isotope fils stable, avec une demi-vie extrêmement longue (environ 48,8 milliards d'années). Ce couple est donc réservé à la datation de roches très anciennes (plusieurs centaines de millions à plusieurs milliards d'années), comme certains granites ou micas.",
+        "Problème pratique : au moment de sa formation, un minéral contient déjà une certaine quantité de strontium-87 initial, qu'on ne connaît pas a priori. La méthode de l'isochrone permet de contourner cette difficulté."
+      ],
+      bullets:[
+        "On utilise le strontium-86 (86Sr) comme référence : c'est un isotope stable et non radiogénique (il n'est produit par aucune désintégration), donc sa quantité dans un minéral ne varie pas au cours du temps.",
+        "En reportant, pour plusieurs minéraux d'une même roche, le rapport 87Sr/86Sr en fonction du rapport 87Rb/86Sr, les points s'alignent sur une droite : la droite isochrone.",
+        "La pente de cette droite permet de calculer l'âge de cristallisation commun des minéraux ; son ordonnée à l'origine donne le rapport initial 87Sr/86Sr, sans qu'il soit besoin de le connaître au préalable."
+      ]
+    },
+    {
+      unit:'Unité 3', page:150,
+      title:"Dater avec le radiochronomètre potassium (K) / argon (Ar)",
+      paragraphs:[
+        "Le potassium-40 (40K) se désintègre en partie en argon-40 (40Ar), un gaz noble, avec une demi-vie d'environ 1,25 milliard d'années. Ce radiochronomètre est particulièrement adapté aux roches volcaniques (laves, cendres).",
+        "L'atout de ce couple est qu'à l'état de magma liquide et chaud, l'argon-40 formé s'échappe librement vers l'atmosphère : la quantité d'argon piégée dans le réseau cristallin au moment du refroidissement peut donc être considérée comme nulle."
+      ],
+      bullets:[
+        "Dès que la lave se solidifie, le système se ferme : tout l'argon-40 formé ensuite par désintégration du potassium-40 reste piégé dans les cristaux.",
+        "Mesurer les quantités de 40K restant et de 40Ar piégé permet donc de calculer directement le temps écoulé depuis la solidification, sans avoir besoin d'une méthode par isochrone.",
+        "Cette méthode est précieuse pour dater des couches volcaniques (cendres, coulées) qui encadrent des séries sédimentaires, et ainsi caler en années l'échelle chronostratigraphique relative construite au chapitre précédent."
+      ]
+    },
+    {
+      unit:'Unité 4', page:152,
+      title:"Dater avec le radiochronomètre uranium (U) / plomb (Pb)",
+      paragraphs:[
+        "Deux isotopes de l'uranium se désintègrent, chacun au bout d'une longue chaîne d'étapes intermédiaires, en un isotope stable du plomb : l'uranium-238 (238U) donne du plomb-206 (206Pb) avec une demi-vie de 4,47 milliards d'années, et l'uranium-235 (235U) donne du plomb-207 (207Pb) avec une demi-vie de 704 millions d'années.",
+        "Un même minéral peut donc porter deux horloges radioactives indépendantes. Le minéral de référence est le zircon : lors de sa cristallisation, il incorpore facilement l'uranium mais exclut presque totalement le plomb, ce qui en fait un système clos quasi idéal (plomb initial proche de zéro)."
+      ],
+      bullets:[
+        "Si le système est resté clos, les deux âges calculés (par 238U/206Pb et par 235U/207Pb) sur le même cristal doivent coïncider : on parle d'âges concordants.",
+        "Si le cristal a subi un événement thermique ultérieur (métamorphisme) provoquant une perte de plomb, les deux âges divergent : on parle de discordance, elle-même informative sur l'histoire de la roche.",
+        "Grâce à sa très longue demi-vie, ce couple permet de dater les roches les plus anciennes de la Terre, ainsi que des météorites, dont l'âge convergent (~4,567 milliards d'années) est utilisé pour estimer l'âge du système solaire."
+      ]
+    }
+  ],
+
+  flashcards: [
+    {id:'f1', recto:"Décroissance radioactive", verso:"Transformation spontanée et aléatoire d'un isotope père radioactif en isotope fils stable, suivant une loi exponentielle du temps.", notion:'u1'},
+    {id:'f2', recto:"Demi-vie (période radioactive)", verso:"Durée nécessaire pour que la moitié d'une quantité donnée d'isotope père se désintègre.", notion:'u1'},
+    {id:'f3', recto:"Isotope père / isotope fils", verso:"L'isotope père est l'isotope radioactif initial ; l'isotope fils est le produit stable de sa désintégration.", notion:'u1'},
+    {id:'f4', recto:"Système clos (en radiochronologie)", verso:"Minéral qui, depuis sa formation, n'a ni perdu ni gagné d'isotopes père ou fils par un phénomène extérieur — condition indispensable à une datation fiable.", notion:'u1'},
+    {id:'f5', recto:"Couple Rubidium-Strontium (87Rb → 87Sr)", verso:"Radiochronomètre à très longue demi-vie (~48,8 Ga), utilisé pour dater des roches très anciennes (granites, micas).", notion:'u2'},
+    {id:'f6', recto:"Droite isochrone", verso:"Droite obtenue en reportant, pour plusieurs minéraux d'une même roche, le rapport 87Sr/86Sr en fonction de 87Rb/86Sr ; sa pente donne l'âge, son ordonnée le rapport initial en Sr initial.", notion:'u2'},
+    {id:'f7', recto:"Strontium-86 (86Sr)", verso:"Isotope stable et non radiogénique du strontium, utilisé comme référence dans la méthode isochrone car sa quantité ne varie pas au cours du temps.", notion:'u2'},
+    {id:'f8', recto:"Couple Potassium-Argon (40K → 40Ar)", verso:"Radiochronomètre de demi-vie ~1,25 Ga, adapté aux roches volcaniques : l'argon s'échappe du magma liquide, le compteur repart à zéro à la solidification.", notion:'u3'},
+    {id:'f9', recto:"Argon piégé", verso:"Argon-40 formé par désintégration du potassium-40 après la solidification de la lave, retenu dans le réseau cristallin.", notion:'u3'},
+    {id:'f10', recto:"Couple Uranium-Plomb (238U→206Pb et 235U→207Pb)", verso:"Deux désintégrations parallèles et indépendantes au sein du même minéral, permettant deux datations croisées.", notion:'u4'},
+    {id:'f11', recto:"Zircon", verso:"Minéral qui incorpore l'uranium mais exclut le plomb à la cristallisation : système quasi clos idéal pour la méthode U-Pb.", notion:'u4'},
+    {id:'f12', recto:"Âges concordants / discordants", verso:"Les deux âges U-Pb d'un même cristal coïncident si le système est resté clos (concordants) ; ils divergent en cas de perte de plomb ultérieure (discordants).", notion:'u4'}
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {u1:'Unité 1 — Principe de la datation absolue (p.146)', u2:'Unité 2 — Rubidium/Strontium (p.148)', u3:'Unité 3 — Potassium/Argon (p.150)', u4:'Unité 4 — Uranium/Plomb (p.152)'},
+    bilanPage: 156, exosPage: 158, bacPage: 161,
+    nextStep: "Enchaîne sur le chapitre suivant (traces du passé mouvementé de la Terre) dès qu'il sera prêt."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"La datation absolue repose sur :", options:["la position relative des couches géologiques","la décroissance radioactive d'isotopes instables","la seule observation des fossiles guides"], correct:1},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"On appelle « isotope père » :", options:["l'isotope stable produit par désintégration","l'isotope radioactif qui se désintègre au cours du temps","un isotope qui n'intervient pas dans la datation"], correct:1},
+    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"La demi-vie (ou période radioactive) d'un isotope est :", options:["le temps au bout duquel la totalité de l'isotope père a disparu","le temps au bout duquel la moitié de l'isotope père initial s'est désintégrée","le temps nécessaire à la formation du cristal qui le contient"], correct:1},
+    {id:'q4', type:'connaissance', difficulty:2, notion:'u1', q:"Pour qu'une roche puisse être datée de façon fiable, elle doit constituer, depuis sa formation :", options:["un système ouvert, permettant des échanges avec l'extérieur","un système clos, sans perte ni apport d'isotopes père ou fils","un système riche uniquement en isotopes fils dès l'origine"], correct:1},
+    {id:'q5', type:'connaissance', difficulty:1, notion:'u2', q:"Le radiochronomètre rubidium-strontium (87Rb → 87Sr) est adapté à la datation de roches :", options:["très jeunes, de quelques milliers d'années","très anciennes, du fait de sa très longue demi-vie","uniquement volcaniques et très récentes"], correct:1},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u2', q:"Dans la méthode par isochrone, le strontium-86 sert de référence car :", options:["c'est un isotope radioactif à demi-vie très courte","c'est un isotope stable, non radiogénique, dont la quantité ne varie pas au cours du temps","il se transforme progressivement en rubidium-87"], correct:1},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u3', q:"Le radiochronomètre potassium-argon (40K → 40Ar) est particulièrement adapté aux roches volcaniques car :", options:["l'argon s'échappe du magma liquide, et le compteur repart de zéro à la solidification","le potassium n'existe que dans les laves","l'argon ne peut se former que dans les roches volcaniques"], correct:0},
+    {id:'q8', type:'connaissance', difficulty:2, notion:'u3', q:"Juste après la mise en place (refroidissement) d'une lave, la quantité d'argon-40 piégée dans le réseau cristallin est considérée comme :", options:["maximale","nulle","égale à celle du magma en profondeur"], correct:1},
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u4', q:"La méthode uranium-plomb s'appuie sur :", options:["une seule désintégration radioactive","deux désintégrations parallèles et indépendantes (238U→206Pb et 235U→207Pb) dans le même minéral","la désintégration du plomb en uranium"], correct:1},
+    {id:'q10', type:'connaissance', difficulty:2, notion:'u4', q:"Le zircon est le minéral de référence en datation U-Pb car :", options:["il incorpore facilement l'uranium mais exclut le plomb lors de sa cristallisation, ce qui en fait un système clos quasi idéal","il contient naturellement beaucoup de plomb initial, facile à mesurer","il ne se forme que dans les roches sédimentaires récentes"], correct:0},
+
+    {id:'r1', type:'raisonnement', difficulty:2, notion:'u1', q:"Un géologue veut dater un échantillon vieux d'environ 10 000 ans à l'aide d'un radiochronomètre de demi-vie 48,8 milliards d'années. Que peut-on prévoir ?",
+      options:["La méthode sera très précise, car la demi-vie est très longue","La quantité de descendant radiogénique formée sera quasiment indétectable, rendant la méthode inadaptée ici","Le résultat obtenu sera automatiquement erroné, quelle que soit la précision de la mesure"], correct:1,
+      hint:"Compare la durée écoulée depuis la formation de l'échantillon à la demi-vie du radiochronomètre : combien de désintégrations ont eu le temps de se produire en 10 000 ans sur 48,8 milliards d'années ?"},
+    {id:'r2', type:'raisonnement', difficulty:3, notion:'u2', q:"Dans un diagramme isochrone, quatre minéraux d'une même roche magmatique s'alignent parfaitement sur une droite. Que peut-on en conclure ?",
+      options:["Les minéraux se sont formés à des époques très différentes les unes des autres","Les minéraux ont un âge commun de cristallisation et sont restés des systèmes clos depuis","L'alignement ne permet aucune conclusion sur l'âge de la roche"], correct:1,
+      hint:"Rappelle-toi ce que représentent la pente et l'alignement des points sur une droite isochrone construite à partir de plusieurs minéraux distincts d'une même roche."},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u3', q:"Un volcanologue date une coulée de lave par la méthode K-Ar et obtient un âge étonnamment plus vieux que l'âge réel connu par ailleurs. Quelle hypothèse explique le mieux cette anomalie ?",
+      options:["Tout l'argon présent dans le magma ne s'est pas complètement échappé avant la solidification, ce qui fausse l'âge vers le vieux","Le potassium-40 a une demi-vie trop courte pour ce type de roche","La méthode K-Ar ne peut en aucun cas être utilisée sur des laves"], correct:0,
+      hint:"L'hypothèse clé de la méthode K-Ar est que l'argon initial est nul au moment de la solidification. Que se passe-t-il pour l'âge calculé si cette hypothèse est fausse et qu'il restait déjà de l'argon piégé dans le magma ?"},
+    {id:'r4', type:'raisonnement', difficulty:3, notion:'u4', q:"Un zircon donne un âge de 1,8 milliard d'années par le couple 238U/206Pb et un âge de 2,3 milliards d'années par le couple 235U/207Pb sur le même cristal. Que suggère cette discordance ?",
+      options:["Le cristal est parfaitement fiable et son âge réel est la moyenne des deux valeurs obtenues","Le système a probablement subi une perte de plomb lors d'un événement thermique postérieur à sa formation, invalidant l'hypothèse de système clos","Les deux méthodes de datation sont incompatibles entre elles et l'une des deux doit être abandonnée définitivement"], correct:1,
+      hint:"Deux horloges indépendantes portées par le même cristal ne devraient donner le même âge que si le système est resté clos depuis la cristallisation. Qu'est-ce qui, dans l'histoire ultérieure de la roche, peut perturber cette hypothèse ?"},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u1', q:"On veut choisir un radiochronomètre pour dater un granite formé il y a environ 500 millions d'années. Parmi Rb-Sr (demi-vie 48,8 Ga), K-Ar (demi-vie 1,25 Ga) et U-Pb 238/206 (demi-vie 4,47 Ga), lequel est a priori le plus adapté, et pourquoi ?",
+      options:["Rb-Sr, car il faut toujours choisir la demi-vie la plus longue possible","K-Ar, car sa demi-vie est du même ordre de grandeur que l'âge à mesurer, ce qui maximise la précision", "U-Pb, car c'est toujours la méthode la plus précise quel que soit l'âge de la roche"], correct:1,
+      hint:"Une méthode de datation est la plus précise quand la demi-vie du radiochronomètre est du même ordre de grandeur que l'âge de l'échantillon : ni trop courte (isotope père épuisé), ni trop longue (isotope fils en quantité trop faible pour être mesurée précisément)."},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u4', q:"Les roches les plus anciennes connues sur Terre et plusieurs météorites, datées par U-Pb, donnent un âge convergent d'environ 4,567 milliards d'années. Quelle est l'interprétation la plus rigoureuse de cette convergence ?",
+      options:["C'est une coïncidence numérique sans signification géologique particulière","Cet âge correspond probablement à la formation du système solaire, dont la Terre et les météorites sont issues à la même époque","Cela prouve que la Terre et les météorites sont constituées exactement de la même roche"], correct:1,
+      hint:"Repense à ce qui distingue un âge de cristallisation propre à une seule roche terrestre isolée, et un âge partagé par plusieurs corps différents du système solaire."}
+  ],
+
+  mindmapModel: {
+    label:"Datation absolue",
+    children:[
+      {label:"Principe", children:[
+        {label:"Décroissance radioactive"},{label:"Isotope père / isotope fils"},{label:"Demi-vie"},{label:"Système clos"}
+      ]},
+      {label:"Rubidium — Strontium", children:[
+        {label:"87Rb → 87Sr, très longue demi-vie"},{label:"Droite isochrone"},{label:"Roches très anciennes"}
+      ]},
+      {label:"Potassium — Argon", children:[
+        {label:"40K → 40Ar"},{label:"Argon initial nul (roches volcaniques)"}
+      ]},
+      {label:"Uranium — Plomb", children:[
+        {label:"238U→206Pb et 235U→207Pb"},{label:"Zircon"},{label:"Concordance / discordance"},{label:"Âge du système solaire →"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>

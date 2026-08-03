@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch.5 — La datation relative · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/flashcards-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'ch5',
+  chapNum: "Chapitre 5",
+  subjectLabel: "Géologie",
+  accent: 'var(--rust)',
+  title: "La datation relative",
+  pages: "p.122 à 141",
+  backHref: '../index.html',
+  bridge: {
+    from: "Les notions de couche sédimentaire, de fossile et d'échelle des temps géologiques ont été introduites en Seconde (partie Terre, planète habitable) sans méthode rigoureuse de datation.",
+    to: "En BCPST1, ces principes de terrain seront directement réinvestis pour lire et interpréter des documents géologiques (coupes, cartes) dans le thème Terre — dynamique et évolution."
+  },
+
+  fiches: [
+    {
+      unit:'Unité 1', page:124,
+      title:"Les principes de la datation relative sur le terrain",
+      paragraphs:[
+        "La datation relative consiste à établir l'ordre chronologique d'événements géologiques les uns par rapport aux autres, sans déterminer leur âge en années.",
+        "Sur le terrain, plusieurs principes de la stratigraphie permettent de reconstituer cet ordre :"
+      ],
+      bullets:[
+        "Principe de superposition : dans une série sédimentaire non déformée, une couche est plus récente que celle sur laquelle elle repose (la plus ancienne est donc à la base).",
+        "Principe de continuité : une même couche a le même âge en tout point de son étendue, sauf si elle a été érodée.",
+        "Principe de recoupement : une structure qui en recoupe une autre (faille, filon, intrusion) est plus récente que ce qu'elle recoupe.",
+        "Principe d'inclusion : un fragment inclus dans une roche (galet, morceau de roche) est plus ancien que la roche qui le contient."
+      ]
+    },
+    {
+      unit:'Unité 2', page:126,
+      title:"Les fossiles, outils de datation relative",
+      paragraphs:[
+        "Le principe de succession des faunes énonce que les assemblages d'espèces fossiles se succèdent dans un ordre irréversible au cours du temps géologique : l'évolution ne repasse jamais deux fois par le même état.",
+        "Un bon fossile stratigraphique (ou fossile guide) a deux qualités : une durée d'existence courte (grande précision chronologique) et une répartition géographique large (grande capacité de corrélation)."
+      ],
+      bullets:[
+        "Deux couches, même très éloignées, contenant les mêmes fossiles caractéristiques peuvent être considérées comme du même âge relatif : c'est la corrélation stratigraphique.",
+        "Cette méthode a permis de construire, avant même l'existence de la radiochronologie, une chronologie relative valable à l'échelle mondiale."
+      ]
+    },
+    {
+      unit:'Unité 3', page:128,
+      title:"Les fossiles, outils de découpage du temps",
+      paragraphs:[
+        "Les grandes limites de l'échelle des temps géologiques ne sont pas choisies arbitrairement : elles correspondent souvent à des crises biologiques, c'est-à-dire des épisodes d'extinction massive et rapide d'espèces, suivis d'un renouvellement des faunes et des flores.",
+        "Ces ruptures brutales dans le registre fossile constituent des repères naturels pour découper le temps géologique en unités."
+      ],
+      bullets:[
+        "Exemple emblématique : la limite Crétacé-Paléogène, il y a environ 66 Ma, marquée par la disparition des ammonites et des dinosaures non-aviens.",
+        "Chaque grande limite stratigraphique de l'échelle des temps correspond ainsi à un changement identifiable dans les archives fossiles."
+      ]
+    },
+    {
+      unit:'Unité 4', page:130,
+      title:"L'échelle chronostratigraphique",
+      paragraphs:[
+        "En combinant l'empilement des couches (superposition) et la succession des faunes, les géologues ont construit une échelle relative des temps géologiques, hiérarchisée en unités emboîtées, de la plus large à la plus précise : Éon, Ère, Période, Époque, Étage.",
+        "Le Phanérozoïque (le temps des fossiles visibles) se divise en trois grandes ères : le Paléozoïque (ère primaire), le Mésozoïque (ère secondaire, qui inclut le Trias, le Jurassique et le Crétacé) et le Cénozoïque (ère tertiaire puis quaternaire, notre ère actuelle)."
+      ],
+      bullets:[
+        "Cette échelle reste purement relative : elle ordonne les événements mais ne donne aucun âge en années.",
+        "Elle sera calée en années grâce à la datation absolue (radiochronologie), objet du chapitre suivant."
+      ]
+    }
+  ],
+
+  flashcards: [
+    {id:'f1', recto:"Principe de superposition", verso:"Dans une série sédimentaire non déformée, une couche est toujours plus jeune que celle sur laquelle elle repose.", notion:'u1'},
+    {id:'f2', recto:"Principe de recoupement", verso:"Une structure géologique (faille, filon, intrusion) est plus récente que les terrains qu'elle recoupe.", notion:'u1'},
+    {id:'f3', recto:"Principe d'inclusion", verso:"Un élément inclus dans une roche (ex : galet) est plus ancien que la roche qui le contient.", notion:'u1'},
+    {id:'f4', recto:"Principe de continuité", verso:"Une même couche sédimentaire a le même âge en tout point de son étendue, sauf érosion ultérieure.", notion:'u1'},
+    {id:'f5', recto:"Fossile stratigraphique (fossile guide)", verso:"Espèce à courte durée d'existence mais à large répartition géographique, utilisée pour dater et corréler des couches.", notion:'u2'},
+    {id:'f6', recto:"Corrélation stratigraphique", verso:"Mise en relation de couches géographiquement éloignées mais de même âge, grâce à des fossiles ou repères communs.", notion:'u2'},
+    {id:'f7', recto:"Principe de succession des faunes", verso:"Les assemblages d'espèces fossiles se succèdent dans un ordre irréversible au cours du temps géologique.", notion:'u2'},
+    {id:'f8', recto:"Crise biologique", verso:"Extinction rapide et massive d'espèces, marquant souvent une limite entre deux unités de l'échelle des temps.", notion:'u3'},
+    {id:'f9', recto:"Limite Crétacé-Paléogène (~ -66 Ma)", verso:"Grande crise biologique marquée par la disparition des ammonites et des dinosaures non-aviens.", notion:'u3'},
+    {id:'f10', recto:"Échelle chronostratigraphique", verso:"Échelle relative des temps géologiques, construite sans indication d'âge en années.", notion:'u4'},
+    {id:'f11', recto:"Éon > Ère > Période > Époque > Étage", verso:"Hiérarchie des unités de l'échelle des temps géologiques, de la plus large à la plus précise.", notion:'u4'},
+    {id:'f12', recto:"Datation relative", verso:"Établir l'ordre chronologique d'événements géologiques, sans déterminer leur âge en années.", notion:'u1'}
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {u1:'Unité 1 — Principes de terrain (p.124)', u2:'Unité 2 — Fossiles, datation (p.126)', u3:'Unité 3 — Fossiles, découpage du temps (p.128)', u4:'Unité 4 — Échelle chronostratigraphique (p.130)'},
+    bilanPage: 136, exosPage: 138, bacPage: 141,
+    nextStep: "Enchaîne sur le chapitre suivant (datation absolue) dès qu'il sera prêt."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"Une couche sédimentaire recoupée par une faille est, par rapport à cette faille :", options:["plus récente","plus ancienne","du même âge"], correct:1},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"Dans une série sédimentaire non déformée, la couche la plus ancienne se trouve :", options:["au sommet","à la base","impossible à dire sans datation absolue"], correct:1},
+    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"Un galet trouvé à l'intérieur d'un poudingue est, par rapport à cette roche :", options:["plus jeune","plus ancien","du même âge"], correct:1},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u1', q:"Le principe de continuité affirme qu'une couche sédimentaire a le même âge :", options:["uniquement en son centre","en tout point de son étendue, sauf érosion ultérieure","uniquement à sa base"], correct:1},
+    {id:'q5', type:'connaissance', difficulty:2, notion:'u2', q:"Un bon fossile stratigraphique doit avoir :", options:["une longue durée d'existence et une faible répartition","une courte durée d'existence et une large répartition","une longue durée d'existence et une large répartition"], correct:1},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u2', q:"Deux couches éloignées contenant les mêmes fossiles caractéristiques sont :", options:["de composition chimique identique","du même âge relatif","impossibles à comparer sans datation absolue"], correct:1},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u2', q:"Le principe de succession des faunes repose sur le fait que :", options:["les mêmes assemblages d'espèces peuvent réapparaître à l'identique","les assemblages d'espèces se succèdent dans un ordre irréversible","les fossiles ne renseignent jamais sur l'âge relatif"], correct:1},
+    {id:'q8', type:'connaissance', difficulty:1, notion:'u3', q:"Les grandes limites de l'échelle des temps géologiques correspondent souvent à :", options:["des crises biologiques et un renouvellement des faunes","des variations du niveau marin uniquement","des dates rondes choisies par convention"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:2, notion:'u3', q:"La disparition des ammonites et des dinosaures non-aviens marque la limite entre :", options:["Paléozoïque et Mésozoïque","Mésozoïque et Cénozoïque","Cénozoïque et l'époque actuelle"], correct:1},
+    {id:'q10', type:'connaissance', difficulty:2, notion:'u4', q:"Dans la hiérarchie de l'échelle chronostratigraphique, l'unité la plus précise (la plus petite) est :", options:["l'Ère","la Période","l'Étage"], correct:2},
+    {id:'r1', type:'raisonnement', difficulty:3, notion:'u1', q:"Sur un affleurement, on observe de bas en haut : une couche de calcaire A, une couche de grès B, puis une faille F qui recoupe A et B mais pas une couche de sable C située au sommet. Quel est l'ordre chronologique du plus ancien au plus récent ?",
+      options:["F, A, B, C","A, B, F, C","C, B, A, F"], correct:1,
+      hint:"Traite le problème en deux temps : place d'abord A, B et C entre elles avec un seul principe, puis situe F par rapport à ce qu'elle recoupe et ce qu'elle ne recoupe pas."},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u2', q:"Deux affleurements distants de 500 km contiennent la même espèce fossile, connue pour avoir vécu seulement 2 millions d'années. Que peut-on affirmer avec le plus de certitude ?",
+      options:["Les deux affleurements ont exactement le même âge, à l'année près","Les deux couches sont du même âge relatif, à environ 2 Ma près","Les deux affleurements se trouvaient à la même altitude"], correct:1,
+      hint:"Repense à ce qui fait la valeur d'un fossile stratigraphique. Une méthode de datation relative peut-elle donner une précision à l'année près ?"},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u3', q:"Entre deux couches successives d'un même affleurement, on observe la disparition brutale de nombreuses espèces fossiles, remplacées par de nouvelles formes. Quelle interprétation est la plus cohérente avec ce chapitre ?",
+      options:["C'est forcément une erreur d'échantillonnage à écarter","Cette limite correspond probablement à une crise biologique, utile comme repère stratigraphique","Les deux couches ont nécessairement le même âge"], correct:1,
+      hint:"Relie cette observation de terrain à ce qui définit, dans ce chapitre, les grandes coupures de l'échelle des temps."},
+    {id:'r4', type:'raisonnement', difficulty:3, notion:'u1', q:"Une roche volcanique contient des fragments anguleux d'une roche sédimentaire voisine, et elle est elle-même recoupée par une faille. Quel est l'ordre du plus ancien au plus récent ?",
+      options:["Faille, roche volcanique, roche sédimentaire","Roche sédimentaire, roche volcanique, faille","Roche volcanique, faille, roche sédimentaire"], correct:1,
+      hint:"Utilise deux principes l'un après l'autre : celui qui concerne un fragment inclus dans une roche, puis celui qui concerne une structure qui en recoupe une autre."},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u4', q:"L'échelle chronostratigraphique est construite uniquement à partir de la superposition des couches et de la succession des faunes, sans radiochronologie. Peut-on affirmer que le Crétacé a duré exactement 79 millions d'années ?",
+      options:["Oui, cette durée découle directement de ces deux principes","Non, la datation relative seule donne un ordre, pas une durée en années","Oui, mais seulement grâce aux fossiles guides"], correct:1,
+      hint:"Redemande-toi ce que peut produire une méthode qui compare seulement des couches et des fossiles entre eux, sans mesurer aucune grandeur physique."},
+    {id:'r6', type:'raisonnement', difficulty:3, notion:'u2', q:"Un même niveau fossilifère est retrouvé en France et en Argentine, juste au-dessus d'une limite marquée par la disparition de nombreuses espèces. Que peut-on dire de la position chronologique de ce niveau à l'échelle mondiale ?",
+      options:["Rien, sans datation absolue commune aux deux sites","Il peut être positionné de façon fiable juste après une grande limite reconnue mondialement","Les deux sites ne peuvent pas être comparés car séparés par un océan"], correct:1,
+      hint:"Combine deux outils du chapitre : la portée des fossiles guides pour corréler à grande distance, et le rôle des crises biologiques comme repères mondiaux."}
+  ],
+
+  mindmapModel: {
+    label:"Datation relative",
+    children:[
+      {label:"Principes de terrain", children:[
+        {label:"Superposition"},{label:"Recoupement"},{label:"Inclusion"},{label:"Continuité"}
+      ]},
+      {label:"Fossiles", children:[
+        {label:"Fossile stratigraphique"},{label:"Corrélation stratigraphique"},{label:"Succession des faunes"}
+      ]},
+      {label:"Découpage du temps", children:[
+        {label:"Crise biologique"},{label:"Limite Crétacé-Paléogène"}
+      ]},
+      {label:"Échelle chronostratigraphique", children:[
+        {label:"Éon / Ère / Période / Époque / Étage"},{label:"Vers la datation absolue →"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>
