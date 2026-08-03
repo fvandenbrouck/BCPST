@@ -1,0 +1,81 @@
+<svg viewBox="0 0 620 540" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif" font-size="12">
+  <rect x="0" y="0" width="620" height="540" fill="#FBF8F0"/>
+
+  <!-- Boîte centrale haute -->
+  <rect x="170" y="10" width="280" height="40" rx="8" fill="#FBF8F0" stroke="#262319" stroke-width="1.5"/>
+  <text x="310" y="34" text-anchor="middle" font-weight="bold" fill="#262319">Écart à la glycémie de référence (~1 g/L)</text>
+
+  <!-- Flèches diagonales vers les deux colonnes -->
+  <line x1="250" y1="50" x2="170" y2="88" stroke="#262319" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+  <line x1="370" y1="50" x2="450" y2="88" stroke="#262319" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+
+  <!-- Colonne gauche : hyperglycémie / insuline (ochre) -->
+  <rect x="30" y="90" width="260" height="50" rx="8" fill="#C89B3C" fill-opacity="0.18" stroke="#7E3A1D" stroke-width="1.5"/>
+  <text x="160" y="110" text-anchor="middle" font-weight="bold" fill="#7E3A1D">Hyperglycémie</text>
+  <text x="160" y="126" text-anchor="middle" font-size="11" fill="#524c3e">(après un repas)</text>
+
+  <line x1="160" y1="140" x2="160" y2="168" stroke="#7E3A1D" stroke-width="1.5" marker-end="url(#arrowRust)"/>
+
+  <rect x="30" y="170" width="260" height="60" rx="8" fill="#C89B3C" fill-opacity="0.18" stroke="#7E3A1D" stroke-width="1.5"/>
+  <text x="160" y="192" text-anchor="middle" font-weight="bold" fill="#7E3A1D">Cellules β — îlots de Langerhans</text>
+  <text x="160" y="210" text-anchor="middle" font-size="11" fill="#524c3e">détectent l'excès de glucose sanguin</text>
+
+  <line x1="160" y1="230" x2="160" y2="258" stroke="#7E3A1D" stroke-width="1.5" marker-end="url(#arrowRust)"/>
+
+  <rect x="30" y="260" width="260" height="45" rx="8" fill="#C89B3C" fill-opacity="0.18" stroke="#7E3A1D" stroke-width="1.5"/>
+  <text x="160" y="280" text-anchor="middle" font-weight="bold" fill="#7E3A1D">Sécrétion d'insuline</text>
+  <text x="160" y="296" text-anchor="middle" font-size="11" fill="#524c3e">(hormone hypoglycémiante)</text>
+
+  <line x1="160" y1="305" x2="160" y2="333" stroke="#7E3A1D" stroke-width="1.5" marker-end="url(#arrowRust)"/>
+
+  <rect x="30" y="335" width="260" height="70" rx="8" fill="#C89B3C" fill-opacity="0.18" stroke="#7E3A1D" stroke-width="1.5"/>
+  <text x="160" y="357" text-anchor="middle" font-weight="bold" fill="#7E3A1D">Foie + muscles</text>
+  <text x="160" y="374" text-anchor="middle" font-size="11" fill="#524c3e">entrée du glucose dans les cellules,</text>
+  <text x="160" y="390" text-anchor="middle" font-size="11" fill="#524c3e">mise en réserve (glycogénogenèse)</text>
+
+  <!-- Colonne droite : hypoglycémie / glucagon (ardoise) -->
+  <rect x="330" y="90" width="260" height="50" rx="8" fill="#4C5B66" fill-opacity="0.15" stroke="#4C5B66" stroke-width="1.5"/>
+  <text x="460" y="110" text-anchor="middle" font-weight="bold" fill="#4C5B66">Hypoglycémie</text>
+  <text x="460" y="126" text-anchor="middle" font-size="11" fill="#524c3e">(à jeun, pendant l'effort)</text>
+
+  <line x1="460" y1="140" x2="460" y2="168" stroke="#4C5B66" stroke-width="1.5" marker-end="url(#arrowSlate)"/>
+
+  <rect x="330" y="170" width="260" height="60" rx="8" fill="#4C5B66" fill-opacity="0.15" stroke="#4C5B66" stroke-width="1.5"/>
+  <text x="460" y="192" text-anchor="middle" font-weight="bold" fill="#4C5B66">Cellules α — îlots de Langerhans</text>
+  <text x="460" y="210" text-anchor="middle" font-size="11" fill="#524c3e">détectent le déficit de glucose sanguin</text>
+
+  <line x1="460" y1="230" x2="460" y2="258" stroke="#4C5B66" stroke-width="1.5" marker-end="url(#arrowSlate)"/>
+
+  <rect x="330" y="260" width="260" height="45" rx="8" fill="#4C5B66" fill-opacity="0.15" stroke="#4C5B66" stroke-width="1.5"/>
+  <text x="460" y="280" text-anchor="middle" font-weight="bold" fill="#4C5B66">Sécrétion de glucagon</text>
+  <text x="460" y="296" text-anchor="middle" font-size="11" fill="#524c3e">(hormone hyperglycémiante)</text>
+
+  <line x1="460" y1="305" x2="460" y2="333" stroke="#4C5B66" stroke-width="1.5" marker-end="url(#arrowSlate)"/>
+
+  <rect x="330" y="335" width="260" height="70" rx="8" fill="#4C5B66" fill-opacity="0.15" stroke="#4C5B66" stroke-width="1.5"/>
+  <text x="460" y="357" text-anchor="middle" font-weight="bold" fill="#4C5B66">Foie</text>
+  <text x="460" y="374" text-anchor="middle" font-size="11" fill="#524c3e">libération de glucose dans le sang</text>
+  <text x="460" y="390" text-anchor="middle" font-size="11" fill="#524c3e">(glycogénolyse, néoglucogenèse)</text>
+
+  <!-- Flèches diagonales de retour vers la boîte centrale basse -->
+  <line x1="160" y1="405" x2="250" y2="443" stroke="#262319" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+  <line x1="460" y1="405" x2="370" y2="443" stroke="#262319" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+
+  <!-- Boîte centrale basse -->
+  <rect x="170" y="445" width="280" height="42" rx="8" fill="#FBF8F0" stroke="#262319" stroke-width="1.5"/>
+  <text x="310" y="470" text-anchor="middle" font-weight="bold" fill="#262319">Retour à la glycémie de référence (~1 g/L)</text>
+
+  <text x="310" y="515" text-anchor="middle" font-size="11.5" fill="#524c3e">Deux boucles de rétrocontrôle négatif, activées selon le sens de l'écart à la référence.</text>
+
+  <defs>
+    <marker id="arrowDark" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#262319"/>
+    </marker>
+    <marker id="arrowRust" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#7E3A1D"/>
+    </marker>
+    <marker id="arrowSlate" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#4C5B66"/>
+    </marker>
+  </defs>
+</svg>
