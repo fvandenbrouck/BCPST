@@ -6,8 +6,13 @@
  *
  * Contrat attendu sur MODULE (voir svt/ch05-datation-relative.html pour un exemple complet) :
  *   id, chapNum, subjectLabel, title, pages, bridge:{from,to}, backHref,
- *   fiches:[{unit,page,title,paragraphs,bullets}],
+ *   fiches:[{unit,page,title,paragraphs,bullets,terrainBadge?,badge?}],
  *   flashcards, qcm, qcmMeta, diagnostic, mindmapModel
+ *
+ * Une fiche renvoie normalement à une page du manuel (`page`). Pour un contenu sans
+ * renvoi de page (ex. un zoom interdisciplinaire vers un programme officiel), fournir
+ * `badge` (chaîne libre, ex. "PC Term.") à la place de `page` : il s'affiche alors tel
+ * quel dans le même badge monospace, sans préfixe "p.".
  */
 (function(){
   function esc(s){ return (s+'').replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
@@ -29,7 +34,7 @@
     let html = '';
     mod.fiches.forEach(f=>{
       html += `<div class="card">
-        <h3>${esc(f.unit)} — ${esc(f.title)} <span class="page-tag">p.${f.page}</span></h3>
+        <h3>${esc(f.unit)} — ${esc(f.title)} <span class="page-tag">${f.badge ? esc(f.badge) : 'p.'+f.page}</span></h3>
         ${f.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}
         <ul>${f.bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>
         ${f.terrainBadge ? `<a class="terrain-badge" href="${f.terrainBadge.href}">🏔️ Vu sur le terrain — ${esc(f.terrainBadge.label)}</a>` : ''}

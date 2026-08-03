@@ -26,7 +26,7 @@ const MODULE = {
   pages: "p.144 à 161",
   backHref: '../index.html',
   bridge: {
-    from: "La décroissance radioactive et la notion de demi-vie ont été introduites en Enseignement scientifique de Première/Terminale (tronc commun), notamment via la datation au carbone 14 — sans être approfondies pour des radiochronomètres à très longue période.",
+    from: "La décroissance radioactive et la notion de demi-vie ont été introduites en Enseignement scientifique de Première/Terminale (tronc commun), notamment via la datation au carbone 14. Le calcul complet — résoudre l'équation différentielle dN/dt = −λN — est explicitement du ressort du programme de Terminale spécialité physique-chimie, que le programme de SVT renvoie sur ce point précis : c'est ce que détaille la fiche « Zoom » ci-dessous.",
     to: "En BCPST1, la loi de décroissance N = N₀e^(−λt) et son traitement (exponentielle, logarithme, temps caractéristique) seront formalisés en Mathématiques (Analyse) et réutilisés en Sciences de la Terre chaque fois qu'un âge de roche sera à établir."
   },
 
@@ -55,6 +55,27 @@ const MODULE = {
         "On utilise le strontium-86 (86Sr) comme référence : c'est un isotope stable et non radiogénique (il n'est produit par aucune désintégration), donc sa quantité dans un minéral ne varie pas au cours du temps.",
         "En reportant, pour plusieurs minéraux d'une même roche, le rapport 87Sr/86Sr en fonction du rapport 87Rb/86Sr, les points s'alignent sur une droite : la droite isochrone.",
         "La pente de cette droite permet de calculer l'âge de cristallisation commun des minéraux ; son ordonnée à l'origine donne le rapport initial 87Sr/86Sr, sans qu'il soit besoin de le connaître au préalable."
+      ]
+    },
+    {
+      unit:'Zoom', badge:"PC Term.",
+      title:"Justifier la méthode de l'isochrone (le calcul complet)",
+      paragraphs:[
+        "Un noyau radioactif se désintègre de façon aléatoire, mais prévisible à l'échelle d'une population : à chaque instant, la probabilité qu'un noyau donné se désintègre pendant un court intervalle de temps est la même. Si N(t) désigne le nombre de noyaux radioactifs encore présents à l'instant t, cela se traduit par une équation différentielle du premier ordre, vue en physique-chimie de Terminale : dN/dt = −λN, où λ est la constante radioactive, propre à chaque isotope. Sa résolution — une compétence mathématique explicitement exigible en Terminale spécialité physique-chimie — donne la loi de décroissance radioactive : N(t) = N₀ e^(−λt). On en déduit la demi-vie t½ (durée au bout de laquelle la moitié des noyaux initiaux a disparu) : t½ = ln(2) / λ.",
+        "Pour un couple père-fils utilisé en géologie, comme le 87Rb (radioactif) qui se désintègre en 87Sr (stable), le nombre de noyaux fils produits par désintégration depuis la fermeture du système correspond à la différence entre la population initiale de père et sa population actuelle : P₀ − P(t). Comme P(t) = P₀e^(−λt), on a P₀ = P(t)e^(λt), donc le nombre de fils radiogéniques produits vaut P(t)(e^(λt) − 1). Si le système contenait déjà, dès sa fermeture, une quantité D₀ de fils non radiogénique (présente sans lien avec la désintégration), la quantité totale de fils mesurée aujourd'hui s'écrit : D(t) = D₀ + P(t)(e^(λt) − 1).",
+        "Problème pratique : D₀ est inconnu, on ne peut pas mesurer ce qui existait il y a des centaines de millions d'années. La méthode de l'isochrone contourne cette difficulté grâce à un troisième isotope, le 86Sr, stable et non radiogénique : sa quantité dans un minéral donné n'a pas varié depuis la fermeture du système. En divisant chaque terme de la relation précédente par cette quantité constante, on obtient une relation entre deux rapports isotopiques mesurables aujourd'hui au spectromètre de masse : (87Sr/86Sr) = (87Sr/86Sr)₀ + (87Rb/86Sr) × (e^(λt) − 1). C'est l'équation d'une droite : en posant Y = 87Sr/86Sr et X = 87Rb/86Sr, elle s'écrit Y = a + bX, avec a = (87Sr/86Sr)₀ (l'ordonnée à l'origine, le rapport initial) et b = e^(λt) − 1 (la pente, qui ne dépend que de l'âge t).",
+        "Un seul minéral ne donne qu'un seul point (X, Y) : impossible de séparer a et b avec un point unique. La méthode exploite le fait qu'une même roche contient plusieurs minéraux (mica, feldspath…) qui, en cristallisant, ont capté des quantités différentes de rubidium et de strontium selon leur chimie propre — mais qui partageaient tous, à cet instant, le même rapport isotopique initial (le strontium était homogène dans le magma avant la cristallisation) et se sont fermés au même moment. En mesurant X et Y aujourd'hui dans plusieurs minéraux de la même roche, on obtient donc plusieurs points qui doivent, si l'hypothèse est vérifiée, s'aligner sur une droite : l'isochrone (« de même âge », du grec isos et khronos).",
+        "Une fois les points placés dans un repère (X, Y), on détermine l'équation de la droite qui les ajuste le mieux par régression linéaire — exactement la compétence calculatrice mentionnée dans les recommandations de rentrée de physique-chimie (tracer un graphe, faire une régression linéaire sur une série de points alignés). La pente b permet de remonter à l'âge : b = e^(λt) − 1, donc t = ln(1 + b) / λ. L'ordonnée à l'origine a donne en prime le rapport isotopique initial du strontium au moment de la formation de la roche.",
+        "Exemple : pour le couple 87Rb/86Sr, λ = 1,42 × 10⁻¹¹ an⁻¹. Quatre minéraux d'une même roche (données idéalisées pour l'exemple, pas un jeu de mesures réel) donnent les points suivants : (X=1 ; Y=0,710), (X=5 ; Y=0,750), (X=10 ; Y=0,800), (X=20 ; Y=0,900). Ces points sont alignés sur une droite de pente b = 0,010 et d'ordonnée à l'origine a = 0,700. On en déduit l'âge : t = ln(1,010) / (1,42 × 10⁻¹¹) ≈ 7,0 × 10⁸ ans, soit environ 700 millions d'années — et un rapport isotopique initial (87Sr/86Sr)₀ = 0,700, cohérent avec les valeurs habituellement mesurées à cette époque."
+      ],
+      bullets:[
+        "N(t) = N₀e^(−λt) : loi de décroissance radioactive, établie en Terminale physique-chimie à partir de dN/dt = −λN",
+        "D(t) = D₀ + P(t)(e^(λt) − 1) : quantité de fils radiogénique produite depuis la fermeture du système",
+        "Normalisation par un isotope stable non radiogénique (86Sr) pour s'affranchir de D₀ inconnu",
+        "Équation de l'isochrone : Y = a + bX, avec a = rapport initial et b = e^(λt) − 1",
+        "Âge : t = ln(1 + pente) / λ",
+        "Plusieurs minéraux nécessaires : un seul point ne suffit pas à déterminer une droite (deux inconnues, a et b)",
+        "Hypothèses de validité : rapport initial homogène entre les minéraux + système resté clos depuis la fermeture"
       ]
     },
     {
@@ -93,6 +114,8 @@ const MODULE = {
     {id:'f5', recto:"Couple Rubidium-Strontium (87Rb → 87Sr)", verso:"Radiochronomètre à très longue demi-vie (~48,8 Ga), utilisé pour dater des roches très anciennes (granites, micas).", notion:'u2'},
     {id:'f6', recto:"Droite isochrone", verso:"Droite obtenue en reportant, pour plusieurs minéraux d'une même roche, le rapport 87Sr/86Sr en fonction de 87Rb/86Sr ; sa pente donne l'âge, son ordonnée le rapport initial en Sr initial.", notion:'u2'},
     {id:'f7', recto:"Strontium-86 (86Sr)", verso:"Isotope stable et non radiogénique du strontium, utilisé comme référence dans la méthode isochrone car sa quantité ne varie pas au cours du temps.", notion:'u2'},
+    {id:'ch6-fc-iso-1', recto:"Équation de l'isochrone, sous forme Y = a + bX : que valent a et b ?", verso:"a = (87Sr/86Sr)₀, le rapport initial (ordonnée à l'origine) · b = e^(λt) − 1, qui dépend uniquement de l'âge (pente)", notion:'isochrone'},
+    {id:'ch6-fc-iso-2', recto:"Formule pour retrouver l'âge t à partir de la pente b d'une isochrone", verso:"t = ln(1 + b) / λ", notion:'isochrone'},
     {id:'f8', recto:"Couple Potassium-Argon (40K → 40Ar)", verso:"Radiochronomètre de demi-vie ~1,25 Ga, adapté aux roches volcaniques : l'argon s'échappe du magma liquide, le compteur repart à zéro à la solidification.", notion:'u3'},
     {id:'f9', recto:"Argon piégé", verso:"Argon-40 formé par désintégration du potassium-40 après la solidification de la lave, retenu dans le réseau cristallin.", notion:'u3'},
     {id:'f10', recto:"Couple Uranium-Plomb (238U→206Pb et 235U→207Pb)", verso:"Deux désintégrations parallèles et indépendantes au sein du même minéral, permettant deux datations croisées.", notion:'u4'},
@@ -106,7 +129,7 @@ const MODULE = {
     words: {connaissance:'connaissances', raisonnement:'raisonnement'}
   },
   diagnostic: {
-    unitNames: {u1:'Unité 1 — Principe de la datation absolue (p.146)', u2:'Unité 2 — Rubidium/Strontium (p.148)', u3:'Unité 3 — Potassium/Argon (p.150)', u4:'Unité 4 — Uranium/Plomb (p.152)'},
+    unitNames: {u1:'Unité 1 — Principe de la datation absolue (p.146)', u2:'Unité 2 — Rubidium/Strontium (p.148)', isochrone:"la méthode de l'isochrone (calcul, PC Term.)", u3:'Unité 3 — Potassium/Argon (p.150)', u4:'Unité 4 — Uranium/Plomb (p.152)'},
     bilanPage: 156, exosPage: 158, bacPage: 161,
     nextStep: "Enchaîne sur le chapitre suivant (traces du passé mouvementé de la Terre) dès qu'il sera prêt."
   },
@@ -123,6 +146,8 @@ const MODULE = {
     {id:'q9', type:'connaissance', difficulty:1, notion:'u4', q:"La méthode uranium-plomb s'appuie sur :", options:["une seule désintégration radioactive","deux désintégrations parallèles et indépendantes (238U→206Pb et 235U→207Pb) dans le même minéral","la désintégration du plomb en uranium"], correct:1},
     {id:'q10', type:'connaissance', difficulty:2, notion:'u4', q:"Le zircon est le minéral de référence en datation U-Pb car :", options:["il incorpore facilement l'uranium mais exclut le plomb lors de sa cristallisation, ce qui en fait un système clos quasi idéal","il contient naturellement beaucoup de plomb initial, facile à mesurer","il ne se forme que dans les roches sédimentaires récentes"], correct:0,
       image:{src:"https://upload.wikimedia.org/wikipedia/commons/c/c7/Zircon-249203.jpg", alt:"Cristal de zircon", credit:"Photo : Rob Lavinsky, iRocks.com, Wikimedia Commons, CC BY-SA 3.0"}},
+    {id:'ch6-q-iso-1', type:'connaissance', difficulty:1, notion:'isochrone', q:"Dans la loi N(t) = N₀e^(−λt), que représente λ ?", options:["La demi-vie de l'isotope","La constante radioactive, propre à chaque isotope","Le rapport isotopique initial","La masse initiale de l'échantillon"], correct:1},
+    {id:'ch6-q-iso-2', type:'connaissance', difficulty:2, notion:'isochrone', q:"Pourquoi utilise-t-on le rapport 87Sr/86Sr plutôt que la seule quantité de 87Sr ?", options:["Parce que le 86Sr, isotope stable et non radiogénique, sert de référence constante et permet de s'affranchir de la taille inconnue de l'échantillon","Parce que le 86Sr est lui aussi radioactif et se désintègre en 87Sr","Parce que c'est plus simple à mesurer au spectromètre de masse","Parce que le rapport donne directement l'âge sans calcul"], correct:0},
 
     {id:'r1', type:'raisonnement', difficulty:2, notion:'u1', q:"Un géologue veut dater un échantillon vieux d'environ 10 000 ans à l'aide d'un radiochronomètre de demi-vie 48,8 milliards d'années. Que peut-on prévoir ?",
       options:["La méthode sera très précise, car la demi-vie est très longue","La quantité de descendant radiogénique formée sera quasiment indétectable, rendant la méthode inadaptée ici","Le résultat obtenu sera automatiquement erroné, quelle que soit la précision de la mesure"], correct:1,
@@ -143,7 +168,13 @@ const MODULE = {
       hint:"Une méthode de datation est la plus précise quand la demi-vie du radiochronomètre est du même ordre de grandeur que l'âge de l'échantillon : ni trop courte (isotope père épuisé), ni trop longue (isotope fils en quantité trop faible pour être mesurée précisément)."},
     {id:'r6', type:'raisonnement', difficulty:2, notion:'u4', q:"Les roches les plus anciennes connues sur Terre et plusieurs météorites, datées par U-Pb, donnent un âge convergent d'environ 4,567 milliards d'années. Quelle est l'interprétation la plus rigoureuse de cette convergence ?",
       options:["C'est une coïncidence numérique sans signification géologique particulière","Cet âge correspond probablement à la formation du système solaire, dont la Terre et les météorites sont issues à la même époque","Cela prouve que la Terre et les météorites sont constituées exactement de la même roche"], correct:1,
-      hint:"Repense à ce qui distingue un âge de cristallisation propre à une seule roche terrestre isolée, et un âge partagé par plusieurs corps différents du système solaire."}
+      hint:"Repense à ce qui distingue un âge de cristallisation propre à une seule roche terrestre isolée, et un âge partagé par plusieurs corps différents du système solaire."},
+    {id:'ch6-q-iso-3', type:'raisonnement', difficulty:3, notion:'isochrone', q:"Sur un diagramme isochrone, plusieurs minéraux d'une roche donnent une pente b = 0,02. Avec λ(87Rb) = 1,42 × 10⁻¹¹ an⁻¹, quel est l'ordre de grandeur de l'âge de la roche ?",
+      options:["Environ 1,4 milliard d'années","Environ 140 millions d'années","Environ 49 milliards d'années","Environ 20 000 ans"], correct:0,
+      hint:"Pars de b = e^(λt) − 1, isole t = ln(1+b)/λ, puis fais l'application numérique — pas besoin d'approximer, mais vérifie l'ordre de grandeur du résultat."},
+    {id:'ch6-q-iso-4', type:'raisonnement', difficulty:2, notion:'isochrone', q:"Un seul minéral d'une roche donne un unique point (X, Y) sur le diagramme. Pourquoi ce point seul ne permet-il pas de dater la roche ?",
+      options:["Il faut au moins deux points alignés pour déterminer à la fois la pente et l'ordonnée à l'origine d'une droite","Un seul minéral ne contient jamais assez de rubidium pour être mesuré","Le spectromètre de masse nécessite plusieurs échantillons pour être étalonné","La constante λ change d'un minéral à l'autre"], correct:0,
+      hint:"Combien d'inconnues contient l'équation d'une droite Y = a + bX ? Combien de points faut-il au minimum pour les déterminer toutes les deux ?"}
   ],
 
   mindmapModel: {
@@ -153,7 +184,10 @@ const MODULE = {
         {label:"Décroissance radioactive"},{label:"Isotope père / isotope fils"},{label:"Demi-vie"},{label:"Système clos"}
       ]},
       {label:"Rubidium — Strontium", children:[
-        {label:"87Rb → 87Sr, très longue demi-vie"},{label:"Droite isochrone"},{label:"Roches très anciennes"}
+        {label:"87Rb → 87Sr, très longue demi-vie"},{label:"Droite isochrone"},{label:"Roches très anciennes"},
+        {label:"Méthode de l'isochrone", children:[
+          {label:"Normalisation par 86Sr (stable)"},{label:"Droite Y = a + bX"},{label:"t = ln(1+pente) / λ"},{label:"Plusieurs minéraux nécessaires (2 inconnues)"}
+        ]}
       ]},
       {label:"Potassium — Argon", children:[
         {label:"40K → 40Ar"},{label:"Argon initial nul (roches volcaniques)"}
