@@ -6,245 +6,248 @@
 <meta name="color-scheme" content="light">
 <title>Le Chenaillet · Enquête sur un océan disparu · Strates</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
 <style>
-  :root {
-    --ink:#262319;
-    --muted:#524c3e;
-    --paper:#F4EEDF;
-    --card:#FBF8F0;
-    --line:#D8CDAF;
-    --parchment-deep:#EAE1CB;
-    --forest:#A6512B;
-    --forest-2:#7E3A1D;
-    --moss:#5F6F42;
-    --ochre:#C89B3C;
-    --ochre-soft:#FBF3DD;
-    --sky:#4C5B66;
-    --success:#5F6F42;
-    --danger:#A6512B;
-    --shadow:0 8px 24px rgba(38,35,25,.08);
-    --radius:14px;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;
-    color:var(--ink);
-    background:var(--paper);
-    font-family:'Inter',sans-serif;
-    line-height:1.55;
-  }
-  button, input, textarea{font:inherit}
-  button{cursor:pointer}
-  a{color:var(--forest)}
-  .shell{width:min(1120px, calc(100% - 28px)); margin:0 auto 70px}
-  .hero{
-    margin:18px auto 14px;
-    min-height:300px;
-    border-radius:var(--radius);
-    overflow:hidden;
-    position:relative;
-    color:white;
-    box-shadow:var(--shadow);
-    background:linear-gradient(120deg, var(--forest-2), var(--forest) 65%, var(--ochre));
-  }
-  .hero-inner{position:relative; z-index:1; padding:42px clamp(24px,6vw,68px)}
-  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:.74rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; opacity:.9}
-  h1,h2,h3{font-family:'Fraunces',serif; font-weight:600; line-height:1.15; margin-top:0; letter-spacing:-.01em}
-  h1{font-size:clamp(1.9rem,5vw,3.4rem); max-width:900px; margin-bottom:16px}
-  .hero p{font-size:clamp(1rem,2vw,1.12rem); max-width:780px; margin:0 0 20px; color:rgba(255,255,255,.92)}
-  .hero-meta{display:flex; flex-wrap:wrap; gap:9px}
-  .pill{display:inline-flex; align-items:center; gap:8px; border-radius:999px; padding:7px 12px; font-size:.83rem; font-weight:600; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.24)}
-  .safety{margin-top:20px; max-width:760px; font-size:.86rem; color:rgba(255,255,255,.85)}
+/* Compléments propres à la chasse au trésor. La palette, la typographie,
+   les cartes, les QCM et le carnet proviennent de strates.css. Ne pas
+   modifier strates.css : tout ce qui est spécifique à cette page vit ici. */
+html{scroll-behavior:smooth;}
+button:disabled{cursor:not-allowed;opacity:.42;}
 
-  .toolbar{
-    position:sticky; top:10px; z-index:20;
-    display:flex; align-items:center; justify-content:space-between; gap:14px;
-    margin:14px 0 22px; padding:10px;
-    border:1px solid var(--line); border-radius:12px;
-    background:var(--card); box-shadow:0 4px 14px rgba(38,35,25,.06);
-  }
-  .tabs{display:flex; gap:6px; flex-wrap:wrap}
-  .tab-btn{border:0; background:transparent; padding:9px 12px; border-radius:10px; color:var(--muted); font-weight:600}
-  .tab-btn.active{background:var(--forest); color:white}
-  .progress-wrap{min-width:170px; text-align:right; font-family:'IBM Plex Mono',monospace; font-size:.76rem; color:var(--muted)}
-  .progress-track{height:7px; background:var(--parchment-deep); border-radius:99px; overflow:hidden; margin-top:5px}
-  .progress-bar{height:100%; width:0; background:var(--moss); transition:width .3s ease}
+.module-head{--card-accent:var(--moss);}
+.module-head h1{font-size:clamp(27px,6vw,42px);line-height:1.08;margin-bottom:6px;}
+.module-head .m-pages{font-family:'IBM Plex Mono',monospace;}
+.module-head .m-bridge{margin-top:14px;}
 
-  .view{display:none}
-  .view.active{display:block}
-  .panel{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:0 4px 16px rgba(38,35,25,.05); padding:clamp(20px,4vw,34px); margin:18px 0}
-  .panel h2{font-size:clamp(1.5rem,3vw,2.1rem); margin-bottom:10px}
-  .lead{font-size:1.04rem; color:var(--muted); max-width:850px}
-  .grid-2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px}
-  .grid-3{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px}
-  .mini{background:var(--parchment-deep); border:1px solid var(--line); border-radius:12px; padding:16px}
-  .mini h3{font-size:1.02rem; margin-bottom:6px}
-  .mini p{margin:0; color:var(--muted)}
-  .rule{height:1px; background:var(--line); margin:22px 0}
-  .callout{border-left:4px solid var(--ochre); background:var(--parchment-deep); border-radius:0 12px 12px 0; padding:15px 17px; margin:18px 0}
-  .callout strong{display:block; margin-bottom:4px; color:var(--forest-2)}
-  .objectives{padding-left:20px}
-  .objectives li{margin:7px 0}
+.meta-row{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 0;}
+.meta-chip{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);
+  background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:5px 9px;
+}
 
-  .stations-head{display:flex; align-items:end; justify-content:space-between; gap:20px; margin:30px 0 14px}
-  .stations-head h2{font-size:clamp(1.7rem,4vw,2.6rem); margin-bottom:5px}
-  .stations-head p{margin:0; color:var(--muted)}
-  .station-nav{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:8px; margin-bottom:16px}
-  .station-chip{border:1px solid var(--line); background:var(--card); border-radius:10px; padding:10px 7px; font-family:'IBM Plex Mono',monospace; font-size:.76rem; font-weight:600; color:var(--muted)}
-  .station-chip.active{background:var(--forest); color:white; border-color:var(--forest)}
-  .station-chip.done::after{content:" ✓"}
-  .station{display:none}
-  .station.active{display:block}
-  .station-card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
-  .station-top{padding:24px clamp(20px,4vw,38px); background:var(--parchment-deep)}
-  .station-kicker{font-family:'IBM Plex Mono',monospace; font-size:.72rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--forest)}
-  .station-top h3{font-size:clamp(1.5rem,3.4vw,2.3rem); margin:7px 0 8px}
-  .location{display:inline-flex; gap:7px; align-items:center; font-weight:600; color:var(--muted); font-size:.9rem}
-  .station-body{padding:clamp(20px,4vw,38px)}
-  .mission-box{border-left:4px solid var(--moss); background:var(--parchment-deep); border-radius:0 12px 12px 0; padding:16px 18px; margin-bottom:18px}
-  .mission-box h4,.question h4{margin:0 0 8px; font-size:.82rem; font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.06em; color:var(--forest); font-weight:600}
-  .field-note{width:100%; min-height:96px; resize:vertical; border:1px solid var(--line); border-radius:10px; background:var(--card); padding:11px 12px; margin-top:10px}
-  .question{margin-top:18px}
-  .choices{display:grid; gap:9px; margin-top:12px}
-  .choice{display:flex; gap:10px; align-items:flex-start; border:1px solid var(--line); border-radius:10px; background:var(--card); padding:12px 13px}
-  .choice:hover{border-color:var(--ochre)}
-  .choice input{margin-top:4px; accent-color:var(--forest)}
-  .choice span{display:block}
-  .stage-actions{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:18px}
-  .btn{border:0; border-radius:10px; padding:10px 14px; font-weight:600}
-  .btn-primary{background:var(--forest); color:white}
-  .btn-primary:hover{background:var(--forest-2)}
-  .btn-secondary{background:var(--parchment-deep); color:var(--ink)}
-  .btn-ghost{background:transparent; border:1px solid var(--line); color:var(--muted)}
-  .btn-danger{background:#F6E4DA; color:var(--forest-2)}
-  .feedback{display:none; border-radius:12px; padding:15px 17px; margin-top:16px}
-  .feedback.show{display:block}
-  .feedback.ok{background:#EAF0DF; border:1px solid var(--moss); color:#3A4A2A}
-  .feedback.no{background:#F6E4DA; border:1px solid var(--forest); color:var(--forest-2)}
-  .feedback h4{margin:0 0 5px; font-family:'Fraunces',serif;}
-  .hints{margin-top:16px; display:grid; gap:8px}
-  .hint{display:none; border-left:3px solid var(--ochre); background:var(--ochre-soft); padding:11px 13px; border-radius:0 10px 10px 0}
-  .hint.show{display:block}
-  .reward{display:none; margin-top:18px; border:2px dashed var(--ochre); border-radius:14px; padding:16px; background:var(--ochre-soft)}
-  .reward.show{display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:center}
-  .reward-letter{width:58px; height:66px; border-radius:10px; display:grid; place-items:center; background:var(--ochre); color:white; font-family:'Fraunces',serif; font-size:2.1rem; font-weight:700; box-shadow:inset 0 0 0 3px rgba(255,255,255,.22)}
-  .reward h4{margin:0 0 4px; font-size:1rem; font-family:'Fraunces',serif;}
-  .reward p{margin:0; color:var(--muted)}
-  .station-footer{display:flex; justify-content:space-between; gap:10px; margin-top:18px}
+.nav-wrap{margin-bottom:16px;}
+.nav-wrap .tabs{margin:0 0 8px;}
+.progress-panel{display:flex;align-items:center;gap:10px;margin:0 0 12px;}
+.progress-panel span{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);white-space:nowrap;}
+.progress-track{height:7px;flex:1;background:var(--parchment-deep);border-radius:20px;overflow:hidden;}
+.progress-bar{height:100%;width:0;background:var(--moss);transition:width .3s ease;}
 
-  .decoder-board{display:grid; gap:18px}
-  .slots{display:grid; grid-template-columns:repeat(6,minmax(40px,80px)); gap:8px; justify-content:center; margin:18px 0}
-  .slot{height:82px; border:2px solid var(--line); border-radius:12px; display:grid; place-items:center; background:var(--parchment-deep); font-family:'Fraunces',serif; font-size:2.1rem; font-weight:700; color:var(--forest)}
-  .slot.empty{color:var(--muted); font-size:1.3rem}
-  .card-list{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px}
-  .code-card{border:1px solid var(--line); border-radius:14px; background:var(--card); padding:14px; box-shadow:0 4px 14px rgba(38,35,25,.06)}
-  .code-card.selected{outline:3px solid rgba(200,155,60,.5)}
-  .code-top{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px}
-  .code-letter{width:40px; height:46px; display:grid; place-items:center; border-radius:9px; background:var(--ochre); color:white; font:700 1.5rem/1 'Fraunces',serif}
-  .code-rank{font-family:'IBM Plex Mono',monospace; font-size:.72rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.06em}
-  .code-card p{margin:0; color:var(--muted); font-size:.89rem}
-  .move-row{display:flex; gap:6px; margin-top:11px}
-  .move-row button{flex:1; border:1px solid var(--line); background:var(--parchment-deep); border-radius:8px; padding:7px; font-weight:700}
-  .decoder-actions{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:16px}
-  .locked{padding:30px; text-align:center; color:var(--muted); border:2px dashed var(--line); border-radius:var(--radius)}
-  .final-answer{display:none; border-radius:var(--radius); background:linear-gradient(130deg,var(--forest-2),var(--forest)); color:white; padding:26px; margin-top:20px}
-  .final-answer.show{display:block}
-  .final-answer h3{font-size:1.9rem; margin-bottom:9px}
-  .final-answer p{color:rgba(255,255,255,.9)}
-  .evidence-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:16px}
-  .evidence{background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); border-radius:12px; padding:13px}
-  .evidence strong{display:block; margin-bottom:5px}
+.view{display:none;}
+.view.active{display:block;}
+.section-kicker{
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--rust-deep);margin:0 0 5px;
+}
+.lead{font-size:15px;color:var(--ink-soft);max-width:66ch;}
+.content-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0;}
+.content-grid.three{grid-template-columns:repeat(3,minmax(0,1fr));}
+.compact-card{margin:0;padding:14px;}
+.compact-card h3{font-size:15px;}
+.compact-card p{font-size:13.5px;color:var(--ink-soft);}
+.rule{height:1px;background:var(--line);margin:20px 0;}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+.actions .btn{flex:0 1 auto;}
+.btn.secondary{background:var(--parchment-deep);}
+.btn.danger{background:#F6E4DA;border-color:var(--rust);color:var(--rust-deep);}
 
-  .correction-item{border-top:1px solid var(--line); padding:20px 0}
-  .correction-item:first-of-type{border-top:0}
-  .answer-key{display:grid; grid-template-columns:160px 1fr; gap:10px 18px; font-size:.92rem}
-  .answer-key dt{font-weight:600; color:var(--forest); font-family:'IBM Plex Mono',monospace; font-size:.82rem;}
-  .answer-key dd{margin:0}
-  details{border:1px solid var(--line); border-radius:12px; background:var(--card); margin:12px 0}
-  summary{cursor:pointer; padding:13px 15px; font-weight:600; font-family:'Fraunces',serif;}
-  details > div{padding:0 15px 15px}
-  .source-list{font-size:.88rem; color:var(--muted)}
-  .source-list li{margin:7px 0}
-  .footer-note{text-align:center; color:var(--muted); font-size:.83rem; margin-top:32px}
-  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+/* Encadré sécurité (§10) : au début de l'activité, liste explicite */
+.safety-card{border-left:4px solid var(--rust);}
+.safety-list{margin:8px 0 0;padding-left:20px;}
+.safety-list li{margin:6px 0;font-size:13.5px;}
 
-  @media (max-width:800px){
-    .grid-2,.grid-3,.evidence-grid{grid-template-columns:1fr}
-    .station-nav{grid-template-columns:repeat(3,1fr)}
-    .card-list{grid-template-columns:1fr}
-    .toolbar{align-items:flex-start; flex-direction:column}
-    .progress-wrap{width:100%; text-align:left}
-    .answer-key{grid-template-columns:1fr}
-  }
-  @media (max-width:520px){
-    .shell{width:min(100% - 16px,1120px)}
-    .hero-inner{padding:30px 20px}
-    .tabs{display:grid; grid-template-columns:repeat(2,1fr); width:100%}
-    .tab-btn{font-size:.82rem}
-    .slots{gap:5px}
-    .slot{height:70px; font-size:1.8rem}
-  }
-  @media print{
-    body{background:white}
-    .toolbar,.stage-actions,.station-footer,.move-row,.decoder-actions,.btn{display:none!important}
-    .view{display:block!important}
-    .station{display:block!important; break-inside:avoid; margin-bottom:18px}
-    .hero{box-shadow:none}
-    .panel,.station-card{box-shadow:none}
-    .feedback,.hint,.reward,.final-answer{display:block!important}
-  }
+.stations-head{margin:4px 0 12px;}
+.stations-head h2{font-size:24px;margin:0 0 3px;}
+.stations-head p{font-size:13.5px;color:var(--ink-soft);margin:0;}
+.station-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-bottom:12px;}
+.station-chip{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--line);
+  background:var(--paper);color:var(--ink-soft);border-radius:9px;padding:8px 4px;
+}
+.station-chip.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+.station-chip.done{border-color:var(--moss);color:var(--moss);}
+.station-chip.active.done{color:#fff;}
+.station-chip.done::after{content:' ✓';}
+.station{display:none;}
+.station.active{display:block;}
+.station-card{padding:0;overflow:hidden;}
+.station-top{padding:15px 16px 13px;background:var(--parchment-deep);border-bottom:1px solid var(--line);}
+.station-kicker{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--rust-deep);
+}
+.station-top h3{font-size:22px;margin:4px 0 3px;}
+.location{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);}
+.station-body{padding:16px;}
+.mission-box{margin:0 0 16px;border-left-color:var(--moss);}
+.mission-box h4,.question h4{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;
+  letter-spacing:.05em;color:var(--slate);margin:14px 0 7px;
+}
+.mission-box h4:first-child{margin-top:0;}
+.criteria-list{margin:0 0 8px;padding-left:20px;}
+.criteria-list li{margin:4px 0;font-size:13.5px;}
+.comparison-note{font-size:12px;color:var(--ink-soft);font-style:italic;margin:4px 0 10px;}
+.field-note{margin-top:6px;min-height:82px;}
+.question{margin:0 0 14px;}
+.question>strong{display:block;font-size:14.5px;margin-bottom:9px;}
+.choices{display:grid;gap:7px;}
+.choice{display:flex;align-items:flex-start;gap:9px;margin:0;cursor:pointer;}
+.choice:hover{border-color:var(--slate);}
+.choice input{margin:3px 0 0;accent-color:var(--moss);flex:0 0 auto;}
+.choice span{display:block;}
+.stage-actions,.station-footer,.decoder-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px;}
+.stage-actions .btn,.station-footer .btn,.decoder-actions .btn{flex:1 1 180px;}
+.hints{display:grid;gap:7px;margin-top:10px;}
+.hint{display:none;margin:0;}
+.hint.show{display:block;}
+.feedback{display:none;border-radius:8px;padding:11px 12px;margin-top:11px;font-size:13.5px;}
+.feedback.show{display:block;}
+.feedback.ok{background:#EAF0DF;border-left:4px solid var(--moss);}
+.feedback.no{background:#F6E4DA;border-left:4px solid var(--rust);}
+.feedback.pending{background:var(--parchment-deep);border-left:4px solid var(--line);}
+.feedback h4{font-family:'IBM Plex Mono',monospace;font-size:11.5px;text-transform:uppercase;margin:0 0 5px;}
+.feedback p{margin:7px 0 0;}
+.reward{display:none;margin-top:12px;border:1px dashed var(--ochre);border-radius:10px;padding:12px;background:#FBF3DD;}
+.reward.show{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;}
+.reward-letter,.code-letter{
+  display:grid;place-items:center;background:var(--rust);color:#fff;border-radius:8px;
+  font-family:'Fraunces',serif;font-weight:700;
+}
+.reward-letter{width:46px;height:54px;font-size:27px;}
+.reward h4{font-size:15px;margin:0 0 3px;}
+.reward p{font-size:13px;color:var(--ink-soft);margin:0;}
+
+/* Photographies documentaires (§5) : pleine largeur, agrandissables, créditées */
+.ref-photo{margin:0 0 12px;}
+.ref-photo a{display:block;}
+.ref-photo img{max-width:100%;width:100%;max-height:340px;object-fit:cover;cursor:zoom-in;}
+.ref-photo figcaption a{color:var(--rust-deep);}
+
+/* Solution de secours (§4E) : repliée par défaut, jamais bloquante */
+details.fallback{background:var(--parchment-deep);border-color:var(--line);}
+details.fallback summary{font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--rust-deep);}
+details.fallback>div{background:var(--paper);}
+
+.decoder-board{margin-top:0;}
+.locked{color:var(--ink-soft);font-size:13.5px;font-style:italic;border:1px dashed var(--line);border-radius:9px;padding:18px;text-align:center;}
+.slots{display:grid;grid-template-columns:repeat(6,minmax(38px,66px));gap:7px;justify-content:center;margin:18px 0;}
+.slot{
+  height:70px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line);
+  border-radius:9px;font-family:'Fraunces',serif;font-size:30px;font-weight:700;
+}
+.slot.empty{color:var(--ink-soft);font-size:19px;}
+.card-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;}
+.code-card{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--rust);border-radius:10px;padding:12px;}
+.code-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px;}
+.code-letter{width:34px;height:39px;font-size:21px;}
+.code-rank{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;color:var(--ink-soft);}
+.code-card strong{font-size:14px;}
+.code-card p{font-size:12.5px;color:var(--ink-soft);margin:4px 0 0;}
+.move-row{display:flex;gap:6px;margin-top:9px;}
+.move-row button{flex:1;border:1px solid var(--line);background:var(--parchment-deep);border-radius:7px;padding:6px;}
+.final-answer{display:none;margin-top:16px;background:var(--ink);color:#fff;border-radius:var(--radius);padding:18px;}
+.final-answer.show{display:block;}
+.final-answer h3{color:#fff;font-size:25px;margin:0 0 7px;}
+.final-answer p{font-size:13.5px;color:#F4EEDF;}
+.evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0;}
+.evidence{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:8px;padding:10px;font-size:12.5px;}
+.evidence strong{display:block;color:#fff;margin-bottom:3px;}
+.nuance-note{border-top:1px solid rgba(255,255,255,.2);margin-top:14px;padding-top:12px;font-size:13px;color:#F4EEDF;}
+
+.correction-item{border-top:1px solid var(--line);padding:17px 0;}
+.correction-item:first-child{border-top:0;}
+.correction-item h3{font-size:17px;}
+.answer-key{display:grid;grid-template-columns:145px 1fr;gap:7px 12px;margin:0;}
+.answer-key dt{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;color:var(--slate);}
+.answer-key dd{margin:0;font-size:13.5px;}
+.answer-key dd ul{margin:0;padding-left:16px;}
+details{border:1px solid var(--line);border-radius:10px;background:var(--paper);margin:10px 0;overflow:hidden;}
+summary{cursor:pointer;font-weight:600;padding:12px 14px;}
+details>div{border-top:1px solid var(--line);padding:12px 14px;font-size:13.5px;}
+.source-list{padding-left:18px;}
+.source-list li{margin-bottom:6px;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+@media(max-width:680px){
+  .content-grid,.content-grid.three,.evidence-grid,.card-list{grid-template-columns:1fr;}
+  .station-nav{grid-template-columns:repeat(3,1fr);}
+  .answer-key{grid-template-columns:1fr;}
+  .progress-panel{align-items:flex-start;flex-direction:column;gap:5px;}
+  .progress-track{width:100%;}
+}
+@media(max-width:420px){
+  #app{padding-left:12px;padding-right:12px;}
+  .tabs .tab{padding:8px 9px;font-size:12.5px;}
+  .slots{gap:4px;}
+  .slot{height:58px;font-size:25px;}
+}
+@media print{
+  .nav-wrap,.stage-actions,.station-footer,.move-row,.decoder-actions,.reset-btn{display:none!important;}
+  .view,.station,.feedback,.hint,.reward,.final-answer{display:block!important;}
+  #app{max-width:none;padding:0;}
+  .carnet-point,.card,details{break-inside:avoid;}
+}
 </style>
 </head>
 <body>
-<div class="shell">
-  <a href="index.html" style="display:inline-block;margin:16px 0 2px;color:var(--forest);font-weight:700;text-decoration:none;font-size:.92rem;">← Retour au carnet de terrain</a>
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="eyebrow">Chasse au trésor géologique · préparation BCPST 1</div>
-      <h1>Le Chenaillet : enquête sur un océan disparu</h1>
-      <p>Six stations de terrain, six fragments de code. Les observations permettent de reconstituer l’histoire d’un fragment de lithosphère océanique et de déterminer le fonctionnement de la dorsale qui l’a formé.</p>
-      <div class="hero-meta">
-        <span class="pill">📍 Hautes-Alpes · 2 650 m</span>
-        <span class="pill">🧭 6 stations</span>
-        <span class="pill">🔐 Mot final en 6 cases</span>
-        <span class="pill">📴 Fonctionne hors ligne</span>
-      </div>
-      <div class="safety"><strong>Priorité au terrain :</strong> ne pas quitter le sentier pour atteindre un affleurement, ne pas prélever de roche, ne pas manipuler le téléphone en marchant et renoncer à une observation si les conditions sont défavorables.</div>
+<div id="app">
+  <a class="back-link" href="index.html">← Retour au carnet de terrain</a>
+  <header class="module-head">
+    <p class="m-tag">🏔️ Terrain · préparation BCPST 1</p>
+    <h1>Le Chenaillet : enquête sur un océan disparu</h1>
+    <p class="m-pages">2 650 m · Hautes-Alpes · 6 étapes guidées · fonctionnement hors ligne</p>
+    <div class="meta-row" aria-label="Caractéristiques de l’activité">
+      <span class="meta-chip">Chasse au trésor géologique</span>
+      <span class="meta-chip">Six fragments-code</span>
+      <span class="meta-chip">Guidée pas à pas</span>
+      <span class="meta-chip">Jamais bloquante</span>
     </div>
+    <div class="m-bridge"><b>Priorité au terrain.</b> Reste sur le sentier balisé, ne prélève aucune roche et ne manipule pas le téléphone en marchant. L’encadré complet se trouve juste ci-dessous, dans l’onglet Mission.</div>
   </header>
 
-  <nav class="toolbar" aria-label="Navigation principale">
-    <div class="tabs">
-      <button class="tab-btn active" data-view="intro">Mission</button>
-      <button class="tab-btn" data-view="stations">Stations</button>
-      <button class="tab-btn" data-view="decoder">Décodeur</button>
-      <button class="tab-btn" data-view="correction">Correction</button>
-    </div>
-    <div class="progress-wrap">
-      <span id="progressText">0 station sur 6 validée</span>
+  <div class="nav-wrap">
+    <nav class="tabs" aria-label="Navigation principale">
+      <button class="tab active" data-view="intro">Mission</button>
+      <button class="tab" data-view="stations">Étapes</button>
+      <button class="tab" data-view="decoder">Décodeur</button>
+      <button class="tab" data-view="correction">Correction</button>
+    </nav>
+    <div class="progress-panel">
+      <span id="progressText">0 étape sur 6 validée</span>
       <div class="progress-track" aria-hidden="true"><div id="progressBar" class="progress-bar"></div></div>
     </div>
-  </nav>
+  </div>
 
   <main>
     <section id="intro" class="view active">
-      <article class="panel">
-        <div class="eyebrow" style="color:var(--ochre)">Scénario pédagogique</div>
+      <article class="card safety-card">
+        <div class="section-kicker">Avant de partir</div>
+        <h2>Sécurité sur le terrain</h2>
+        <p class="lead">Cette activité se joue sans quitter le sentier. Aucune mission ne doit t’amener près d’un bord exposé ou sur une pente instable.</p>
+        <ul class="safety-list">
+          <li>Reste sur le sentier balisé du début à la fin.</li>
+          <li>Ne grimpe pas sur les affleurements pour les observer de plus près.</li>
+          <li>Ne marche pas dans les éboulis pour aller chercher une roche.</li>
+          <li>Ne casse ni ne prélève aucune roche.</li>
+          <li>N’utilise pas ton téléphone en marchant : arrête-toi dans un endroit stable avant de lire une mission ou de répondre.</li>
+          <li>Renonce à un indice si la météo ou l’état du terrain ne sont pas favorables — aucune étape n’est obligatoire.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="section-kicker">Scénario pédagogique</div>
         <h2>Une enquête fondée sur une chaîne de preuves</h2>
-        <p class="lead">Le mot final n’est pas donné par une devinette isolée. Chaque station conduit de l’observation à l’interprétation, puis remet une carte-code. Les cartes doivent ensuite être classées selon la chronologie géologique afin de révéler le type de dorsale.</p>
-        <div class="grid-3">
-          <div class="mini"><h3>1. Observer</h3><p>Décrire une roche ou une relation entre roches sans commencer par lui donner un nom.</p></div>
-          <div class="mini"><h3>2. Interpréter</h3><p>Relier texture, forme ou disposition à un processus : cristallisation, éruption, sédimentation ou tectonique.</p></div>
-          <div class="mini"><h3>3. Critiquer le modèle</h3><p>Comparer le terrain à deux architectures théoriques de lithosphère océanique.</p></div>
+        <p class="lead">Le mot final n’est pas donné par une devinette isolée. Chaque étape indique où regarder, comment reconnaître l’indice, ce qu’il faut faire et ce qu’on peut en conclure — puis remet une carte-code. Les cartes doivent ensuite être classées dans l’ordre de l’enquête pour révéler le type de dorsale.</p>
+        <div class="content-grid three">
+          <div class="card compact-card"><h3>1. Observer</h3><p>Décrire une roche ou une relation entre roches sans commencer par lui donner un nom.</p></div>
+          <div class="card compact-card"><h3>2. Interpréter</h3><p>Relier texture, forme ou disposition à un processus : cristallisation, éruption, sédimentation ou tectonique.</p></div>
+          <div class="card compact-card"><h3>3. Critiquer le modèle</h3><p>Comparer le terrain à deux architectures théoriques de lithosphère océanique.</p></div>
         </div>
-        <div class="callout">
-          <strong>Question directrice</strong>
-          Le fragment océanique du Chenaillet s’est-il formé au fonctionnement d’une dorsale <em>lente</em> ou d’une dorsale <em>rapide</em> ? Le terme juste n’est révélé qu’après le classement des six fragments.
-        </div>
+        <div class="reco"><b>Question directrice.</b> Le fragment océanique du Chenaillet s’est-il formé au fonctionnement d’une dorsale <em>lente</em> ou d’une dorsale <em>rapide</em> ? Le terme juste n’est révélé qu’après le classement des six fragments.</div>
         <h3>Objectifs de préparation à la BCPST</h3>
-        <ul class="objectives">
+        <ul>
           <li>distinguer une observation, une interprétation et le degré de certitude d’une identification ;</li>
           <li>relier texture d’une roche magmatique et vitesse de refroidissement ;</li>
           <li>reconstituer une chronologie relative à partir d’indices de terrain ;</li>
@@ -252,61 +255,79 @@
           <li>argumenter une conclusion en mobilisant plusieurs indices convergents.</li>
         </ul>
         <div class="rule"></div>
-        <h3>Système de collecte</h3>
-        <div class="grid-2">
-          <div class="mini"><h3>Une station validée</h3><p>Une réponse correcte débloque un fragment portant une lettre — ou un symbole terminal — et un repère dans l’histoire géologique.</p></div>
-          <div class="mini"><h3>Un décodeur final</h3><p>Les six cartes sont volontairement mélangées. Il faut les remettre de l’événement le plus ancien au plus récent.</p></div>
+        <h3>Comment fonctionne chaque étape</h3>
+        <div class="content-grid">
+          <div class="card compact-card"><h3>A à D · une mission guidée</h3><p>Où chercher, comment reconnaître l’indice, une tâche courte de 2 à 5 minutes, puis ce que tu peux en conclure — jamais une certitude absolue.</p></div>
+          <div class="card compact-card"><h3>E · une solution de secours</h3><p>Si la roche n’est pas visible, une photographie de référence permet de répondre quand même : la progression n’est jamais bloquée.</p></div>
+          <div class="card compact-card"><h3>Un fragment par étape</h3><p>Une réponse correcte débloque un fragment portant une lettre — ou un symbole terminal — et un repère dans l’histoire géologique.</p></div>
+          <div class="card compact-card"><h3>Un décodeur final</h3><p>Les six cartes sont volontairement mélangées. Il faut les remettre dans l’ordre de l’enquête, de la première observation à la conclusion.</p></div>
         </div>
-        <div class="stage-actions">
-          <button class="btn btn-primary" data-go="stations">Commencer la randonnée pédagogique</button>
-          <button class="btn btn-ghost" id="resetAllIntro">Réinitialiser la progression</button>
+        <div class="actions">
+          <button class="btn primary" data-go="stations">Commencer la randonnée pédagogique</button>
+          <button class="btn ghost" id="resetAllIntro">Réinitialiser la progression</button>
         </div>
       </article>
     </section>
 
     <section id="stations" class="view">
       <div class="stations-head">
-        <div><div class="eyebrow" style="color:var(--ochre)">Parcours</div><h2>Les six stations</h2><p>Les observations proposées sont des critères d’orientation, pas des identifications à distance infaillibles.</p></div>
+        <div class="section-kicker">Parcours</div>
+        <h2>Les six étapes</h2>
+        <p>Chaque étape peut être validée même sans avoir trouvé la roche sur le terrain : utilise la solution de secours si besoin, la randonnée n’est jamais bloquée.</p>
       </div>
-      <div id="stationNav" class="station-nav" aria-label="Choix de la station"></div>
+      <div id="stationNav" class="station-nav" aria-label="Choix de l’étape"></div>
       <div id="stationContainer"></div>
     </section>
 
     <section id="decoder" class="view">
-      <article class="panel decoder-board">
-        <div>
-          <div class="eyebrow" style="color:var(--ochre)">Trésor final</div>
-          <h2>Le décodeur chronologique</h2>
-          <p class="lead">Classe les fragments de l’étape la plus ancienne à la plus récente. Les cinq lettres et le fragment terminal formeront la réponse en six cases.</p>
-        </div>
+      <article class="card decoder-board">
+        <div class="section-kicker">Trésor final</div>
+        <h2>Le décodeur chronologique</h2>
+        <p class="lead">Classe les fragments de la première observation à la conclusion. Les cinq lettres et le fragment terminal formeront la réponse en six cases.</p>
         <div id="decoderLocked" class="locked">Les six fragments doivent être récoltés avant d’ouvrir le décodeur.</div>
         <div id="decoderContent" hidden>
           <div id="slots" class="slots" aria-label="Mot décodé"></div>
           <div id="cardList" class="card-list"></div>
           <div class="decoder-actions">
-            <button id="shuffleCards" class="btn btn-secondary">Mélanger les cartes</button>
-            <button id="checkOrder" class="btn btn-primary">Vérifier l’ordre</button>
+            <button id="shuffleCards" class="btn secondary">Mélanger les cartes</button>
+            <button id="checkOrder" class="btn primary">Vérifier l’ordre</button>
           </div>
           <div id="decoderFeedback" class="feedback" role="status"></div>
           <div id="finalAnswer" class="final-answer">
             <h3>Le code révèle : LENTE</h3>
             <p>La sixième carte est un caractère terminal neutre : elle conserve la symétrie avec l’hypothèse « RAPIDE » sans ajouter de lettre au mot « LENTE ».</p>
             <div class="evidence-grid">
-              <div class="evidence"><strong>Architecture discontinue</strong>Les gabbros ne constituent pas une épaisse couche régulière ; ils peuvent apparaître en corps ou poches au sein des péridotites serpentinisées.</div>
+              <div class="evidence"><strong>Magmatisme discontinu</strong>L’apport de magma a été limité et irrégulier, pas continu comme dans une dorsale rapide.</div>
+              <div class="evidence"><strong>Gabbros en lentilles</strong>Les gabbros ne forment pas une épaisse couche régulière ; ils apparaissent en corps ou poches limités au sein des péridotites serpentinisées.</div>
               <div class="evidence"><strong>Complexe filonien réduit</strong>Le cortège dense de filons attendu dans le modèle d’une dorsale rapide est absent ou très peu développé.</div>
               <div class="evidence"><strong>Manteau localement exposé</strong>Des roches mantelliques serpentinisées peuvent être proches des laves ou des sédiments, signe d’une croûte magmatique incomplète.</div>
+              <div class="evidence"><strong>Organisation irrégulière</strong>L’ensemble est moins régulier que le modèle classique d’une lithosphère produite à une dorsale rapide.</div>
             </div>
-            <p><strong>Conclusion :</strong> le Chenaillet conserve les caractères d’une lithosphère océanique produite dans un contexte d’accrétion lente, comparable — avec les nuances nécessaires — au fonctionnement de l’Atlantique actuel. Le terrain ne montre donc pas la succession épaisse, régulière et riche en filons du modèle classique des dorsales rapides.</p>
+            <p><strong>Conclusion :</strong> le Chenaillet est comparable — avec les nuances nécessaires — au fonctionnement d’une dorsale lente comme l’actuelle dorsale médio-atlantique. Le terrain ne montre pas la succession épaisse, régulière et riche en filons du modèle classique des dorsales rapides.</p>
+            <p class="nuance-note">Le terrain ne permet pas à lui seul de démontrer tous ces éléments : certaines conclusions reposent sur les travaux cartographiques, pétrographiques et géochimiques réalisés sur le massif, pas uniquement sur ce que six stations permettent d’observer en une randonnée.</p>
           </div>
         </div>
       </article>
     </section>
 
     <section id="correction" class="view">
-      <article class="panel">
-        <div class="eyebrow" style="color:var(--ochre)">Correction complète</div>
+      <article class="card">
+        <div class="section-kicker">Correction complète</div>
         <h2>Réponses, raisonnements et limites</h2>
         <p class="lead">Cette partie peut être consultée après la sortie. Elle explicite ce qui est attendu, mais aussi ce que l’observation macroscopique ne permet pas d’affirmer seule.</p>
+        <details>
+          <summary>Erreurs fréquentes à connaître</summary>
+          <div>
+            <ul class="source-list">
+              <li>Identifier une roche uniquement par sa couleur, sans tenir compte de la texture ni de l’aspect général.</li>
+              <li>Confondre gabbro et granite : les deux sont grenus, mais leur contexte de formation et leur composition diffèrent.</li>
+              <li>Croire que les basaltes en coussins sont des galets arrondis par l’érosion, comme dans un lit de rivière.</li>
+              <li>Affirmer que des radiolaires (les microfossiles eux-mêmes) sont visibles à l’œil nu — seule la roche qui les contient peut l’être.</li>
+              <li>Confondre serpentinisation ancienne (transformation du manteau, il y a des millions d’années) et oxydation superficielle actuelle (patine récente à la surface d’une roche).</li>
+              <li>Croire qu’une ophiolite constitue toujours une coupe complète et parfaitement ordonnée, du manteau jusqu’aux sédiments.</li>
+            </ul>
+          </div>
+        </details>
         <div id="correctionList"></div>
         <details>
           <summary>Rétroaction finale approfondie : pourquoi « LENTE » ?</summary>
@@ -325,34 +346,82 @@
               <li>Planet-Terre, ENS de Lyon : <a href="https://planet-terre.ens-lyon.fr/article/diversite-des-ophiolites.xml">La diversité des ophiolites</a></li>
               <li>Planet-Terre, ENS de Lyon : <a href="https://planet-terre.ens-lyon.fr/article/ophiolite-France.xml">Ophiolites et fragments ophiolitiques : exemples pris dans le cadre français</a></li>
               <li>Planet-Terre, ENS de Lyon : <a href="https://planet-terre.ens-lyon.fr/ressource/Img630-2019-02-04.xml">Les ophiolites en 180 photos – Le Moho</a></li>
+              <li>Photographies : Wikimedia Commons — détail des auteurs et licences dans <a href="../SOURCES_IMAGES.md">SOURCES_IMAGES.md</a>.</li>
             </ul>
           </div>
         </details>
-        <div class="stage-actions">
-          <button class="btn btn-secondary" onclick="window.print()">Imprimer le parcours et la correction</button>
-          <button class="btn btn-danger" id="resetAllCorrection">Effacer toutes les réponses</button>
+        <div class="actions">
+          <button class="btn secondary" onclick="window.print()">Imprimer le parcours et la correction</button>
+          <button class="btn danger" id="resetAllCorrection">Effacer toutes les réponses</button>
         </div>
       </article>
     </section>
   </main>
 
-  <div class="footer-note">Fichier autonome · aucune donnée n’est transmise · progression enregistrée uniquement dans le navigateur utilisé.</div>
+  <div class="footer-note">Aucune donnée n’est transmise · progression enregistrée uniquement dans le navigateur utilisé.</div>
 </div>
-
 <script>
 (() => {
   "use strict";
 
   const STORAGE_KEY = "chenaillet-alt-v1";
+  const IMG = "../assets/images/chenaillet/";
+  const FIELD_IDS = ["entree","mantle","gabbro","pillow","radiolarite"];
 
   const stations = [
     {
-      id: "mantle",
+      id: "entree",
       number: 1,
+      title: "Entrer dans le massif ophiolitique",
+      location: "Dès les premiers pas dans la zone rocheuse, sans quitter le sentier",
+      whereToLook: "Reste sur le sentier. Observe simplement le paysage et les blocs visibles sur les deux bords du chemin, sans t’en approcher ni les manipuler.",
+      recognitionCriteria: [
+        "Passage progressif de pentes herbeuses ou de roches claires à des affleurements plus sombres (verts, gris, parfois rougeâtres).",
+        "Blocs de couleurs et de textures nettement différentes, parfois à quelques mètres d’écart seulement.",
+        "Absence d’une seule roche dominante : le paysage minéral change souvent le long du sentier."
+      ],
+      task: "Repère au moins deux blocs de couleur ou de texture nettement différentes, et prends-les en photo côte à côte si tu le peux.",
+      contextPhoto: { src: IMG+"chenaillet-paysage-face-ouest.jpg", alt: "Vue de la face ouest du massif du Chenaillet depuis un sentier de randonnée, avec le Mont Gimont à l’arrière-plan.", author:"Pampuco", license:"CC BY-SA 4.0", sourceUrl:"https://commons.wikimedia.org/wiki/File:Chenaillet_w_face.png", comparison:false },
+      prompt: "Que suggère cette diversité de roches sombres, claires ou grises dès l’entrée du massif ?",
+      type: "radio",
+      options: [
+        "Une seule roche altérée qui change simplement d’aspect selon l’humidité.",
+        "Un assemblage de plusieurs roches différentes, formées par des processus distincts.",
+        "Un effet d’optique dû à la lumière de montagne, sans réalité géologique.",
+        "Des blocs récemment apportés par les glaciers depuis d’autres massifs."
+      ],
+      correct: [1],
+      hints: [
+        { label:"Où regarder", text:"Reste sur le sentier et regarde simplement autour de toi sur quelques dizaines de mètres, sans chercher un bloc précis pour l’instant." },
+        { label:"Critères", text:"Compte les couleurs et les textures différentes que tu peux voir sans bouger : sombre ou clair, massif ou en boules, lisse ou rugueux." },
+        { label:"Explication guidée", text:"Si une seule roche altérée expliquait tout, les blocs se ressembleraient malgré des différences d’aspect. Ici, plusieurs roches vraiment différentes coexistent : c’est le signe de plusieurs histoires géologiques distinctes. Choisis l’option qui décrit un assemblage, pas une roche unique." }
+      ],
+      success: "Ces observations sont compatibles avec un massif composite, formé de plusieurs roches distinctes plutôt que d’une seule roche altérée de façons différentes.",
+      caution: "Tu n’identifies encore aucune roche précise : c’est l’objet des étapes suivantes. Retiens seulement l’idée d’assemblage.",
+      fragment: { symbol:"L", rank:1, label:"Un massif composite", clue:"Avant d’identifier une roche précise, on constate que le massif n’est pas fait d’une seule roche : plusieurs histoires géologiques y sont juxtaposées." },
+      correction: {
+        observation:"Passage, le long du sentier, entre des roches claires ou herbeuses et des affleurements sombres, verts, gris ou rougeâtres.",
+        answer:"Un assemblage de plusieurs roches différentes, formées par des processus distincts.",
+        reasoning:"Une roche unique ne change pas de nature selon l’endroit où on la regarde ; des différences aussi nettes de couleur et de texture signalent plusieurs roches réellement distinctes, donc plusieurs histoires géologiques.",
+        limits:"À ce stade, on ne peut encore nommer aucune roche précise : seule la diversité est établie.",
+        commonErrors:["Penser qu’une seule roche peut avoir des aspects très différents selon l’humidité ou la lumière, au point d’expliquer toute la diversité observée.","Vouloir identifier précisément une roche dès cette première observation, alors qu’il s’agit seulement de repérer un contraste."]
+      }
+    },
+    {
+      id: "mantle",
+      number: 2,
       title: "La roche venue du manteau",
-      location: "Premiers affleurements sombres et verdâtres",
-      mission: "Repère, sans quitter le sentier, une roche sombre à dominante verte ou noirâtre. Décris sa couleur, son aspect de surface et sa texture. Évite de conclure sur un seul critère.",
-      prompt: "Quelle interprétation est la plus solide pour une serpentinite ?",
+      location: "Premiers affleurements sombres et verdâtres, au bord du sentier",
+      whereToLook: "Reste sur le sentier balisé. Regarde les blocs déjà posés au bord immédiat du chemin, ou les affleurements visibles à moins de deux mètres du sentier. Ne descends pas dans un éboulis et ne grimpe sur aucun bloc pour t’approcher.",
+      recognitionCriteria: [
+        "Couleur dominante vert sombre à noir.",
+        "Aspect massif, sans gros cristaux visibles à l’œil nu.",
+        "Surface parfois lisse ou légèrement lustrée — mais pas systématiquement : ne te fie pas qu’au toucher.",
+        "Veines plus claires parfois visibles à la surface.",
+        "La couleur seule ne suffit pas : d’autres roches sombres existent sur le site."
+      ],
+      task: "Choisis un bloc sombre et verdâtre au bord du sentier (ou utilise la photographie de référence si tu n’en trouves pas), observe-le sans le casser ni le prélever, puis réponds à la question ci-dessous.",
+      prompt: "Quelle interprétation est la plus solide pour une roche sombre à dominante verte, massive, au toucher parfois lisse ?",
       type: "radio",
       options: [
         "Une lave refroidie très rapidement dans l’air.",
@@ -362,27 +431,40 @@
       ],
       correct: [2],
       hints: [
-        "Cherche l’origine de la roche avant sa transformation, pas seulement son aspect actuel.",
-        "Les péridotites constituent une part importante du manteau supérieur.",
-        "La serpentinisation correspond à une hydratation de minéraux mantelliques."
+        { label:"Où regarder", text:"Reste sur le sentier et regarde les blocs sombres posés sur les deux bords immédiats du chemin." },
+        { label:"Critères", text:"Cherche une roche massive, sans gros cristaux visibles, plutôt sombre à verdâtre, parfois traversée de fines veines plus claires." },
+        { label:"Explication guidée", text:"Cherche l’origine de la roche avant sa transformation, pas seulement son aspect actuel : la serpentinisation correspond à une hydratation de minéraux du manteau. Choisis l’option qui parle d’une roche du manteau transformée, pas d’une lave ni d’un sédiment." }
       ],
-      success: "La serpentinite dérive d’une péridotite mantellique hydratée. Sa présence en altitude montre qu’un matériau initialement profond a été exhumé puis intégré à l’édifice alpin.",
-      caution: "La couleur verte et le toucher parfois lisse ne suffisent pas à eux seuls. Une identification certaine demanderait l’étude minéralogique et le contexte de l’affleurement.",
-      fragment: { symbol:"L", rank:1, label:"Avant la croûte", clue:"Le matériau mantellique existe avant la construction des roches magmatiques de la croûte océanique." },
+      success: "Ces caractères sont compatibles avec une serpentinite : une péridotite du manteau transformée par hydratation. Sa présence ici montre qu’un matériau initialement profond a été exhumé puis intégré à l’édifice alpin.",
+      caution: "Ce n’est pas une identification certaine : la couleur et le toucher parfois lisse ne suffisent pas seuls. Une détermination sûre demanderait une étude minéralogique.",
+      fragment: { symbol:"E", rank:2, label:"Avant la croûte", clue:"Le matériau mantellique existe avant la construction des roches magmatiques de la croûte océanique." },
+      fallback: {
+        summary:"Tu n’as pas trouvé de roche sombre et verdâtre ? Voir une photographie de référence",
+        note:"Cette photographie ne vient pas du Chenaillet : elle sert uniquement à reconnaître l’aspect général d’une serpentinite. Tu peux répondre à la question à partir d’elle si besoin — la randonnée continue normalement.",
+        photo: { src: IMG+"serpentinite-comparaison-kyuragi.jpg", alt:"Affleurement de serpentinite à Kyūragi, préfecture de Saga, Japon : roche sombre, massive, à surface irrégulière.", author:"Peka", license:"CC BY-SA 4.0", sourceUrl:"https://commons.wikimedia.org/wiki/File:Serpentinite_outcrop_Kyuragi_01.jpg", comparison:true }
+      },
       correction: {
         observation:"Roche sombre, souvent verdâtre à noirâtre, parfois parcourue de veines et à surface lisse ou lustrée.",
         answer:"Une péridotite du manteau transformée par hydratation.",
         reasoning:"La serpentinite n’est pas une roche magmatique nouvelle : elle résulte de la transformation hydratée d’une péridotite. Elle signale donc un matériau mantellique.",
-        limits:"L’identification macroscopique reste probabiliste ; elle doit être appuyée par la carte, la localisation et plusieurs critères concordants."
+        limits:"L’identification macroscopique reste probabiliste ; elle doit être appuyée par la carte, la localisation et plusieurs critères concordants.",
+        commonErrors:["Confondre serpentinisation ancienne (transformation du manteau, il y a des millions d’années) et oxydation superficielle actuelle (patine récente à la surface d’une roche).","Identifier la roche uniquement par sa couleur verte, sans tenir compte de l’aspect massif ni de l’absence de gros cristaux."]
       }
     },
     {
       id: "gabbro",
-      number: 2,
+      number: 3,
       title: "Des cristaux qui ont eu le temps",
-      location: "Zone où affleurent des roches grenues plus claires",
-      mission: "Recherche une roche où plusieurs cristaux sont distinguables à l’œil nu. Compare la taille des grains à celle d’une lave sombre et note si l’affleurement paraît continu ou limité.",
-      prompt: "Que permet d’inférer une texture grenue à gros cristaux ?",
+      location: "Blocs déjà détachés, posés au bord du chemin",
+      whereToLook: "Reste sur le sentier. Cherche parmi les blocs déjà détachés, posés au bord du chemin — n’entre pas dans une zone d’éboulis instable pour observer un affleurement en place.",
+      recognitionCriteria: [
+        "Roche mouchetée, avec des cristaux clairs et sombres visibles à l’œil nu.",
+        "Grain net, plus grossier qu’une roche à l’aspect massif et lisse comme celle de l’étape précédente.",
+        "Absence de structure en boules ou en coussins (à ne pas confondre avec les pillow-lavas de l’étape suivante).",
+        "Coloration d’ensemble pouvant tirer vers le vert selon l’altération."
+      ],
+      task: "Repère au moins deux cristaux de couleurs différentes sur un même bloc et, si tu le peux, photographie-les avec un objet donnant l’échelle (pièce de monnaie, doigt).",
+      prompt: "Que permet d’inférer une texture grenue à cristaux visibles, par comparaison avec la roche massive de l’étape précédente ?",
       type: "radio",
       options: [
         "Un refroidissement lent d’un magma en profondeur.",
@@ -392,26 +474,39 @@
       ],
       correct: [0],
       hints: [
-        "Un cristal a besoin de temps pour croître.",
-        "Compare un glaçon formé lentement et une pellicule figée instantanément.",
-        "Le gabbro cristallise en profondeur à partir d’un magma refroidissant lentement."
+        { label:"Où regarder", text:"Reste sur le sentier. Cherche parmi les blocs déjà détachés, posés au bord du chemin." },
+        { label:"Critères", text:"Cherche une roche où plusieurs cristaux de couleurs différentes sont distinguables à l’œil nu, avec un grain plus grossier que la roche massive de l’étape précédente." },
+        { label:"Explication guidée", text:"Un cristal a besoin de temps pour croître : compare un glaçon formé lentement à une pellicule de glace figée instantanément. Le gabbro cristallise en profondeur, à partir d’un magma qui refroidit lentement. Choisis entre un refroidissement rapide en surface et un refroidissement lent en profondeur." }
       ],
-      success: "Le gabbro est une roche magmatique plutonique : ses cristaux visibles traduisent un refroidissement lent. Au Chenaillet, les gabbros peuvent former des corps discontinus plutôt qu’une couche épaisse et régulière.",
-      caution: "La taille des cristaux renseigne sur la vitesse de refroidissement, mais pas à elle seule sur la profondeur exacte ni sur toute l’histoire de la roche.",
-      fragment: { symbol:"E", rank:2, label:"Cristallisation", clue:"Une partie du magma cristallise en profondeur, après la mise en place du matériau mantellique." },
+      success: "Ces caractères sont compatibles avec un gabbro, une roche magmatique plutonique : ses cristaux visibles traduisent un refroidissement lent en profondeur. Au Chenaillet, les gabbros forment souvent des corps limités plutôt qu’une couche épaisse et continue.",
+      caution: "La taille des cristaux renseigne sur la vitesse de refroidissement, pas sur la profondeur exacte ni sur toute l’histoire de la roche : n’en conclus pas plus à ce stade.",
+      fragment: { symbol:"N", rank:3, label:"Cristallisation", clue:"Une partie du magma cristallise en profondeur, après la mise en place du matériau mantellique." },
+      fallback: {
+        summary:"Tu n’as pas trouvé de roche à gros cristaux ? Voir une photographie de référence",
+        note:"Cette photographie a été prise au Chenaillet. Tu peux répondre à la question à partir d’elle si besoin.",
+        photo: { src: IMG+"gabbro-chenaillet.jpg", alt:"Échantillon de gabbro vert à cristaux visibles, photographié au Chenaillet.", author:"Max.kit", license:"CC BY-SA 4.0", sourceUrl:"https://commons.wikimedia.org/wiki/File:Gabbro_vert_le_chenaillet.jpg", comparison:false }
+      },
       correction: {
         observation:"Cristaux visibles à l’œil nu, texture grenue ; affleurements pouvant être limités ou lenticulaires.",
         answer:"Un refroidissement lent d’un magma en profondeur.",
         reasoning:"La croissance de cristaux millimétriques nécessite un refroidissement relativement lent. Le gabbro est l’équivalent plutonique d’un magma basaltique.",
-        limits:"La continuité réelle d’un corps de gabbro ne peut pas être établie à partir d’un seul point d’observation ; elle se raisonne à l’échelle de la carte et du massif."
+        limits:"La continuité réelle d’un corps de gabbro ne peut pas être établie à partir d’un seul point d’observation ; elle se raisonne à l’échelle de la carte et du massif.",
+        commonErrors:["Confondre gabbro et granite : les deux sont grenus, mais leur contexte de formation (croûte océanique profonde pour l’un, croûte continentale pour l’autre) et leur composition diffèrent.","Croire que la continuité d’un corps de gabbro peut s’établir depuis un seul point d’observation."]
       }
     },
     {
       id: "pillow",
-      number: 3,
+      number: 4,
       title: "La lave refroidie sous l’eau",
-      location: "Vers le Collet Vert et les affleurements de basaltes en coussins",
-      mission: "Repère des volumes arrondis ou ovoïdes jointifs. Estime la dimension d’un coussin sans l’escalader, puis compare sa bordure et son cœur si une cassure naturelle est visible.",
+      location: "Vers le Collet Vert, affleurements visibles depuis le sentier",
+      whereToLook: "Reste sur le sentier, vers le secteur du Collet Vert où les affleurements de basaltes en coussins sont visibles depuis le chemin. N’escalade pas les coussins pour les mesurer.",
+      recognitionCriteria: [
+        "Volumes arrondis ou ovoïdes, jointifs les uns aux autres.",
+        "Tailles variables, parfois métriques.",
+        "Bordure parfois plus fine ou plus sombre que le cœur, visible sur une cassure déjà existante.",
+        "Empilement de plusieurs coussins, pas un seul bloc isolé."
+      ],
+      task: "Estime la taille d’un coussin sans l’escalader (à vue, ou avec un objet donnant l’échelle), et observe si tu vois un empilement de plusieurs coussins ou un seul bloc isolé.",
       prompt: "Quelle condition de mise en place explique le mieux la forme en coussins ?",
       type: "radio",
       options: [
@@ -422,27 +517,40 @@
       ],
       correct: [1],
       hints: [
-        "La forme se construit pendant l’émission de la lave, pas pendant l’érosion actuelle.",
-        "La surface se fige alors que l’intérieur reste encore mobile.",
-        "Les pillow-lavas sont des laves basaltiques émises au fond de l’océan."
+        { label:"Où regarder", text:"Reste sur le sentier, vers le secteur du Collet Vert, et regarde les affleurements visibles depuis le chemin." },
+        { label:"Critères", text:"Cherche des volumes arrondis ou ovoïdes, jointifs les uns aux autres, empilés plutôt qu’isolés." },
+        { label:"Explication guidée", text:"La forme se construit pendant l’émission de la lave, pas pendant l’érosion actuelle : la surface se fige au contact de l’eau froide alors que l’intérieur reste encore mobile quelques instants. Choisis l’option qui décrit une lave émise sous l’eau." }
       ],
-      success: "Les basaltes en coussins constituent une preuve forte d’une émission sous-marine. La bordure se fige rapidement au contact de l’eau tandis que l’intérieur du coussin reste brièvement fluide.",
-      caution: "Une forme arrondie isolée n’est pas suffisante. Il faut rechercher l’empilement de coussins et leur organisation d’ensemble.",
-      fragment: { symbol:"N", rank:3, label:"Éruption", clue:"Après la cristallisation profonde, une partie du magma atteint le fond océanique et forme des laves en coussins." },
+      success: "Ces formes sont compatibles avec des basaltes en coussins (pillow-lavas), preuve d’une émission sous-marine : la bordure se fige rapidement au contact de l’eau tandis que l’intérieur reste brièvement fluide.",
+      caution: "Une forme arrondie isolée ne suffit pas : c’est l’empilement de plusieurs coussins qui rend l’interprétation solide, pas un seul bloc pris isolément.",
+      fragment: { symbol:"T", rank:4, label:"Éruption", clue:"Après la cristallisation profonde, une partie du magma atteint le fond océanique et forme des laves en coussins." },
+      fallback: {
+        summary:"Tu n’as pas trouvé de basaltes en coussins ? Voir une photographie de référence",
+        note:"Cette photographie a été prise au Chenaillet. Tu peux répondre à la question à partir d’elle si besoin.",
+        photo: { src: IMG+"pillow-lava-chenaillet.jpg", alt:"Basaltes en pillow-lavas (laves en coussins) de l’ophiolite du Chenaillet, formes arrondies empilées.", author:"Lionel Duchoiselle", license:"CC BY-SA 3.0", sourceUrl:"https://commons.wikimedia.org/wiki/File:Pillow_Lava_of_Chenaillet_Ophiolite_in_France.jpg", comparison:false }
+      },
       correction: {
         observation:"Volumes arrondis jointifs, parfois métriques, à bordure plus fine ; différence possible entre surface altérée et cassure fraîche.",
         answer:"Une lave émise sous l’eau et figée rapidement en surface.",
         reasoning:"Le contact avec l’eau refroidit brutalement la périphérie de la lave. De nouvelles poussées gonflent puis empilent les coussins.",
-        limits:"La forme doit être observée à l’échelle de l’affleurement ; un bloc isolé ou érodé peut être trompeur."
+        limits:"La forme doit être observée à l’échelle de l’affleurement ; un bloc isolé ou érodé peut être trompeur.",
+        commonErrors:["Croire que les coussins sont des galets arrondis par l’érosion actuelle, comme dans un lit de rivière.","Conclure à partir d’un seul bloc arrondi isolé plutôt que d’un empilement de plusieurs coussins."]
       }
     },
     {
       id: "radiolarite",
-      number: 4,
+      number: 5,
       title: "Les archives déposées sur l’océan",
-      location: "Secteurs où apparaissent des niveaux fins, rouges ou verdâtres",
-      mission: "Cherche des niveaux fins et éventuellement lités, très différents des roches grenues ou des coussins. Note la couleur, l’épaisseur apparente et la relation avec les roches voisines.",
-      prompt: "Quelle conclusion est la plus prudente devant une roche fine et litée associée aux roches océaniques ?",
+      location: "Niveaux fins au bord du sentier, si visibles — étape la plus difficile",
+      whereToLook: "Reste impérativement sur le sentier. Les niveaux fins et rougeâtres ou verdâtres, s’ils sont visibles, se trouvent au bord immédiat du chemin — ne quitte pas le sentier pour les chercher, cette roche peut être absente du tronçon parcouru.",
+      recognitionCriteria: [
+        "Niveaux fins, parfois lités (en couches minces).",
+        "Couleur rouge, brune ou verdâtre.",
+        "Association possible avec des basaltes ou des serpentinites à proximité immédiate.",
+        "Aspect très différent des roches grenues ou en coussins des étapes précédentes."
+      ],
+      task: "Si tu repères un niveau fin et coloré au bord du sentier, note sa couleur et son épaisseur apparente. Si tu n’en vois pas, ouvre directement la photographie de référence ci-dessous : cette étape est volontairement la plus difficile du parcours, et une radiolarite peut être absente du tronçon que tu parcours.",
+      prompt: "Quelle conclusion est la plus prudente devant une roche fine et litée associée aux roches océaniques déjà observées ?",
       type: "radio",
       options: [
         "C’est nécessairement une radiolarite, sans autre vérification.",
@@ -452,79 +560,44 @@
       ],
       correct: [1],
       hints: [
-        "Une couche fine et litée évoque davantage un dépôt qu’une cristallisation massive.",
-        "Le mot important de la question est « prudente ».",
-        "Les radiolarites sont des sédiments océaniques siliceux, mais leur reconnaissance certaine ne repose pas sur la couleur seule."
+        { label:"Où regarder", text:"Reste sur le sentier. Regarde s’il y a des niveaux fins et colorés au bord immédiat du chemin — si tu n’en vois pas, ce n’est pas grave, cette étape est volontairement la plus difficile." },
+        { label:"Critères", text:"Cherche une couche fine, parfois litée, de couleur rouge, brune ou verdâtre, très différente des roches grenues ou en coussins déjà vues." },
+        { label:"Explication guidée", text:"Une couche fine et litée évoque davantage un dépôt qu’une cristallisation massive. Le mot important de la question est « prudente » : les radiolarites sont des sédiments océaniques siliceux, mais leur reconnaissance certaine ne repose pas sur la couleur seule. Choisis l’option la plus prudente, pas la plus affirmative." }
       ],
-      success: "Des niveaux fins associés aux roches océaniques sont compatibles avec des sédiments marins, notamment des radiolarites. Ils enregistrent une phase de dépôt sur le plancher océanique.",
-      caution: "La couleur rouge ou verte n’est pas un diagnostic. L’identification de radiolaires exige normalement une observation pétrographique ou micropaléontologique.",
-      fragment: { symbol:"T", rank:4, label:"Sédimentation", clue:"Une fois le plancher océanique en place, des sédiments marins se déposent au-dessus ou localement directement sur le manteau dénudé." },
+      success: "Ces niveaux fins sont compatibles avec un sédiment marin, notamment une radiolarite. Ils enregistrent une phase de dépôt sur le plancher océanique, après la mise en place des roches précédentes.",
+      caution: "La couleur rouge ou verte n’est pas un diagnostic à elle seule : une identification certaine de radiolaires exige normalement une observation microscopique, impossible sur le terrain.",
+      fragment: { symbol:"E", rank:5, label:"Sédimentation", clue:"Une fois le plancher océanique en place, des sédiments marins se déposent au-dessus, ou localement directement sur le manteau dénudé." },
+      fallback: {
+        summary:"Roche absente sur ce tronçon ? Consulte la photographie de référence (recommandé pour cette étape)",
+        note:"Cette photographie montre un échantillon prélevé au Rocher de la Perdrix, au Chenaillet. Cette étape est la plus difficile du parcours à réaliser sur le terrain seul : n’hésite pas à répondre directement à partir de cette photographie.",
+        photo: { src: IMG+"radiolarite-chenaillet.jpg", alt:"Échantillon de radiolarite du Rocher de la Perdrix, Chenaillet : roche fine, litée, de teinte rougeâtre.", author:"WeFt", license:"CC BY-SA 3.0", sourceUrl:"https://commons.wikimedia.org/wiki/File:Radiolarite_01.jpg", comparison:false }
+      },
       correction: {
         observation:"Niveaux fins, parfois lités, rouges, bruns ou verdâtres, associés aux basaltes ou aux serpentinites.",
         answer:"Il peut s’agir d’un sédiment marin ; l’identification précise demande des critères complémentaires.",
         reasoning:"La finesse et le litage sont compatibles avec un dépôt. Dans le contexte du Chenaillet, des radiolarites témoignent d’une sédimentation océanique.",
-        limits:"L’observation macroscopique permet une hypothèse, non la détermination certaine de microfossiles."
+        limits:"L’observation macroscopique permet une hypothèse, non la détermination certaine de microfossiles.",
+        commonErrors:["Affirmer que des radiolaires (les microfossiles eux-mêmes) sont visibles à l’œil nu : seule la roche qui les contient peut l’être.","Abandonner la mission faute d’avoir trouvé la roche sur le terrain, alors que la photographie de référence permet de continuer."]
       }
     },
     {
-      id: "alps",
-      number: 5,
-      title: "Un océan au sommet des Alpes",
-      location: "Sommet ou arête, avec vue sur la chaîne alpine",
-      mission: "Observe l’altitude et le contexte montagneux. Formule deux hypothèses expliquant la présence actuelle de roches océaniques loin de tout océan, puis confronte-les aux choix proposés.",
-      prompt: "Quel scénario général explique le mieux cette situation ?",
-      type: "radio",
-      options: [
-        "L’océan s’est évaporé sur place en laissant les roches intactes.",
-        "Un fragment océanique a été incorporé tectoniquement à la chaîne lors de la fermeture de l’océan alpin.",
-        "Les Alpes sont un ancien volcan océanique entièrement soulevé verticalement.",
-        "Les roches ont été transportées récemment par les glaciers depuis la Méditerranée."
-      ],
-      correct: [1],
-      hints: [
-        "La réponse doit mobiliser la tectonique des plaques et la fermeture d’un domaine océanique.",
-        "Une collision peut préserver des fragments de lithosphère océanique dans une chaîne de montagnes.",
-        "Le terme scolaire « obduction » est souvent utilisé, mais le cas du Chenaillet appelle une formulation tectonique plus nuancée."
-      ],
-      success: "Le Chenaillet est un fragment océanique préservé dans la chaîne alpine après la fermeture de l’océan. Au niveau attendu, on peut parler d’obduction ; plus précisément, il s’agit d’une incorporation tectonique dont les modalités sont discutées.",
-      caution: "Éviter de présenter le Chenaillet comme une tranche complète et intacte de lithosphère simplement posée sur le continent : le massif est un fragment de faible extension et son histoire tectonique est complexe.",
-      fragment: { symbol:"E", rank:5, label:"Fermeture de l’océan", clue:"Après la sédimentation, la convergence ferme l’océan et conserve un fragment océanique dans les Alpes." },
-      correction: {
-        observation:"Roches d’origine océanique aujourd’hui situées dans une chaîne de collision à plus de 2 600 m.",
-        answer:"Un fragment océanique a été incorporé tectoniquement à la chaîne lors de la fermeture de l’océan alpin.",
-        reasoning:"La convergence puis la collision ont détruit l’essentiel de l’océan, tout en préservant certains fragments dans la chaîne.",
-        limits:"Le mot « obduction » est pédagogiquement utile, mais il simplifie les modalités précises de mise en place du fragment du Chenaillet."
-      }
-    },
-    {
-      id: "model",
+      id: "synthese",
       number: 6,
-      title: "Le modèle qui ne colle pas parfaitement",
+      title: "Reconstruction : un modèle qui ne colle pas parfaitement",
       location: "Bilan de terrain, au calme ou pendant la descente",
-      mission: "Compare mentalement deux modèles. Modèle A : couches épaisses et continues, nombreux filons verticaux. Modèle B : croûte magmatique discontinue, gabbros en corps limités, manteau parfois exposé, peu de filons.",
-      prompt: "Quels indices sont compatibles avec ce qui caractérise le Chenaillet ? Sélectionne les trois réponses pertinentes.",
-      type: "checkbox",
-      options: [
-        "Des gabbros pouvant former des corps discontinus dans les péridotites serpentinisées.",
-        "Un complexe filonien épais, continu et très abondant.",
-        "Des roches du manteau pouvant se trouver localement proches des laves ou des sédiments.",
-        "Une croûte magmatique régulière de plusieurs kilomètres observable comme une succession complète.",
-        "Un complexe filonien absent ou très réduit."
+      isSynthesis: true,
+      intro: "Tu as maintenant rassemblé cinq indices de terrain : un massif composite, une roche du manteau, un gabbro, des basaltes en coussins, des sédiments océaniques. Cette dernière étape ne demande pas de trouver une nouvelle roche : elle relit ces indices ensemble, avant le décodage final.",
+      contextPhoto: { src: IMG+"chenaillet-log-geologique.jpg", alt:"Photographie annotée de l’ophiolite du Chenaillet montrant l’organisation du massif (coupe géologique).", author:"Saphon Anthony", license:"CC BY-SA 3.0", sourceUrl:"https://commons.wikimedia.org/wiki/File:Le_chenaillet_en_log3.JPG", comparison:false },
+      reperes: [
+        { title:"Un fragment incorporé à la chaîne alpine", text:"Après la fermeture de l’océan alpin, la convergence des plaques a détruit l’essentiel de cet océan, tout en préservant certains fragments — dont le Chenaillet — au sein de la chaîne. Le terme scolaire « obduction » est souvent utilisé ; le cas précis du Chenaillet appelle une formulation tectonique plus nuancée." },
+        { title:"Une organisation qui ne colle pas parfaitement au modèle", text:"Comparé à une lithosphère océanique « complète » (gabbros en couche continue, complexe filonien abondant), le Chenaillet montre des gabbros en corps discontinus, un complexe filonien très réduit ou absent, et des roches du manteau parfois proches des laves ou des sédiments." }
       ],
-      correct: [0,2,4],
-      hints: [
-        "Ne cherche pas seulement les roches présentes ; regarde aussi leur continuité et les éléments peu développés.",
-        "Le Chenaillet ne reproduit pas l’empilement épais et régulier du modèle classique de Penrose.",
-        "Retenir : gabbros discontinus, manteau localement exposé, très peu de filons."
-      ],
-      success: "Tu as isolé les trois caractères décisifs : gabbros discontinus, manteau localement exposé et complexe filonien très réduit. Le code final donnera le nom du modèle correspondant.",
-      caution: "L’absence d’un objet ne se démontre pas depuis un seul point de vue. Ce bilan s’appuie sur l’ensemble du parcours et sur la cartographie géologique du massif.",
       fragment: { symbol:"□", rank:6, label:"Observation actuelle", clue:"Dernière étape : le géologue compare aujourd’hui l’organisation du terrain aux modèles. Ce fragment termine le code sans ajouter de lettre." },
       correction: {
-        observation:"Association de roches océaniques, mais organisation discontinue ; peu ou pas de complexe filonien développé ; contacts locaux atypiques par rapport à une succession continue.",
-        answer:"Gabbros discontinus ; manteau localement proche des laves ou sédiments ; complexe filonien absent ou réduit.",
-        reasoning:"Ces caractères indiquent une faible production magmatique et une croûte incomplète ou discontinue, à l’opposé du modèle régulier d’une dorsale rapide.",
-        limits:"Cette conclusion exige une lecture à l’échelle du massif, complétée par les cartes et les travaux géologiques ; elle ne dérive pas d’un seul affleurement."
+        observation:"Cinq indices déjà collectés (massif composite, manteau, gabbro, coussins, sédiments), relus ensemble à l’échelle du massif plutôt qu’au niveau d’un seul affleurement.",
+        reasoning:"Une ophiolite « type » (modèle de Penrose) présente une succession continue et régulière ; le Chenaillet, comparé à ce modèle, montre une organisation discontinue qui oriente vers un contexte de dorsale lente.",
+        limits:"Cette conclusion exige une lecture à l’échelle du massif, complétée par les cartes et les travaux géologiques ; elle ne dérive pas d’un seul affleurement.",
+        commonErrors:["Croire qu’une ophiolite constitue toujours une coupe complète et parfaitement ordonnée.","Conclure uniquement à partir de la présence des roches (basalte, gabbro, serpentinite), sans tenir compte de leur organisation spatiale."]
       }
     }
   ];
@@ -548,20 +621,26 @@
   let state = loadState();
 
   function saveState(){ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {} }
-  function completedSet(){ return new Set(state.completed); }
   function arraysEqual(a,b){ return a.length===b.length && a.every((v,i)=>v===b[i]); }
   function normalizeSelection(values){ return values.map(Number).sort((a,b)=>a-b); }
 
+  function maybeUnlockSynthesis(){
+    if(FIELD_IDS.every(id=>state.completed.includes(id)) && !state.completed.includes("synthese")){
+      state.completed.push("synthese");
+      saveState();
+    }
+  }
+
   function switchView(viewId){
     document.querySelectorAll('.view').forEach(v => v.classList.toggle('active', v.id===viewId));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.view===viewId));
+    document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.view===viewId));
     if(viewId==='decoder') renderDecoder();
     window.scrollTo({top:0, behavior:'smooth'});
   }
 
   function updateProgress(){
     const count = state.completed.length;
-    document.getElementById('progressText').textContent = `${count} station${count>1?'s':''} sur 6 validée${count>1?'s':''}`;
+    document.getElementById('progressText').textContent = `${count} étape${count>1?'s':''} sur 6 validée${count>1?'s':''}`;
     document.getElementById('progressBar').style.width = `${count/6*100}%`;
   }
 
@@ -577,6 +656,137 @@
     });
   }
 
+  function esc(s){ return String(s); }
+
+  function photoFigure(photo){
+    return `<figure class="q-figure ref-photo">
+        <a href="${photo.src}" target="_blank" rel="noopener" aria-label="Agrandir la photographie dans un nouvel onglet">
+          <img src="${photo.src}" alt="${photo.alt}" loading="lazy">
+        </a>
+        <figcaption>Photo : ${photo.author}, Wikimedia Commons, ${photo.license} — <a href="${photo.sourceUrl}" target="_blank" rel="noopener">page source</a></figcaption>
+      </figure>
+      <p class="comparison-note">${photo.comparison ? "Photographie de comparaison : cette roche n’a pas été photographiée au Chenaillet." : "Photographie prise au Chenaillet."} L’aspect sur le terrain peut varier selon l’éclairage, l’humidité, les lichens et l’altération.</p>`;
+  }
+
+  function fallbackBlock(s, open){
+    if(!s.fallback) return '';
+    return `<details class="fallback" data-fallback="${s.id}" ${open?'open':''}>
+        <summary>${s.fallback.summary}</summary>
+        <div>
+          <p>${s.fallback.note}</p>
+          ${photoFigure(s.fallback.photo)}
+        </div>
+      </details>`;
+  }
+
+  function feedbackContent(s){
+    return `<h4>Réponse validée</h4>
+      <p><strong>Observation :</strong> ${s.correction.observation}</p>
+      <p><strong>Interprétation :</strong> ${s.success}</p>
+      <p><strong>Degré de certitude :</strong> ${s.caution}</p>`;
+  }
+
+  function renderFieldStation(s, i){
+    const savedAnswers = state.answers[s.id] || [];
+    const note = state.notes[s.id] || '';
+    const done = state.completed.includes(s.id);
+    const hints = state.hintsShown[s.id] || 0;
+    const inputType = s.type === 'checkbox' ? 'checkbox' : 'radio';
+    return `
+      <div class="carnet-point station-card">
+        <div class="station-top">
+          <div class="station-kicker">Étape ${s.number} sur 6</div>
+          <h3>${s.title}</h3>
+          <div class="location">⌖ ${s.location}</div>
+        </div>
+        <div class="station-body">
+          <div class="revision-banner mission-box">
+            <h4>A · Où chercher ?</h4>
+            <p>${s.whereToLook}</p>
+            <h4>B · Comment reconnaître l’indice ?</h4>
+            <ul class="criteria-list">${s.recognitionCriteria.map(c=>`<li>${c}</li>`).join('')}</ul>
+            <p class="comparison-note">La couleur seule ne suffit jamais à identifier une roche.</p>
+            ${s.contextPhoto ? photoFigure(s.contextPhoto) : ''}
+            <h4>C · Ce que tu dois faire</h4>
+            <p>${s.task}</p>
+            <label>
+              <span class="sr-only">Notes de terrain</span>
+              <textarea class="field-note" data-note="${s.id}" placeholder="Notes libres : critères observés, estimation, doute, photographie prise…">${escapeHtml(note)}</textarea>
+            </label>
+            ${fallbackBlock(s, false)}
+          </div>
+          <div class="q-block question">
+            <h4>D · Ce que tu peux conclure ?</h4>
+            <strong>${s.prompt}</strong>
+            <div class="choices">
+              ${s.options.map((opt,idx)=>`
+                <label class="q-opt choice">
+                  <input type="${inputType}" name="answer-${s.id}" value="${idx}" ${savedAnswers.includes(idx)?'checked':''}>
+                  <span>${opt}</span>
+                </label>`).join('')}
+            </div>
+          </div>
+          <div class="stage-actions">
+            <button class="btn primary validate-stage" data-id="${s.id}">${done?'Revalider la réponse':'Valider et récolter le fragment'}</button>
+            <button class="btn secondary show-hint" data-id="${s.id}" aria-expanded="${hints>0}" aria-controls="hints-${s.id}">${hints>=3?'Toutes les aides sont ouvertes':'Afficher une aide'}</button>
+          </div>
+          <div class="hints" id="hints-${s.id}">
+            ${s.hints.map((h,idx)=>`<div class="hint-box hint ${idx<hints?'show':''}" data-hint="${s.id}-${idx}"><strong>Aide ${idx+1} · ${h.label}.</strong> ${h.text}</div>`).join('')}
+          </div>
+          <div id="feedback-${s.id}" class="feedback ${done?'show ok':''}">${done?feedbackContent(s):''}</div>
+          <div class="reward ${done?'show':''}" id="reward-${s.id}">
+            <div class="reward-letter">${s.fragment.symbol}</div>
+            <div><h4>Fragment récolté · ${s.fragment.label}</h4><p>${s.fragment.clue}</p></div>
+          </div>
+          <div class="station-footer">
+            <button class="btn ghost prev-station" ${i===0?'disabled':''}>← Étape précédente</button>
+            <button class="btn ghost next-station" ${i===stations.length-1?'disabled':''}>Étape suivante →</button>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function renderSynthesisStation(s, i){
+    const note = state.notes[s.id] || '';
+    const unlocked = state.completed.includes(s.id);
+    const remaining = FIELD_IDS.filter(id=>!state.completed.includes(id)).length;
+    return `
+      <div class="carnet-point station-card">
+        <div class="station-top">
+          <div class="station-kicker">Étape ${s.number} sur 6</div>
+          <h3>${s.title}</h3>
+          <div class="location">⌖ ${s.location}</div>
+        </div>
+        <div class="station-body">
+          <div class="revision-banner mission-box">
+            <h4>Ce que tu as rassemblé</h4>
+            <p>${s.intro}</p>
+            ${photoFigure(s.contextPhoto)}
+          </div>
+          <div class="content-grid">
+            ${s.reperes.map(r=>`<div class="card compact-card"><h3>${r.title}</h3><p>${r.text}</p></div>`).join('')}
+          </div>
+          <div class="q-block question">
+            <h4>Ta synthèse (facultatif, non noté)</h4>
+            <label>
+              <span class="sr-only">Synthèse personnelle</span>
+              <textarea class="field-note" data-note="${s.id}" placeholder="En une phrase, dans tes mots : qu’est-ce que ces cinq indices ont en commun ?">${escapeHtml(note)}</textarea>
+            </label>
+          </div>
+          ${unlocked ? `
+            <div class="reward show" id="reward-${s.id}">
+              <div class="reward-letter">${s.fragment.symbol}</div>
+              <div><h4>Fragment reçu · ${s.fragment.label}</h4><p>${s.fragment.clue}</p></div>
+            </div>` : `
+            <div class="feedback show pending"><h4>Fragment en attente</h4><p>Ce dernier fragment est remis automatiquement une fois les cinq étapes de terrain validées. Il t’en reste ${remaining}.</p></div>`}
+          <div class="station-footer">
+            <button class="btn ghost prev-station" ${i===0?'disabled':''}>← Étape précédente</button>
+            ${unlocked ? `<button class="btn primary" data-go="decoder">Aller au décodeur →</button>` : `<button class="btn ghost next-station" disabled>Étape suivante →</button>`}
+          </div>
+        </div>
+      </div>`;
+  }
+
   function renderStations(){
     renderStationNav();
     const container = document.getElementById('stationContainer');
@@ -584,56 +794,7 @@
     stations.forEach((s,i) => {
       const article = document.createElement('article');
       article.className = 'station' + (i===state.activeStation?' active':'');
-      const savedAnswers = state.answers[s.id] || [];
-      const note = state.notes[s.id] || '';
-      const done = state.completed.includes(s.id);
-      const hints = state.hintsShown[s.id] || 0;
-      const inputType = s.type === 'checkbox' ? 'checkbox' : 'radio';
-      article.innerHTML = `
-        <div class="station-card">
-          <div class="station-top">
-            <div class="station-kicker">Station ${s.number} sur 6</div>
-            <h3>${s.title}</h3>
-            <div class="location">⌖ ${s.location}</div>
-          </div>
-          <div class="station-body">
-            <div class="mission-box">
-              <h4>Mission de terrain</h4>
-              <div>${s.mission}</div>
-              <label>
-                <span class="sr-only">Notes de terrain</span>
-                <textarea class="field-note" data-note="${s.id}" placeholder="Notes libres : critères observés, estimation, doute, photographie prise…">${escapeHtml(note)}</textarea>
-              </label>
-            </div>
-            <div class="question">
-              <h4>Énigme scientifique</h4>
-              <strong>${s.prompt}</strong>
-              <div class="choices">
-                ${s.options.map((opt,idx)=>`
-                  <label class="choice">
-                    <input type="${inputType}" name="answer-${s.id}" value="${idx}" ${savedAnswers.includes(idx)?'checked':''}>
-                    <span>${opt}</span>
-                  </label>`).join('')}
-              </div>
-            </div>
-            <div class="stage-actions">
-              <button class="btn btn-primary validate-stage" data-id="${s.id}">${done?'Revalider la réponse':'Valider et récolter le fragment'}</button>
-              <button class="btn btn-secondary show-hint" data-id="${s.id}">${hints>=3?'Toutes les aides sont ouvertes':'Afficher une aide'}</button>
-            </div>
-            <div class="hints">
-              ${s.hints.map((h,idx)=>`<div class="hint ${idx<hints?'show':''}" data-hint="${s.id}-${idx}"><strong>Aide ${idx+1}.</strong> ${h}</div>`).join('')}
-            </div>
-            <div id="feedback-${s.id}" class="feedback ${done?'show ok':''}">${done?`<h4>Réponse validée</h4><div>${s.success}</div><p><strong>Prudence :</strong> ${s.caution}</p>`:''}</div>
-            <div class="reward ${done?'show':''}" id="reward-${s.id}">
-              <div class="reward-letter">${s.fragment.symbol}</div>
-              <div><h4>Fragment récolté · ${s.fragment.label}</h4><p>${s.fragment.clue}</p></div>
-            </div>
-            <div class="station-footer">
-              <button class="btn btn-ghost prev-station" ${i===0?'disabled':''}>← Station précédente</button>
-              <button class="btn btn-ghost next-station" ${i===stations.length-1?'disabled':''}>Station suivante →</button>
-            </div>
-          </div>
-        </div>`;
+      article.innerHTML = s.isSynthesis ? renderSynthesisStation(s,i) : renderFieldStation(s,i);
       container.appendChild(article);
     });
 
@@ -645,6 +806,7 @@
     container.querySelectorAll('.show-hint').forEach(b => b.addEventListener('click', () => showNextHint(b.dataset.id)));
     container.querySelectorAll('.prev-station').forEach(b => b.addEventListener('click', () => changeStation(-1)));
     container.querySelectorAll('.next-station').forEach(b => b.addEventListener('click', () => changeStation(1)));
+    container.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => switchView(b.dataset.go)));
     updateProgress();
   }
 
@@ -670,8 +832,9 @@
     if(arraysEqual(chosen, expected)){
       if(!state.completed.includes(id)) state.completed.push(id);
       feedback.className = 'feedback show ok';
-      feedback.innerHTML = `<h4>Réponse validée</h4><div>${s.success}</div><p><strong>Prudence :</strong> ${s.caution}</p>`;
+      feedback.innerHTML = feedbackContent(s);
       document.getElementById(`reward-${id}`).classList.add('show');
+      maybeUnlockSynthesis();
       saveState(); updateProgress(); renderStationNav();
     } else {
       feedback.className = 'feedback show no';
@@ -686,7 +849,11 @@
 
   function showNextHint(id){
     const current = state.hintsShown[id] || 0;
-    if(current < 3){ state.hintsShown[id] = current + 1; saveState(); renderStations(); }
+    if(current < 3){
+      state.hintsShown[id] = current + 1;
+      saveState();
+      renderStations();
+    }
   }
 
   function renderDecoder(){
@@ -747,12 +914,12 @@
     if(arraysEqual(state.decoderOrder,[0,1,2,3,4,5])){
       state.decoded=true; saveState();
       fb.className='feedback show ok';
-      fb.innerHTML='<h4>Chronologie correcte</h4><div>Manteau → cristallisation profonde → volcanisme sous-marin → sédimentation → fermeture de l’océan → observation actuelle.</div>';
+      fb.innerHTML='<h4>Ordre correct</h4><div>Un massif composite → manteau exposé → cristallisation profonde → volcanisme sous-marin → sédimentation océanique → synthèse et fermeture de l’océan.</div>';
       document.getElementById('finalAnswer').classList.add('show');
     } else {
       state.decoded=false; saveState();
       fb.className='feedback show no';
-      fb.innerHTML='<h4>Ordre encore incorrect</h4><div>Commence par le matériau le plus ancien. Termine par ce qui se déroule après la disparition de l’océan, puis par l’enquête actuelle.</div>';
+      fb.innerHTML='<h4>Ordre encore incorrect</h4><div>Commence par la première observation d’ensemble. Termine par la synthèse qui referme l’histoire de l’océan alpin, juste avant le décodage.</div>';
       document.getElementById('finalAnswer').classList.remove('show');
     }
   }
@@ -761,14 +928,15 @@
     const wrap = document.getElementById('correctionList');
     wrap.innerHTML = stations.map(s => `
       <section class="correction-item">
-        <h3>Station ${s.number} — ${s.title}</h3>
+        <h3>Étape ${s.number} — ${s.title}</h3>
         <dl class="answer-key">
           <dt>Observation attendue</dt><dd>${s.correction.observation}</dd>
-          <dt>Réponse</dt><dd>${s.correction.answer}</dd>
+          ${s.correction.answer ? `<dt>Réponse</dt><dd>${s.correction.answer}</dd>` : ''}
           <dt>Raisonnement</dt><dd>${s.correction.reasoning}</dd>
           <dt>Limites</dt><dd>${s.correction.limits}</dd>
+          <dt>Erreurs fréquentes</dt><dd><ul>${s.correction.commonErrors.map(e=>`<li>${e}</li>`).join('')}</ul></dd>
           <dt>Fragment remis</dt><dd><strong>${s.fragment.symbol}</strong> — ${s.fragment.label} : ${s.fragment.clue}</dd>
-          <dt>Aides progressives</dt><dd>${s.hints.map((h,i)=>`<div><strong>${i+1}.</strong> ${h}</div>`).join('')}</dd>
+          ${s.hints ? `<dt>Aides progressives</dt><dd>${s.hints.map((h,i)=>`<div><strong>${i+1}. ${h.label}.</strong> ${h.text}</div>`).join('')}</dd>` : ''}
         </dl>
       </section>`).join('');
   }
@@ -780,13 +948,14 @@
     renderStations(); renderDecoder(); updateProgress(); switchView('intro');
   }
 
-  document.querySelectorAll('.tab-btn').forEach(b => b.addEventListener('click', () => switchView(b.dataset.view)));
+  document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => switchView(b.dataset.view)));
   document.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => switchView(b.dataset.go)));
   document.getElementById('shuffleCards').addEventListener('click', shuffleCards);
   document.getElementById('checkOrder').addEventListener('click', checkOrder);
   document.getElementById('resetAllIntro').addEventListener('click', resetAll);
   document.getElementById('resetAllCorrection').addEventListener('click', resetAll);
 
+  maybeUnlockSynthesis();
   renderStations();
   renderCorrection();
   updateProgress();
