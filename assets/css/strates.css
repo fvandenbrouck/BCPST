@@ -45,6 +45,14 @@ a{color:var(--rust-deep);}
 .hero h1{font-size:30px;margin:0 0 8px;line-height:1.15;}
 .hero p{color:var(--ink-soft);font-size:15px;margin:0;max-width:52ch;}
 
+.revision-banner{
+  background:#EAF0DF;border-left:4px solid var(--moss);border-radius:10px;
+  padding:12px 14px;margin:18px 0 0;font-size:13.8px;color:var(--ink-soft);
+}
+.revision-banner b{color:var(--ink);}
+.revision-banner a{color:var(--rust-deep);font-weight:600;text-decoration:none;}
+.revision-banner a:hover{text-decoration:underline;}
+
 .subject-filter{display:flex;gap:6px;flex-wrap:wrap;margin:18px 0 4px;}
 .subject-filter button{
   font-family:'IBM Plex Mono',monospace;font-size:12px;
@@ -209,6 +217,8 @@ a{color:var(--rust-deep);}
   background:#FBF3DD;border-left:3px solid var(--ochre);border-radius:6px;
   padding:9px 11px;font-size:13px;color:var(--ink-soft);margin-bottom:8px;
 }
+.selfexp-btn{border-color:var(--slate);color:var(--slate);}
+.selfexp-area{margin:0 0 8px;min-height:56px;}
 .q-opt{
   display:block;width:100%;text-align:left;background:var(--paper);
   border:1px solid var(--line);border-radius:9px;padding:10px 12px;

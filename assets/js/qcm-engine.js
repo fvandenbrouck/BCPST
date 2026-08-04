@@ -22,6 +22,10 @@
  *                                         // le diagnostic bascule alors sur des formulations génériques
  *     nextStep: "Enchaîne sur le chapitre suivant ..."
  *   }
+ *
+ * Autoexplication (après soumission) : chaque question affiche un bouton facultatif qui
+ * déplie une note libre, sauvegardée dans state.progress.selfExplanations[q.id] au blur,
+ * jamais notée ni évaluée. État d'ouverture éphémère dans state.selfExpOpen.
  */
 (function(){
   function esc(s){ return (s+'').replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
@@ -71,6 +75,11 @@
         return `<div class="${cls}">${esc(q.options[oi])}</div>`;
       }).join('');
       if(q.hint) h += `<div class="hint-box"><b>Piste de raisonnement :</b> ${esc(q.hint)}</div>`;
+      const note = state.progress.selfExplanations?.[q.id] || '';
+      h += `<button class="hint-btn selfexp-btn" data-selfexp="${q.id}">${note ? '✎ Modifier ma note' : '✎ Explique pourquoi, dans tes mots (facultatif)'}</button>`;
+      if(state.selfExpOpen[q.id]){
+        h += `<textarea class="selfexp-area" data-selfexp-input="${q.id}" placeholder="Pourquoi cette réponse est-elle correcte ? Pourquoi pas les autres ?">${esc(note)}</textarea>`;
+      }
     }
     h += `</div>`;
     return h;
@@ -179,6 +188,19 @@
       });
     });
 
+    target.querySelectorAll('[data-selfexp]').forEach(b=>{
+      b.addEventListener('click', ()=>{
+        state.selfExpOpen[b.dataset.selfexp] = !state.selfExpOpen[b.dataset.selfexp];
+        render(target, mod, state, persist);
+      });
+    });
+    target.querySelectorAll('[data-selfexp-input]').forEach(t=>{
+      t.addEventListener('blur', async ()=>{
+        state.progress.selfExplanations[t.dataset.selfexpInput] = t.value;
+        await persist();
+      });
+    });
+
     if(!state.qcmSubmitted){
       target.querySelectorAll('.q-opt').forEach(b=>{
         b.addEventListener('click', ()=>{
@@ -201,7 +223,7 @@
       });
     } else {
       target.querySelector('#retryQcm').addEventListener('click', ()=>{
-        state.qcmAnswers={}; state.qcmSubmitted=false; state.hintsShown={}; state.qcmOptionOrder={};
+        state.qcmAnswers={}; state.qcmSubmitted=false; state.hintsShown={}; state.qcmOptionOrder={}; state.selfExpOpen={};
         render(target, mod, state, persist);
       });
     }

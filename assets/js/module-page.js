@@ -17,14 +17,23 @@
  * `mod.noManual` (optionnel, ex. modules "Première" sans manuel Terminale dédié) :
  * supprime le préfixe "Manuel Belin Éducation," de l'en-tête, `mod.pages` s'affiche
  * alors seul, tel quel.
+ *
+ * state.progress (persisté sous `progress:<modId>`) :
+ *   flashcards: {[cardId]: {rating, lastSeen, interval, ease, dueDate}}  — cf. flashcards-engine.js
+ *   qcmAttempts: [{date, score, total, weightedScore}]
+ *   selfExplanations: {[questionId]: string}  — notes d'autoexplication libres, jamais notées, cf. qcm-engine.js
+ * state.selfExpOpen (éphémère, non persisté) : {[questionId]: bool} — pli/déplie la note d'autoexplication.
  */
 (function(){
   function esc(s){ return (s+'').replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
 
   async function loadProgress(modId){
     const r = await Storage.get('progress:'+modId);
-    try{ return r ? JSON.parse(r.value) : {flashcards:{}, qcmAttempts:[]}; }
-    catch(e){ return {flashcards:{}, qcmAttempts:[]}; }
+    let p;
+    try{ p = r ? JSON.parse(r.value) : {flashcards:{}, qcmAttempts:[]}; }
+    catch(e){ p = {flashcards:{}, qcmAttempts:[]}; }
+    if(!p.selfExplanations) p.selfExplanations = {};
+    return p;
   }
   async function saveProgress(modId, data){ await Storage.set('progress:'+modId, JSON.stringify(data)); }
   async function loadMindmap(mod){
@@ -57,10 +66,10 @@
   async function init(mod){
     const state = {
       tab:'cours', loading:true,
-      progress:{flashcards:{}, qcmAttempts:[]},
+      progress:{flashcards:{}, qcmAttempts:[], selfExplanations:{}},
       mindmap:{nodes:[{id:'root', label:mod.title, parentId:null}]},
       flashIndex:0, flashFlipped:false, flashOnlyDue:false,
-      qcmAnswers:{}, qcmSubmitted:false, qcmOptionOrder:{}, hintsShown:{}, showModel:false
+      qcmAnswers:{}, qcmSubmitted:false, qcmOptionOrder:{}, hintsShown:{}, selfExpOpen:{}, showModel:false
     };
     const persist = async ()=>{ await saveProgress(mod.id, state.progress); };
     const persistMindmap = async ()=>{ await saveMindmap(mod, state.mindmap); };

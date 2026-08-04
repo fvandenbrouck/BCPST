@@ -4,21 +4,43 @@
  * Le "score de maîtrise" d'un module repose sur la dernière tentative du bloc
  * d'évaluation pondéré (QCM SVT/PC, Entraînement calculatoire Maths...), qui
  * alimente toujours progress.qcmAttempts quel que soit le nom de l'onglet.
+ *
+ * Bannière de révision espacée : agrège, pour tous les modules disponibles, les
+ * flashcards déjà notées au moins une fois et dont la date de révision (dueDate,
+ * cf. flashcards-engine.js) est aujourd'hui ou passée. Ne nécessite pas de charger
+ * le contenu des modules, seulement leur progress:<id> déjà bouclé ici.
  */
 (function(){
   function esc(s){ return (s+'').replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
 
+  // Dupliqués depuis flashcards-engine.js à l'identique (convention du projet : petits
+  // helpers purs dupliqués plutôt que couplés entre fichiers indépendants, cf. esc()).
+  function todayStr(){
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  }
+  function isDue(rec, today){
+    if(!rec) return true;
+    if(!rec.dueDate) return true;
+    return rec.dueDate <= today;
+  }
+
   async function loadModuleProgress(mod){
     const r = await Storage.get('progress:'+mod.id);
-    if(!r) return {coursRead:false, attempted:false, weightedScore:null};
+    if(!r) return {coursRead:false, attempted:false, weightedScore:null, dueFlashcards:0};
     let p;
-    try{ p = JSON.parse(r.value); }catch(e){ return {coursRead:false, attempted:false, weightedScore:null}; }
+    try{ p = JSON.parse(r.value); }catch(e){ return {coursRead:false, attempted:false, weightedScore:null, dueFlashcards:0}; }
     const attempts = p.qcmAttempts || [];
     const last = attempts.length ? attempts[attempts.length-1] : null;
+    const today = todayStr();
+    // Seules les cartes déjà notées au moins une fois comptent comme "dues" ici :
+    // les cartes jamais vues ne doivent pas gonfler ce compteur dès le premier jour.
+    const dueFlashcards = Object.values(p.flashcards||{}).filter(c => c.rating && isDue(c, today)).length;
     return {
       coursRead: !!p.coursRead,
       attempted: attempts.length>0,
-      weightedScore: last && typeof last.weightedScore==='number' ? last.weightedScore : null
+      weightedScore: last && typeof last.weightedScore==='number' ? last.weightedScore : null,
+      dueFlashcards
     };
   }
 
@@ -40,6 +62,14 @@
       const seen = [];
       window.MODULES.forEach(m=>{ if(!seen.find(s=>s.key===m.subject)) seen.push({key:m.subject, label:m.subjectLabel}); });
       return seen;
+    }
+
+    function renderRevisionBanner(){
+      const due = available.filter(m=>statuses[m.id].dueFlashcards>0);
+      const total = due.reduce((acc,m)=>acc+statuses[m.id].dueFlashcards, 0);
+      if(total===0) return '';
+      const links = due.map(m=>`<a href="${m.href}">${esc(m.title)}</a> (${statuses[m.id].dueFlashcards})`).join(' · ');
+      return `<div class="revision-banner">🔁 <b>${total} carte${total>1?'s':''} à réviser aujourd'hui</b>, répartie${total>1?'s':''} dans ${due.length} module${due.length>1?'s':''} — ${links}</div>`;
     }
 
     function renderStrata(){
@@ -99,7 +129,7 @@
     }
 
     function render(){
-      container.innerHTML = renderStrata() + renderFilters() + `<div id="moduleList">${renderModules()}</div>`;
+      container.innerHTML = renderRevisionBanner() + renderStrata() + renderFilters() + `<div id="moduleList">${renderModules()}</div>`;
       container.querySelectorAll('[data-subject]').forEach(btn=>{
         btn.addEventListener('click', ()=>{ filter = btn.dataset.subject; render(); });
       });
