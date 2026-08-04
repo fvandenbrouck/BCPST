@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch.12 — Le climat au Cénozoïque · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/flashcards-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'ch12',
+  chapNum: "Chapitre 12",
+  subjectLabel: "Climats de la Terre",
+  accent: '#8a8578',
+  title: "Le climat au Cénozoïque",
+  pages: "p.292 à 315",
+  backHref: '../index.html',
+  bridge: {
+    from: "Les grands mécanismes du climat (effet de serre, notion d'archive climatique) ont été abordés en Seconde et en enseignement scientifique de façon introductive. Ce chapitre construit, à partir d'archives climatiques de résolution et d'échelle de temps croissantes, une vision quantitative et mécaniste des variations climatiques passées de la Terre.",
+    to: "En BCPST1, ce chapitre nourrit directement l'étude du système climatique et de sa modélisation, ainsi que la lecture d'archives sédimentaires déjà abordée en Ch.6 (datation absolue) et Ch.7 : les mêmes méthodes de datation et la même dynamique des plaques y sont mobilisées pour comprendre les archives climatiques."
+  },
+
+  fiches: [
+    {
+      unit:'Unité 1', page:294,
+      title:"150 ans d'archives climatiques",
+      paragraphs:[
+        "Depuis le milieu du XIXe siècle, des mesures directes de température, de précipitations et d'autres paramètres sont enregistrées par des stations météorologiques réparties sur le globe. Ces mesures instrumentales constituent l'archive climatique la plus précise et la plus directe dont on dispose, mais elle ne couvre qu'une période très courte à l'échelle des temps géologiques.",
+        "Ces archives instrumentales mettent en évidence un réchauffement global net depuis le début du XXe siècle, particulièrement marqué depuis les années 1970-1980."
+      ],
+      bullets:[
+        "Ce réchauffement récent se traduit notamment par le recul rapide de nombreux glaciers alpins depuis la fin du Petit Âge Glaciaire (fin du XIXe siècle), un indicateur visible et directement mesurable.",
+        "Contrairement aux archives climatiques plus anciennes (sédiments, glaces), les données instrumentales sont mesurées directement, sans avoir besoin de passer par un proxy (indicateur indirect) : elles servent de référence pour calibrer les autres méthodes.",
+        "Cette courte période instrumentale ne permet cependant pas, à elle seule, de replacer le réchauffement actuel dans le contexte des variations climatiques naturelles passées, beaucoup plus amples et plus lentes."
+      ],
+      terrainBadge: {href:'../carnet-de-terrain/lautaret.html', label:"Recul des glaciers de la Meije depuis le Petit Âge Glaciaire"}
+    },
+    {
+      unit:'Unité 2', page:296,
+      title:"De -11700 ans à nos jours : un réchauffement",
+      paragraphs:[
+        "Il y a environ 11 700 ans s'achève la dernière période glaciaire : commence alors l'Holocène, période interglaciaire actuelle, caractérisée par un climat globalement plus chaud et étonnamment stable à l'échelle géologique.",
+        "Cette stabilité climatique relative de l'Holocène est étudiée grâce à des archives naturelles plus anciennes que les mesures instrumentales : cernes de croissance des arbres, sédiments lacustres, spéléothèmes (concrétions de grottes), qui enregistrent indirectement les conditions climatiques passées (on parle de proxy climatique)."
+      ],
+      bullets:[
+        "Un proxy climatique est un indicateur mesurable (épaisseur d'un cerne, composition chimique d'une concrétion...) dont la variation est corrélée à un paramètre climatique (température, précipitations), permettant de reconstituer le climat en l'absence de mesure directe.",
+        "La stabilité climatique de l'Holocène est considérée comme un facteur ayant favorisé le développement de l'agriculture et des civilisations humaines sédentaires.",
+        "Le réchauffement récent (depuis le XIXe-XXe siècle, cf. Unité 1) se distingue de ce contexte par sa rapidité, très supérieure à celle des variations naturelles observées au cours de l'Holocène."
+      ]
+    },
+    {
+      unit:'Unité 3', page:298,
+      title:"De -1,7 million d'années à -11700 ans : l'âge des glaces",
+      paragraphs:[
+        "Avant l'Holocène s'étend une longue période marquée par une alternance de périodes glaciaires (extension des calottes polaires et des glaciers) et de périodes interglaciaires plus courtes et plus chaudes, dont l'Holocène actuel est un exemple.",
+        "Ces alternances sont étudiées principalement grâce aux carottes de glace polaires (Antarctique, Groenland), qui piègent des bulles d'air ancien directement représentatives de la composition de l'atmosphère passée, ainsi que des isotopes de l'oxygène corrélés à la température."
+      ],
+      bullets:[
+        "La composition isotopique de l'oxygène (rapport ¹⁸O/¹⁶O) de la glace ou des tests de foraminifères varie avec la température : plus le climat est froid, plus les molécules d'eau contenant l'isotope léger (¹⁶O) sont préférentiellement évaporées puis précipitées sous forme de glace, modifiant ce rapport de façon mesurable.",
+        "Les bulles d'air piégées dans la glace montrent une corrélation étroite entre la teneur en CO2 atmosphérique et la température au cours de ces cycles glaciaire-interglaciaire.",
+        "Ces alternances se répètent avec une période dominante d'environ 100 000 ans sur cette période, mais la cause de ce rythme ne s'explique qu'en croisant ces données avec l'astronomie (cf. Unité 4)."
+      ]
+    },
+    {
+      unit:'Unité 4', page:300,
+      title:"Origine des alternances glaciaires/interglaciaires",
+      paragraphs:[
+        "Le rythme des alternances glaciaire-interglaciaire trouve son origine dans des variations cycliques et prévisibles des paramètres orbitaux de la Terre, appelées cycles de Milankovitch, qui modifient la quantité et la répartition saisonnière de l'énergie solaire reçue (insolation) sans changer significativement l'énergie totale reçue par la Terre.",
+        "Trois paramètres orbitaux varient ainsi de façon cyclique, avec des périodes différentes."
+      ],
+      bullets:[
+        "L'excentricité de l'orbite terrestre (plus ou moins elliptique) varie avec une période d'environ 100 000 ans ; l'obliquité (inclinaison de l'axe de rotation) varie avec une période d'environ 41 000 ans ; la précession des équinoxes varie avec une période d'environ 23 000 ans.",
+        "Ces variations d'insolation, en elles-mêmes modestes, sont amplifiées par des mécanismes de rétroaction positive (albédo des glaces, concentration en CO2 atmosphérique), ce qui explique l'ampleur des variations climatiques observées.",
+        "Ce mécanisme astronomique explique le rythme des alternances glaciaire-interglaciaire, mais ne suffit pas à lui seul à expliquer les tendances climatiques à très long terme observées à l'échelle du Cénozoïque (cf. Unité 5)."
+      ]
+    },
+    {
+      unit:'Unité 5', page:302,
+      title:"Des tendances à l'échelle du Cénozoïque",
+      paragraphs:[
+        "À une échelle de temps beaucoup plus longue que les cycles glaciaire-interglaciaire (qui se répètent depuis environ 2,6 millions d'années), le Cénozoïque (dernière ère géologique, depuis environ 66 millions d'années) montre une tendance générale au refroidissement.",
+        "Le début du Cénozoïque (notamment l'optimum climatique de l'Éocène, il y a environ 50 millions d'années) était nettement plus chaud qu'aujourd'hui, sans calotte polaire pérenne ; le climat s'est ensuite globalement refroidi jusqu'à l'installation progressive des calottes glaciaires actuelles."
+      ],
+      bullets:[
+        "Cette tendance de long terme est reconstituée principalement à partir de la composition isotopique de l'oxygène des tests calcaires de foraminifères benthiques (organismes marins microscopiques), prélevés dans des carottes de sédiments océaniques.",
+        "La calotte glaciaire antarctique s'installe durablement il y a environ 34 millions d'années ; la calotte arctique ne s'installe que beaucoup plus tard, il y a environ 3 millions d'années.",
+        "Ce refroidissement de long terme constitue le climat de fond sur lequel se superposent les cycles glaciaire-interglaciaire plus courts pilotés par les paramètres orbitaux (Unité 4)."
+      ]
+    },
+    {
+      unit:'Unité 6', page:304,
+      title:"Le rôle de la tectonique des plaques dans les évolutions climatiques",
+      paragraphs:[
+        "Le refroidissement de long terme du Cénozoïque (Unité 5) ne peut s'expliquer par les seuls cycles astronomiques : il trouve en grande partie son origine dans la dynamique des plaques tectoniques, déjà étudiée en Ch.6, Ch.7 et dans le module Géologie interne.",
+        "Plusieurs mécanismes liés à la tectonique des plaques agissent sur des échelles de temps de plusieurs millions d'années."
+      ],
+      bullets:[
+        "L'ouverture de passages océaniques (comme le passage de Drake, entre l'Amérique du Sud et l'Antarctique) a permis la mise en place d'un courant océanique circumpolaire autour de l'Antarctique, isolant thermiquement ce continent et favorisant l'installation de sa calotte glaciaire.",
+        "La surrection de grandes chaînes de montagnes (comme l'Himalaya, à la suite de la collision entre les plaques indienne et eurasiatique) accroît l'érosion des roches silicatées, une réaction chimique qui consomme du CO2 atmosphérique sur le long terme, contribuant au refroidissement global.",
+        "Ces mécanismes tectoniques agissent sur des échelles de temps de plusieurs millions d'années, bien plus lentes que les cycles de Milankovitch (dizaines de milliers d'années) ou que le réchauffement actuel (quelques décennies, cf. Unité 1) — trois échelles de temps très différentes à ne pas confondre."
+      ]
+    }
+  ],
+
+  flashcards: [
+    {id:'f1', recto:"Archives instrumentales", verso:"Mesures directes (température, précipitations...) depuis ~150 ans, sans passer par un proxy.", notion:'u1'},
+    {id:'f2', recto:"Proxy climatique", verso:"Indicateur mesurable indirectement corrélé à un paramètre climatique passé (cerne, isotope, sédiment...).", notion:'u2'},
+    {id:'f3', recto:"Holocène", verso:"Période interglaciaire actuelle, depuis environ 11700 ans, climat relativement stable.", notion:'u2'},
+    {id:'f4', recto:"Carotte de glace", verso:"Prélèvement de glace polaire ; piège des bulles d'air ancien et des isotopes de l'oxygène.", notion:'u3'},
+    {id:'f5', recto:"Rapport isotopique ¹⁸O/¹⁶O", verso:"Indicateur de température : varie selon la proportion d'isotopes légers/lourds de l'oxygène piégés.", notion:'u3'},
+    {id:'f6', recto:"Cycles de Milankovitch", verso:"Variations cycliques des paramètres orbitaux terrestres, modifiant l'insolation reçue.", notion:'u4'},
+    {id:'f7', recto:"Excentricité / obliquité / précession", verso:"Trois paramètres orbitaux, de périodes ~100000 / ~41000 / ~23000 ans respectivement.", notion:'u4'},
+    {id:'f8', recto:"Rétroaction positive (climat)", verso:"Mécanisme (albédo, CO2) qui amplifie une variation climatique initiale modeste.", notion:'u4'},
+    {id:'f9', recto:"Optimum climatique de l'Éocène", verso:"Période très chaude du début du Cénozoïque (~50 Ma), sans calotte polaire pérenne.", notion:'u5'},
+    {id:'f10', recto:"Foraminifères benthiques", verso:"Organismes marins microscopiques ; leur composition isotopique renseigne sur le climat du Cénozoïque.", notion:'u5'},
+    {id:'f11', recto:"Installation des calottes polaires", verso:"Antarctique : il y a ~34 Ma. Arctique : beaucoup plus tard, il y a ~3 Ma.", notion:'u5'},
+    {id:'f12', recto:"Passage de Drake", verso:"Ouverture océanique ayant permis un courant circumpolaire isolant thermiquement l'Antarctique.", notion:'u6'},
+    {id:'f13', recto:"Érosion des silicates et CO2", verso:"La surrection de chaînes de montagnes (Himalaya) accroît l'érosion des silicates, qui consomme du CO2 atmosphérique.", notion:'u6'},
+    {id:'f14', recto:"Trois échelles de temps climatiques", verso:"Tectonique (millions d'années) / Milankovitch (dizaines de milliers d'années) / réchauffement actuel (décennies).", notion:'u6'}
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {u1:"Unité 1 — 150 ans d'archives climatiques (p.294)", u2:'Unité 2 — Réchauffement depuis -11700 ans (p.296)', u3:"Unité 3 — L'âge des glaces (p.298)", u4:'Unité 4 — Origine des alternances (p.300)', u5:'Unité 5 — Tendances du Cénozoïque (p.302)', u6:'Unité 6 — Tectonique et climat (p.304)'},
+    bilanPage: 310, exosPage: 312, bacPage: 315,
+    nextStep: "Enchaîne sur le module suivant (Ch.14, le changement climatique actuel) dès qu'il sera prêt."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"Les archives climatiques instrumentales (stations météo) couvrent environ :", options:["150 ans", "150 000 ans", "150 millions d'années"], correct:0},
+    {id:'q2', type:'connaissance', difficulty:2, notion:'u1', q:"Par rapport aux autres archives climatiques, les mesures instrumentales ont pour particularité :", options:["d'être des mesures directes, sans passer par un proxy indirect", "d'être les seules à couvrir plusieurs millions d'années", "d'être moins précises que les proxys"], correct:0},
+    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"Le recul de nombreux glaciers alpins depuis la fin du Petit Âge Glaciaire (fin du XIXe siècle) illustre :", options:["le réchauffement récent documenté par les archives instrumentales", "une glaciation actuellement en cours", "un phénomène sans lien avec le climat"], correct:0},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u2', q:"L'Holocène est la période :", options:["glaciaire actuelle, depuis 2,6 millions d'années", "interglaciaire actuelle, depuis environ 11700 ans", "correspondant à l'optimum climatique de l'Éocène"], correct:1},
+    {id:'q5', type:'connaissance', difficulty:2, notion:'u2', q:"Un proxy climatique est :", options:["un indicateur mesurable indirectement corrélé à un paramètre climatique passé", "une mesure directe de la température par thermomètre", "un synonyme de carotte de glace"], correct:0},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u3', q:"Les carottes de glace polaires renseignent sur le climat passé grâce à :", options:["des bulles d'air piégées et la composition isotopique de la glace", "des cernes de croissance visibles dans la glace", "des fossiles de grande taille"], correct:0,
+      image:{src:"https://upload.wikimedia.org/wikipedia/commons/5/5c/An_ice_core_segment.jpg", alt:"Segment de carotte de glace polaire extrait pour analyse", credit:"Photo : NASA/Ludovic Brucker, domaine public"}},
+    {id:'q7', type:'connaissance', difficulty:2, notion:'u3', q:"Au cours des cycles glaciaire-interglaciaire enregistrés dans les glaces polaires, la teneur en CO2 atmosphérique et la température :", options:["varient de façon corrélée", "sont totalement indépendantes", "varient en sens opposé"], correct:0},
+    {id:'q8', type:'connaissance', difficulty:1, notion:'u4', q:"Les cycles de Milankovitch désignent :", options:["des variations cycliques des paramètres orbitaux de la Terre modifiant l'insolation", "des cycles de l'activité volcanique mondiale", "des cycles de la tectonique des plaques"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:2, notion:'u4', q:"Parmi les trois paramètres orbitaux de Milankovitch, celui dont la période est la plus longue est :", options:["l'excentricité (~100 000 ans)", "l'obliquité (~41 000 ans)", "la précession (~23 000 ans)"], correct:0},
+    {id:'q10', type:'connaissance', difficulty:1, notion:'u5', q:"À l'échelle du Cénozoïque (66 derniers millions d'années), la tendance climatique générale est :", options:["un réchauffement continu", "un refroidissement global de long terme", "une stabilité parfaite"], correct:1},
+    {id:'q11', type:'connaissance', difficulty:2, notion:'u5', q:"La tendance climatique de long terme du Cénozoïque est principalement reconstituée grâce à :", options:["la composition isotopique de l'oxygène des foraminifères benthiques marins", "des mesures de stations météorologiques", "des cernes d'arbres"], correct:0},
+    {id:'q12', type:'connaissance', difficulty:2, notion:'u6', q:"L'ouverture du passage de Drake a favorisé la glaciation de l'Antarctique en :", options:["permettant la mise en place d'un courant océanique circumpolaire qui isole thermiquement ce continent", "réchauffant directement l'atmosphère antarctique", "provoquant une éruption volcanique massive"], correct:0},
+    {id:'q13', type:'connaissance', difficulty:2, notion:'u6', q:"La surrection de l'Himalaya contribue au refroidissement climatique de long terme en :", options:["augmentant l'érosion des silicates, une réaction qui consomme du CO2 atmosphérique", "bloquant les rayons du soleil", "libérant du CO2 volcanique en continu"], correct:0},
+    {id:'q14', type:'connaissance', difficulty:1, notion:'u6', q:"Les mécanismes tectoniques influençant le climat (ouverture de passages océaniques, surrection de chaînes de montagnes) agissent sur des échelles de temps de l'ordre :", options:["de plusieurs millions d'années", "de quelques décennies", "de quelques dizaines de milliers d'années"], correct:0},
+
+    {id:'r1', type:'raisonnement', difficulty:2, notion:'u1', q:"Les mesures instrumentales ne couvrent que 150 ans. Pourquoi cette durée est-elle insuffisante, à elle seule, pour savoir si le réchauffement actuel est exceptionnel par rapport aux variations climatiques naturelles passées ?",
+      options:["Parce que les variations climatiques naturelles (cycles glaciaire-interglaciaire, tendances du Cénozoïque) se déroulent sur des dizaines de milliers à des millions d'années : 150 ans ne permet pas de les situer dans ce contexte plus large", "Parce que les thermomètres anciens étaient peu fiables, ce qui est le seul problème en cause", "Parce que 150 ans est en réalité largement suffisant, aucune archive plus ancienne n'est nécessaire"], correct:0,
+      hint:"Repense aux échelles de temps des différents mécanismes climatiques présentés dans ce chapitre (Unité 6) : celle du réchauffement récent est-elle comparable à celle des cycles glaciaire-interglaciaire ou des tendances tectoniques ?"},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u3', q:"Dans une carotte de glace polaire, on observe qu'à une profondeur donnée, la teneur en CO2 piégée dans les bulles d'air est faible et le rapport isotopique de l'oxygène indique une température basse. À quelle période climatique cette couche de glace correspond-elle le plus probablement ?",
+      options:["Une période interglaciaire chaude", "Une période glaciaire froide", "Cela ne permet pas de déduire le climat de cette période"], correct:1,
+      hint:"Repense à la corrélation observée dans l'Unité 3 entre teneur en CO2, température et alternance glaciaire/interglaciaire."},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u4', q:"Les variations des paramètres orbitaux de la Terre (cycles de Milankovitch) modifient la répartition saisonnière et géographique de l'insolation, mais très peu la quantité totale d'énergie solaire reçue par la Terre sur une année. Comment expliquer que ces variations, en apparence modestes, puissent tout de même déclencher des glaciations ou des réchauffements amples ?",
+      options:["Ces variations initiales sont amplifiées par des mécanismes de rétroaction positive, comme l'albédo des glaces ou la concentration en CO2 atmosphérique", "Ces variations n'ont en réalité aucun effet mesurable sur le climat", "L'insolation totale annuelle varie en réalité énormément d'une année à l'autre"], correct:0,
+      hint:"Repense à la notion de rétroaction positive présentée dans l'Unité 4 : un petit changement initial peut-il être amplifié par le système climatique lui-même ?"},
+    {id:'r4', type:'raisonnement', difficulty:3, notion:'u6', q:"Le refroidissement de long terme observé à l'échelle du Cénozoïque ne suit pas le rythme des cycles de Milankovitch (dizaines de milliers d'années). Quel type de mécanisme, présenté dans ce chapitre, est nécessaire pour expliquer une tendance qui se déploie sur des dizaines de millions d'années ?",
+      options:["Des mécanismes tectoniques (ouverture de passages océaniques, surrection de chaînes de montagnes), qui agissent sur des échelles de temps bien plus longues que les cycles orbitaux", "Uniquement les cycles de Milankovitch, en admettant qu'ils se répètent un grand nombre de fois", "Aucun mécanisme connu ne peut expliquer une tendance aussi longue"], correct:0,
+      hint:"Compare les échelles de temps caractéristiques des cycles de Milankovitch (Unité 4) et des mécanismes tectoniques (Unité 6) à celle du refroidissement cénozoïque (dizaines de millions d'années)."},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u6', q:"Sur le temps long, l'érosion des roches silicatées consomme du CO2 atmosphérique et contribue donc à refroidir le climat. Comment la formation d'une grande chaîne de montagnes comme l'Himalaya, événement purement tectonique, peut-elle influencer la composition de l'atmosphère et donc le climat ?",
+      options:["La surrection de la chaîne expose une grande quantité de roches silicatées à l'érosion, augmentant la réaction chimique qui consomme le CO2 atmosphérique sur le long terme", "La formation d'une montagne libère directement du CO2 par le seul frottement des roches", "Les montagnes n'ont en réalité aucune influence sur la composition de l'atmosphère"], correct:0,
+      hint:"Repense au lien entre surrection montagneuse, érosion des silicates et consommation de CO2 présenté dans l'Unité 6."},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u1', q:"Les glaciers alpins ont perdu une grande partie de leur volume depuis la fin du Petit Âge Glaciaire, soit en à peine plus d'un siècle. Les cycles glaciaire-interglaciaire enregistrés dans les glaces polaires (Unité 3), eux, se déploient sur environ 100 000 ans. Que peut-on en déduire sur la vitesse du changement climatique actuel comparée aux variations naturelles passées ?",
+      options:["Le changement climatique actuel se déroule à un rythme très rapide comparé aux variations climatiques naturelles de grande ampleur, qui se déploient habituellement sur des milliers à des dizaines de milliers d'années", "Les deux phénomènes se déroulent exactement à la même vitesse", "Le recul des glaciers alpins n'a aucun lien avec le climat"], correct:0,
+      hint:"Compare la durée du recul glaciaire alpin récent (Unité 1) à la durée typique d'un cycle glaciaire-interglaciaire complet (Unité 3)."}
+  ],
+
+  mindmapModel: {
+    label:"Le climat au Cénozoïque",
+    children:[
+      {label:"Archives climatiques récentes", children:[
+        {label:"Instrumentales (150 ans)"},{label:"Proxies (cernes, sédiments) — Holocène"}
+      ]},
+      {label:"Cycles glaciaire-interglaciaire", children:[
+        {label:"Carottes de glace (bulles d'air, isotopes O)"},{label:"CO2 et température corrélés"}
+      ]},
+      {label:"Cycles de Milankovitch", children:[
+        {label:"Excentricité / obliquité / précession"},{label:"Rétroactions positives (albédo, CO2)"}
+      ]},
+      {label:"Tendance du Cénozoïque", children:[
+        {label:"Refroidissement long terme (Éocène → aujourd'hui)"},{label:"Foraminifères benthiques"}
+      ]},
+      {label:"Tectonique et climat", children:[
+        {label:"Passage de Drake → isolement Antarctique"},{label:"Érosion silicates (Himalaya) → puits de CO2"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>
