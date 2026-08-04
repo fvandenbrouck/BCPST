@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch.1 — L'origine du phénotype · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/flashcards-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'ch1',
+  chapNum: "Chapitre 1",
+  subjectLabel: "Génétique et évolution",
+  accent: 'var(--rust)',
+  title: "L'origine du phénotype des individus",
+  pages: "p.30 à 53",
+  backHref: '../index.html',
+  bridge: {
+    from: "En Première spécialité SVT (et dans le module « Première — Génétique de base » déjà construit sur ce site), tu as vu les bases de l'ADN, du gène, de la mitose et de la méiose. Ce chapitre approfondit ces mécanismes à l'échelle de l'organisme entier : comment les divisions cellulaires produisent à la fois stabilité et innovation génétique, et comment la méiose engendre la diversité entre individus d'une même espèce.",
+    to: "En BCPST1, ce chapitre est directement réinvesti dans l'étude de la génétique des populations et de l'évolution (dérive génétique, sélection naturelle), qui repose entièrement sur la variabilité générée par le brassage méiotique et les mutations décrits ici."
+  },
+
+  fiches: [
+    {
+      unit:'Unité 1', page:32,
+      title:"Clones cellulaires et stabilité génétique",
+      paragraphs:[
+        "Toutes les cellules d'un organisme pluricellulaire dérivent d'une cellule unique, la cellule-œuf, par divisions mitotiques successives. Un clone cellulaire est l'ensemble des cellules issues d'une même cellule par mitoses successives : elles partagent, sauf accident, un patrimoine génétique identique.",
+        "Cette identité génétique explique la stabilité du phénotype d'un tissu au cours du temps et d'une génération cellulaire à l'autre : chaque division conserve fidèlement l'information portée par l'ADN."
+      ],
+      bullets:[
+        "La fidélité de la réplication de l'ADN avant chaque mitose, associée aux mécanismes de réparation de l'ADN, limite fortement l'apparition d'erreurs lors de la copie du génome.",
+        "Un tissu adulte (peau, foie...) est ainsi constitué de nombreux clones cellulaires, chacun stable dans le temps tant qu'aucune mutation ne survient.",
+        "Cette stabilité clonale est la condition nécessaire au bon fonctionnement d'un organisme pluricellulaire : sans elle, chaque division introduirait un risque de dysfonctionnement."
+      ]
+    },
+    {
+      unit:'Unité 2', page:34,
+      title:"Clones cellulaires et innovation génétique",
+      paragraphs:[
+        "Malgré la fidélité de la réplication, des erreurs (mutations) surviennent parfois lors de la copie de l'ADN ou sous l'effet de facteurs environnementaux (rayonnements, substances mutagènes). Une mutation apparue dans une cellule somatique est transmise à toute sa descendance par mitose : elle fonde un nouveau clone cellulaire, génétiquement différent du reste de l'organisme.",
+        "Ce phénomène, appelé mosaïcisme somatique, montre qu'un même organisme peut contenir plusieurs clones cellulaires génétiquement distincts."
+      ],
+      bullets:[
+        "La plupart des mutations somatiques sont sans conséquence phénotypique visible, mais certaines peuvent perturber le fonctionnement cellulaire — c'est notamment le mécanisme à l'origine de nombreux cancers, qui résultent de l'accumulation de mutations dans un même clone cellulaire.",
+        "Le mosaïcisme somatique est ainsi une source d'innovation génétique à l'échelle d'un individu, mais elle n'est pas transmise à la descendance de l'individu (seules les cellules reproductrices le sont).",
+        "Cette distinction entre innovation génétique somatique (non transmissible) et germinale (transmissible) prolonge directement ce qui a été vu à propos des mutations dans le module « Génétique de base »."
+      ]
+    },
+    {
+      unit:'Unité 3', page:36,
+      title:"Une introduction à la génétique",
+      paragraphs:[
+        "La génétique étudie la transmission des caractères héréditaires. Le lieu occupé par un gène sur un chromosome est appelé locus ; les différentes versions possibles d'un gène en un locus donné sont ses allèles.",
+        "Un individu diploïde possède deux allèles pour chaque gène (un sur chaque chromosome homologue). Si les deux allèles sont identiques, l'individu est homozygote pour ce gène ; s'ils diffèrent, il est hétérozygote."
+      ],
+      bullets:[
+        "Lorsque deux allèles diffèrent chez un hétérozygote, l'un peut s'exprimer phénotypiquement au détriment de l'autre : on parle d'allèle dominant (qui s'exprime) et d'allèle récessif (qui ne s'exprime pas en présence du dominant).",
+        "Le phénotype d'un hétérozygote peut aussi résulter de la co-expression des deux allèles (codominance) ou d'un phénotype intermédiaire (dominance incomplète), selon les gènes considérés.",
+        "Cette diversité d'allèles à travers la population est la matière première de la diversité phénotypique entre individus d'une même espèce."
+      ]
+    },
+    {
+      unit:'Unité 4', page:38,
+      title:"Le brassage génétique lié à la reproduction sexuée",
+      paragraphs:[
+        "La méiose (déjà présentée dans le module « Génétique de base ») ne se limite pas à réduire de moitié le nombre de chromosomes : elle brasse activement les allèles portés par les chromosomes, par deux mécanismes complémentaires.",
+        "Le brassage interchromosomique résulte de la répartition indépendante des paires de chromosomes homologues lors de la première division de méiose. Le brassage intrachromosomique résulte des crossing-over : des échanges de fragments de chromatides entre chromosomes homologues, qui créent de nouvelles combinaisons d'allèles sur un même chromosome."
+      ],
+      bullets:[
+        "Un crossing-over associe, sur un même chromosome, des allèles qui étaient auparavant portés séparément par les deux chromosomes homologues d'origine paternelle et maternelle.",
+        "Combinés à la fécondation (union aléatoire de deux gamètes), ces deux types de brassage génèrent un nombre quasi illimité de combinaisons génétiques possibles chez la descendance d'un couple.",
+        "Ce brassage explique pourquoi deux frères et sœurs, bien qu'issus des deux mêmes parents, ne sont jamais génétiquement identiques (hors cas des vrais jumeaux)."
+      ]
+    },
+    {
+      unit:'Unité 5', page:40,
+      title:"Analyses génétiques dans l'espèce humaine",
+      paragraphs:[
+        "Chez l'espèce humaine, où les croisements expérimentaux sont impossibles, la transmission d'un caractère héréditaire est étudiée à partir de l'arbre généalogique (ou pedigree) d'une famille, qui retrace la présence du caractère sur plusieurs générations.",
+        "L'analyse de la répartition du caractère dans l'arbre (qui l'exprime, qui ne l'exprime pas, selon le sexe et la génération) permet de déduire le mode de transmission de l'allèle responsable."
+      ],
+      bullets:[
+        "Un caractère porté par un gène autosomal (sur un chromosome non sexuel) touche indifféremment les deux sexes ; un caractère porté par le chromosome X peut toucher différemment hommes et femmes.",
+        "Si un caractère récessif apparaît chez un enfant dont les deux parents ne l'expriment pas, cela indique que les deux parents sont hétérozygotes, porteurs sains de l'allèle récessif.",
+        "Cette méthode d'analyse par arbre généalogique est directement utilisée en conseil génétique, pour évaluer un risque de transmission d'une maladie héréditaire au sein d'une famille."
+      ]
+    },
+    {
+      unit:'Unité 6', page:42,
+      title:"Les accidents génétiques de la méiose",
+      paragraphs:[
+        "La méiose est un mécanisme précis, mais elle n'est pas infaillible : des anomalies peuvent survenir, avec des conséquences sur le nombre ou la structure des chromosomes des gamètes produits.",
+        "Ces accidents, bien que rares, constituent aussi, à l'échelle de l'évolution, une source de nouveauté génétique."
+      ],
+      bullets:[
+        "Une non-disjonction (défaut de séparation d'une paire de chromosomes homologues ou de chromatides sœurs) produit des gamètes avec un chromosome en trop ou en moins ; après fécondation, cela peut donner une trisomie (ex. trisomie 21) ou une monosomie.",
+        "Un crossing-over inégal (échange de fragments de tailles différentes entre chromatides) peut produire un chromosome portant une duplication d'un gène et l'autre une délétion de ce même gène.",
+        "Un gène dupliqué peut ensuite évoluer indépendamment de sa copie d'origine (mutations propres à chaque copie) : c'est un mécanisme reconnu à l'origine de nouvelles familles de gènes au cours de l'évolution — lien direct avec le thème de l'évolution des génomes en BCPST1."
+      ]
+    }
+  ],
+
+  flashcards: [
+    {id:'f1', recto:"Clone cellulaire", verso:"Ensemble des cellules issues d'une même cellule par mitoses successives, génétiquement identiques sauf accident.", notion:'u1'},
+    {id:'f2', recto:"Mosaïcisme somatique", verso:"Présence, au sein d'un même organisme, de plusieurs clones cellulaires génétiquement distincts (mutation somatique).", notion:'u2'},
+    {id:'f3', recto:"Mutation somatique / germinale", verso:"Somatique : fonde un clone, non transmissible à la descendance. Germinale : touche les gamètes, transmissible.", notion:'u2'},
+    {id:'f4', recto:"Locus / allèle", verso:"Locus : position d'un gène sur un chromosome. Allèle : une version particulière de ce gène.", notion:'u3'},
+    {id:'f5', recto:"Homozygote / hétérozygote", verso:"Homozygote : deux allèles identiques pour un gène. Hétérozygote : deux allèles différents.", notion:'u3'},
+    {id:'f6', recto:"Allèle dominant / récessif", verso:"Dominant : s'exprime chez l'hétérozygote. Récessif : ne s'exprime pas en présence du dominant.", notion:'u3'},
+    {id:'f7', recto:"Brassage interchromosomique", verso:"Répartition indépendante des paires de chromosomes homologues lors de la méiose I.", notion:'u4'},
+    {id:'f8', recto:"Brassage intrachromosomique (crossing-over)", verso:"Échange de fragments de chromatides entre chromosomes homologues, créant de nouvelles combinaisons d'allèles.", notion:'u4'},
+    {id:'f9', recto:"Arbre généalogique (pedigree)", verso:"Représentation de la transmission d'un caractère héréditaire sur plusieurs générations d'une famille.", notion:'u5'},
+    {id:'f10', recto:"Porteur sain", verso:"Individu hétérozygote pour un allèle récessif responsable d'une maladie, sans exprimer lui-même la maladie.", notion:'u5'},
+    {id:'f11', recto:"Non-disjonction", verso:"Défaut de séparation d'une paire de chromosomes ou de chromatides sœurs lors de la méiose, cause de trisomie/monosomie.", notion:'u6'},
+    {id:'f12', recto:"Crossing-over inégal", verso:"Échange de fragments de tailles différentes entre chromatides : produit une duplication et une délétion d'un même gène.", notion:'u6'},
+    {id:'f13', recto:"Duplication génique et évolution", verso:"Un gène dupliqué peut évoluer indépendamment de sa copie : origine possible de nouvelles familles de gènes.", notion:'u6'},
+    {id:'f14', recto:"Gène autosomal / porté par X", verso:"Autosomal : touche indifféremment les deux sexes. Porté par X : peut toucher différemment hommes et femmes.", notion:'u5'}
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {u1:'Unité 1 — Clones et stabilité génétique (p.32)', u2:'Unité 2 — Clones et innovation génétique (p.34)', u3:'Unité 3 — Introduction à la génétique (p.36)', u4:'Unité 4 — Brassage génétique (p.38)', u5:'Unité 5 — Analyses génétiques humaines (p.40)', u6:'Unité 6 — Accidents de la méiose (p.42)'},
+    bilanPage: 48, exosPage: 50, bacPage: 53,
+    nextStep: "Enchaîne sur le module suivant (Ch.12, le climat au Cénozoïque) dès qu'il sera prêt."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"Un clone cellulaire est :", options:["l'ensemble des cellules issues d'une même cellule par mitoses successives", "une cellule unique isolée en laboratoire", "un synonyme de cellule-œuf"], correct:0},
+    {id:'q2', type:'connaissance', difficulty:2, notion:'u1', q:"La stabilité génétique d'un clone cellulaire repose principalement sur :", options:["la fidélité de la réplication de l'ADN et les mécanismes de réparation", "l'absence totale de division cellulaire", "la méiose"], correct:0},
+    {id:'q3', type:'connaissance', difficulty:2, notion:'u2', q:"Une mutation apparue dans une cellule somatique :", options:["est transmise à toute la descendance de cette cellule par mitose, fondant un nouveau clone", "est automatiquement transmise à la descendance de l'individu", "disparaît immédiatement"], correct:0},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u2', q:"Le mosaïcisme somatique désigne :", options:["la présence, au sein d'un même organisme, de plusieurs clones cellulaires génétiquement distincts", "la fusion de deux organismes différents", "un type de reproduction sexuée"], correct:0},
+    {id:'q5', type:'connaissance', difficulty:1, notion:'u3', q:"Le locus d'un gène désigne :", options:["sa position sur un chromosome", "sa séquence de bases", "sa fonction dans la cellule"], correct:0},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u3', q:"Un individu hétérozygote pour un gène possède :", options:["deux allèles identiques pour ce gène", "deux allèles différents pour ce gène", "un seul allèle pour ce gène"], correct:1},
+    {id:'q7', type:'connaissance', difficulty:2, notion:'u4', q:"Le brassage intrachromosomique résulte :", options:["des crossing-over entre chromosomes homologues", "de la répartition indépendante des paires de chromosomes", "de la fécondation"], correct:0,
+      image:{src:"../assets/img/ch01/crossing-over.svg", alt:"Schéma d'un crossing-over : échange de segments de chromatides entre deux chromosomes homologues, produisant des chromatides recombinées"}},
+    {id:'q8', type:'connaissance', difficulty:2, notion:'u4', q:"Le brassage interchromosomique résulte :", options:["de la répartition indépendante des paires de chromosomes homologues lors de la méiose I", "des crossing-over", "de la mitose"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u5', q:"L'arbre généalogique (pedigree) est utilisé en génétique humaine pour :", options:["réaliser des croisements expérimentaux contrôlés", "déduire le mode de transmission d'un caractère héréditaire à partir de sa répartition dans une famille", "mesurer directement la séquence d'ADN"], correct:1},
+    {id:'q10', type:'connaissance', difficulty:2, notion:'u5', q:"Deux parents ne présentant pas un caractère récessif ont un enfant qui le présente. On peut en déduire que :", options:["les deux parents sont hétérozygotes, porteurs sains de l'allèle récessif", "le caractère n'est pas héréditaire", "un des deux parents ne dit pas la vérité sur son phénotype"], correct:0},
+    {id:'q11', type:'connaissance', difficulty:2, notion:'u6', q:"Une non-disjonction lors de la méiose peut produire :", options:["des gamètes avec un chromosome en trop ou en moins", "systématiquement la mort de la cellule", "une augmentation du nombre de crossing-over"], correct:0},
+    {id:'q12', type:'connaissance', difficulty:1, notion:'u6', q:"La trisomie 21 résulte d'un(e) :", options:["mutation ponctuelle d'un seul gène", "non-disjonction touchant la paire de chromosomes 21", "crossing-over normal"], correct:1,
+      image:{src:"https://upload.wikimedia.org/wikipedia/commons/1/11/Down_Syndrome_Karyotype.png", alt:"Caryotype d'une personne trisomique 21 : trois exemplaires du chromosome 21 au lieu de deux", credit:"Image : National Human Genome Research Institute (NIH), domaine public"}},
+    {id:'q13', type:'connaissance', difficulty:2, notion:'u6', q:"Un crossing-over inégal peut produire, sur les deux chromatides concernées :", options:["une duplication d'un gène sur l'une, une délétion de ce même gène sur l'autre", "deux duplications identiques", "aucune conséquence génétique"], correct:0},
+    {id:'q14', type:'connaissance', difficulty:2, notion:'u6', q:"Un gène dupliqué peut ensuite :", options:["évoluer indépendamment de sa copie d'origine, à l'origine de nouvelles familles de gènes", "disparaître immédiatement du génome", "fusionner à nouveau avec sa copie d'origine"], correct:0},
+
+    {id:'r1', type:'raisonnement', difficulty:2, notion:'u2', q:"Un individu porte une mutation dans certaines cellules de sa peau, apparue après sa naissance, mais pas dans ses cellules reproductrices. Peut-on s'attendre à ce que ses enfants héritent de cette mutation ?",
+      options:["Oui, toute mutation présente chez un parent est transmise à sa descendance", "Non, car seule une mutation touchant les cellules reproductrices (lignée germinale) peut être transmise à la descendance ; une mutation somatique ne fonde qu'un clone cellulaire non reproducteur", "Cela dépend uniquement de l'âge auquel la mutation est apparue"], correct:1,
+      hint:"Repense à la distinction germinale/somatique déjà vue dans le module « Génétique de base », et à l'Unité 2 de ce chapitre sur le mosaïcisme somatique."},
+    {id:'r2', type:'raisonnement', difficulty:1, notion:'u3', q:"Un gène possède deux allèles, A (dominant) et a (récessif). Un individu de génotype hétérozygote Aa présente le phénotype associé à l'allèle A. Quel est le phénotype attendu pour un individu de génotype homozygote AA, et pourquoi ?",
+      options:["Le même phénotype que Aa, car une seule copie de l'allèle A suffit déjà à produire ce phénotype dominant", "Un phénotype différent, intermédiaire entre A et a", "Le phénotype associé à a, car deux copies sont nécessaires"], correct:0,
+      hint:"Repense à la définition d'un allèle dominant : combien de copies de cet allèle sont nécessaires pour qu'il s'exprime ?"},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u4', q:"Deux gènes sont situés sur deux paires de chromosomes différentes. Comment le brassage interchromosomique de la méiose permet-il, à lui seul (sans crossing-over), de produire plusieurs combinaisons alléliques différentes chez les gamètes d'un individu hétérozygote pour ces deux gènes ?",
+      options:["Parce que la répartition de chaque paire de chromosomes homologues vers les cellules filles est indépendante d'une paire à l'autre, ce qui combine librement des allèles portés par des chromosomes différents", "Parce que les deux gènes fusionnent en un seul lors de la méiose", "Parce que la mitose précédente a déjà mélangé les allèles"], correct:0,
+      hint:"Repense à ce que signifie « indépendante » dans la répartition des paires de chromosomes homologues lors de la première division de méiose."},
+    {id:'r4', type:'raisonnement', difficulty:2, notion:'u5', q:"Dans une famille, une maladie récessive liée au chromosome X touche uniquement les garçons, jamais les filles, sur plusieurs générations, et le père n'est jamais atteint. Comment ce type de transmission peut-il s'expliquer à partir de la répartition des chromosomes sexuels ?",
+      options:["Les garçons (XY) n'ont qu'un seul chromosome X : un seul allèle récessif reçu de la mère suffit à l'exprimer, alors que les filles (XX), généralement hétérozygotes, restent porteuses saines", "Les garçons sont, en général, plus fragiles génétiquement que les filles", "La maladie n'a en réalité aucun lien avec les chromosomes sexuels"], correct:0,
+      hint:"Repense au nombre de chromosomes X porté par chaque sexe, et à ce que cela implique pour l'expression d'un allèle récessif porté par ce chromosome."},
+    {id:'r5', type:'raisonnement', difficulty:3, notion:'u6', q:"Un couple, tous deux porteurs sains d'une translocation chromosomique équilibrée (échange de fragments entre deux chromosomes non homologues, sans perte de matériel), présente un risque accru de concevoir des enfants présentant des anomalies chromosomiques. Comment expliquer ce risque à partir des mécanismes de la méiose présentés dans ce chapitre ?",
+      options:["Lors de la méiose, la répartition des chromosomes remaniés peut aboutir à des gamètes avec un déséquilibre en matériel génétique (duplication ou délétion), même si les parents eux-mêmes sont phénotypiquement normaux", "Une translocation équilibrée ne peut jamais avoir de conséquence sur les gamètes produits", "Ce risque ne dépend que de l'âge des parents, pas de la translocation elle-même"], correct:0,
+      hint:"Repense aux accidents de la méiose présentés dans l'Unité 6 : un remaniement chromosomique chez un parent phénotypiquement normal peut-il tout de même donner, après méiose, des gamètes déséquilibrés ?"},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u1', q:"Une tumeur cancéreuse est constituée de cellules qui prolifèrent de façon incontrôlée. Des analyses montrent que toutes les cellules de cette tumeur partagent les mêmes mutations spécifiques, absentes du reste de l'organisme. Comment interpréter cette observation à la lumière de la notion de clone cellulaire ?",
+      options:["Ces cellules constituent un clone cellulaire particulier, issu d'une cellule initiale ayant acquis des mutations, elles-mêmes transmises fidèlement par mitose à toute sa descendance cellulaire", "Chaque cellule de la tumeur a développé les mêmes mutations de façon indépendante et coïncidente", "Les mutations proviennent d'une contamination externe, sans lien avec la division cellulaire"], correct:0,
+      hint:"Repense à la définition d'un clone cellulaire (Unité 1) et à ce qui se transmet fidèlement d'une cellule mère à ses cellules filles par mitose."}
+  ],
+
+  mindmapModel: {
+    label:"L'origine du phénotype des individus",
+    children:[
+      {label:"Clones cellulaires", children:[
+        {label:"Stabilité génétique (mitose fidèle)"},{label:"Innovation génétique (mutation somatique, mosaïcisme)"}
+      ]},
+      {label:"Vocabulaire génétique", children:[
+        {label:"Locus / allèle"},{label:"Homozygote / hétérozygote"},{label:"Dominant / récessif"}
+      ]},
+      {label:"Brassage méiotique", children:[
+        {label:"Interchromosomique"},{label:"Intrachromosomique (crossing-over)"},{label:"Fécondation"}
+      ]},
+      {label:"Génétique humaine", children:[
+        {label:"Arbre généalogique"},{label:"Porteur sain"}
+      ]},
+      {label:"Accidents de la méiose", children:[
+        {label:"Non-disjonction → trisomie"},{label:"Crossing-over inégal → duplication/délétion"},{label:"Duplication génique → nouvelles familles de gènes"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>

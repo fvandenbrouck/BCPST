@@ -1,0 +1,85 @@
+<svg viewBox="0 0 620 430" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif" font-size="11.5">
+  <rect x="0" y="0" width="620" height="430" fill="#FBF8F0"/>
+
+  <text x="150" y="25" text-anchor="middle" font-weight="bold" fill="#262319">Avant le crossing-over (tétrade)</text>
+  <text x="470" y="25" text-anchor="middle" font-weight="bold" fill="#262319">Après le crossing-over</text>
+
+  <!-- ===== AVANT ===== -->
+  <!-- Gène 1 (au-dessus du chiasma) -->
+  <text x="57" y="46" text-anchor="middle" font-size="10" fill="#524c3e">A1</text>
+  <text x="87" y="46" text-anchor="middle" font-size="10" fill="#524c3e">A1</text>
+  <text x="187" y="46" text-anchor="middle" font-size="10" fill="#524c3e">A2</text>
+  <text x="217" y="46" text-anchor="middle" font-size="10" fill="#524c3e">A2</text>
+
+  <!-- Chromatides avant (haut+bas même couleur) -->
+  <rect x="49" y="55" width="16" height="80" fill="#A6512B"/>
+  <rect x="49" y="135" width="16" height="80" fill="#A6512B"/>
+  <rect x="49" y="55" width="16" height="160" fill="none" stroke="#262319" stroke-width="1.2"/>
+
+  <rect x="79" y="55" width="16" height="80" fill="#A6512B"/>
+  <rect x="79" y="135" width="16" height="80" fill="#A6512B"/>
+  <rect x="79" y="55" width="16" height="160" fill="none" stroke="#262319" stroke-width="1.2"/>
+
+  <rect x="179" y="55" width="16" height="80" fill="#4C5B66"/>
+  <rect x="179" y="135" width="16" height="80" fill="#4C5B66"/>
+  <rect x="179" y="55" width="16" height="160" fill="none" stroke="#262319" stroke-width="1.2"/>
+
+  <rect x="209" y="55" width="16" height="80" fill="#4C5B66"/>
+  <rect x="209" y="135" width="16" height="80" fill="#4C5B66"/>
+  <rect x="209" y="55" width="16" height="160" fill="none" stroke="#262319" stroke-width="1.2"/>
+
+  <!-- Chiasma -->
+  <text x="137" y="108" text-anchor="middle" font-size="10.5" font-style="italic" fill="#262319">chiasma</text>
+  <line x1="95" y1="125" x2="179" y2="145" stroke="#262319" stroke-width="1.5"/>
+  <line x1="95" y1="145" x2="179" y2="125" stroke="#262319" stroke-width="1.5"/>
+
+  <!-- Gène 2 (sous le chiasma) -->
+  <text x="57" y="228" text-anchor="middle" font-size="10" fill="#524c3e">B1</text>
+  <text x="87" y="228" text-anchor="middle" font-size="10" fill="#524c3e">B1</text>
+  <text x="187" y="228" text-anchor="middle" font-size="10" fill="#524c3e">B2</text>
+  <text x="217" y="228" text-anchor="middle" font-size="10" fill="#524c3e">B2</text>
+
+  <text x="72" y="250" text-anchor="middle" font-size="10.5" fill="#7E3A1D">Homologue 1 (paternel)</text>
+  <text x="202" y="250" text-anchor="middle" font-size="10.5" fill="#4C5B66">Homologue 2 (maternel)</text>
+
+  <!-- ===== APRÈS ===== -->
+  <text x="382" y="46" text-anchor="middle" font-size="10" fill="#524c3e">A1</text>
+  <text x="412" y="46" text-anchor="middle" font-size="10" fill="#524c3e">A1</text>
+  <text x="512" y="46" text-anchor="middle" font-size="10" fill="#524c3e">A2</text>
+  <text x="542" y="46" text-anchor="middle" font-size="10" fill="#524c3e">A2</text>
+
+  <!-- Chromatide 1 : parentale (rust/rust) -->
+  <rect x="374" y="55" width="16" height="80" fill="#A6512B"/>
+  <rect x="374" y="135" width="16" height="80" fill="#A6512B"/>
+  <rect x="374" y="55" width="16" height="160" fill="none" stroke="#262319" stroke-width="1.2"/>
+
+  <!-- Chromatide 2 : recombinée (rust/slate) -->
+  <rect x="404" y="55" width="16" height="80" fill="#A6512B"/>
+  <rect x="404" y="135" width="16" height="80" fill="#4C5B66"/>
+  <rect x="404" y="55" width="16" height="160" fill="none" stroke="#262319" stroke-width="1.2"/>
+
+  <!-- Chromatide 3 : recombinée (slate/rust) -->
+  <rect x="504" y="55" width="16" height="80" fill="#4C5B66"/>
+  <rect x="504" y="135" width="16" height="80" fill="#A6512B"/>
+  <rect x="504" y="55" width="16" height="160" fill="none" stroke="#262319" stroke-width="1.2"/>
+
+  <!-- Chromatide 4 : parentale (slate/slate) -->
+  <rect x="534" y="55" width="16" height="80" fill="#4C5B66"/>
+  <rect x="534" y="135" width="16" height="80" fill="#4C5B66"/>
+  <rect x="534" y="55" width="16" height="160" fill="none" stroke="#262319" stroke-width="1.2"/>
+
+  <text x="382" y="228" text-anchor="middle" font-size="10" fill="#524c3e">B1</text>
+  <text x="412" y="228" text-anchor="middle" font-size="10" fill="#524c3e">B2</text>
+  <text x="512" y="228" text-anchor="middle" font-size="10" fill="#524c3e">B1</text>
+  <text x="542" y="228" text-anchor="middle" font-size="10" fill="#524c3e">B2</text>
+
+  <text x="397" y="250" text-anchor="middle" font-size="10.5" fill="#7E3A1D">Homologue 1 (paternel)</text>
+  <text x="527" y="250" text-anchor="middle" font-size="10.5" fill="#4C5B66">Homologue 2 (maternel)</text>
+
+  <!-- Légende -->
+  <line x1="20" y1="280" x2="600" y2="280" stroke="#D8CDAF"/>
+  <text x="310" y="304" text-anchor="middle" font-size="11.5" fill="#524c3e">Au niveau du chiasma, les chromatides 2 et 3 échangent leurs segments situés sous ce point :</text>
+  <text x="310" y="322" text-anchor="middle" font-size="11.5" fill="#524c3e">elles deviennent recombinées (nouvelles combinaisons A1-B2 et A2-B1).</text>
+  <text x="310" y="346" text-anchor="middle" font-size="11.5" fill="#524c3e">Les chromatides 1 et 4, non concernées par l'échange,</text>
+  <text x="310" y="364" text-anchor="middle" font-size="11.5" fill="#524c3e">restent parentales (A1-B1 et A2-B2).</text>
+</svg>
