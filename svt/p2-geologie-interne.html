@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Géologie interne · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/flashcards-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'p2',
+  chapNum: "Première",
+  subjectLabel: "Géologie",
+  accent: 'var(--ochre)',
+  title: "Géologie interne : la dynamique de la Terre",
+  pages: "Contenu de Première spécialité SVT — sans manuel dédié",
+  noManual: true,
+  backHref: '../index.html',
+  bridge: {
+    from: "En Seconde et en Première spécialité SVT, tu as déjà vu les grandes lignes de la tectonique des plaques : dérive des continents, dorsales, zones de subduction, sans nécessairement approfondir la structure interne du globe ni le détail des trois types de limites de plaques.",
+    to: "En BCPST1, cette dynamique interne est directement réinvestie dans l'étude du magmatisme, du métamorphisme et des risques géologiques, et sert de socle à des chapitres déjà construits comme Ch.6 (datation absolue) et Ch.7 (traces du passé mouvementé de la Terre, séquence ophiolitique, obduction)."
+  },
+
+  fiches: [
+    {
+      unit:'Unité 1', badge:'Première',
+      title:"Structure interne du globe : des couches connues indirectement",
+      paragraphs:[
+        "La Terre est organisée en couches concentriques aux propriétés physiques et chimiques différentes : la croûte (fine enveloppe externe), le manteau (l'essentiel du volume terrestre) et le noyau (au centre, riche en fer).",
+        "Ces couches profondes sont inaccessibles à l'observation directe : leur existence et leurs limites sont déduites indirectement, notamment par l'étude de la propagation des ondes sismiques, dont la vitesse et la trajectoire changent selon les matériaux traversés."
+      ],
+      bullets:[
+        "La croûte continentale (plus épaisse, ~30 à 70 km) et la croûte océanique (plus fine, ~5 à 10 km) diffèrent par leur épaisseur et leur composition.",
+        "Le manteau constitue l'essentiel du volume de la Terre ; il est solide mais peut se déformer très lentement sur de longues échelles de temps (comportement ductile en profondeur).",
+        "Le noyau est riche en fer : le noyau externe est liquide (à l'origine du champ magnétique terrestre), le noyau interne est solide malgré des températures encore plus élevées, en raison de l'énorme pression à cette profondeur."
+      ]
+    },
+    {
+      unit:'Unité 2', badge:'Première',
+      title:"La lithosphère, une enveloppe rigide découpée en plaques",
+      paragraphs:[
+        "La partie superficielle et rigide de la Terre, la lithosphère, regroupe la croûte et la toute première partie du manteau supérieur. Elle repose sur l'asthénosphère, une couche du manteau plus ductile qui permet son déplacement.",
+        "La lithosphère n'est pas continue : elle est découpée en plusieurs plaques rigides, qui se déplacent les unes par rapport aux autres à la vitesse de quelques centimètres par an — un ordre de grandeur comparable à la vitesse de croissance d'un ongle."
+      ],
+      bullets:[
+        "Une plaque tectonique peut porter de la croûte continentale, de la croûte océanique, ou les deux à la fois : les limites de plaques ne coïncident pas nécessairement avec les limites entre continents et océans.",
+        "Le moteur généralement retenu du déplacement des plaques est la convection thermique du manteau : des mouvements de matière liés aux écarts de température entre l'intérieur chaud et la surface plus froide de la Terre.",
+        "Cette dynamique interne, continue depuis des milliards d'années, façonne le relief à la surface du globe (chaînes de montagnes, fosses océaniques, volcans) et explique la répartition mondiale des séismes et des volcans."
+      ]
+    },
+    {
+      unit:'Unité 3', badge:'Première',
+      title:"Les trois types de limites de plaques",
+      paragraphs:[
+        "Selon le mouvement relatif des plaques de part et d'autre d'une limite, on distingue trois grands types de frontières, chacune associée à des phénomènes géologiques caractéristiques.",
+        "Ces limites concentrent l'essentiel de l'activité géologique (séismes, volcanisme, déformation) : l'intérieur d'une plaque est, par comparaison, relativement stable."
+      ],
+      bullets:[
+        "Limites divergentes (dorsales océaniques) : deux plaques s'écartent, du magma remonte pour combler l'espace créé, formant en continu de la nouvelle lithosphère océanique — c'est l'expansion océanique.",
+        "Limites convergentes (zones de subduction) : une plaque océanique, plus dense, s'enfonce sous une autre plaque et est progressivement recyclée dans le manteau, avec séismes et volcanisme associés.",
+        "Limites transformantes (failles coulissantes) : deux plaques glissent horizontalement l'une contre l'autre, sans création ni destruction de lithosphère, mais avec une forte activité sismique."
+      ],
+      terrainBadge: {href:'../carnet-de-terrain/chenaillet.html', label:"Séquence ophiolitique et traces d'obduction"}
+    },
+    {
+      unit:'Unité 4', badge:'Première',
+      title:"Séismes et volcans, expression de la dynamique interne",
+      paragraphs:[
+        "La répartition mondiale des séismes et des volcans n'est pas aléatoire : elle dessine précisément les limites des plaques tectoniques, confirmant que ces phénomènes sont une conséquence directe et observable de la dynamique interne du globe.",
+        "Le volcanisme lié aux limites de plaques n'est cependant pas le seul type de volcanisme observé à la surface du globe."
+      ],
+      bullets:[
+        "Le volcanisme de subduction, généralement explosif, résulte de la fusion partielle de roches au-dessus de la plaque plongeante, sous l'effet de l'eau qu'elle libère en profondeur.",
+        "Le volcanisme des dorsales, généralement effusif (peu explosif), résulte de la remontée directe de magma issu de la fusion du manteau à l'endroit où les plaques s'écartent — il produit notamment des laves en coussins (pillow lavas) au contact de l'eau de mer.",
+        "Le volcanisme de point chaud, plus rare, se produit à l'intérieur même d'une plaque, sans lien avec ses limites : il est attribué à un panache de matière chaude remontant depuis les profondeurs du manteau, relativement fixe alors que la plaque se déplace au-dessus (ex. l'archipel d'Hawaï)."
+      ]
+    }
+  ],
+
+  flashcards: [
+    {id:'f1', recto:"Croûte / Manteau / Noyau", verso:"Les trois grandes couches concentriques de la Terre, connues indirectement via les ondes sismiques.", notion:'u1'},
+    {id:'f2', recto:"Croûte continentale / océanique", verso:"Continentale : plus épaisse (~30-70 km). Océanique : plus fine (~5-10 km).", notion:'u1'},
+    {id:'f3', recto:"Noyau externe / interne", verso:"Externe : liquide (champ magnétique). Interne : solide malgré une température plus élevée (forte pression).", notion:'u1'},
+    {id:'f4', recto:"Lithosphère", verso:"Enveloppe rigide superficielle : croûte + toute première partie du manteau supérieur.", notion:'u2'},
+    {id:'f5', recto:"Asthénosphère", verso:"Couche du manteau plus ductile, sous la lithosphère, qui permet son déplacement.", notion:'u2'},
+    {id:'f6', recto:"Plaque tectonique", verso:"Fragment rigide de lithosphère, en déplacement de quelques centimètres par an.", notion:'u2'},
+    {id:'f7', recto:"Convection mantellique", verso:"Mouvements de matière dans le manteau, liés aux écarts de température : moteur du déplacement des plaques.", notion:'u2'},
+    {id:'f8', recto:"Limite divergente (dorsale)", verso:"Écartement de deux plaques, remontée de magma, création de nouvelle lithosphère océanique.", notion:'u3'},
+    {id:'f9', recto:"Limite convergente (subduction)", verso:"Plongement d'une plaque océanique sous une autre, destruction de lithosphère, séismes et volcanisme.", notion:'u3'},
+    {id:'f10', recto:"Limite transformante", verso:"Glissement horizontal de deux plaques, sans création ni destruction de lithosphère, forte sismicité.", notion:'u3'},
+    {id:'f11', recto:"Répartition des séismes et volcans", verso:"Calque précisément les limites des plaques tectoniques.", notion:'u4'},
+    {id:'f12', recto:"Volcanisme de point chaud", verso:"Volcanisme intra-plaque, lié à un panache mantellique fixe (ex. Hawaï), sans lien avec une limite de plaques.", notion:'u4'}
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {u1:'Unité 1 — Structure interne du globe', u2:'Unité 2 — Lithosphère et plaques', u3:'Unité 3 — Limites de plaques', u4:'Unité 4 — Séismes et volcans'},
+    nextStep: "Tu as terminé les deux modules « Première » de la feuille de route SVT. La suite (Ch.1, Ch.12, Ch.14) est en bonus, sans urgence particulière."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"La Terre est organisée, de la surface vers le centre, en :", options:["croûte, manteau, noyau", "noyau, manteau, croûte", "manteau, croûte, noyau"], correct:0},
+    {id:'q2', type:'connaissance', difficulty:2, notion:'u1', q:"Les couches profondes de la Terre sont principalement connues grâce à :", options:["des forages directs jusqu'au centre de la Terre", "l'étude indirecte de la propagation des ondes sismiques", "des photographies satellites"], correct:1,
+      image:{src:"../assets/img/p2/structure-plaques.svg", alt:"Schéma en coupe de la structure interne du globe (croûte, manteau, noyau externe, noyau interne) et des limites de plaques en surface"}},
+    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"Le noyau externe est ... alors que le noyau interne est ... , malgré une température plus élevée :", options:["liquide ; solide (en raison de l'énorme pression)", "solide ; liquide", "gazeux ; liquide"], correct:0},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u2', q:"La lithosphère regroupe :", options:["uniquement le noyau et le manteau", "la croûte et la toute première partie du manteau supérieur, rigide", "uniquement la croûte océanique"], correct:1},
+    {id:'q5', type:'connaissance', difficulty:2, notion:'u2', q:"L'asthénosphère est :", options:["une couche du manteau plus ductile, sur laquelle repose la lithosphère", "une autre appellation de la croûte continentale", "la partie liquide du noyau"], correct:0},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u2', q:"Le déplacement des plaques tectoniques s'effectue à une vitesse de l'ordre de :", options:["quelques centimètres par an", "quelques mètres par an", "quelques kilomètres par an"], correct:0},
+    {id:'q7', type:'connaissance', difficulty:2, notion:'u2', q:"Le moteur généralement retenu du déplacement des plaques est :", options:["la rotation de la Terre sur elle-même", "la convection thermique du manteau", "l'attraction lunaire"], correct:1},
+    {id:'q8', type:'connaissance', difficulty:1, notion:'u3', q:"Au niveau d'une limite divergente (dorsale océanique), les plaques :", options:["s'écartent, avec création de nouvelle lithosphère océanique", "convergent, avec destruction de lithosphère", "glissent horizontalement l'une contre l'autre"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:2, notion:'u3', q:"Au niveau d'une zone de subduction, la plaque océanique, plus dense :", options:["s'enfonce sous une autre plaque et est recyclée dans le manteau", "remonte à la surface d'une autre plaque", "reste immobile"], correct:0},
+    {id:'q10', type:'connaissance', difficulty:2, notion:'u3', q:"Une limite transformante se caractérise par :", options:["la création de nouvelle lithosphère", "le glissement horizontal de deux plaques l'une contre l'autre, sans création ni destruction de lithosphère", "un volcanisme intense et systématique"], correct:1},
+    {id:'q11', type:'connaissance', difficulty:1, notion:'u4', q:"La répartition mondiale des séismes et des volcans :", options:["est aléatoire, sans lien avec les plaques tectoniques", "dessine précisément les limites des plaques tectoniques", "se concentre uniquement au centre des continents"], correct:1},
+    {id:'q12', type:'connaissance', difficulty:2, notion:'u4', q:"Le volcanisme des dorsales produit notamment, au contact de l'eau de mer :", options:["des laves en coussins (pillow lavas)", "des cendres volcaniques exclusivement", "aucune lave, uniquement des gaz"], correct:0,
+      image:{src:"https://upload.wikimedia.org/wikipedia/commons/d/da/Nur05018-Pillow_lavas_off_Hawaii.jpg", alt:"Laves en coussins (pillow lavas) photographiées sous l'eau au large d'Hawaï", credit:"Photo : NOAA / National Undersea Research Program (NURP), domaine public"}},
+
+    {id:'r1', type:'raisonnement', difficulty:2, notion:'u1', q:"On sait que le noyau terrestre est riche en fer et que le noyau interne est solide malgré une température supérieure à celle du noyau externe (liquide). Comment expliquer que le noyau interne reste solide dans ces conditions ?",
+      options:["La pression y est tellement élevée qu'elle empêche le fer de fondre, malgré la température plus élevée", "Le noyau interne est en réalité plus froid que le noyau externe", "Le fer ne peut jamais fondre, quelle que soit la température"], correct:0,
+      hint:"Repense à ce qui, en plus de la température, détermine l'état solide ou liquide d'un matériau en profondeur — un facteur mentionné dans l'Unité 1."},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u2', q:"Une plaque tectonique peut porter à la fois de la croûte continentale et de la croûte océanique (c'est le cas, par exemple, de la plaque sud-américaine). Qu'est-ce que cela implique sur la relation entre limites de plaques et limites entre continents et océans ?",
+      options:["Les limites de plaques coïncident toujours exactement avec le trait de côte séparant continent et océan", "Les limites de plaques ne coïncident pas nécessairement avec les limites entre continents et océans : une même plaque peut porter les deux types de croûte", "Une plaque ne peut porter qu'un seul type de croûte à la fois"], correct:1,
+      hint:"Repense à la définition d'une plaque tectonique donnée dans l'Unité 2 : est-elle définie par la nature de la croûte qu'elle porte, ou par sa rigidité mécanique ?"},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u3', q:"On observe, le long d'une limite de plaques, une activité sismique importante mais aucun volcanisme, et aucune création ni destruction apparente de lithosphère de part et d'autre. À quel type de limite de plaques correspond le plus probablement cette observation ?",
+      options:["Une limite divergente", "Une limite convergente (subduction)", "Une limite transformante"], correct:2,
+      hint:"Repense aux trois types de limites présentés dans l'Unité 3 : lequel n'est associé ni à une création, ni à une destruction de lithosphère, tout en produisant une forte sismicité ?"},
+    {id:'r4', type:'raisonnement', difficulty:3, notion:'u3', q:"Au Chenaillet, on peut observer une séquence ophiolitique (roches typiques du plancher océanique) aujourd'hui présente en surface, en haute montagne, loin de tout océan actuel. En te basant sur les mécanismes de subduction et d'obduction déjà vus en Ch.7, comment expliquer la présence actuelle de ces roches d'origine océanique en pleine chaîne de montagnes ?",
+      options:["Ces roches se sont formées directement en montagne, sans lien avec un océan", "Une portion de lithosphère océanique a échappé à la subduction et a été charriée sur la croûte continentale (obduction), avant d'être ensuite soulevée lors de la formation de la chaîne de montagnes", "Le niveau de la mer est monté jusqu'en haute montagne à cette époque"], correct:1,
+      hint:"Reviens sur la distinction entre subduction et obduction déjà vue en Ch.7 : que devient une portion de plancher océanique qui échappe à l'enfoncement dans le manteau ?"},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u4', q:"Un volcan actif est situé au milieu d'une plaque tectonique, loin de toute limite de plaque connue. Comment expliquer l'existence de ce volcanisme, en apparence isolé des mécanismes de limites de plaques présentés dans ce module ?",
+      options:["C'est impossible : tout volcanisme est nécessairement situé sur une limite de plaques", "Il peut s'agir d'un point chaud : un panache de matière chaude remontant du manteau profond, relativement fixe, alors que la plaque se déplace au-dessus", "Le volcan a nécessairement été formé par une ancienne subduction toujours active"], correct:1,
+      hint:"Repense au troisième type de volcanisme présenté dans l'Unité 4, qui n'est justement pas situé sur une limite de plaques."},
+    {id:'r6', type:'raisonnement', difficulty:3, notion:'u4', q:"Deux volcans A et B produisent des styles d'éruption très différents : le volcan A a des éruptions généralement effusives (coulées de lave fluides, peu explosives), le volcan B a des éruptions généralement très explosives. Sachant que A est situé sur une dorsale océanique et B au-dessus d'une zone de subduction, cette différence est-elle cohérente avec ce qui a été présenté dans ce module ?",
+      options:["Non, les deux types de volcanisme devraient être identiques", "Oui : le volcanisme de dorsale est généralement effusif, celui de subduction généralement explosif — cohérent avec les mécanismes de formation du magma décrits dans l'Unité 4", "Non, c'est l'inverse qui est attendu"], correct:1,
+      hint:"Reviens sur la description du volcanisme de dorsale et du volcanisme de subduction dans l'Unité 4 : lequel des deux est qualifié d'effusif, lequel d'explosif ?"}
+  ],
+
+  mindmapModel: {
+    label:"Géologie interne",
+    children:[
+      {label:"Structure interne", children:[
+        {label:"Croûte / Manteau / Noyau"},{label:"Ondes sismiques (méthode indirecte)"},{label:"Noyau externe liquide / interne solide"}
+      ]},
+      {label:"Lithosphère et plaques", children:[
+        {label:"Lithosphère rigide / asthénosphère ductile"},{label:"Plaques tectoniques, quelques cm/an"},{label:"Convection mantellique (moteur)"}
+      ]},
+      {label:"Limites de plaques", children:[
+        {label:"Divergente : dorsale, expansion océanique"},{label:"Convergente : subduction"},{label:"Transformante : coulissement"}
+      ]},
+      {label:"Séismes et volcans", children:[
+        {label:"Répartition calquée sur les limites"},{label:"Volcanisme de dorsale / subduction"},{label:"Point chaud (intra-plaque)"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>

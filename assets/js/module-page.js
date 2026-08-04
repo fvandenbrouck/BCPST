@@ -5,7 +5,7 @@
  * ModulePage.init(MODULE).
  *
  * Contrat attendu sur MODULE (voir svt/ch05-datation-relative.html pour un exemple complet) :
- *   id, chapNum, subjectLabel, title, pages, bridge:{from,to}, backHref,
+ *   id, chapNum, subjectLabel, title, pages, noManual?, bridge:{from,to}, backHref,
  *   fiches:[{unit,page,title,paragraphs,bullets,terrainBadge?,badge?}],
  *   flashcards, qcm, qcmMeta, diagnostic, mindmapModel
  *
@@ -13,6 +13,10 @@
  * renvoi de page (ex. un zoom interdisciplinaire vers un programme officiel), fournir
  * `badge` (chaîne libre, ex. "PC Term.") à la place de `page` : il s'affiche alors tel
  * quel dans le même badge monospace, sans préfixe "p.".
+ *
+ * `mod.noManual` (optionnel, ex. modules "Première" sans manuel Terminale dédié) :
+ * supprime le préfixe "Manuel Belin Éducation," de l'en-tête, `mod.pages` s'affiche
+ * alors seul, tel quel.
  */
 (function(){
   function esc(s){ return (s+'').replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
@@ -69,7 +73,7 @@
       <div class="module-head">
         <p class="m-tag">${esc(mod.chapNum)} · ${esc(mod.subjectLabel)}</p>
         <h1>${esc(mod.title)}</h1>
-        <p class="m-pages">Manuel Belin Éducation, ${esc(mod.pages)}</p>
+        <p class="m-pages">${mod.noManual ? esc(mod.pages) : 'Manuel Belin Éducation, ' + esc(mod.pages)}</p>
         ${mod.bridge ? `<div class="m-bridge" style="--card-accent:${mod.accent||'var(--rust)'}"><b>Déjà vu :</b> ${esc(mod.bridge.from)}<br><b>En BCPST1 :</b> ${esc(mod.bridge.to)}</div>` : ''}
       </div>
       <div class="tabs">

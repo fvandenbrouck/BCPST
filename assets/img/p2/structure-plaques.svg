@@ -1,0 +1,58 @@
+<svg viewBox="0 0 640 610" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif" font-size="11.5">
+  <rect x="0" y="0" width="640" height="610" fill="#FBF8F0"/>
+
+  <!-- Panneau 1 : structure interne -->
+  <text x="320" y="28" text-anchor="middle" font-weight="bold" fill="#262319">Structure interne du globe (coupe)</text>
+
+  <circle cx="160" cy="180" r="90" fill="#F4EEDF" stroke="#262319" stroke-width="2"/>
+  <circle cx="160" cy="180" r="84" fill="#5F6F42" fill-opacity="0.35"/>
+  <circle cx="160" cy="180" r="45" fill="#C89B3C" fill-opacity="0.6"/>
+  <circle cx="160" cy="180" r="20" fill="#A6512B"/>
+
+  <rect x="330" y="100" width="16" height="16" fill="#F4EEDF" stroke="#262319" stroke-width="1.5"/>
+  <text x="354" y="112" fill="#262319">Croûte — 5 à 70 km d'épaisseur</text>
+  <rect x="330" y="140" width="16" height="16" fill="#5F6F42" fill-opacity="0.35"/>
+  <text x="354" y="152" fill="#262319">Manteau — jusqu'à ~2900 km</text>
+  <rect x="330" y="180" width="16" height="16" fill="#C89B3C" fill-opacity="0.6"/>
+  <text x="354" y="192" fill="#262319">Noyau externe — liquide (fer en fusion)</text>
+  <rect x="330" y="220" width="16" height="16" fill="#A6512B"/>
+  <text x="354" y="232" fill="#262319">Noyau interne — solide</text>
+
+  <text x="330" y="264" font-size="11" fill="#524c3e">Structure connue essentiellement par l'étude indirecte</text>
+  <text x="330" y="280" font-size="11" fill="#524c3e">de la propagation des ondes sismiques (méthode indirecte).</text>
+
+  <!-- Panneau 2 : limites de plaques -->
+  <text x="320" y="310" text-anchor="middle" font-weight="bold" fill="#262319">Limites de plaques : la dynamique en surface</text>
+  <text x="540" y="310" text-anchor="middle" font-weight="bold" fill="#262319">Subduction</text>
+  <text x="260" y="335" text-anchor="middle" font-weight="bold" fill="#7E3A1D">Dorsale océanique</text>
+
+  <rect x="30" y="360" width="580" height="140" fill="#5F6F42" fill-opacity="0.10" stroke="#5F6F42" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="45" y="376" font-size="11" fill="#262319">Croûte océanique</text>
+  <text x="45" y="391" font-size="11" fill="#262319">(lithosphère rigide)</text>
+  <text x="45" y="485" font-size="11" fill="#3f4a2c">Asthénosphère (manteau ductile)</text>
+
+  <rect x="30" y="345" width="210" height="18" fill="#4C5B66" stroke="#262319" stroke-width="1"/>
+  <rect x="280" y="345" width="190" height="18" fill="#4C5B66" stroke="#262319" stroke-width="1"/>
+
+  <line x1="260" y1="470" x2="260" y2="348" stroke="#A6512B" stroke-width="3" marker-end="url(#arrowRust)"/>
+
+  <polygon points="470,345 470,363 555,475 535,475" fill="#4C5B66" stroke="#262319" stroke-width="1"/>
+  <line x1="485" y1="358" x2="540" y2="460" stroke="#262319" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+
+  <rect x="470" y="322" width="140" height="41" fill="#7E3A1D" fill-opacity="0.22" stroke="#262319" stroke-width="1.5"/>
+  <text x="540" y="346" text-anchor="middle" font-size="11" fill="#262319">Croûte continentale</text>
+
+  <text x="320" y="522" text-anchor="middle" font-size="11" fill="#524c3e">Dorsale océanique : remontée de magma → divergence, création de lithosphère.</text>
+  <text x="320" y="538" text-anchor="middle" font-size="11" fill="#524c3e">Subduction : la plaque la plus dense s'enfonce sous l'autre (convergence).</text>
+  <text x="320" y="554" text-anchor="middle" font-size="11" fill="#524c3e">→ destruction de lithosphère, séismes et volcanisme associés.</text>
+  <text x="320" y="580" text-anchor="middle" font-size="11.5" fill="#524c3e">Moteur de l'ensemble : la convection thermique du manteau.</text>
+
+  <defs>
+    <marker id="arrowDark" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#262319"/>
+    </marker>
+    <marker id="arrowRust" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#A6512B"/>
+    </marker>
+  </defs>
+</svg>

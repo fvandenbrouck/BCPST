@@ -18,7 +18,8 @@
  *   }
  *   module.diagnostic: {
  *     unitNames: {[notion]: 'Unité X — ... (p.NN)'},
- *     bilanPage, exosPage, bacPage,
+ *     bilanPage?, exosPage?, bacPage?,    // omis pour un module sans manuel (cf. module-page.js, mod.noManual) :
+ *                                         // le diagnostic bascule alors sur des formulations génériques
  *     nextStep: "Enchaîne sur le chapitre suivant ..."
  *   }
  */
@@ -84,7 +85,7 @@
       appreciation = `Les bases de ce module demandent encore un peu de travail — c'est tout à fait normal pour un premier passage sur une notion. Rien d'inquiétant, tu as le temps de consolider avant la rentrée.`;
       steps = [
         `Relis les fiches de cours ci-dessus (${mod.pages})`,
-        `Relis le <b>Bilan p.${d.bilanPage}</b> — apprends les mots-clés par cœur`,
+        d.bilanPage ? `Relis le <b>Bilan p.${d.bilanPage}</b> — apprends les mots-clés par cœur` : `Relis chaque fiche une seconde fois — apprends les mots-clés par cœur`,
         `Refais toutes les cartes, même celles déjà réussies`,
         `Reviens sur ce QCM dans un jour ou deux`
       ];
@@ -93,20 +94,20 @@
       steps = [
         `Relis les indices des questions de ${wordB} ci-dessous, un par un`,
         `Reprends chaque notion sur un exemple différent`,
-        `Fais l'<b>Objectif BAC p.${d.bacPage}</b> : c'est exactement ce type d'exercice qui entraîne à combiner plusieurs notions`,
+        d.bacPage ? `Fais l'<b>Objectif BAC p.${d.bacPage}</b> : c'est exactement ce type d'exercice qui entraîne à combiner plusieurs notions` : `Refais les questions de raisonnement de ce module en cachant les options, pour t'entraîner à raisonner avant de comparer`,
         `Retente ce QCM`
       ];
     } else if(pctA < 0.8 || pctB < 0.8){
       appreciation = `Bon niveau général, la logique du module est comprise. Il reste quelques détails à fixer pour être à l'aise à coup sûr.`;
       steps = [
-        `Relis le <b>Bilan p.${d.bilanPage}</b> pour combler les derniers trous`,
-        `Fais les <b>exercices du manuel p.${d.exosPage}</b>`,
+        d.bilanPage ? `Relis le <b>Bilan p.${d.bilanPage}</b> pour combler les derniers trous` : `Relis les fiches de cours pour combler les derniers trous`,
+        d.exosPage ? `Fais les <b>exercices du manuel p.${d.exosPage}</b>` : `Refais les flashcards les moins bien notées`,
         `Retente ce QCM pour viser la maîtrise complète`
       ];
     } else {
       appreciation = `Module maîtrisé, sur les ${wordA} comme sur le ${wordB}. Belle régularité — c'est le niveau attendu en entrée de BCPST.`;
       steps = [
-        `Fais l'<b>Objectif BAC p.${d.bacPage}</b> pour t'entraîner à la vitesse d'examen`,
+        d.bacPage ? `Fais l'<b>Objectif BAC p.${d.bacPage}</b> pour t'entraîner à la vitesse d'examen` : `Relis une dernière fois les indices de raisonnement, pour vérifier que tu peux les expliquer sans les relire`,
         `Ajoute les dernières branches à ta carte mentale, de mémoire`,
         d.nextStep || `Enchaîne sur le module suivant dès qu'il sera prêt.`
       ];

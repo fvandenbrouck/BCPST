@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Génétique de base · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/flashcards-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'p1',
+  chapNum: "Première",
+  subjectLabel: "Génétique",
+  accent: 'var(--ochre)',
+  title: "Génétique de base : transmission, mutations, ADN",
+  pages: "Contenu de Première spécialité SVT — sans manuel dédié",
+  noManual: true,
+  backHref: '../index.html',
+  bridge: {
+    from: "En Première spécialité SVT (thème « Transmission, variation et expression du patrimoine génétique »), tu as déjà vu la structure de l'ADN, le principe de la division cellulaire (mitose et méiose) et la notion de mutation. N'ayant pas poursuivi la spécialité en Terminale, ce module reprend ces bases avant qu'elles ne soient réinvesties.",
+    to: "En BCPST1, ces notions sont un prérequis direct du thème « La cellule, unité structurelle et fonctionnelle du vivant » et de la génétique des populations : le programme suppose ces mécanismes acquis pour aller plus loin (cartes génétiques, calculs de fréquences alléliques, génétique quantitative)."
+  },
+
+  fiches: [
+    {
+      unit:'Unité 1', badge:'Première',
+      title:"L'ADN, support de l'information génétique",
+      paragraphs:[
+        "L'ADN (acide désoxyribonucléique) est une molécule en double hélice, présente dans le noyau de chaque cellule, qui porte l'information génétique de l'individu sous forme d'une succession de quatre bases (A, T, C, G).",
+        "L'ADN est organisé en chromosomes, eux-mêmes rassemblés dans le noyau : l'ensemble du matériel génétique d'un individu constitue son génome. Une portion d'ADN qui code une information précise (par exemple la structure d'une protéine) est appelée un gène."
+      ],
+      bullets:[
+        "Une cellule humaine ordinaire (dite somatique) est diploïde : elle possède ses chromosomes par paires (2n = 46 chromosomes, soit 23 paires), chaque paire étant constituée d'un chromosome d'origine paternelle et d'un chromosome d'origine maternelle.",
+        "Le caryotype est la représentation ordonnée des chromosomes d'une cellule, classés par paires et par taille décroissante : il permet de vérifier le nombre et la structure des chromosomes d'un individu.",
+        "Un même gène peut exister sous plusieurs versions, appelées allèles, qui diffèrent légèrement dans leur séquence de bases — c'est l'une des origines de la diversité génétique entre individus."
+      ]
+    },
+    {
+      unit:'Unité 2', badge:'Première',
+      title:"Mitose et méiose : deux divisions aux rôles opposés",
+      paragraphs:[
+        "La mitose est le mode de division qui permet à une cellule de se multiplier à l'identique : elle produit deux cellules filles génétiquement identiques entre elles et à la cellule mère, avec le même nombre de chromosomes (2n). C'est le mode de division de la grande majorité des cellules de l'organisme (croissance, renouvellement des tissus).",
+        "La méiose est un mode de division particulier, réservé à la formation des cellules reproductrices (gamètes) : elle comprend deux divisions successives et réduit de moitié le nombre de chromosomes, produisant des cellules haploïdes (n)."
+      ],
+      bullets:[
+        "La méiose ne produit pas des gamètes identiques entre eux : la répartition indépendante des paires de chromosomes lors de la première division (brassage interchromosomique) génère de nombreuses combinaisons alléliques différentes.",
+        "La fécondation (union d'un gamète mâle et d'un gamète femelle, n + n) restaure le caractère diploïde (2n) de la cellule-œuf, tout en combinant des allèles d'origine paternelle et maternelle : c'est une deuxième source majeure de diversité génétique.",
+        "Mitose et méiose partagent une étape commune en amont : la réplication de l'ADN, qui double la quantité de matériel génétique avant toute division (chaque chromosome se retrouve alors formé de deux chromatides identiques)."
+      ]
+    },
+    {
+      unit:'Unité 3', badge:'Première',
+      title:"Du génotype au phénotype",
+      paragraphs:[
+        "Le génotype désigne l'ensemble des allèles portés par un individu pour un ou plusieurs gènes ; le phénotype désigne l'ensemble des caractères observables qui en résultent, à différentes échelles (moléculaire, cellulaire, macroscopique).",
+        "Le passage du génotype au phénotype passe par l'expression des gènes : un gène est transcrit en ARN messager, lui-même traduit en protéine — la protéine produite est souvent directement responsable du caractère observé."
+      ],
+      bullets:[
+        "Le phénotype macroscopique (visible à l'échelle de l'organisme) résulte le plus souvent de phénotypes définis à des échelles plus fines : phénotype moléculaire (une protéine particulière, fonctionnelle ou non), puis phénotype cellulaire (une cellule qui fonctionne différemment selon la protéine qu'elle produit).",
+        "Le phénotype ne dépend pas uniquement du génotype : l'environnement (alimentation, exposition à des facteurs extérieurs) peut moduler l'expression des gènes et donc le phénotype final, pour un même génotype.",
+        "On distingue le phénotype dit « sauvage » (le plus fréquent, ou pris comme référence) et un phénotype dit « mutant », qui résulte d'un allèle modifié par une mutation."
+      ]
+    },
+    {
+      unit:'Unité 4', badge:'Première',
+      title:"Les mutations, source de diversité génétique",
+      paragraphs:[
+        "Une mutation est une modification spontanée et aléatoire de la séquence de bases de l'ADN. Elle peut toucher une seule base (mutation ponctuelle : substitution, insertion ou délétion d'une base) ou des portions plus larges d'ADN.",
+        "Une mutation qui touche un gène peut n'avoir aucun effet, un effet neutre, ou modifier la protéine produite — et donc, potentiellement, le phénotype correspondant."
+      ],
+      bullets:[
+        "Une mutation par substitution peut être silencieuse (la protéine produite n'est pas modifiée, en raison de la redondance du code génétique), faux-sens (un seul acide aminé de la protéine change) ou non-sens (elle provoque l'arrêt prématuré de la synthèse de la protéine, qui devient généralement non fonctionnelle).",
+        "On distingue les mutations germinales, qui touchent les cellules reproductrices et sont transmissibles à la descendance, des mutations somatiques, qui touchent les autres cellules de l'organisme et ne sont pas transmises aux descendants.",
+        "Les mutations sont la source ultime de tous les nouveaux allèles : combinées au brassage génétique de la méiose et de la fécondation, elles alimentent la diversité génétique sur laquelle peut s'exercer la sélection — c'est exactement le mécanisme déjà rencontré en Terminale à propos de la domestication des plantes (Ch.11)."
+      ]
+    }
+  ],
+
+  flashcards: [
+    {id:'f1', recto:"ADN", verso:"Molécule en double hélice portant l'information génétique, sous forme d'une succession de bases A, T, C, G.", notion:'u1'},
+    {id:'f2', recto:"Gène / allèle", verso:"Un gène est une portion d'ADN codant une information ; un allèle est une version particulière de ce gène.", notion:'u1'},
+    {id:'f3', recto:"Caryotype", verso:"Représentation ordonnée des chromosomes d'une cellule, classés par paires et par taille décroissante.", notion:'u1'},
+    {id:'f4', recto:"Cellule diploïde (2n)", verso:"Cellule dont les chromosomes sont présents par paires (ex. 2n = 46 chez l'humain).", notion:'u1'},
+    {id:'f5', recto:"Mitose", verso:"Division produisant deux cellules filles identiques entre elles et à la cellule mère, même nombre de chromosomes (2n).", notion:'u2'},
+    {id:'f6', recto:"Méiose", verso:"Deux divisions successives réduisant de moitié le nombre de chromosomes (2n → n), pour former les gamètes.", notion:'u2'},
+    {id:'f7', recto:"Brassage génétique (méiose)", verso:"Répartition indépendante des paires de chromosomes en méiose I : génère des gamètes génétiquement différents.", notion:'u2'},
+    {id:'f8', recto:"Fécondation", verso:"Union de deux gamètes (n + n) qui restaure la diploïdie (2n) et combine des allèles d'origine paternelle et maternelle.", notion:'u2'},
+    {id:'f9', recto:"Génotype / phénotype", verso:"Génotype : allèles portés par un individu. Phénotype : caractères observables qui en résultent (à plusieurs échelles).", notion:'u3'},
+    {id:'f10', recto:"Expression d'un gène", verso:"Transcription du gène en ARN messager, puis traduction de l'ARN messager en protéine.", notion:'u3'},
+    {id:'f11', recto:"Mutation ponctuelle", verso:"Modification d'une seule base de l'ADN : substitution, insertion ou délétion.", notion:'u4'},
+    {id:'f12', recto:"Mutation germinale / somatique", verso:"Germinale : touche les cellules reproductrices, transmissible. Somatique : touche les autres cellules, non transmissible.", notion:'u4'}
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {u1:"Unité 1 — L'ADN, support de l'information génétique", u2:'Unité 2 — Mitose et méiose', u3:'Unité 3 — Du génotype au phénotype', u4:'Unité 4 — Les mutations'},
+    nextStep: "Enchaîne sur le module suivant (géologie interne) dès qu'il sera prêt."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"L'ADN est :", options:["une protéine qui catalyse les réactions cellulaires", "une molécule en double hélice qui porte l'information génétique", "un type particulier de chromosome"], correct:1},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"Un gène est :", options:["une portion d'ADN codant une information précise", "un synonyme de chromosome", "une protéine impliquée dans la digestion"], correct:0},
+    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"Une cellule diploïde humaine ordinaire possède :", options:["46 chromosomes isolés, sans organisation en paires", "23 paires de chromosomes (2n = 46)", "23 chromosomes en tout"], correct:1},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u1', q:"Le caryotype permet de :", options:["mesurer la taille d'une cellule", "représenter et vérifier le nombre et la structure des chromosomes d'un individu", "mesurer la quantité de protéines produites par une cellule"], correct:1,
+      image:{src:"https://upload.wikimedia.org/wikipedia/commons/5/53/NHGRI_human_male_karyotype.png", alt:"Caryotype humain masculin : 22 paires d'autosomes classées par taille décroissante + paire de chromosomes sexuels XY", credit:"Image : National Human Genome Research Institute (NIH), domaine public"}},
+    {id:'q5', type:'connaissance', difficulty:2, notion:'u2', q:"La mitose produit :", options:["deux cellules filles génétiquement identiques entre elles et à la cellule mère (2n)", "quatre cellules filles génétiquement différentes (n)", "une seule cellule fille, haploïde"], correct:0,
+      image:{src:"../assets/img/p1/mitose-meiose.svg", alt:"Schéma comparant la mitose (deux cellules filles identiques, 2n) et la méiose (quatre gamètes différents, n)"}},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u2', q:"La méiose est le mode de division :", options:["de la grande majorité des cellules de l'organisme", "réservé à la formation des gamètes, réduisant de moitié le nombre de chromosomes", "qui double le nombre de chromosomes"], correct:1},
+    {id:'q7', type:'connaissance', difficulty:2, notion:'u2', q:"La fécondation consiste en :", options:["la fusion de deux gamètes (n + n), qui restaure la diploïdie (2n)", "la division d'une cellule diploïde en deux cellules haploïdes", "la duplication de l'ADN avant la mitose"], correct:0},
+    {id:'q8', type:'connaissance', difficulty:1, notion:'u3', q:"Le génotype désigne :", options:["l'ensemble des caractères observables d'un individu", "l'ensemble des allèles portés par un individu pour un ou plusieurs gènes", "la quantité totale d'ADN d'une cellule"], correct:1},
+    {id:'q9', type:'connaissance', difficulty:2, notion:'u3', q:"Le passage du génotype au phénotype passe par :", options:["la réplication directe de l'ADN en un caractère visible", "la transcription du gène en ARN messager, puis sa traduction en protéine", "la méiose uniquement"], correct:1},
+    {id:'q10', type:'connaissance', difficulty:1, notion:'u4', q:"Une mutation est :", options:["une modification spontanée et aléatoire de la séquence de bases de l'ADN", "un mécanisme de réparation systématique de l'ADN", "un synonyme de méiose"], correct:0},
+    {id:'q11', type:'connaissance', difficulty:2, notion:'u4', q:"Une mutation « silencieuse » est une mutation qui :", options:["arrête complètement la synthèse de la protéine", "ne modifie pas la protéine produite, malgré le changement de séquence", "modifie systématiquement le phénotype macroscopique"], correct:1},
+    {id:'q12', type:'connaissance', difficulty:2, notion:'u4', q:"Une mutation germinale, contrairement à une mutation somatique :", options:["ne peut jamais être transmise à la descendance", "touche les cellules reproductrices et peut être transmise à la descendance", "touche uniquement les cellules de la peau"], correct:1},
+
+    {id:'r1', type:'raisonnement', difficulty:2, notion:'u1', q:"Deux frères et sœurs, nés des mêmes parents, ne se ressemblent pas parfaitement et n'ont pas exactement les mêmes allèles pour de nombreux gènes. Sachant qu'ils ont hérité leur ADN des deux mêmes parents, comment expliquer qu'ils ne soient pas identiques ?",
+      options:["Chaque gamète produit par un parent contient une combinaison particulière d'allèles (brassage génétique lors de la méiose) ; deux gamètes différents ont donc pu être transmis à chaque enfant", "Les deux enfants ont nécessairement subi des mutations différentes juste après la fécondation", "L'ADN change spontanément de composition à chaque génération, indépendamment des parents"], correct:0,
+      hint:"Repense à ce que produit la méiose chez chacun des deux parents : des gamètes tous identiques, ou des gamètes génétiquement variés ?"},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u2', q:"Une cellule doit se diviser pour permettre la cicatrisation d'une plaie cutanée. Quel type de division est mobilisé, et pourquoi ce choix est-il cohérent avec le rôle attendu de cette division ?",
+      options:["La méiose, car elle produit des cellules génétiquement variées utiles à la réparation", "La mitose, car elle produit des cellules identiques à la cellule d'origine, ce qui permet de reconstituer un tissu fonctionnellement semblable au tissu d'origine", "Ni l'une ni l'autre : les cellules de la peau ne se divisent jamais"], correct:1,
+      hint:"Le tissu cicatriciel doit-il être génétiquement varié, ou au contraire identique au tissu qu'il remplace ?"},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u3', q:"Deux plants d'une même variété, génétiquement identiques (par exemple issus de bouturage), sont cultivés l'un en pleine lumière et l'autre à l'ombre. Ils développent des feuilles de tailles différentes. Comment expliquer cette différence alors que leur génotype est rigoureusement le même ?",
+      options:["C'est impossible : à génotype identique, le phénotype est nécessairement identique", "L'environnement (ici la lumière) peut moduler l'expression des gènes et donc le phénotype final, même à génotype identique", "L'un des deux plants a nécessairement subi une mutation"], correct:1,
+      hint:"Repense à ce qui, en plus du génotype, a été présenté comme un facteur pouvant influencer le phénotype final."},
+    {id:'r4', type:'raisonnement', difficulty:3, notion:'u4', q:"Une mutation ponctuelle transforme, dans la séquence d'un gène, un codon codant un acide aminé en un codon « stop » (signal d'arrêt de la traduction). Quel type de mutation est-ce, et quelle conséquence peut-on prévoir sur la protéine produite ?",
+      options:["Une mutation silencieuse, sans conséquence sur la protéine", "Une mutation non-sens, qui provoque l'arrêt prématuré de la synthèse de la protéine, généralement non fonctionnelle", "Une mutation faux-sens, qui ne change qu'un seul acide aminé sans autre conséquence"], correct:1,
+      hint:"Repense à la définition de chacun des trois types de conséquences d'une mutation ponctuelle présentés dans l'Unité 4, et à ce que produit un codon stop prématuré sur la longueur de la protéine."},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u4', q:"Un individu porte une mutation dans une cellule de peau apparue après une exposition solaire (mutation somatique). Peut-on s'attendre à ce que cette mutation soit présente chez ses enfants ? Justifie.",
+      options:["Oui, toute mutation présente chez un parent est automatiquement transmise à sa descendance", "Non, car seules les mutations germinales (touchant les cellules reproductrices) sont transmissibles à la descendance", "Cela dépend uniquement de l'âge de l'individu au moment de la mutation"], correct:1,
+      hint:"Repense à la distinction entre mutation germinale et mutation somatique, et à quelles cellules donnent naissance aux gamètes transmis à la descendance."},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u2', q:"On observe au microscope une cellule en division qui produit deux cellules filles, chacune avec le même nombre de chromosomes que la cellule mère et un contenu génétique identique. S'agit-il d'une mitose ou d'une méiose ? Justifie à partir de ce qui est observé.",
+      options:["D'une méiose, car elle produit toujours deux cellules filles", "D'une mitose, car elle conserve le nombre de chromosomes et produit des cellules identiques — deux critères qui excluent la méiose", "On ne peut pas savoir sans connaître l'organisme observé"], correct:1,
+      hint:"Compare les deux critères observés (nombre de chromosomes conservé, cellules identiques) aux définitions de la mitose et de la méiose données dans l'Unité 2."}
+  ],
+
+  mindmapModel: {
+    label:"Génétique de base",
+    children:[
+      {label:"ADN et génome", children:[
+        {label:"Double hélice, bases A T C G"},{label:"Gène / allèle"},{label:"Caryotype, cellule diploïde (2n)"}
+      ]},
+      {label:"Division cellulaire", children:[
+        {label:"Mitose : 2 cellules identiques, 2n"},{label:"Méiose : gamètes, n, brassage"},{label:"Fécondation : n + n → 2n"}
+      ]},
+      {label:"Génotype → phénotype", children:[
+        {label:"Transcription → traduction"},{label:"Échelles moléculaire / cellulaire / macroscopique"},{label:"Influence de l'environnement"}
+      ]},
+      {label:"Mutations", children:[
+        {label:"Substitution, insertion, délétion"},{label:"Silencieuse / faux-sens / non-sens"},{label:"Germinale (transmissible) / somatique"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>
