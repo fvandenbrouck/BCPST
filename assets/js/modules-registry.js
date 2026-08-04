@@ -17,7 +17,7 @@ window.MODULES = [
   {id:'p2', subject:'svt', subjectLabel:'SVT', cat:'Première (contenu original, sans manuel)', title:"Géologie interne (dynamique de la Terre)", pages:"pas de renvoi page", status:'available', accent:'var(--ochre)', href:'svt/p2-geologie-interne.html'},
   {id:'ch1', subject:'svt', subjectLabel:'SVT', cat:'Bonus déjà exploré', title:"Ch.1 — L'origine du phénotype (méiose, brassage)", pages:"p.30-53", status:'available', accent:'#8a8578', href:'svt/ch01-origine-phenotype.html'},
   {id:'ch12', subject:'svt', subjectLabel:'SVT', cat:'Bonus tertiaire (hors recommandations, lié au carnet de terrain)', title:"Ch.12 — Le climat au Cénozoïque", pages:"p.292-315", status:'available', accent:'#8a8578', href:'svt/ch12-climat-cenozoique.html'},
-  {id:'ch14', subject:'svt', subjectLabel:'SVT', cat:'Bonus tertiaire (hors recommandations, lié au carnet de terrain)', title:"Ch.14 — Le changement climatique actuel : s'informer et agir", pages:"p.342-366", status:'soon', accent:'#8a8578', href:null},
+  {id:'ch14', subject:'svt', subjectLabel:'SVT', cat:'Bonus tertiaire (hors recommandations, lié au carnet de terrain)', title:"Ch.14 — Le changement climatique actuel : s'informer et agir", pages:"p.342-366", status:'available', accent:'#8a8578', href:'svt/ch14-changement-climatique-actuel.html'},
 
   // ---------- Physique-Chimie ----------
   {id:'pc-boite-a-outils', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Boîte à outils', title:"Alphabet grec, puissances de 10, unités", pages:"Fiche 1 cahier PC", status:'soon', accent:'var(--ochre)', href:null},

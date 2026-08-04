@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch.14 — Le changement climatique actuel · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/flashcards-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'ch14',
+  chapNum: "Chapitre 14",
+  subjectLabel: "Climats de la Terre",
+  accent: '#8a8578',
+  title: "Le changement climatique actuel : s'informer et agir",
+  pages: "p.342 à 366",
+  backHref: '../index.html',
+  bridge: {
+    from: "Les manifestations et les causes générales du changement climatique actuel (effet de serre additionnel, origine anthropique) ont été présentées en Seconde et en enseignement scientifique. Ce chapitre approfondit la démarche scientifique de mise en évidence de ce changement, ses conséquences concrètes, et les leviers d'action pour l'atténuer et s'y adapter.",
+    to: "En BCPST1, ce chapitre est directement réinvesti dans l'étude des enjeux environnementaux contemporains (gestion des ressources, biogéochimie du carbone), et fait écho au Ch.12 déjà construit sur les variations climatiques passées : comprendre les mécanismes anciens permet de mieux évaluer ce qui distingue le changement actuel."
+  },
+
+  fiches: [
+    {
+      unit:'Unité 1', page:344,
+      title:"Une vaste communauté pour comprendre le climat",
+      paragraphs:[
+        "Comprendre et documenter le changement climatique actuel repose sur une communauté scientifique internationale très large : climatologues, océanographes, glaciologues, écologues... dont les travaux sont notamment synthétisés par le GIEC (Groupe d'experts intergouvernemental sur l'évolution du climat), qui évalue périodiquement l'état des connaissances sans mener lui-même de nouvelles recherches.",
+        "Cette communauté combine plusieurs types d'outils : mesures directes (stations, satellites), archives climatiques passées (cf. Ch.12), et modèles climatiques numériques, qui simulent le système climatique et permettent de tester différents scénarios d'évolution future des émissions de gaz à effet de serre."
+      ],
+      bullets:[
+        "L'attribution du réchauffement actuel à l'activité humaine (origine anthropique) repose sur la convergence de nombreuses lignes de preuve indépendantes, et non sur une seule observation isolée : c'est la force de cette approche collective.",
+        "Les modèles climatiques sont validés en vérifiant leur capacité à reproduire correctement le climat passé connu, avant d'être utilisés pour projeter le climat futur selon différents scénarios d'émissions.",
+        "Ce travail collectif de synthèse permet de dégager un consensus scientifique solide, régulièrement mis à jour, qui sert de base aux décisions politiques internationales (accords climatiques)."
+      ]
+    },
+    {
+      unit:'Unité 2', page:346,
+      title:"Conséquences du changement climatique sur les écosystèmes",
+      paragraphs:[
+        "Le réchauffement modifie déjà la répartition et le fonctionnement de nombreuses espèces et écosystèmes, à un rythme souvent trop rapide pour permettre une adaptation évolutive classique.",
+        "Ces changements sont documentés par un suivi de terrain de long terme, comme celui mené par des stations de recherche en milieu naturel."
+      ],
+      bullets:[
+        "De nombreuses espèces déplacent leur aire de répartition vers les pôles ou vers des altitudes plus élevées, suivant le déplacement des conditions climatiques auxquelles elles sont adaptées.",
+        "Le calendrier biologique de nombreuses espèces se modifie (phénologie) : floraison plus précoce, migrations décalées — avec un risque de désynchronisation entre espèces partenaires (ex. une plante et son pollinisateur).",
+        "En milieu marin, l'acidification des océans (liée à l'absorption d'une partie du CO2 atmosphérique) et le réchauffement des eaux fragilisent des écosystèmes entiers, comme les récifs coralliens."
+      ],
+      terrainBadge: {href:'../carnet-de-terrain/lautaret.html', label:"Suivi de la floraison et de la migration des espèces au Lautaret"}
+    },
+    {
+      unit:'Unité 3', page:348,
+      title:"Conséquences du changement climatique sur les agrosystèmes",
+      paragraphs:[
+        "Les agrosystèmes (systèmes agricoles) sont directement sensibles au climat : température, disponibilité en eau et calendrier des saisons conditionnent le choix des cultures et leur rendement.",
+        "Le changement climatique modifie ces conditions de façon inégale selon les régions du globe, avec des conséquences à la fois positives et négatives selon les cas."
+      ],
+      bullets:[
+        "Dans certaines régions, l'allongement de la saison de croissance ou l'augmentation du CO2 atmosphérique (qui favorise la photosynthèse, cf. Ch.9) peuvent favoriser certains rendements ; dans d'autres, le stress hydrique et les vagues de chaleur les réduisent fortement.",
+        "Le déplacement des zones climatiques favorise aussi l'apparition de nouveaux ravageurs et de nouvelles maladies des cultures dans des régions auparavant trop froides pour eux.",
+        "Ces impacts imposent une adaptation des pratiques agricoles : choix de variétés plus résistantes, modification des dates de semis, gestion plus fine de l'irrigation."
+      ]
+    },
+    {
+      unit:'Unité 4', page:350,
+      title:"Conséquences directes du changement climatique sur les humains",
+      paragraphs:[
+        "Au-delà des écosystèmes et des agrosystèmes, le changement climatique affecte directement les populations humaines, de façon inégale selon les régions et les niveaux de vulnérabilité.",
+        "Ces conséquences directes se combinent souvent avec les impacts indirects déjà présentés (agriculture, écosystèmes), amplifiant les risques pour les populations les plus exposées."
+      ],
+      bullets:[
+        "Les vagues de chaleur, plus fréquentes et plus intenses, ont un impact direct sur la santé humaine (mortalité accrue, notamment chez les personnes âgées ou fragiles).",
+        "L'élévation du niveau marin (dilatation thermique de l'eau et fonte des glaces continentales) menace les populations et infrastructures côtières, en particulier dans les zones basses et densément peuplées.",
+        "L'intensification de certains événements extrêmes (sécheresses, précipitations intenses) fragilise l'accès à l'eau et à la nourriture dans plusieurs régions du monde, pouvant contribuer à des déplacements de population."
+      ]
+    },
+    {
+      unit:'Unité 5', page:352,
+      title:"Réduire les émissions de gaz à effet de serre et les stocker",
+      paragraphs:[
+        "Limiter l'ampleur du changement climatique futur (atténuation) repose sur deux leviers complémentaires : réduire les émissions de gaz à effet de serre à la source, et augmenter le stockage du carbone déjà présent dans l'atmosphère.",
+        "La réduction des émissions passe principalement par la transformation du système énergétique mondial, très majoritairement basé sur les combustibles fossiles (charbon, pétrole, gaz)."
+      ],
+      bullets:[
+        "Le développement de sources d'énergie décarbonées (solaire, éolien, hydraulique, nucléaire) et l'amélioration de l'efficacité énergétique des bâtiments, transports et procédés industriels réduisent les émissions à la source.",
+        "Le stockage du carbone s'appuie sur des puits de carbone naturels (forêts, sols, océans, déjà mobilisés dans le cycle du carbone) et sur des technologies de captage et stockage du CO2 industriel (CSC), encore en développement à grande échelle.",
+        "Ces deux leviers sont complémentaires mais ne s'équivalent pas : réduire les émissions à la source reste, à ce jour, le levier le plus efficace et le plus rapide à mobiliser."
+      ]
+    },
+    {
+      unit:'Unité 6', page:354,
+      title:"Trouver des stratégies adaptées aux situations locales",
+      paragraphs:[
+        "Face à des conséquences déjà engagées et pour partie inévitables, l'adaptation complète l'atténuation : il s'agit d'ajuster les sociétés et les territoires pour réduire leur vulnérabilité aux effets du changement climatique.",
+        "Il n'existe pas de stratégie d'adaptation universelle : chaque territoire doit composer avec ses propres contraintes climatiques, géographiques, économiques et sociales."
+      ],
+      bullets:[
+        "En ville, la lutte contre les îlots de chaleur urbains passe par la végétalisation, la désimperméabilisation des sols et une meilleure circulation de l'air, alors qu'en zone côtière, l'adaptation privilégie plutôt la gestion du recul du trait de côte ou la protection des infrastructures.",
+        "En agriculture, l'adaptation locale peut passer par le choix de variétés plus résistantes à la sécheresse ou par des pratiques d'irrigation plus économes, selon les ressources en eau disponibles localement.",
+        "Cette diversité de réponses locales illustre un principe transversal : atténuation et adaptation doivent être combinées, à toutes les échelles, pour faire face efficacement au changement climatique."
+      ]
+    }
+  ],
+
+  flashcards: [
+    {id:'f1', recto:"GIEC", verso:"Groupe d'experts intergouvernemental sur l'évolution du climat : synthétise périodiquement l'état des connaissances scientifiques.", notion:'u1'},
+    {id:'f2', recto:"Modèle climatique / scénario", verso:"Simulation numérique du système climatique, testée selon différents scénarios futurs d'émissions.", notion:'u1'},
+    {id:'f3', recto:"Origine anthropique du réchauffement", verso:"Attribution à l'activité humaine, établie par convergence de nombreuses lignes de preuve indépendantes.", notion:'u1'},
+    {id:'f4', recto:"Migration d'aire de répartition", verso:"Déplacement d'une espèce vers les pôles ou en altitude, suivant ses conditions climatiques favorables.", notion:'u2'},
+    {id:'f5', recto:"Phénologie", verso:"Calendrier des événements biologiques saisonniers (floraison, migration...) d'une espèce.", notion:'u2'},
+    {id:'f6', recto:"Acidification des océans", verso:"Baisse du pH océanique liée à l'absorption d'une partie du CO2 atmosphérique.", notion:'u2'},
+    {id:'f7', recto:"Agrosystème", verso:"Système agricole, très sensible à la température, à l'eau disponible et au calendrier des saisons.", notion:'u3'},
+    {id:'f8', recto:"Nouveaux ravageurs agricoles", verso:"Apparition de ravageurs/maladies dans des régions devenues climatiquement favorables pour eux.", notion:'u3'},
+    {id:'f9', recto:"Vagues de chaleur et santé", verso:"Impact direct sur la santé humaine, mortalité accrue notamment chez les personnes âgées ou fragiles.", notion:'u4'},
+    {id:'f10', recto:"Élévation du niveau marin", verso:"Due à la dilatation thermique de l'eau et à la fonte des glaces continentales.", notion:'u4'},
+    {id:'f11', recto:"Atténuation", verso:"Réduire les émissions de gaz à effet de serre à la source (énergie décarbonée, efficacité énergétique).", notion:'u5'},
+    {id:'f12', recto:"Stockage du carbone", verso:"Puits naturels (forêts, sols, océans) ou captage-stockage industriel (CSC) du CO2.", notion:'u5'},
+    {id:'f13', recto:"Adaptation", verso:"Ajuster sociétés et territoires pour réduire leur vulnérabilité ; pas de stratégie universelle.", notion:'u6'},
+    {id:'f14', recto:"Îlot de chaleur urbain", verso:"Excès de chaleur en ville, atténué par végétalisation et désimperméabilisation des sols.", notion:'u6'}
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {u1:'Unité 1 — Comprendre le climat (p.344)', u2:'Unité 2 — Conséquences sur les écosystèmes (p.346)', u3:'Unité 3 — Conséquences sur les agrosystèmes (p.348)', u4:'Unité 4 — Conséquences sur les humains (p.350)', u5:'Unité 5 — Réduire et stocker (p.352)', u6:'Unité 6 — Stratégies locales (p.354)'},
+    bilanPage: 360, exosPage: 362, bacPage: 366,
+    nextStep: "Tu as terminé l'ensemble des modules SVT de la feuille de route (chapitres du manuel, modules Première, et bonus). Direction Physique-Chimie dès que tu es prêt·e."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"Le GIEC est :", options:["un organisme qui synthétise périodiquement l'état des connaissances scientifiques sur le climat", "un laboratoire unique qui réalise toutes les mesures climatiques mondiales", "une ONG militante indépendante de la communauté scientifique"], correct:0},
+    {id:'q2', type:'connaissance', difficulty:2, notion:'u1', q:"L'attribution du réchauffement actuel à l'activité humaine repose sur :", options:["la convergence de nombreuses lignes de preuve indépendantes", "une seule mesure de température particulièrement fiable", "une intuition partagée par la majorité des climatologues"], correct:0},
+    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"Les modèles climatiques sont validés en vérifiant :", options:["leur capacité à reproduire correctement le climat passé connu", "leur vitesse de calcul", "leur capacité à prédire la météo du lendemain"], correct:0},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u2', q:"Sous l'effet du réchauffement, de nombreuses espèces déplacent leur aire de répartition :", options:["vers les pôles ou vers des altitudes plus élevées", "vers l'équateur uniquement", "de façon aléatoire, sans lien avec le climat"], correct:0},
+    {id:'q5', type:'connaissance', difficulty:2, notion:'u2', q:"La phénologie désigne :", options:["le calendrier des événements biologiques saisonniers d'une espèce (floraison, migration...)", "la répartition géographique d'une espèce", "la couleur du pelage ou du plumage d'une espèce"], correct:0},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u2', q:"L'acidification des océans résulte principalement de :", options:["l'absorption par l'océan d'une partie du CO2 atmosphérique", "le rejet direct d'acides industriels en mer", "la fonte des glaces polaires"], correct:0,
+      image:{src:"https://upload.wikimedia.org/wikipedia/commons/d/d3/Bleached_coral_%2824577819729%29.jpg", alt:"Corail blanchi, conséquence du réchauffement et de l'acidification des océans", credit:"Photo : Oregon State University, Wikimedia Commons, CC BY-SA 2.0"}},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u3', q:"Les agrosystèmes sont particulièrement sensibles au climat car :", options:["la température, l'eau disponible et le calendrier des saisons conditionnent directement les cultures et leur rendement", "ils sont totalement isolés des conditions climatiques locales", "seule la lumière influence les cultures"], correct:0},
+    {id:'q8', type:'connaissance', difficulty:2, notion:'u3', q:"Le changement climatique peut favoriser l'apparition de nouveaux ravageurs agricoles dans une région en :", options:["y rendant les conditions climatiques, auparavant trop froides, désormais favorables à ces ravageurs", "éliminant systématiquement tous les ravageurs existants", "n'ayant aucun effet sur les populations d'insectes"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u4', q:"Les vagues de chaleur ont un impact direct sur la santé humaine, en particulier :", options:["chez les personnes âgées ou fragiles", "uniquement chez les nourrissons", "de façon strictement identique dans toutes les tranches d'âge"], correct:0},
+    {id:'q10', type:'connaissance', difficulty:2, notion:'u4', q:"L'élévation du niveau marin résulte notamment de :", options:["la dilatation thermique de l'eau et de la fonte des glaces continentales", "l'augmentation des précipitations uniquement", "la seule fonte de la banquise arctique flottante"], correct:0},
+    {id:'q11', type:'connaissance', difficulty:1, notion:'u5', q:"L'atténuation du changement climatique repose sur deux leviers complémentaires :", options:["réduire les émissions de gaz à effet de serre et augmenter le stockage du carbone", "uniquement planter des arbres", "uniquement réduire la population mondiale"], correct:0},
+    {id:'q12', type:'connaissance', difficulty:2, notion:'u5', q:"Le stockage du carbone peut s'appuyer sur :", options:["des puits de carbone naturels (forêts, sols, océans) et des technologies de captage industriel", "uniquement des technologies encore totalement inexistantes", "la combustion accrue des énergies fossiles"], correct:0},
+    {id:'q13', type:'connaissance', difficulty:1, notion:'u6', q:"Concernant les stratégies d'adaptation au changement climatique, on peut dire :", options:["qu'il n'existe pas de stratégie universelle, chaque territoire doit s'adapter à ses propres contraintes", "qu'une seule stratégie s'applique partout dans le monde", "que l'adaptation remplace entièrement le besoin de réduire les émissions"], correct:0},
+    {id:'q14', type:'connaissance', difficulty:2, notion:'u6', q:"La lutte contre les îlots de chaleur urbains passe notamment par :", options:["la végétalisation et la désimperméabilisation des sols", "la construction de bâtiments plus hauts et plus sombres", "l'augmentation de la circulation automobile"], correct:0},
+
+    {id:'r1', type:'raisonnement', difficulty:2, notion:'u1', q:"Un scénario climatique produit par un modèle numérique prévoit un réchauffement plus important si les émissions de gaz à effet de serre continuent d'augmenter, et plus modéré si elles sont fortement réduites. Comment expliquer que les scientifiques présentent plusieurs scénarios plutôt qu'une seule prévision unique du climat futur ?",
+      options:["Parce que l'évolution future des émissions dépend de choix humains (politiques, économiques) encore incertains, et non d'un phénomène physique déjà déterminé", "Parce que les modèles climatiques sont peu fiables et ne peuvent produire qu'une estimation approximative", "Parce que le climat futur est en réalité totalement imprévisible, quels que soient les efforts de modélisation"], correct:0,
+      hint:"Repense à ce qui différencie un scénario d'émissions futures d'une mesure physique déjà connue (Unité 1)."},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u2', q:"Une espèce de papillon et la plante dont elle dépend pour se nourrir avancent toutes deux leur cycle biologique avec le réchauffement, mais pas exactement au même rythme. Quelle conséquence peut-on redouter pour cette espèce de papillon ?",
+      options:["Une désynchronisation entre la disponibilité de la plante-hôte et le cycle du papillon, pouvant menacer sa survie", "Aucune conséquence, les deux espèces s'adaptent forcément de façon parfaitement identique", "Le papillon changera immédiatement d'espèce de plante-hôte sans aucune difficulté"], correct:0,
+      hint:"Repense à la notion de désynchronisation phénologique entre espèces partenaires, présentée dans l'Unité 2."},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u3', q:"Dans une région tempérée, l'augmentation du CO2 atmosphérique et l'allongement de la saison de croissance améliorent, dans un premier temps, le rendement de certaines cultures. Peut-on en conclure que le changement climatique est globalement favorable à l'agriculture mondiale ?",
+      options:["Non, car cet effet localement positif doit être mis en balance avec des effets négatifs ailleurs (stress hydrique, vagues de chaleur, nouveaux ravageurs) qui touchent d'autres régions ou d'autres cultures", "Oui, cet exemple suffit à démontrer un effet globalement positif partout dans le monde", "Le CO2 atmosphérique n'a en réalité aucun effet sur les cultures"], correct:0,
+      hint:"Repense à la phrase de l'Unité 3 sur des conséquences « à la fois positives et négatives selon les cas » : peut-on généraliser un seul exemple régional à l'ensemble du globe ?"},
+    {id:'r4', type:'raisonnement', difficulty:2, notion:'u4', q:"Une ville côtière densément peuplée et située en zone basse est particulièrement exposée à l'élévation du niveau marin. Quels types de conséquences directes, parmi celles présentées dans ce chapitre, cette ville risque-t-elle de cumuler ?",
+      options:["Un risque accru d'inondation des infrastructures et de déplacement de population, en plus des autres conséquences directes comme les vagues de chaleur", "Aucun risque particulier, l'élévation du niveau marin ne concerne que les îles isolées", "Uniquement un risque agricole, sans aucune conséquence sur les populations urbaines"], correct:0,
+      hint:"Repense à la notion de vulnérabilité inégale selon les régions, présentée dans l'Unité 4."},
+    {id:'r5', type:'raisonnement', difficulty:3, notion:'u5', q:"Deux stratégies sont proposées pour limiter la concentration de CO2 atmosphérique : réduire les émissions à la source (ex. remplacer une centrale à charbon par de l'éolien) ou capter et stocker le CO2 déjà émis. Pourquoi la réduction des émissions à la source est-elle généralement considérée comme le levier le plus efficace et le plus rapide à mobiliser ?",
+      options:["Parce qu'elle évite l'émission du CO2 dès le départ, alors que le captage doit traiter un flux déjà émis avec des technologies encore en développement à grande échelle", "Parce que le captage et le stockage du CO2 sont en réalité totalement impossibles techniquement", "Parce que les deux leviers sont rigoureusement équivalents en termes d'efficacité"], correct:0,
+      hint:"Repense à la phrase de l'Unité 5 comparant les deux leviers : lequel est présenté comme « le plus efficace et le plus rapide à mobiliser » ?"},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u6', q:"Une stratégie d'adaptation efficace contre les vagues de chaleur en ville (végétalisation, désimperméabilisation) ne serait pas forcément pertinente, telle quelle, pour une région agricole confrontée au stress hydrique. Pourquoi l'adaptation au changement climatique ne peut-elle pas reposer sur une solution unique appliquée partout ?",
+      options:["Parce que chaque territoire doit composer avec ses propres contraintes climatiques, géographiques, économiques et sociales, qui déterminent les stratégies d'adaptation les plus pertinentes", "Parce que le changement climatique n'affecte en réalité qu'un seul type de territoire à la fois", "Parce qu'une seule stratégie fonctionne toujours, quel que soit le contexte local"], correct:0,
+      hint:"Repense au principe central de l'Unité 6 : pourquoi n'existe-t-il pas de stratégie d'adaptation universelle ?"}
+  ],
+
+  mindmapModel: {
+    label:"Le changement climatique actuel",
+    children:[
+      {label:"Comprendre le climat", children:[
+        {label:"GIEC — synthèse des connaissances"},{label:"Modèles climatiques et scénarios"},{label:"Origine anthropique (convergence de preuves)"}
+      ]},
+      {label:"Conséquences écologiques", children:[
+        {label:"Migration des aires de répartition"},{label:"Phénologie (désynchronisation)"},{label:"Acidification des océans"}
+      ]},
+      {label:"Conséquences socio-économiques", children:[
+        {label:"Agrosystèmes (rendements, ravageurs)"},{label:"Vagues de chaleur, santé"},{label:"Élévation du niveau marin"}
+      ]},
+      {label:"Atténuation", children:[
+        {label:"Réduire les émissions (énergie décarbonée)"},{label:"Stocker le carbone (puits naturels, CSC)"}
+      ]},
+      {label:"Adaptation", children:[
+        {label:"Stratégies locales, pas universelles"},{label:"Exemples : îlots de chaleur, littoral, agriculture"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>
