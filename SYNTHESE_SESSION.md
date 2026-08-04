@@ -3,17 +3,17 @@
 > **À lire en premier dans tout nouveau fil de discussion sur ce projet.**
 > Ce fichier documente l'état réel du projet, les arbitrages pris en cours de route (au-delà du cahier des charges initial) et les consignes à respecter pour continuer sans rupture. Le cahier des charges complet et stable est dans [`CAHIER_DES_CHARGES.md`](CAHIER_DES_CHARGES.md) (copie verbatim du brief initial, ne pas le modifier). **Ce fichier-ci doit être mis à jour à la fin de chaque session de travail** (nouveaux modules construits, nouvelles décisions, nouveaux points en attente).
 
-Dernière mise à jour : **2026-08-03**.
+Dernière mise à jour : **2026-08-04**.
 
 ---
 
 ## 0. État actuel en un coup d'œil (résumé rapide pour reprendre vite)
 
-- **8 modules SVT sur 13 construits, testés et en ligne** : Ch.5, Ch.6, Ch.7, Ch.8, Ch.9, Ch.11, Ch.17, Ch.18. Tous validés (rendu, QCM/score, flashcards, carte mentale, aucune erreur console, `localStorage` de test vidé, commit + push + build GitHub Pages confirmé).
-- **Prochaine action attendue** : construire les **modules "Première" sans manuel** (génétique de base ; géologie interne), rangs 9-10 du §4 — contenu 100% original, pas de renvoi de page. C'est la suite naturelle si l'utilisateur dit "chapitre suivant" ou équivalent. Ch.18 clôt les chapitres du manuel déjà priorisés par les recommandations Berthelot.
+- **10 modules SVT construits, testés et en ligne** : Ch.5, Ch.6, Ch.7, Ch.8, Ch.9, Ch.11, Ch.17, Ch.18 (chapitres du manuel) + p1 (Génétique de base) et p2 (Géologie interne), les deux modules "Première" sans manuel. Tous validés (rendu, QCM/score, flashcards, carte mentale, aucune erreur console, `localStorage` de test vidé, commit + push + build GitHub Pages confirmé).
+- **Feuille de route SVT "cœur de cible" terminée** : les rangs 1 à 10 du §2 du cahier des charges sont tous faits. **Reste uniquement des modules bonus, sans urgence** : Ch.1 (rang 11, bonus déjà exploré), Ch.12 et Ch.14 (rangs 12-13, bonus tertiaire, priorité la plus basse). Si l'utilisateur dit "chapitre suivant" sans préciser, proposer Ch.1 en premier (bonus le moins bas en priorité), mais rien n'est urgent — cf. §4.
 - **Site public** : https://fvandenbrouck.github.io/BCPST/ — à jour, vérifié en ligne (pas seulement poussé sur `git`).
-- **Rien de bloquant en attente.** Les seuls points ouverts sont mineurs et non bloquants : cf. §5 (deux questions factuelles sur le carnet de terrain, à poser à l'utilisateur le moment venu, pas urgent) et §4 (Phase 2 Physique-Chimie / Phase 3 Mathématiques, pas commencées, gabarits différents à construire quand on y arrivera).
-- Lire dans l'ordre pour un contexte complet : ce fichier en entier, puis [`CAHIER_DES_CHARGES.md`](CAHIER_DES_CHARGES.md) §0/§2/§6, puis un module existant comme référence de code (ex. [`svt/ch18-controle-flux-glucose.html`](svt/ch18-controle-flux-glucose.html), le plus récent et le plus complet en exemples).
+- **Rien de bloquant en attente.** Les seuls points ouverts sont mineurs et non bloquants : cf. §5 (deux questions factuelles sur le carnet de terrain) et §4 (Phase 2 Physique-Chimie / Phase 3 Mathématiques, pas commencées, gabarits différents à construire quand on y arrivera).
+- Lire dans l'ordre pour un contexte complet : ce fichier en entier, puis [`CAHIER_DES_CHARGES.md`](CAHIER_DES_CHARGES.md) §0/§2/§6, puis un module existant comme référence de code — [`svt/ch18-controle-flux-glucose.html`](svt/ch18-controle-flux-glucose.html) pour un module avec manuel, [`svt/p2-geologie-interne.html`](svt/p2-geologie-interne.html) pour un module **sans** manuel (`mod.noManual`, cf. décision #14).
 
 ---
 
@@ -51,6 +51,11 @@ Le cahier des charges laissait plusieurs points ouverts. Voici comment ils ont �
     - Nombres décimaux français dans une formule : utiliser `0{,}700` (pas `0,700` ni `0.700`) pour que la virgule ne soit pas interprétée comme séparateur de liste par KaTeX.
     - **Déjà appliqué à Ch.6** (fiche Zoom, ses flashcards, son QCM, sa branche de carte mentale, `bridge`). Ch.5 et Ch.7 chargent aussi KaTeX pour rester cohérents (aucune formule actuellement, mais prêt si un futur ajout en a besoin) — vérifié : aucune régression, aucune erreur console.
     - **Pour tout futur module (SVT, PC, Maths)** : inclure le même boilerplate `<head>` (KaTeX CDN) + `<script src="../assets/js/math-render.js">` juste après `storage.js`. PC et Maths en auront un usage massif (analyse dimensionnelle, cinétique, fonctions, dérivées...).
+14. **Modules sans manuel (`mod.noManual`)** (2026-08-04), nécessaire pour construire p1 (Génétique de base) et p2 (Géologie interne) — les deux modules "Première" du cahier des charges §2 (rangs 9-10), qui n'ont par nature aucun renvoi de page dans le manuel Belin Éducation. Deux petites extensions **rétrocompatibles** des moteurs partagés, sans aucune régression sur les modules existants (vérifié) :
+    - `module-page.js` (`renderShell`) : si `MODULE.noManual === true`, l'en-tête n'affiche plus le préfixe "Manuel Belin Éducation," devant `mod.pages` — `mod.pages` s'affiche seul, tel quel (ex. `"Contenu de Première spécialité SVT — sans manuel dédié"`). Sans ce flag (cas par défaut), le comportement est strictement inchangé.
+    - `qcm-engine.js` (`buildDiagnostic`) : chaque étape de la "Stratégie de consolidation" qui référençait `d.bilanPage`/`d.exosPage`/`d.bacPage` (ex. "Relis le **Bilan p.444**") bascule sur une formulation générique équivalente (ex. "Relis chaque fiche une seconde fois") **si et seulement si** le champ correspondant est absent de `MODULE.diagnostic`. Pas de nouveau flag séparé : l'absence de `bilanPage`/`exosPage`/`bacPage` suffit à déclencher le fallback, pour ne pas dupliquer l'information avec `noManual`.
+    - Chaque fiche de cours d'un module sans manuel utilise `fiche.badge:'Première'` (déjà existant, cf. décision #12) à la place de `fiche.page`.
+    - **Réutilisable tel quel** pour tout futur module sans renvoi de page (ex. si d'autres modules "Première" s'ajoutent un jour à la feuille de route).
 
 ## 3. Architecture technique (résumé)
 
@@ -64,7 +69,8 @@ assets/js/module-page.js          orchestrateur générique d'une page module (o
 assets/js/qcm-engine.js           moteur QCM : rendu, score pondéré, diagnostic 4 paliers, mélange des options
 assets/js/flashcards-engine.js    moteur flashcards : recto/verso, notation, mode "à revoir"
 assets/js/mindmap-engine.js       moteur carte mentale : construction libre + comparaison carte modèle
-svt/chXX-....html                 une page HTML autonome par module SVT
+svt/chXX-....html                 une page HTML autonome par module SVT (chapitre du manuel)
+svt/pX-....html                   module SVT "Première" sans manuel (mod.noManual, cf. décision #14)
 physique-chimie/....html          (à venir, Phase 2)
 maths/....html                    (à venir, Phase 3)
 carnet-de-terrain/                4e type de module : observation de terrain, pas de score (cf. §5 et CARNET_DE_TERRAIN.md)
@@ -95,16 +101,17 @@ SYNTHESE_SESSION.md               ce fichier
 - ✅ Ch.11 — La domestication des plantes (nouveau, contenu original : sélection artificielle sur variabilité génétique préexistante, syndrome de domestication, exemple maïs/téosinte (gène architectural tb1), sélection empirique vs sélection variétale raisonnée et agrobiodiversité. Illustrations : tableau comparatif SVG original ancêtre sauvage/plante domestiquée (`assets/img/ch11/syndrome-domestication.svg`) + photo comparative téosinte/maïs (Wikimedia, domaine public NSF))
 - ✅ Ch.17 — Cellule musculaire, ATP (nouveau, contenu original — ouvre le thème "corps humain et santé" : fibre musculaire et sarcomère, théorie des filaments glissants (rôle de l'ATP et du Ca2+/tropomyosine), les 3 voies de renouvellement de l'ATP (anaérobie alactique, anaérobie lactique, aérobie), types de fibres et adaptation à l'entraînement. Illustrations : photo histologique de muscle strié (Wikimedia CC BY-SA 3.0) + schéma SVG original repos/contraction du sarcomère (`assets/img/ch17/filaments-glissants.svg`))
 - ✅ Ch.18 — Contrôle des flux de glucose (nouveau, contenu original — clôt le thème "corps humain et santé" côté chapitres du manuel priorisés : glycémie et homéostasie, pancréas endocrine (îlots de Langerhans, cellules β/α), effets antagonistes de l'insuline et du glucagon (glycogénogenèse vs glycogénolyse/néoglucogenèse hépatiques, lien explicite avec Ch.17 sur le glycogène musculaire non libérable), diabètes de type 1 et de type 2. Illustrations : photo d'îlot de Langerhans en microscopie confocale montrant cellules β (vert, insuline) et α (rouge, glucagon) (Wikimedia CC BY-SA 3.0, auteur Masur) + schéma SVG original des deux boucles de rétrocontrôle négatif (`assets/img/ch18/regulation-glycemie.svg`))
+- ✅ p1 — Génétique de base (transmission, mutations, ADN) (nouveau, module "Première" **sans manuel** — `mod.noManual`, cf. décision #14. Contenu original : ADN/gène/allèle/caryotype, mitose vs méiose (brassage interchromosomique, fécondation), génotype→phénotype (transcription/traduction, influence de l'environnement), mutations ponctuelles (silencieuse/faux-sens/non-sens, germinale/somatique) — dernier paragraphe relié explicitement à Ch.11 déjà construit (sélection sur variabilité génétique). Illustrations : caryotype humain masculin réel (Wikimedia, National Human Genome Research Institute/NIH, domaine public) + schéma SVG original comparant mitose et méiose (`assets/img/p1/mitose-meiose.svg`))
+- ✅ p2 — Géologie interne (dynamique de la Terre) (nouveau, module "Première" **sans manuel**. Contenu original : structure interne du globe (croûte/manteau/noyau, ondes sismiques), lithosphère/asthénosphère et tectonique des plaques (convection mantellique), les trois types de limites de plaques (divergente/convergente/transformante), séismes et volcans (volcanisme de dorsale/subduction/point chaud). Badge "🏔️ Vu sur le terrain" vers `carnet-de-terrain/chenaillet.html` sur l'Unité 3 (séquence ophiolitique et obduction, en écho direct à Ch.7 déjà construit — une question de raisonnement du QCM relie explicitement les deux). Illustrations : photo réelle de laves en coussins sous-marines à Hawaï (Wikimedia, NOAA/NURP, domaine public) + schéma SVG original combinant structure interne du globe et coupe des limites de plaques (`assets/img/p2/structure-plaques.svg`))
 
-**Reste à faire, dans l'ordre du cahier des charges §2 :**
-9-10. Modules "Première" sans manuel (génétique de base ; géologie interne) — contenu 100% original, pas de renvoi de page
+**Reste à faire, tout en bonus, sans urgence (rien de bloquant) :**
 11 (bonus). Ch.1 — L'origine du phénotype (p.30-53)
 12 (bonus tertiaire, priorité la plus basse). Ch.12 — Le climat au Cénozoïque (p.292-315)
 13 (bonus tertiaire, priorité la plus basse). Ch.14 — Le changement climatique actuel (p.342-366)
 
 Chaque nouvel id de module doit être ajouté à `assets/js/modules-registry.js` (passer `status` de `'soon'` à `'available'` et renseigner `href`) en plus de la création du fichier HTML — sinon il n'apparaît pas comme disponible sur la page d'accueil.
 
-**Puis, dans l'ordre :** activer GitHub Pages (cf. décision #4 ci-dessus) → Phase 2 Physique-Chimie → Phase 3 Mathématiques. Détail complet des deux phases dans `CAHIER_DES_CHARGES.md` §3 et §4.
+**Puis, une fois les bonus SVT traités (ou sautés) :** Phase 2 Physique-Chimie → Phase 3 Mathématiques. Détail complet des deux phases dans `CAHIER_DES_CHARGES.md` §3 et §4. GitHub Pages est déjà actif depuis la décision #4.
 
 ## 5. Carnet de terrain — fait, reste des finitions
 
@@ -113,7 +120,7 @@ L'idée d'"Observations" évoquée en cours de session a été précisée par l'
 **Reste à faire**, repris du §5 de `CARNET_DE_TERRAIN.md` (rien de bloquant, mais à ne pas oublier) :
 1. Vérifier avec l'utilisateur l'itinéraire précis du Chenaillet (départ Cervières ou Montgenèvre) et réordonner chen-01→08 si besoin — pas de changement de contenu, juste l'ordre `ordre` dans `chenaillet.html`.
 2. Vérifier les horaires d'ouverture du Jardin du Lautaret au moment du séjour ; si fermé, laut-05 et une partie de laut-06 ne seront pas utilisables tels quels.
-3. **Badges de renvoi "🏔️ Vu sur le terrain"** : ✅ fait pour Ch.7 (Chenaillet) et Ch.8 (Lautaret, cf. décision #11). **Reste à ajouter**, plus tard, sur Ch.12/Ch.14 (et Ch.4 en option, qui n'est même pas dans la feuille de route — cf. §4). Réutiliser le champ `fiche.terrainBadge:{href,label}`, déjà implémenté dans `module-page.js` — ne pas réinventer le mécanisme.
+3. **Badges de renvoi "🏔️ Vu sur le terrain"** : ✅ fait pour Ch.7 (Chenaillet), Ch.8 (Lautaret, cf. décision #11) et désormais p2 — Géologie interne (Chenaillet, Unité 3, 2026-08-04). **Reste à ajouter**, plus tard, sur Ch.12/Ch.14 (et Ch.4 en option, qui n'est même pas dans la feuille de route — cf. §4). Réutiliser le champ `fiche.terrainBadge:{href,label}`, déjà implémenté dans `module-page.js` — ne pas réinventer le mécanisme.
 4. Les tags `SVT-Ch4/Ch7/Ch8-U1/Ch12/Ch14` dans les données des points du carnet sont prêts à être exploités pour ces badges. Ch.7, Ch.8, Ch.12, Ch.14 sont désormais tous dans la feuille de route officielle (§4) — Ch.12/Ch.14 en toute fin, priorité la plus basse (cf. décision #10). Ch.4 reste hors plan, jamais mentionné ailleurs que dans ce tag optionnel du carnet.
 
 ## 6. Conventions et consignes utiles pour la suite
@@ -132,7 +139,7 @@ L'idée d'"Observations" évoquée en cours de session a été précisée par l'
 
 - Dépôt distant : [github.com/fvandenbrouck/BCPST](https://github.com/fvandenbrouck/BCPST) (public), branche `main` trackée.
 - **GitHub Pages actif : https://fvandenbrouck.github.io/BCPST/** (activé le 2026-08-03, cf. décision #4/#8).
-- Commits poussés jusqu'ici (du plus ancien au plus récent) : initialisation (Ch.5/Ch.6 + moteur), fix de mélange des QCM + doc de session, correction éditeur Belin + illustrations QCM, module carnet de terrain, prompt de reprise Phase 1 SVT, mise à jour cahier des charges (pagination confirmée + Ch.12/Ch.14 bonus tertiaire), Ch.7 (contenu + badges terrain + illustrations), patch Ch.6 (fiche Zoom isochrone, champ `fiche.badge`), rendu LaTeX (KaTeX + formules Ch.6), Ch.8 (contenu + badge terrain Lautaret + illustrations), Ch.9 (photosynthèse + illustrations), Ch.11 (domestication + illustrations, clôt le thème biologie végétale), Ch.17 (cellule musculaire, ATP + illustrations, ouvre le thème "corps humain et santé"), **Ch.18 (contrôle des flux de glucose + illustrations, clôt le thème "corps humain et santé" et l'ensemble des chapitres du manuel déjà priorisés) — dernier commit poussé (`cd77226`), build GitHub Pages confirmé `"status":"built"` sur ce commit.** `git status` est clean à la fin de cette session. Si un nouveau fil de discussion trouve `git log --oneline -1` différent de `cd77226`, c'est qu'un autre module a été construit depuis — se fier à `git log`, pas à ce texte, pour l'état exact.
+- Commits poussés jusqu'ici (du plus ancien au plus récent) : initialisation (Ch.5/Ch.6 + moteur), fix de mélange des QCM + doc de session, correction éditeur Belin + illustrations QCM, module carnet de terrain, prompt de reprise Phase 1 SVT, mise à jour cahier des charges (pagination confirmée + Ch.12/Ch.14 bonus tertiaire), Ch.7 (contenu + badges terrain + illustrations), patch Ch.6 (fiche Zoom isochrone, champ `fiche.badge`), rendu LaTeX (KaTeX + formules Ch.6), Ch.8 (contenu + badge terrain Lautaret + illustrations), Ch.9 (photosynthèse + illustrations), Ch.11 (domestication + illustrations, clôt le thème biologie végétale), Ch.17 (cellule musculaire, ATP + illustrations, ouvre le thème "corps humain et santé"), Ch.18 (contrôle des flux de glucose + illustrations, clôt le thème "corps humain et santé"), **modules p1 (génétique de base) + p2 (géologie interne), les deux modules "Première" sans manuel — avec extension `mod.noManual` de `module-page.js`/`qcm-engine.js` (cf. décision #14), illustrations, badge terrain sur p2 — dernier commit poussé (`8e093ee`), build GitHub Pages confirmé `"status":"built"` sur ce commit.** `git status` est clean à la fin de cette session. Si un nouveau fil de discussion trouve `git log --oneline -1` différent de `8e093ee`, c'est qu'un autre module a été construit depuis — se fier à `git log`, pas à ce texte, pour l'état exact.
 - ⚠️ **Rappel important, observé plusieurs fois en session** : après un `git push`, vérifier que le site public reflète bien le changement avant de répondre à l'utilisateur — ne pas se contenter du push local. Méthode fiable utilisée en session (à réutiliser telle quelle) :
   ```bash
   until [ "$(gh api repos/fvandenbrouck/BCPST/pages/builds/latest --jq .status)" != "building" ]; do sleep 3; done
