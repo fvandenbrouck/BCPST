@@ -95,7 +95,7 @@
       steps = [
         `Relis les fiches de cours ci-dessus (${mod.pages})`,
         d.bilanPage ? `Relis le <b>Bilan p.${d.bilanPage}</b> — apprends les mots-clés par cœur` : `Relis chaque fiche une seconde fois — apprends les mots-clés par cœur`,
-        `Refais toutes les cartes, même celles déjà réussies`,
+        mod.flashcards ? `Refais toutes les cartes, même celles déjà réussies` : mod.applications ? `Refais toutes les applications numériques, même celles déjà réussies` : `Reprends chaque fiche de cours en te reformulant les points-clés`,
         `Reviens sur ce QCM dans un jour ou deux`
       ];
     } else if(pctB < 0.5){
@@ -110,14 +110,14 @@
       appreciation = `Bon niveau général, la logique du module est comprise. Il reste quelques détails à fixer pour être à l'aise à coup sûr.`;
       steps = [
         d.bilanPage ? `Relis le <b>Bilan p.${d.bilanPage}</b> pour combler les derniers trous` : `Relis les fiches de cours pour combler les derniers trous`,
-        d.exosPage ? `Fais les <b>exercices du manuel p.${d.exosPage}</b>` : `Refais les flashcards les moins bien notées`,
+        d.exosPage ? `Fais les <b>exercices du manuel p.${d.exosPage}</b>` : mod.flashcards ? `Refais les flashcards les moins bien notées` : mod.applications ? `Refais les applications numériques les moins bien réussies` : `Relis une seconde fois les fiches de cours`,
         `Retente ce QCM pour viser la maîtrise complète`
       ];
     } else {
       appreciation = `Module maîtrisé, sur les ${wordA} comme sur le ${wordB}. Belle régularité — c'est le niveau attendu en entrée de BCPST.`;
       steps = [
         d.bacPage ? `Fais l'<b>Objectif BAC p.${d.bacPage}</b> pour t'entraîner à la vitesse d'examen` : `Relis une dernière fois les indices de raisonnement, pour vérifier que tu peux les expliquer sans les relire`,
-        `Ajoute les dernières branches à ta carte mentale, de mémoire`,
+        mod.mindmapModel ? `Ajoute les dernières branches à ta carte mentale, de mémoire` : `Relis une dernière fois l'ensemble des fiches de cours, de mémoire`,
         d.nextStep || `Enchaîne sur le module suivant dès qu'il sera prêt.`
       ];
     }

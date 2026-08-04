@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analyse dimensionnelle · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/applications-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'pc-analyse-dimensionnelle',
+  chapNum: "Notions transversales",
+  subjectLabel: "Physique-Chimie",
+  accent: 'var(--ochre)',
+  title: "Analyse dimensionnelle",
+  pages: "Capacité transversale — programme BCPST1 (toutes les parties)",
+  noManual: true,
+  backHref: '../index.html',
+  bridge: {
+    from: "En Seconde, Première et Terminale, tu as manipulé des unités et parfois vérifié qu'une formule était homogène, sans qu'un cadre théorique explicite (notion de dimension, théorème de Vaschy-Buckingham) ne soit posé — l'analyse dimensionnelle en tant que méthode de raisonnement autonome n'est pas un objet d'étude du lycée.",
+    to: "En BCPST1, « conduire une analyse dimensionnelle » est une capacité transversale exigible dans toutes les parties du programme de physique-chimie (mécanique, électrocinétique, thermodynamique, diffusion...) : c'est l'un des tout premiers réflexes méthodologiques à acquérir, souvent mobilisé dès les premières semaines pour vérifier un résultat ou retrouver une loi d'échelle sans calcul complet."
+  },
+
+  fiches: [
+    {
+      unit:'1', badge:'Capacité transversale',
+      title:"Grandeur physique, unité et dimension",
+      paragraphs:[
+        "Le résultat d'une mesure physique se présente comme une valeur numérique, qui est le rapport de la grandeur mesurée à une grandeur de même espèce choisie comme référence, l'unité : $X = x\\,U_X$, où $X$ désigne la grandeur physique, $x$ sa valeur numérique et $U_X$ l'unité choisie.",
+        "Le choix d'une unité est arbitraire — pense aux nombreuses unités de longueur possibles (mètre, mile marin, longueur d'un pas...). Si l'on change d'unité (par exemple en divisant l'unité de longueur par un facteur $n$), la valeur numérique de la grandeur est elle aussi modifiée."
+      ],
+      bullets:[
+        "On appelle dimension de la grandeur $X$ la façon dont sa valeur numérique est affectée par un changement d'échelle des unités ; on la note $[X]$.",
+        "Une grandeur dont la valeur numérique ne change pas quand on change l'échelle des unités est dite sans dimension : on note alors $[X]=1$ (c'est le cas d'un angle en radian, par exemple).",
+        "La dimension n'est pas une propriété intrinsèque d'une grandeur physique : le moment d'une force et un travail ont la même dimension, mais ce sont deux grandeurs physiques bien différentes. Avoir la même dimension signifie seulement que leurs valeurs numériques seraient modifiées de la même façon par un changement d'unité."
+      ]
+    },
+    {
+      unit:'2', badge:'Capacité transversale',
+      title:"Équation aux dimensions",
+      paragraphs:[
+        "Prenons l'exemple de la vitesse moyenne $V$ d'un objet ayant parcouru une longueur $L$ pendant une durée $T$ : $V = L/T$. Un changement d'unité de longueur (facteur $n$) multiplie la valeur numérique de $L$ par $n$ ; un changement d'unité de temps (facteur $m$) multiplie celle de $T$ par $m$. La valeur numérique de $V$ est donc multipliée par $n/m$.",
+        "On en déduit l'équation aux dimensions de la vitesse : $$[V] = L \\cdot T^{-1}.$$ Cette écriture se lit ainsi : si l'unité de longueur est divisée par $n$, la valeur numérique de $V$ est multipliée par $n$ (exposant $1$) ; si l'unité de temps est divisée par $m$, elle est multipliée par $m^{-1}$ (exposant $-1$)."
+      ],
+      bullets:[
+        "Toute grandeur physique dérivée peut ainsi s'exprimer comme un produit de puissances des dimensions de base (longueur $L$, masse $M$, temps $T$, courant électrique $I$, température $\\Theta$...).",
+        "Écrire l'équation aux dimensions d'une grandeur revient à identifier ces exposants, sans avoir besoin de refaire à chaque fois le raisonnement complet sur le changement d'échelle des unités.",
+        "Par commodité de notation, on écrit souvent $[V]=LT^{-1}$ plutôt que $[V]=[L]\\cdot[T]^{-1}$ — l'usage confond alors la dimension d'une grandeur et son symbole."
+      ]
+    },
+    {
+      unit:'3', badge:'Capacité transversale',
+      title:"Le système international d'unités",
+      paragraphs:[
+        "Le système international d'unités (SI) est le choix, partagé par la communauté scientifique, d'un petit nombre de grandeurs physiques fondamentales et des unités correspondantes, dites unités de base. Toutes les autres unités, dites dérivées, s'expriment comme une combinaison de ces unités de base.",
+        "Le SI retient sept grandeurs de base : la longueur (mètre, m), la masse (kilogramme, kg), le temps (seconde, s), le courant électrique (ampère, A), la température (kelvin, K), la quantité de matière (mole, mol) et l'intensité lumineuse (candela, cd)."
+      ],
+      bullets:[
+        "Depuis 2019, ces sept unités sont toutes définies à partir de la valeur numérique fixée d'une constante fondamentale de la physique (par exemple la seconde à partir de la fréquence de transition hyperfine du césium 133, le mètre à partir de la vitesse de la lumière dans le vide) — un choix qui garantit leur stabilité et leur reproductibilité, indépendamment de tout étalon matériel.",
+        "Une unité dérivée usuelle (le newton, le joule, l'ohm...) se décompose toujours en un produit de puissances des sept unités de base — c'est exactement ce que donne l'équation aux dimensions de la grandeur correspondante.",
+        "Disposer d'un système d'unités unique et partagé à l'échelle internationale est ce qui permet à des scientifiques du monde entier de communiquer leurs résultats sans ambiguïté."
+      ]
+    },
+    {
+      unit:'4', badge:'Capacité transversale',
+      title:"Règles d'homogénéité d'une expression littérale",
+      paragraphs:[
+        "Un calcul de physique doit toujours être conduit sous forme littérale, en conservant les symboles des grandeurs physiques, l'application numérique n'intervenant qu'à la toute fin. Cette discipline permet de vérifier l'homogénéité du résultat à chaque étape.",
+        "Le principe fondamental à retenir : tout résultat non homogène est nécessairement faux. En revanche, un résultat homogène n'est pas forcément juste pour autant — l'homogénéité est une condition nécessaire, non suffisante."
+      ],
+      bullets:[
+        "On ne peut additionner (ou soustraire) que des termes de même dimension : dans $x = \\tfrac12 g t^2 + v_0 t$, les deux termes sont bien homogènes à une longueur, malgré leur écriture différente.",
+        "L'argument d'une fonction mathématique transcendante ($\\exp$, $\\ln$, $\\cos$, $\\sin$, $\\tan$...) est nécessairement sans dimension : on ne sait pas donner de sens physique à l'exponentielle d'une durée, par exemple.",
+        "On évite de remplacer le symbole d'une grandeur par sa valeur numérique en cours de calcul littéral — cela rend impossible toute vérification d'homogénéité a posteriori.",
+        "Un vecteur ne peut être ajouté qu'à un vecteur, jamais à un scalaire, même homogène en dimension."
+      ]
+    },
+    {
+      unit:'5', badge:'Capacité transversale',
+      title:"Retrouver la dimension d'une grandeur inconnue",
+      paragraphs:[
+        "Certaines grandeurs — en particulier celles associées aux unités de base — ont une dimension évidente. Pour les grandeurs plus complexes, on peut retrouver leur dimension en s'appuyant sur une loi physique élémentaire qui les relie à des grandeurs de dimension déjà connue.",
+        "Exemple : quelle est la dimension d'une résistance électrique ? En partant de $P = R i^2$ (avec $P$ une puissance et $i$ un courant électrique), le problème revient à trouver la dimension d'une puissance. Or $P = Fv$ (force $\\times$ vitesse) et la force est homogène au produit d'une masse par une accélération, donc $[F] = M\\cdot L\\cdot T^{-2}$."
+      ],
+      bullets:[
+        "On en déduit $[P] = [F]\\cdot[v] = M\\cdot L^2\\cdot T^{-3}$, puis $[R] = [P]\\cdot[i]^{-2} = M\\cdot L^2\\cdot T^{-3}\\cdot I^{-2}$ — soit la conversion $1\\ \\Omega = 1\\ \\text{kg}\\cdot\\text{m}^2\\cdot\\text{s}^{-3}\\cdot\\text{A}^{-2}$.",
+        "Cette démarche, qui combine deux lois physiques de domaines a priori distincts (mécanique et électrocinétique), illustre l'intérêt des grandeurs énergétiques comme pont entre différents champs de la physique.",
+        "Retenir la méthode plutôt que le résultat : face à une grandeur de dimension inconnue, chercher une loi physique simple qui la relie à des grandeurs déjà maîtrisées."
+      ]
+    },
+    {
+      unit:'6', badge:'Capacité transversale',
+      title:"Le théorème de Vaschy-Buckingham (théorème π)",
+      paragraphs:[
+        "L'analyse dimensionnelle permet d'aller plus loin que la simple vérification d'homogénéité : elle peut aider à retrouver, ou du moins à contraindre fortement, une loi physique lorsque sa résolution théorique complète est trop complexe.",
+        "Le résultat central de cette méthode est le théorème de Vaschy-Buckingham (ou théorème $\\pi$) : si une loi physique relie $n$ grandeurs physiques $a_0 = f(a_1, \\dots, a_{n-1})$ faisant intervenir $k$ dimensions indépendantes, alors cette loi peut s'exprimer comme une relation entre $n-k$ nombres sans dimension : $$\\pi_0 = g(\\pi_1, \\dots, \\pi_{n-k-1}).$$"
+      ],
+      bullets:[
+        "Exemple minimal : un triangle rectangle est entièrement défini par un côté $a$ et un angle $\\varphi$ ; sa surface $\\mathcal S$ en dépend donc. On a $n=3$ grandeurs ($\\mathcal S$, $a$, $\\varphi$) pour $k=1$ dimension indépendante (une longueur — l'angle est sans dimension) : on peut former $n-k=2$ nombres sans dimension, dont $\\varphi$ lui-même et $\\mathcal S/a^2$. Le théorème $\\pi$ assure alors $\\mathcal S/a^2 = g(\\varphi)$ pour une fonction $g$ universelle, commune à tous les triangles rectangles — ce qui suffit, en écrivant que l'aire du grand triangle est la somme de celle des deux petits qu'une hauteur y dessine, à retrouver le théorème de Pythagore $a^2 = b^2+c^2$, sans jamais calculer $g$ explicitement !",
+        "Le raisonnement pratique : poser $a_0 = C\\, a_1^{\\alpha} a_2^{\\beta}\\cdots$ (produit de puissances, avec $C$ une constante sans dimension), écrire l'équation aux dimensions correspondante, puis résoudre le système linéaire obtenu sur les exposants en identifiant les puissances de chaque dimension indépendante.",
+        "Limite intrinsèque de la méthode : il subsiste toujours une constante numérique sans dimension que l'analyse dimensionnelle seule ne permet pas de déterminer. Quand les grandeurs choisies sont pertinentes, cette constante est cependant souvent proche de l'unité — ce qui autorise déjà une estimation d'ordre de grandeur.",
+        "Autre point important : le nombre de dimensions indépendantes retenues pour une étude n'est pas fixé a priori — il peut être choisi différemment selon le problème (par exemple en traitant la force comme une dimension indépendante plutôt que comme $M\\cdot L\\cdot T^{-2}$), ce qui change le nombre de nombres sans dimension que l'on peut former."
+      ]
+    },
+    {
+      unit:'7', badge:'Capacité transversale',
+      title:"Un exemple complet : la portée d'un tir parabolique",
+      paragraphs:[
+        "Illustrons la méthode sur un exemple mécanique complet : un projectile est lancé depuis le sol avec une vitesse initiale $v_0$ et un angle de tir $\\alpha$ par rapport à l'horizontale, dans le champ de pesanteur uniforme $g$. On cherche la portée $D$ du tir, c'est-à-dire la distance horizontale parcourue avant de retoucher le sol.",
+        "Les paramètres physiques pertinents sont la portée $D$ elle-même, l'angle de tir $\\alpha$ (sans dimension), l'accélération de la pesanteur $g$ et la vitesse initiale $v_0$ : $$[D]=L,\\quad [\\alpha]=1,\\quad [g]=L\\cdot T^{-2},\\quad [v_0]=L\\cdot T^{-1}.$$"
+      ],
+      bullets:[
+        "On a $n=4$ grandeurs physiques pour $k=2$ dimensions indépendantes ($L$ et $T$) : le théorème $\\pi$ autorise donc la formation de $n-k=2$ nombres sans dimension, dont l'un est évidemment $\\alpha$ lui-même.",
+        "Le second s'obtient en cherchant à rendre $v_0^{\\beta} g^{\\gamma}$ homogène à $D$ (une longueur) : on trouve $v_0^2/(Dg)$. La loi cherchée s'écrit donc $D = K\\, \\dfrac{v_0^2}{g}\\, f(\\alpha)$, où $K$ est une constante sans dimension et $f$ une fonction de l'angle seul.",
+        "Un calcul complet de mécanique (hors analyse dimensionnelle) montre que $f(\\alpha)=\\sin(2\\alpha)$ et $K=1$ : on retrouve ainsi, par la seule analyse dimensionnelle complétée d'un peu de mécanique, la structure de la formule classique de la portée.",
+        "Point clé : sans résoudre la moindre équation du mouvement, l'analyse dimensionnelle a déjà montré que la portée croît comme le carré de la vitesse initiale et varie comme l'inverse de $g$ — deux informations physiquement importantes, obtenues en quelques lignes."
+      ]
+    }
+  ],
+
+  applications: [
+    {id:'a1', difficulty:1, notion:'u6',
+      statement:"Une loi physique relie n = 5 grandeurs physiques entre elles, parmi lesquelles on identifie k = 2 dimensions indépendantes. D'après le théorème de Vaschy-Buckingham, combien de nombres sans dimension indépendants peut-on former pour exprimer cette loi ?",
+      unit:"nombre(s) sans dimension", answer:3, tolerance:{type:'abs', value:0},
+      methode:"Le théorème π affirme qu'on peut former n − k nombres sans dimension.",
+      correction:["D'après le théorème π, une loi entre n grandeurs physiques avec k dimensions indépendantes s'exprime comme une relation entre n − k nombres sans dimension.", "Ici n = 5 et k = 2, donc n − k = 5 − 2 = 3 nombres sans dimension indépendants."]},
+    {id:'a2', difficulty:2, notion:'u7',
+      statement:"La Terre orbite autour du Soleil en T_Terre = 365 jours, à une distance a_Terre = 1,5×10⁸ km. Mars orbite à a_Mars = 2,3×10⁸ km. Sachant que 𝒢m_S T²/a³ est une constante caractéristique du Système solaire (indépendante de la planète), estime la période de révolution T_Mars, en jours.",
+      unit:"jours", answer:693, tolerance:{type:'pct', value:5},
+      methode:"Utilise l'égalité 𝒢m_S T²_Terre/a³_Terre = 𝒢m_S T²/a³ pour exprimer T en fonction de T_Terre, a_Terre et a_Mars, sans avoir besoin de connaître 𝒢 ni m_S.",
+      correction:["La constante 𝒢m_S T²/a³ est la même pour toutes les planètes, donc T²_Terre/a³_Terre = T²_Mars/a³_Mars.", "D'où T_Mars = T_Terre × (a_Mars/a_Terre)^(3/2) = 365 × (2,3/1,5)^1,5.", "Application numérique : T_Mars ≈ 365 × 1,90 ≈ 693 jours (valeur réelle : 687 jours — l'écart vient de l'approximation d'orbites circulaires)."]},
+    {id:'a3', difficulty:2, notion:'u7',
+      statement:"Avec les mêmes données que pour Mars (Terre : a_Terre = 1,5×10⁸ km, T_Terre = 365 jours), Jupiter orbite à a_Jupiter = 7,8×10⁸ km. Estime la période de révolution T_Jupiter, en jours.",
+      unit:"jours", answer:4330, tolerance:{type:'pct', value:5},
+      methode:"Même méthode que pour Mars : utilise la constance de 𝒢m_S T²/a³ d'une planète à l'autre.",
+      correction:["T_Jupiter = T_Terre × (a_Jupiter/a_Terre)^(3/2) = 365 × (7,8/1,5)^1,5.", "Application numérique : T_Jupiter ≈ 365 × 11,86 ≈ 4330 jours (valeur réelle : 4331 jours)."]},
+    {id:'a4', difficulty:2, notion:'u7',
+      statement:"Un projectile est lancé avec la même vitesse initiale v₀ et le même angle de tir α sur la Lune que sur Terre. Sachant que g_Lune ≈ 1,62 m·s⁻² (contre g_Terre ≈ 9,81 m·s⁻²) et que la portée s'écrit D = K v₀²sin(2α)/g (K et α inchangés), par quel facteur la portée D est-elle multipliée sur la Lune par rapport à la Terre ?",
+      unit:"facteur multiplicatif", answer:6.06, tolerance:{type:'pct', value:5},
+      methode:"D est inversement proportionnelle à g (à v₀ et α fixés) : calcule le rapport g_Terre/g_Lune.",
+      correction:["v₀, α et K étant inchangés, D_Lune/D_Terre = g_Terre/g_Lune (D est inversement proportionnelle à g).", "Application numérique : g_Terre/g_Lune ≈ 9,81/1,62 ≈ 6,06.", "La portée est donc multipliée par un facteur d'environ 6 sur la Lune — conséquence directe d'une pesanteur lunaire six fois plus faible que sur Terre."]},
+    {id:'a5', difficulty:2, notion:'u7',
+      statement:"Un géant est parfaitement homothétique d'un homme, avec un facteur d'échelle 10 sur toutes ses longueurs. Son poids varie comme le cube de ses dimensions, la force de ses muscles comme le carré. De quel facteur le rapport (poids / force musculaire) du géant est-il multiplié par rapport à celui de l'homme ?",
+      unit:"facteur multiplicatif", answer:10, tolerance:{type:'abs', value:0},
+      methode:"Le poids est multiplié par 10³, la force musculaire par 10². Le rapport poids/force est donc multiplié par 10³/10².",
+      correction:["Poids ∝ L³ : multiplié par 10³ = 1000.", "Force musculaire ∝ L² : multipliée par 10² = 100.", "Rapport poids/force : multiplié par 1000/100 = 10 — le géant est proportionnellement dix fois plus « écrasé » par son propre poids que l'homme, ce qui interdit son existence."]},
+    {id:'a6', difficulty:1, notion:'u5',
+      statement:"En partant de P = R i² (avec P une puissance, i un courant électrique) et P = Fv avec F homogène à une masse fois une accélération, on établit que 1 Ω = 1 kg^a·m²·s⁻³·A⁻². Donne la valeur de l'exposant a.",
+      unit:"sans unité (exposant)", answer:1, tolerance:{type:'abs', value:0},
+      methode:"La force est homogène à M·L·T⁻², donc [F]=M¹L¹T⁻². Reporte ce résultat dans [P]=[F]×[v] puis dans [R]=[P]/[i]².",
+      correction:["[F] = M·L·T⁻² donc [P]=[F]·[v] = M·L·T⁻² × L·T⁻¹ = M·L²·T⁻³.", "[R] = [P]/[i]² = M·L²·T⁻³ × I⁻² = M¹·L²·T⁻³·I⁻².", "L'exposant de la masse (donc du kg) est a = 1."]}
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {
+      u1:"1 — Grandeur, unité et dimension",
+      u2:"2 — Équation aux dimensions",
+      u3:"3 — Le système international d'unités",
+      u4:"4 — Règles d'homogénéité",
+      u5:"5 — Retrouver la dimension d'une grandeur",
+      u6:"6 — Théorème de Vaschy-Buckingham (théorème π)",
+      u7:"7 — La portée d'un tir parabolique"
+    },
+    nextStep: "Enchaîne sur le prochain module de Physique-Chimie dès qu'il sera prêt."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"La dimension d'une grandeur physique [X] traduit :", options:["comment sa valeur numérique est affectée par un changement d'échelle des unités", "sa valeur numérique exacte dans le Système international", "son unité usuelle uniquement"], correct:0},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"Une grandeur dont la valeur numérique ne change pas lors d'un changement d'échelle des unités est dite :", options:["fondamentale", "sans dimension ([X]=1)", "dérivée"], correct:1},
+    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"Le moment d'une force et un travail ont la même dimension. Que peut-on en conclure ?", options:["ce sont en réalité la même grandeur physique", "la dimension n'est pas une propriété intrinsèque à une grandeur physique", "l'un des deux calculs est nécessairement faux"], correct:1},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u2', q:"L'équation aux dimensions de la vitesse V = L/T s'écrit :", options:["[V] = L·T", "[V] = L·T⁻¹", "[V] = L⁻¹·T"], correct:1},
+    {id:'q5', type:'connaissance', difficulty:1, notion:'u3', q:"Le système international (SI) retient :", options:["sept grandeurs physiques fondamentales, dont toutes les autres unités dérivent", "une seule unité fondamentale, le mètre", "autant d'unités fondamentales que de lois physiques"], correct:0},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u3', q:"Depuis 2019, les unités de base du SI sont définies à partir :", options:["d'objets étalons conservés au Bureau International des Poids et Mesures", "de la valeur numérique fixée de constantes fondamentales de la physique", "d'un vote annuel de la communauté scientifique"], correct:1},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u4', q:"Un résultat littéral non homogène est :", options:["parfois vrai selon le contexte", "nécessairement faux", "toujours vrai s'il est bien calculé"], correct:1},
+    {id:'q8', type:'connaissance', difficulty:1, notion:'u4', q:"On ne peut additionner, dans une expression littérale, que des termes :", options:["de même signe", "homogènes (même dimension)", "de même ordre de grandeur numérique"], correct:1},
+    {id:'q9', type:'connaissance', difficulty:2, notion:'u4', q:"L'argument d'une fonction transcendante (exp, ln, cos, sin...) est nécessairement :", options:["sans dimension", "homogène à un temps", "homogène à la grandeur dérivée par la fonction"], correct:0},
+    {id:'q10', type:'connaissance', difficulty:1, notion:'u4', q:"Un vecteur ne peut être ajouté :", options:["qu'à un scalaire de même dimension", "qu'à un autre vecteur", "à n'importe quelle grandeur homogène"], correct:1},
+    {id:'q11', type:'connaissance', difficulty:2, notion:'u5', q:"Pour retrouver la dimension d'une grandeur inconnue, on peut s'appuyer sur :", options:["une loi physique élémentaire qui la relie à des grandeurs de dimension connue", "une intuition sans justification", "le nombre de lettres de son symbole"], correct:0},
+    {id:'q12', type:'connaissance', difficulty:2, notion:'u6', q:"Le théorème de Vaschy-Buckingham affirme qu'une loi entre n grandeurs physiques avec k dimensions indépendantes peut s'exprimer comme une relation entre :", options:["n+k nombres sans dimension", "n−k nombres sans dimension", "k nombres sans dimension seulement"], correct:1},
+    {id:'q13', type:'connaissance', difficulty:1, notion:'u5', q:"Une énergie est homogène au produit d'une force par une longueur, et une puissance est une énergie par unité de temps. Quelles sont les dimensions d'une énergie puis d'une puissance ?", options:["$[E]=ML^2T^{-2}$ et $[P]=ML^2T^{-3}$", "$[E]=ML^2T^{-2}$ et $[P]=ML^2T^{-1}$", "$[E]=MLT^{-2}$ et $[P]=MLT^{-3}$"], correct:0},
+    {id:'q14', type:'connaissance', difficulty:1, notion:'u5', q:"Sachant que l'intensité du courant électrique vérifie $i = \\dfrac{dq}{dt}$ (avec $q$ la charge électrique), quelle est la dimension de $q$ ?", options:["$[q] = I\\cdot T$", "$[q] = I\\cdot T^{-1}$", "$[q] = I^{-1}\\cdot T$"], correct:0},
+
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u7', q:"On considère un géant parfaitement homothétique d'un homme, dix fois plus grand dans toutes ses dimensions. Sachant que la force que peuvent développer ses muscles est proportionnelle à la section de ses membres (donc à L²) alors que son poids est proportionnel à son volume (donc à L³), pourquoi un tel géant s'effondrerait-il sous son propre poids ?",
+      options:["Parce que son poids est multiplié par un facteur 1000 alors que sa force musculaire n'est multipliée que par un facteur 100 : il devient proportionnellement bien plus lourd que fort", "Parce que les géants n'existent pas dans la littérature", "Parce que sa taille dépasse la limite légale des unités SI"], correct:0,
+      hint:"Compare les deux facteurs multiplicatifs (10³ pour le poids, 10² pour la force) plutôt que leurs valeurs absolues : c'est leur rapport qui importe."},
+    {id:'r8', type:'raisonnement', difficulty:2, notion:'u5', q:"En utilisant la loi de gravitation universelle $F = G\\dfrac{m_1 m_2}{r^2}$, quelle est la dimension de la constante de gravitation $G$ ?",
+      options:["$[G] = M^{-1}L^3T^{-2}$", "$[G] = ML^{-3}T^{2}$", "$[G] = M^{-1}L^{2}T^{-2}$"], correct:0,
+      hint:"Isole G dans la loi de gravitation, puis utilise le fait que la force est homogène au produit d'une masse par une accélération."},
+    {id:'r9', type:'raisonnement', difficulty:3, notion:'u6', q:"Le rayon de Schwarzschild $R_S$ d'un trou noir de masse $M$ ne dépend que de $M$, de la vitesse de la lumière $c$ et de la constante de gravitation $G$ (avec $[G]=M^{-1}L^3T^{-2}$). Quelle combinaison de $M$, $c$ et $G$ a la dimension d'une longueur ?",
+      options:["$GM/c^2$", "$GMc^2$", "$G/(Mc^2)$"], correct:0,
+      hint:"Écris $[G]^a[M]^b[c]^d$ et cherche les exposants qui annulent les dimensions de masse et de temps tout en donnant une longueur à la puissance 1."},
+    {id:'r4', type:'raisonnement', difficulty:2, notion:'u4', q:"Une expression donnant une longueur x s'écrit x = a·t² + b·t, où a est une accélération et b une vitesse. Pourquoi cette expression est-elle homogène malgré l'apparente différence entre les deux termes ?",
+      options:["Parce que chaque terme, une fois son unité calculée (m·s⁻²×s² = m, et m·s⁻¹×s = m), redonne bien une longueur, malgré des écritures différentes", "Parce que a et b ont en réalité la même dimension", "Cette expression n'est en réalité pas homogène : il manque un facteur ½"], correct:0,
+      hint:"Calcule séparément l'unité de chacun des deux termes (m·s⁻²)×s² et (m·s⁻¹)×s : arrivent-elles au même résultat ?"},
+    {id:'r10', type:'raisonnement', difficulty:3, notion:'u5', q:"L'énergie stockée dans un condensateur vérifie $E = \\tfrac12 C u^2$ (avec $u$ une tension) et le courant qui le traverse vérifie $i = C\\dfrac{du}{dt}$. En déduire les dimensions de $C$ (capacité) et de $u$ (tension).",
+      options:["$[u]=ML^2T^{-3}I^{-1}$ et $[C]=M^{-1}L^{-2}T^{4}I^{2}$", "$[u]=ML^2T^{-2}I^{-1}$ et $[C]=M^{-1}L^{-2}T^{3}I^{2}$", "$[u]=MLT^{-3}I^{-1}$ et $[C]=M^{-1}L^{-1}T^{4}I^{2}$"], correct:0,
+      hint:"Combine les deux relations pour éliminer C (ou u) : quelle dimension obtiens-tu pour l'autre grandeur ?"},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u6', q:"Pourquoi la troisième loi de Képler (T²∝a³) peut-elle être retrouvée par analyse dimensionnelle à partir des seuls paramètres m_S (masse du Soleil), a (rayon de l'orbite) et 𝒢 (constante de gravitation), sans résoudre les équations du mouvement ?",
+      options:["Parce qu'avec 4 grandeurs physiques (dont T) et 3 dimensions indépendantes, on ne peut former qu'un seul nombre sans dimension, ce qui impose une relation unique entre elles", "Parce que Képler a mesuré directement 𝒢 avec un télescope", "Parce que cette loi ne dépend en réalité d'aucun paramètre physique"], correct:0,
+      hint:"Compte le nombre de grandeurs physiques en jeu (T, a, m_S, 𝒢) et le nombre de dimensions indépendantes (M, L, T) : combien de nombres sans dimension le théorème π autorise-t-il à former ?"},
+    {id:'r11', type:'raisonnement', difficulty:2, notion:'u7', q:"En reprenant une méthode analogue à celle du tir parabolique (portée D), on montre que la flèche F (hauteur maximale atteinte par la trajectoire) dépend, comme D, du carré de la vitesse initiale v₀ et de g. Si on multiplie v₀ par 2 (angle de tir inchangé), par quel facteur la flèche F est-elle multipliée ?",
+      options:["4", "2", "√2"], correct:0,
+      hint:"La flèche F a la même dimension que la portée D, et dépend des mêmes paramètres v₀, g et α (à un facteur près) : quelle est alors sa dépendance en v₀ ?"}
+  ],
+
+  mindmapModel: {
+    label:"Analyse dimensionnelle",
+    children:[
+      {label:"Grandeur, unité, dimension", children:[
+        {label:"X = x·U_X"},{label:"[X] : effet d'un changement d'unité"},{label:"Sans dimension : [X]=1"}
+      ]},
+      {label:"Équation aux dimensions", children:[
+        {label:"Grandeurs de base (M, L, T, I...)"},{label:"Grandeurs dérivées"}
+      ]},
+      {label:"Règles d'homogénéité", children:[
+        {label:"Additionner seulement des termes homogènes"},{label:"Argument de fonction transcendante sans dimension"},{label:"Vecteur + vecteur seulement"}
+      ]},
+      {label:"Retrouver une dimension", children:[
+        {label:"S'appuyer sur une loi physique connue"},{label:"Exemple : la résistance électrique"}
+      ]},
+      {label:"Théorème de Vaschy-Buckingham", children:[
+        {label:"n grandeurs, k dimensions → n−k nombres sans dimension"},{label:"Constante sans dimension inconnue"}
+      ]},
+      {label:"Applications célèbres", children:[
+        {label:"Pythagore"},{label:"Tir parabolique (portée, flèche)"},{label:"3e loi de Képler"},{label:"Lois d'échelle (géant, dinde)"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>

@@ -21,7 +21,7 @@ window.MODULES = [
 
   // ---------- Physique-Chimie ----------
   {id:'pc-boite-a-outils', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Boîte à outils', title:"Alphabet grec, puissances de 10, unités", pages:"Fiche 1 cahier PC", status:'soon', accent:'var(--ochre)', href:null},
-  {id:'pc-analyse-dimensionnelle', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Notions transversales', title:"Analyse dimensionnelle", pages:"—", status:'soon', accent:'var(--ochre)', href:null},
+  {id:'pc-analyse-dimensionnelle', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Notions transversales', title:"Analyse dimensionnelle", pages:"Capacité transversale", status:'available', accent:'var(--ochre)', href:'physique-chimie/analyse-dimensionnelle.html'},
   {id:'pc-nomenclature', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Notions transversales', title:"Nomenclature en chimie organique", pages:"—", status:'soon', accent:'var(--ochre)', href:null},
   {id:'pc-mecanique', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Révisions de Terminale', title:"Mouvement dans le champ de pesanteur", pages:"M.1, M.2", status:'soon', accent:'var(--ochre)', href:null},
   {id:'pc-condensateur', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Révisions de Terminale', title:"Charge et décharge d'un condensateur", pages:"S.3", status:'soon', accent:'var(--ochre)', href:null},
