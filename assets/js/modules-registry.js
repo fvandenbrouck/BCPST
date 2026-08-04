@@ -20,7 +20,7 @@ window.MODULES = [
   {id:'ch14', subject:'svt', subjectLabel:'SVT', cat:'Bonus tertiaire (hors recommandations, lié au carnet de terrain)', title:"Ch.14 — Le changement climatique actuel : s'informer et agir", pages:"p.342-366", status:'available', accent:'#8a8578', href:'svt/ch14-changement-climatique-actuel.html'},
 
   // ---------- Physique-Chimie ----------
-  {id:'pc-boite-a-outils', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Boîte à outils', title:"Alphabet grec, puissances de 10, unités", pages:"Fiche 1 cahier PC", status:'soon', accent:'var(--ochre)', href:null},
+  {id:'pc-boite-a-outils', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Boîte à outils', title:"Alphabet grec, puissances de 10, unités", pages:"Fiche 1 cahier PC", status:'available', accent:'var(--ochre)', href:'physique-chimie/boite-a-outils.html'},
   {id:'pc-analyse-dimensionnelle', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Notions transversales', title:"Analyse dimensionnelle", pages:"Capacité transversale", status:'available', accent:'var(--ochre)', href:'physique-chimie/analyse-dimensionnelle.html'},
   {id:'pc-nomenclature', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Notions transversales', title:"Nomenclature en chimie organique", pages:"—", status:'soon', accent:'var(--ochre)', href:null},
   {id:'pc-mecanique', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Révisions de Terminale', title:"Mouvement dans le champ de pesanteur", pages:"M.1, M.2", status:'soon', accent:'var(--ochre)', href:null},

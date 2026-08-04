@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boîte à outils — Alphabet grec, puissances de 10, unités · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/flashcards-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'pc-boite-a-outils',
+  chapNum: "Boîte à outils",
+  subjectLabel: "Physique-Chimie",
+  accent: 'var(--ochre)',
+  title: "Alphabet grec, puissances de 10, unités",
+  pages: "Boîte à outils — cf. fiche 1 du cahier d'entraînement PC (index)",
+  noManual: true,
+  backHref: '../index.html',
+  bridge: {
+    from: "Les puissances de 10, la notation scientifique et les préfixes du Système international ont été manipulés au collège et au lycée, mais souvent de façon dispersée et sans réflexe systématique. L'alphabet grec, lui, n'a jamais été présenté pour lui-même : chaque lettre était rencontrée isolément (π en mathématiques, Δ pour une variation...) sans vision d'ensemble.",
+    to: "En BCPST1, ces deux outils sont mobilisés dès les premières semaines et en continu dans toutes les matières scientifiques : la physique-chimie regorge de constantes et grandeurs notées en lettres grecques (λ, μ, ρ, ω, Φ...), et la maîtrise immédiate des puissances de 10 et des conversions d'unités est indispensable pour ne pas perdre de temps sur des calculs élémentaires en exercice comme en colle."
+  },
+
+  fiches: [
+    {
+      unit:'1', badge:'Boîte à outils',
+      title:"L'alphabet grec en physique et en chimie",
+      paragraphs:[
+        "L'alphabet latin (26 lettres) ne suffit pas à noter toutes les grandeurs physiques, constantes et paramètres rencontrés en sciences : les physiciens et chimistes empruntent depuis longtemps les 24 lettres de l'alphabet grec pour disposer de symboles supplémentaires, courts et internationalement reconnus.",
+        "Certaines lettres grecques ont une signification quasi universelle en physique (π pour le nombre pi, Ω pour l'ohm), d'autres changent de sens selon le domaine ou même selon l'auteur — le contexte de l'énoncé permet toujours de lever l'ambiguïté."
+      ],
+      bullets:[
+        "Une même lettre existe souvent en majuscule et en minuscule, avec des usages différents : par exemple δ désigne un écart infinitésimal alors que Δ désigne une variation globale (ex. ΔT, la différence entre température finale et température initiale).",
+        "Reconnaître instantanément chaque lettre grecque, sans avoir à s'arrêter pour la déchiffrer, est un vrai gain de temps en cours comme en devoir — c'est l'objet de l'onglet Flashcards de ce module, qui couvre les 24 lettres avec leurs usages les plus courants en physique-chimie.",
+        "Fait amusant : le préfixe SI « micro- » (facteur 10⁻⁶, voir plus loin dans ce module) est lui-même noté avec la lettre grecque μ (mu) — un pont direct entre les deux outils présentés dans ce module."
+      ]
+    },
+    {
+      unit:'2', badge:'Boîte à outils',
+      title:"Puissances de 10 et notation scientifique",
+      paragraphs:[
+        "Les grandeurs physiques manipulées en sciences couvrent une gamme d'ordres de grandeur immense : de la taille d'un noyau atomique (≈$10^{-15}$ m) à la taille de l'Univers observable (≈$10^{26}$ m). Écrire ces nombres avec toutes leurs décimales serait illisible — d'où l'usage systématique des puissances de 10.",
+        "La notation scientifique impose une convention précise : un nombre s'écrit $a \\times 10^n$, où $a$ est compris entre 1 (inclus) et 10 (exclu), et $n$ est un entier relatif. Par exemple, 2500 s'écrit $2{,}5\\times 10^3$, et 0,0032 s'écrit $3{,}2\\times 10^{-3}$."
+      ],
+      bullets:[
+        "Pour multiplier deux puissances de 10, on additionne les exposants : $10^a \\times 10^b = 10^{a+b}$.",
+        "Pour diviser deux puissances de 10, on soustrait les exposants : $10^a / 10^b = 10^{a-b}$.",
+        "Ce réflexe de calcul mental sur les exposants doit devenir automatique : il permet de vérifier rapidement l'ordre de grandeur d'un résultat, sans sortir la calculatrice — indispensable dès les premières colles de physique-chimie."
+      ]
+    },
+    {
+      unit:'3', badge:'Boîte à outils',
+      title:"Préfixes du Système international",
+      paragraphs:[
+        "Plutôt que d'écrire systématiquement une puissance de 10, le Système international associe à certaines puissances de 10 un préfixe et un symbole, à accoler directement à l'unité : par exemple, $10^{-3}$ m s'écrit plus simplement 1 mm (millimètre).",
+        "Les préfixes les plus courants en physique-chimie de CPGE, du plus petit au plus grand facteur :"
+      ],
+      bullets:[
+        "Préfixes < 1 : femto (f, $10^{-15}$), pico (p, $10^{-12}$), nano (n, $10^{-9}$), micro (μ, $10^{-6}$), milli (m, $10^{-3}$), centi (c, $10^{-2}$).",
+        "Préfixes > 1 : kilo (k, $10^{3}$), méga (M, $10^{6}$), giga (G, $10^{9}$), téra (T, $10^{12}$).",
+        "Piège fréquent : bien distinguer m (milli, $10^{-3}$) de M (méga, $10^{6}$) — la casse de la lettre change radicalement l'ordre de grandeur, une confusion à ne surtout pas commettre en manipulation ou en rédaction."
+      ]
+    },
+    {
+      unit:'4', badge:'Boîte à outils',
+      title:"Conversions d'unités",
+      paragraphs:[
+        "Convertir une grandeur d'une unité vers une autre est un réflexe transversal, mobilisé dans toutes les parties du programme de physique-chimie. La méthode la plus sûre consiste à toujours revenir aux unités de base du Système international avant de raisonner.",
+        "Exemple classique : convertir une vitesse de km/h en m/s. Puisque 1 km = 1000 m et 1 h = 3600 s, on a $$1\\ \\text{km/h} = \\dfrac{1000\\ \\text{m}}{3600\\ \\text{s}} = \\dfrac{1}{3{,}6}\\ \\text{m/s} :$$ diviser par 3,6 convertit donc des km/h en m/s (et multiplier par 3,6 fait l'inverse)."
+      ],
+      bullets:[
+        "La même logique s'applique aux unités composées comme le kilowattheure (kW·h), une unité d'énergie utilisée en pratique (facture d'électricité) : puisque $1\\ \\text{J} = 1\\ \\text{W}\\cdot\\text{s}$, il faut convertir séparément le kW en W (×1000) et l'heure en secondes (×3600) avant de multiplier.",
+        "Ce réflexe — revenir systématiquement aux unités SI de base avant tout calcul — évite la quasi-totalité des erreurs de facteur 10, 60, 1000 ou 3600 rencontrées en devoir.",
+        "Ce module rejoint directement le précédent (Analyse dimensionnelle) : une conversion d'unité est, au fond, un changement d'échelle de l'unité — exactement la notion de dimension présentée dans ce premier module de Physique-Chimie."
+      ]
+    }
+  ],
+
+  flashcards: [
+    {id:'f1', recto:"α", verso:"Alpha — particule α (noyau d'hélium émis en radioactivité), angle en géométrie, coefficient de dilatation thermique.", notion:'u1'},
+    {id:'f2', recto:"β", verso:"Bêta — particule β (électron ou positron émis en radioactivité), angle générique.", notion:'u1'},
+    {id:'f3', recto:"Γ γ", verso:"Gamma — rayonnement γ (photon de haute énergie) ; Γ facteur de Lorentz (relativité) ou couple de force selon le contexte.", notion:'u1'},
+    {id:'f4', recto:"Δ δ", verso:"Delta — Δ : variation globale d'une grandeur (ex. ΔT) ; δ : écart ou variation infinitésimale.", notion:'u1'},
+    {id:'f5', recto:"ε", verso:"Epsilon — permittivité diélectrique (ε₀ dans le vide), ou une très petite quantité en mathématiques.", notion:'u1'},
+    {id:'f6', recto:"ζ", verso:"Zêta [dzéta] — peu courant ; parfois coefficient d'amortissement en électrocinétique.", notion:'u1'},
+    {id:'f7', recto:"η", verso:"Êta [éta] — rendement (sans dimension) ou viscosité dynamique d'un fluide.", notion:'u1'},
+    {id:'f8', recto:"Θ θ", verso:"Thêta [téta] — angle générique ; Θ dimension de température en analyse dimensionnelle.", notion:'u1'},
+    {id:'f9', recto:"ι", verso:"Iota — très rarement utilisé en physique-chimie de CPGE.", notion:'u1'},
+    {id:'f10', recto:"κ", verso:"Kappa — constante de raideur ou coefficient divers selon le contexte (peu standardisé).", notion:'u1'},
+    {id:'f11', recto:"Λ λ", verso:"Lambda — λ : longueur d'onde, constante radioactive ; Λ : conductivité molaire ionique en chimie des solutions.", notion:'u1'},
+    {id:'f12', recto:"μ", verso:"Mu — coefficient de frottement, perméabilité magnétique μ₀ ; aussi le préfixe SI « micro- » (10⁻⁶).", notion:'u1'},
+    {id:'f13', recto:"ν", verso:"Nu — fréquence (notamment en spectroscopie), coefficient de Poisson en mécanique des matériaux.", notion:'u1'},
+    {id:'f14', recto:"ξ", verso:"Xi [ksi] — rare ; parfois avancement d'une réaction chimique en cinétique.", notion:'u1'},
+    {id:'f15', recto:"ο", verso:"Omicron — quasiment jamais utilisé en physique-chimie (confusion trop facile avec la lettre latine o).", notion:'u1'},
+    {id:'f16', recto:"Π π", verso:"Pi — π : rapport circonférence/diamètre d'un cercle (≈3,14159) ; Π : produit d'une série de termes (notation mathématique).", notion:'u1'},
+    {id:'f17', recto:"ρ", verso:"Rhô — masse volumique, ou résistivité électrique d'un matériau.", notion:'u1'},
+    {id:'f18', recto:"Σ σ", verso:"Sigma — Σ : somme d'une série de termes ; σ : conductivité électrique, contrainte mécanique, ou écart-type en statistiques.", notion:'u1'},
+    {id:'f19', recto:"τ", verso:"Tau — constante de temps (circuit RC, décroissance exponentielle), ou couple d'une force.", notion:'u1'},
+    {id:'f20', recto:"υ", verso:"Upsilon [upsilon/ypsilon] — très rarement utilisé en physique-chimie.", notion:'u1'},
+    {id:'f21', recto:"Φ φ", verso:"Phi — φ : angle de phase, potentiel électrique ; Φ : flux (magnétique en weber, lumineux en lumen).", notion:'u1'},
+    {id:'f22', recto:"χ", verso:"Chi [khi] — susceptibilité magnétique ou électrique, fraction molaire en chimie des solutions.", notion:'u1'},
+    {id:'f23', recto:"ψ", verso:"Psi — fonction d'onde en mécanique quantique.", notion:'u1'},
+    {id:'f24', recto:"Ω ω", verso:"Oméga — Ω : unité de résistance électrique, l'ohm (et « oméga » désigne aussi une résistance) ; ω : pulsation, vitesse angulaire.", notion:'u1'}
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {
+      u1:"1 — L'alphabet grec en physique",
+      u2:"2 — Puissances de 10 et notation scientifique",
+      u3:"3 — Préfixes du Système international",
+      u4:"4 — Conversions d'unités"
+    },
+    nextStep: "Enchaîne sur le prochain module de Physique-Chimie dès qu'il sera prêt."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"En physique, la lettre grecque λ (lambda) désigne le plus souvent :", options:["une longueur d'onde", "une masse volumique", "une résistance électrique"], correct:0},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"La lettre grecque ρ (rhô) désigne le plus souvent :", options:["une masse volumique", "une fréquence", "un angle"], correct:0},
+    {id:'q3', type:'connaissance', difficulty:1, notion:'u1', q:"Le symbole Ω (oméga majuscule) est utilisé comme :", options:["l'unité de résistance électrique, l'ohm", "l'unité de longueur d'onde", "le symbole d'une charge électrique"], correct:0},
+    {id:'q4', type:'connaissance', difficulty:2, notion:'u1', q:"La lettre μ (mu) est aussi utilisée comme préfixe du Système international pour désigner :", options:["micro- (10⁻⁶)", "méga- (10⁶)", "milli- (10⁻³)"], correct:0},
+    {id:'q5', type:'connaissance', difficulty:1, notion:'u1', q:"Le symbole Δ (delta majuscule) désigne conventionnellement :", options:["la variation d'une grandeur (valeur finale moins valeur initiale)", "une très petite quantité infinitésimale", "un angle de phase"], correct:0},
+    {id:'q6', type:'connaissance', difficulty:1, notion:'u1', q:"Le symbole π (pi) désigne principalement :", options:["le rapport constant entre la circonférence d'un cercle et son diamètre (≈3,14159)", "une constante de temps", "un flux magnétique"], correct:0},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u2', q:"Écrire un nombre en notation scientifique signifie l'écrire sous la forme :", options:["a×10ⁿ, avec 1≤a<10 et n un entier relatif", "a×10ⁿ, avec n toujours positif", "une fraction décimale sans exposant"], correct:0},
+    {id:'q8', type:'connaissance', difficulty:1, notion:'u2', q:"Pour multiplier deux puissances de 10, on :", options:["additionne les exposants", "multiplie les exposants", "soustrait les exposants"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u2', q:"Pour diviser deux puissances de 10, on :", options:["soustrait les exposants (exposant du numérateur moins celui du dénominateur)", "additionne les exposants", "multiplie les exposants"], correct:0},
+    {id:'q10', type:'connaissance', difficulty:2, notion:'u2', q:"3 mm exprimés en mètres, en écriture scientifique, s'écrivent :", options:["3×10⁻³ m", "3×10⁻² m", "3×10³ m"], correct:0},
+    {id:'q11', type:'connaissance', difficulty:1, notion:'u3', q:"Le préfixe « nano » correspond à un facteur :", options:["10⁻⁹", "10⁻⁶", "10⁻¹²"], correct:0},
+    {id:'q12', type:'connaissance', difficulty:1, notion:'u3', q:"Le préfixe « méga » correspond à un facteur :", options:["10⁶", "10³", "10⁹"], correct:0},
+    {id:'q13', type:'connaissance', difficulty:2, notion:'u3', q:"1 km exprimé en mètres, en écriture scientifique, s'écrit :", options:["1×10³ m", "1×10⁻³ m", "1×10⁶ m"], correct:0},
+    {id:'q14', type:'connaissance', difficulty:1, notion:'u4', q:"1 J (joule) est égal, par définition, à :", options:["1 W·s (un watt-seconde)", "1 W/s", "1 W·h"], correct:0},
+
+    {id:'r1', type:'raisonnement', difficulty:2, notion:'u4', q:"Une vitesse est donnée en km/h et on souhaite l'exprimer en m/s. Pourquoi faut-il diviser par 3,6 pour effectuer cette conversion ?",
+      options:["Parce que 1 km/h = 1000 m / 3600 s = (1000/3600) m/s = (1/3,6) m/s", "Parce que 3,6 est un facteur de conversion officiel du Système international, sans lien avec un calcul", "Parce qu'il faut en réalité multiplier par 3,6, pas diviser"], correct:0,
+      hint:"Décompose km en m (facteur 1000) et h en s (facteur 3600), puis simplifie le rapport 1000/3600."},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u3', q:"Sachant que le préfixe « centi » correspond exactement à 10⁻², quelle est la valeur en centimètres de 2,5×10⁻² m ?",
+      options:["2,5 cm", "0,25 cm", "25 cm"], correct:0,
+      hint:"2,5×10⁻² m divisé par le facteur du préfixe centi (10⁻²) donne directement la valeur numérique en centimètres."},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u4', q:"Une durée de fonctionnement T = 0,67 kW·h doit être convertie en joules, sachant que 1 J = 1 W·s. Quelle démarche permet cette conversion ?",
+      options:["Convertir kW en W (×1000) et h en s (×3600), puis multiplier : T = 0,67×1000×3600 J", "Diviser 0,67 par 1000 puis par 3600", "Multiplier directement 0,67 par 3600 sans convertir les kW en W"], correct:0,
+      hint:"kW·h est un produit d'une puissance par une durée : convertis chaque facteur dans son unité SI avant de multiplier."},
+    {id:'r4', type:'raisonnement', difficulty:2, notion:'u1', q:"Deux physiciens utilisent la lettre Φ (phi majuscule) dans deux contextes différents : l'un pour un flux magnétique en weber, l'autre pour un flux lumineux en lumen. Que peut-on en conclure sur l'usage des lettres grecques en physique ?",
+      options:["Une même lettre grecque peut désigner des grandeurs physiques différentes selon le domaine étudié — le contexte de l'énoncé permet de lever l'ambiguïté", "C'est une erreur : une lettre grecque ne doit désigner qu'une seule grandeur dans toute la physique", "Les deux flux sont en réalité la même grandeur physique"], correct:0},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u4', q:"Pourquoi le facteur 3,6 revient-il aussi dans la conversion m/s → km/h (en multipliant cette fois, et non en divisant) ?",
+      options:["Parce que c'est l'opération inverse de km/h → m/s : ce qui était une division devient une multiplication", "Parce qu'il faut utiliser un facteur totalement différent pour ce sens de conversion", "Parce que la conversion m/s → km/h n'existe pas"], correct:0,
+      hint:"Repense à la relation trouvée pour km/h → m/s (division par 3,6) : que devient-elle si on l'inverse ?"},
+    {id:'r6', type:'raisonnement', difficulty:3, notion:'u3', q:"Sachant que 1 μm (micromètre) = 10⁻⁶ m et que le préfixe « nano » correspond à 10⁻⁹, combien de nanomètres y a-t-il dans 1 micromètre ?",
+      options:["1000 nm", "100 nm", "10 nm"], correct:0,
+      hint:"Exprime les deux préfixes en puissances de 10 et compare les exposants : 10⁻⁶ / 10⁻⁹ = 10³."}
+  ],
+
+  mindmapModel: {
+    label:"Alphabet grec, puissances de 10, unités",
+    children:[
+      {label:"Alphabet grec en physique", children:[
+        {label:"Notation compacte, complète l'alphabet latin"},{label:"Majuscule ≠ minuscule (ex. Δ vs δ)"},{label:"Exemples : λ, ρ, Ω, μ, π, τ, ψ"}
+      ]},
+      {label:"Puissances de 10", children:[
+        {label:"Notation scientifique a×10ⁿ, 1≤a<10"},{label:"Multiplier → additionner les exposants"},{label:"Diviser → soustraire les exposants"}
+      ]},
+      {label:"Préfixes du Système international", children:[
+        {label:"< 1 : nano, micro, milli, centi"},{label:"> 1 : kilo, méga, giga"},{label:"μ est aussi une lettre grecque"}
+      ]},
+      {label:"Conversions d'unités", children:[
+        {label:"Revenir aux unités SI de base"},{label:"km/h ↔ m/s : facteur 3,6"},{label:"Unités composées (kW·h → J)"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>
