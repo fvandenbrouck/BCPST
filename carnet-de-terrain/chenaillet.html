@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Le Chenaillet · Carnet de terrain · Strates</title>
+<title>Le Chenaillet · Chasse au trésor géologique · Strates</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/strates.css">
@@ -18,7 +18,9 @@ const SITE = {
   id: 'chenaillet',
   title: "Le Chenaillet",
   altitude: "2650 m · Hautes-Alpes, entre Cervières et Montgenèvre",
+  treasureHunt: true,
   contexte: `<p>Le Chenaillet est un sommet des Hautes-Alpes, entre Cervières et Montgenèvre, accessible par un sentier de randonnée familiale (praticable dès 10 ans, sans difficulté technique). Il est célèbre en géologie parce qu'il porte, à plus de 2600 m d'altitude, les vestiges d'un ancien plancher océanique — l'« océan alpin » — vieux d'environ 150 millions d'années. C'est l'un des meilleurs endroits de France pour observer à l'œil nu une ophiolite, l'un des objets d'étude du Ch.7 du manuel.</p>`,
+  mission: `<p>Un océan a disparu sous tes pieds — et pourtant, ses vestiges sont encore là, cachés dans les roches du Chenaillet. Ta mission : repère les indices sur le sentier, dans l'ordre que tu veux et à ton rythme (toutes les énigmes sont accessibles librement, pas besoin de réseau pour avancer). Garde le trésor final pour la fin : une fois rentré·e, au calme, ouvre-le pour rassembler tout ce que tu as appris.</p>`,
 
   points: [
     {
@@ -31,43 +33,43 @@ const SITE = {
       id:'chen-02', ordre:2, lieu:"Premiers affleurements sombres et verdâtres",
       prompt:"Cherche une roche à la surface lisse, presque savonneuse au toucher, de couleur vert sombre à noirâtre. Décris sa texture avec tes mots. À ton avis, une roche aussi dense et sombre s'est-elle formée en surface ou en profondeur ?",
       eclairage:"Cette roche est de la <b>serpentinite</b> : elle provient de l'altération de péridotite, une roche du manteau terrestre. Sa présence en surface, ici, est déjà une anomalie en soi — le manteau n'affleure normalement jamais à l'air libre.",
-      tags:['SVT-Ch7-U2']
+      tags:['SVT-Ch7-U2'], indice:"SERPENTINITE"
     },
     {
       id:'chen-03', ordre:3, lieu:"Zone intermédiaire de la montée",
       prompt:"Cherche une roche plus claire, à grain grossier (tu dois pouvoir distinguer des cristaux à l'œil nu), parfois traversée de fines veines. Compare son grain à celui de la serpentinite observée juste avant.",
       eclairage:"C'est du <b>gabbro</b>, une roche magmatique formée par refroidissement lent d'un magma en profondeur — d'où ses gros cristaux visibles. Dans une croûte océanique « normale », le gabbro se situe sous les basaltes de surface et au-dessus du manteau : ici, tu remontes littéralement une coupe de croûte océanique en montant la pente.",
-      tags:['SVT-Ch7-U2']
+      tags:['SVT-Ch7-U2'], indice:"GABBRO"
     },
     {
       id:'chen-04', ordre:4, lieu:"Vers le Collet Vert / le sommet",
       prompt:"Cherche des roches arrondies, en forme de coussins ou de boules empilées, à la croûte souvent rougeâtre. Essaie d'estimer leur taille (de quelques dizaines de cm à plus d'un mètre). D'après leur forme, dans quel milieu ce magma a-t-il pu refroidir ?",
       eclairage:"Ce sont des <b>pillow-lavas</b> (basaltes en coussins) : la forme arrondie et la croûte vitreuse rapidement figée sont la signature d'un magma refroidi au contact direct de l'eau de mer — la preuve la plus visuelle de l'origine sous-marine de ces roches. La teinte rougeâtre vient de l'oxydation du fer qu'elles contiennent.",
-      tags:['SVT-Ch7-U2']
+      tags:['SVT-Ch7-U2'], indice:"PILLOW-LAVAS"
     },
     {
       id:'chen-05', ordre:5, lieu:"Au niveau des pillow-lavas",
       prompt:"Observe si tu trouves, entre ou sous les coussins de lave, des roches plus fines, litées, parfois rougeâtres ou verdâtres, très différentes des roches magmatiques précédentes.",
       eclairage:"S'il y en a, ce sont probablement des <b>radiolarites</b> : des sédiments marins issus de l'accumulation de squelettes microscopiques d'organismes planctoniques (radiolaires), déposés lentement sur le plancher océanique. Elles complètent la coupe : manteau → gabbro → basaltes → sédiments marins, soit une coupe quasi complète de lithosphère océanique.",
-      tags:['SVT-Ch7-U2','SVT-Ch7-U3']
+      tags:['SVT-Ch7-U2','SVT-Ch7-U3'], indice:"RADIOLARITES"
     },
     {
       id:'chen-06', ordre:6, lieu:"Au sommet ou sur l'arête, table d'orientation",
       prompt:"Regarde autour de toi : tu es entouré de sommets alpins, à des centaines de kilomètres de tout océan actuel. Comment expliquer que tu marches sur un ancien plancher océanique, ici, en pleine montagne ? Note ton hypothèse avant de lire l'éclairage.",
       eclairage:"C'est le phénomène d'<b>obduction</b> : lors de la collision qui a formé les Alpes, un morceau de lithosphère océanique a été arraché et charrié sur la croûte continentale au lieu de plonger dans le manteau (subduction). Le Chenaillet est un fragment fossile de cette ancienne mise en place, aujourd'hui soulevé avec le reste de la chaîne alpine. C'est exactement le mécanisme étudié dans l'unité « la mise en place des ophiolites alpines ».",
-      tags:['SVT-Ch7-U3']
+      tags:['SVT-Ch7-U3'], indice:"OBDUCTION"
     },
     {
       id:'chen-07', ordre:7, lieu:"En redescendant, sur un fragment de pillow-lava cassé",
       prompt:"Observe une roche cassée par l'érosion : la cassure est-elle de la même couleur que la surface extérieure ?",
       eclairage:"Le contraste entre l'intérieur (souvent plus gris-vert, moins oxydé) et l'extérieur (rougeâtre) montre l'effet du temps : l'altération chimique au contact de l'air et de l'eau, depuis que ces roches sont exposées en surface, transforme progressivement leur composition — un aperçu concret de la notion d'érosion/altération des roches.",
-      tags:['SVT-Ch7-U3']
+      tags:['SVT-Ch7-U3'], indice:"ALTÉRATION"
     },
     {
       id:'chen-08', ordre:8, lieu:"Bilan de fin de sortie (à remplir plus tard, au calme)",
-      prompt:"En une ou deux phrases, résume dans tes mots ce qu'est une ophiolite et pourquoi le Chenaillet en est un bon exemple. Pas besoin d'être exhaustif : le but est de reformuler avec tes propres mots.",
+      prompt:"Tu as maintenant récolté 6 indices : SERPENTINITE, GABBRO, PILLOW-LAVAS, RADIOLARITES, OBDUCTION, ALTÉRATION. En les utilisant, résume dans tes mots ce qu'est une ophiolite et pourquoi le Chenaillet en est un bon exemple. Pas besoin d'être exhaustif : le but est de reformuler avec tes propres mots.",
       eclairage:"Pas d'éclairage « modèle » ici — c'est volontaire : cette dernière étape sert à toi de vérifier, seul, ce que tu as retenu. Tu peux comparer ta formulation avec le cours du Ch.7 une fois de retour.",
-      tags:['SVT-Ch7-U2','SVT-Ch7-U3']
+      tags:['SVT-Ch7-U2','SVT-Ch7-U3'], final:true
     }
   ]
 };
