@@ -1,0 +1,45 @@
+<svg viewBox="0 0 620 360" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif" font-size="12">
+  <rect width="620" height="360" fill="#FBF8F0"/>
+
+  <rect x="230" y="10" width="160" height="40" rx="8" fill="#FBF8F0" stroke="#262319" stroke-width="1.5"/>
+  <text x="310" y="34" text-anchor="middle" font-weight="bold" fill="#262319">Glucose</text>
+
+  <line x1="310" y1="50" x2="310" y2="78" stroke="#262319" stroke-width="1.5" marker-end="url(#arrowDark2)"/>
+
+  <rect x="170" y="80" width="280" height="70" rx="8" fill="#5F6F42" fill-opacity="0.15" stroke="#5F6F42" stroke-width="1.5"/>
+  <text x="310" y="102" text-anchor="middle" font-weight="bold" fill="#5F6F42">Glycolyse (cytoplasme)</text>
+  <text x="310" y="120" text-anchor="middle" font-size="11" fill="#524c3e">2 pyruvate + 2 ATP + 2 NADH,H+</text>
+  <text x="310" y="136" text-anchor="middle" font-size="11" fill="#524c3e">(pas besoin direct de O2)</text>
+
+  <line x1="230" y1="150" x2="150" y2="188" stroke="#4C5B66" stroke-width="1.5" marker-end="url(#arrowSlate2)"/>
+  <line x1="390" y1="150" x2="470" y2="188" stroke="#A6512B" stroke-width="1.5" marker-end="url(#arrowRust2)"/>
+  <text x="115" y="175" fill="#4C5B66" font-size="11" font-weight="bold">sans O2</text>
+  <text x="450" y="175" fill="#A6512B" font-size="11" font-weight="bold">avec O2</text>
+
+  <rect x="20" y="190" width="260" height="80" rx="8" fill="#4C5B66" fill-opacity="0.12" stroke="#4C5B66" stroke-width="1.5"/>
+  <text x="150" y="212" text-anchor="middle" font-weight="bold" fill="#4C5B66">Fermentation lactique</text>
+  <text x="150" y="230" text-anchor="middle" font-size="11" fill="#524c3e">cytoplasme</text>
+  <text x="150" y="248" text-anchor="middle" font-size="11" fill="#524c3e">pyruvate → lactate</text>
+  <text x="150" y="264" text-anchor="middle" font-size="11" fill="#524c3e">régénère le NAD+, pas d'ATP en plus</text>
+
+  <rect x="340" y="190" width="260" height="80" rx="8" fill="#A6512B" fill-opacity="0.12" stroke="#A6512B" stroke-width="1.5"/>
+  <text x="470" y="212" text-anchor="middle" font-weight="bold" fill="#A6512B">Respiration cellulaire</text>
+  <text x="470" y="230" text-anchor="middle" font-size="11" fill="#524c3e">mitochondrie</text>
+  <text x="470" y="248" text-anchor="middle" font-size="11" fill="#524c3e">cycle de Krebs + chaîne respiratoire</text>
+  <text x="470" y="264" text-anchor="middle" font-size="11" fill="#524c3e">consomme O2, beaucoup d'ATP, CO2 + H2O</text>
+
+  <text x="310" y="320" text-anchor="middle" font-size="11.5" fill="#524c3e">Rendement énergétique bien plus élevé pour la voie aérobie que pour la fermentation,</text>
+  <text x="310" y="338" text-anchor="middle" font-size="11.5" fill="#524c3e">mais mise en route plus lente et dépendante d'un apport continu de dioxygène.</text>
+
+  <defs>
+    <marker id="arrowDark2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#262319"/>
+    </marker>
+    <marker id="arrowSlate2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#4C5B66"/>
+    </marker>
+    <marker id="arrowRust2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#A6512B"/>
+    </marker>
+  </defs>
+</svg>

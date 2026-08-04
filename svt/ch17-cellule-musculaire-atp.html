@@ -30,14 +30,27 @@ const MODULE = {
   pages: "p.422 à 447",
   backHref: '../index.html',
   bridge: {
-    from: "La notion de contraction musculaire et le rôle général de l'ATP comme « monnaie énergétique » cellulaire ont été introduits en Seconde et en enseignement scientifique, sans étudier le mécanisme moléculaire du glissement des filaments ni les voies métaboliques de régénération de l'ATP.",
+    from: "La notion de contraction musculaire et le rôle général de l'ATP comme « monnaie énergétique » cellulaire ont été introduits en Seconde et en enseignement scientifique, sans étudier l'anatomie fonctionnelle des paires musculaires, le mécanisme moléculaire du glissement des filaments, ni les voies métaboliques de régénération de l'ATP.",
     to: "En BCPST1, ce chapitre sera directement réinvesti dans l'étude de la physiologie de l'effort et des bilans bioénergétiques (couplage entre voies métaboliques productrices d'ATP et besoins d'un tissu), avec le même formalisme de bilan de matière et d'énergie déjà rencontré pour la photosynthèse (Ch.9)."
   },
 
   fiches: [
     {
       unit:'Unité 1', page:424,
-      title:"La fibre musculaire striée squelettique",
+      title:"Les muscles à l'origine des mouvements",
+      paragraphs:[
+        "Un muscle squelettique est relié à au moins deux os par des tendons, extrémités fibreuses résistantes qui transmettent la force de contraction du muscle jusqu'à l'os. Le muscle traverse ainsi une articulation, qui joue le rôle de pivot : quand le muscle se contracte et se raccourcit, il rapproche ses deux points d'insertion osseux, provoquant un mouvement autour de l'articulation.",
+        "Un muscle ne peut produire de force qu'en se raccourcissant (il « tire »), jamais en s'allongeant activement (il ne « pousse » pas). Un mouvement dans un sens, puis dans le sens opposé, nécessite donc en général deux muscles distincts de part et d'autre de l'articulation."
+      ],
+      bullets:[
+        "Ces paires de muscles aux actions opposées sont dites antagonistes : au niveau du coude par exemple, le biceps brachial fléchit l'avant-bras (le rapproche du bras) tandis que le triceps brachial l'étend (l'éloigne) — un seul des deux se contracte activement à la fois, l'autre se relâche.",
+        "Le tendon (muscle-os) se distingue du ligament (os-os), qui stabilise l'articulation elle-même sans intervenir dans le mouvement actif.",
+        "C'est cette organisation en paires antagonistes, associée au caractère rigide des os et à la mobilité de l'articulation, qui transforme le raccourcissement microscopique des sarcomères (étudié dans les unités suivantes) en mouvement macroscopique du corps."
+      ]
+    },
+    {
+      unit:'Unité 2', page:426,
+      title:"La cellule musculaire, spécialisée dans la contraction",
       paragraphs:[
         "Le muscle squelettique est formé de cellules très particulières, les fibres musculaires : cellules allongées, plurinucléées (formées par fusion de cellules précurseurs, les myoblastes, au cours du développement), pouvant atteindre plusieurs centimètres de long.",
         "Le cytoplasme de la fibre musculaire est presque entièrement occupé par des myofibrilles, structures cylindriques parallèles à l'axe de la fibre."
@@ -49,8 +62,8 @@ const MODULE = {
       ]
     },
     {
-      unit:'Unité 2', page:428,
-      title:"Le mécanisme moléculaire de la contraction",
+      unit:'Unité 3', page:428,
+      title:"ATP, Ca2+ et contraction musculaire",
       paragraphs:[
         "La contraction musculaire résulte du raccourcissement de chaque sarcomère, lui-même dû au glissement relatif des filaments d'actine le long des filaments de myosine (théorie des filaments glissants) : la longueur des filaments eux-mêmes ne change pas, seul leur degré de chevauchement augmente.",
         "Ce glissement est produit par les têtes de myosine, qui forment des ponts avec l'actine, exercent une traction, se détachent, puis se rattachent plus loin, répétant ce cycle de nombreuses fois par seconde."
@@ -62,46 +75,79 @@ const MODULE = {
       ]
     },
     {
-      unit:'Unité 3', page:434,
-      title:"Renouvellement de l'ATP pendant l'effort",
+      unit:'Unité 4', page:430,
+      title:"Myopathies et matrice extracellulaire",
       paragraphs:[
-        "La contraction musculaire consomme un flux considérable d'ATP, mais la réserve d'ATP disponible dans la fibre musculaire est infime, suffisant à peine quelques secondes d'effort intense : l'ATP doit donc être régénéré en permanence à partir d'ADP et de phosphate, au même rythme qu'il est consommé.",
-        "Plusieurs voies métaboliques assurent ce renouvellement, mobilisées selon l'intensité et la durée de l'effort."
+        "Chaque fibre musculaire est entourée d'une matrice extracellulaire, un réseau de protéines et de fibres sécrétées par la cellule elle-même, qui l'enveloppe et la relie mécaniquement aux fibres voisines et au tissu conjonctif du muscle. Cette matrice n'est pas un simple emballage passif : elle participe activement à la résistance mécanique du muscle pendant l'effort répété de la contraction.",
+        "À l'intérieur de la fibre, le réseau d'actine du cytosquelette, juste sous la membrane plasmique, est physiquement relié à cette matrice extracellulaire par un complexe de protéines transmembranaires, dont la dystrophine est un élément clé : ce lien mécanique protège la membrane des contraintes exercées à chaque cycle de contraction."
       ],
       bullets:[
-        "Voie anaérobie alactique : la phosphocréatine, réserve d'énergie immédiatement disponible dans la fibre, cède son phosphate à l'ADP pour régénérer très rapidement de l'ATP, sans dioxygène — mais ce stock s'épuise en quelques secondes.",
-        "Voie anaérobie lactique (fermentation) : dégradation partielle du glucose (glycolyse) sans dioxygène, produisant de l'ATP rapidement mais en faible quantité, et de l'acide lactique comme déchet — mobilisée pour des efforts intenses de quelques dizaines de secondes à quelques minutes.",
-        "Voie aérobie (respiration cellulaire) : dégradation complète du glucose et des acides gras dans les mitochondries, en présence de dioxygène, produisant beaucoup plus d'ATP mais de mise en route plus lente — voie privilégiée des efforts prolongés d'intensité modérée."
+        "Une myopathie est une maladie touchant le fonctionnement du muscle ; certaines, comme la myopathie de Duchenne, résultent d'une mutation du gène codant la dystrophine, qui fragilise ce lien cytosquelette–matrice extracellulaire.",
+        "Sans ce lien mécanique fonctionnel, la membrane de la fibre se fragilise à chaque contraction ; les dommages s'accumulent progressivement, entraînant la dégénérescence des fibres musculaires et leur remplacement progressif par du tissu fibreux et adipeux, non contractile.",
+        "Cet exemple illustre un principe plus général : la matrice extracellulaire joue, dans de nombreux tissus, un rôle mécanique actif et pas seulement un rôle de soutien passif."
       ]
     },
     {
-      unit:'Unité 4', page:440,
-      title:"Adaptation à l'effort, types de fibres musculaires",
+      unit:'Unité 5', page:432,
+      title:"Le devenir du glucose dans le cytoplasme",
       paragraphs:[
-        "Un même muscle contient des fibres musculaires de types différents, aux propriétés métaboliques distinctes : les fibres lentes (dites « rouges »), riches en mitochondries et bien vascularisées, favorisent la voie aérobie et sont adaptées aux efforts prolongés (endurance) ; les fibres rapides (dites « blanches »), pauvres en mitochondries, se contractent plus rapidement et fortement mais se fatiguent vite, adaptées aux efforts brefs et intenses (voie anaérobie).",
-        "La proportion de ces différents types de fibres varie selon les muscles et les individus (composante génétique), mais peut aussi être modulée par l'entraînement."
+        "Le glucose qui pénètre dans le cytoplasme de la fibre musculaire y est dégradé par une succession de réactions enzymatiques appelée glycolyse, qui transforme chaque molécule de glucose (6 atomes de carbone) en deux molécules de pyruvate (3 atomes de carbone chacune).",
+        "Cette dégradation partielle se déroule entièrement dans le cytoplasme (le cytosol) et ne nécessite pas directement de dioxygène : elle reste possible même en l'absence d'O2."
       ],
       bullets:[
-        "Un entraînement d'endurance régulier augmente le nombre de mitochondries et la vascularisation des fibres sollicitées (biogenèse mitochondriale, angiogenèse), améliorant la capacité de la voie aérobie.",
-        "Cette plasticité illustre un principe déjà rencontré ailleurs dans le programme : un tissu peut s'adapter, au cours de la vie d'un individu, à la fonction qui lui est demandée de façon répétée.",
-        "Ce principe sera repris et généralisé en BCPST1 lors de l'étude de la physiologie de l'effort et des bilans bioénergétiques."
+        "Le bilan net de la glycolyse, pour une molécule de glucose dégradée, est la production de 2 molécules d'ATP et de 2 molécules de coenzyme réduit (NADH,H+).",
+        "Le devenir ultérieur du pyruvate ainsi produit — et donc le rendement énergétique total obtenu à partir du glucose — dépend directement de la disponibilité du dioxygène dans la cellule, étudiée dans l'unité suivante.",
+        "Ce bilan reste modeste comparé à ce que peut fournir la poursuite de la dégradation en présence de dioxygène (Unité 6) : la glycolyse seule ne représente qu'une fraction de l'énergie chimique initialement contenue dans le glucose."
+      ]
+    },
+    {
+      unit:'Unité 6', page:434,
+      title:"Le devenir du glucose en présence de dioxygène",
+      paragraphs:[
+        "Lorsque le dioxygène est disponible, le pyruvate issu de la glycolyse entre dans la mitochondrie, où il est complètement oxydé par une nouvelle série de réactions (dont le cycle de Krebs), libérant du CO2 et fournissant des coenzymes réduits supplémentaires à la chaîne respiratoire mitochondriale.",
+        "La chaîne respiratoire consomme le dioxygène et exploite l'énergie des coenzymes réduits pour régénérer un très grand nombre de molécules d'ATP : c'est la respiration cellulaire, dont le rendement énergétique est bien supérieur à celui de la seule glycolyse."
+      ],
+      bullets:[
+        "En l'absence de dioxygène, le pyruvate emprunte une autre voie : il est réduit en lactate directement dans le cytoplasme (fermentation lactique), ce qui régénère le NAD+ nécessaire à la poursuite de la glycolyse, mais sans production d'ATP supplémentaire.",
+        "La respiration cellulaire (voie aérobie) fournit donc beaucoup plus d'ATP par molécule de glucose que la fermentation, mais elle est plus lente à mettre en route (machinerie mitochondriale) et dépend d'un apport continu de dioxygène.",
+        "Ce contraste entre les deux devenirs possibles du pyruvate — fermentation ou respiration — explique pourquoi différentes voies métaboliques sont mobilisées selon l'intensité et la durée de l'effort, étudié dans l'unité suivante."
+      ]
+    },
+    {
+      unit:'Unité 7', page:436,
+      title:"Différentes voies métaboliques en fonction du type d'effort",
+      paragraphs:[
+        "La contraction musculaire consomme un flux considérable d'ATP, mais la réserve d'ATP disponible dans la fibre musculaire est infime, suffisant à peine quelques secondes d'effort intense : l'ATP doit donc être régénéré en permanence, par des voies métaboliques différentes selon l'intensité et la durée de l'effort.",
+        "Trois grandes voies coexistent, mobilisées à des degrés divers selon l'effort demandé."
+      ],
+      bullets:[
+        "Voie anaérobie alactique : la phosphocréatine, réserve d'énergie immédiatement disponible dans la fibre, cède son phosphate à l'ADP pour régénérer très rapidement de l'ATP, sans dioxygène — mais ce stock s'épuise en quelques secondes.",
+        "Voie anaérobie lactique : glycolyse suivie de fermentation lactique (Unités 5 et 6), produisant de l'ATP rapidement mais en faible quantité — mobilisée pour des efforts intenses de quelques dizaines de secondes à quelques minutes.",
+        "Voie aérobie : glycolyse suivie de respiration cellulaire mitochondriale (Unité 6), produisant beaucoup plus d'ATP mais de mise en route plus lente — voie privilégiée des efforts prolongés d'intensité modérée.",
+        "Un même muscle contient des fibres de types différents, aux propriétés adaptées à ces voies : les fibres lentes (« rouges »), riches en mitochondries, favorisent la voie aérobie et l'endurance ; les fibres rapides (« blanches »), pauvres en mitochondries, favorisent les voies anaérobies et les efforts brefs et intenses. L'entraînement peut moduler ces propriétés (biogenèse mitochondriale, angiogenèse) au sein d'un même type de fibre."
       ]
     }
   ],
 
   flashcards: [
-    {id:'f1', recto:"Fibre musculaire", verso:"Cellule musculaire allongée et plurinucléée, formée par fusion de myoblastes.", notion:'u1'},
-    {id:'f2', recto:"Myofibrille / sarcomère", verso:"La myofibrille est constituée d'une succession de sarcomères, unités contractiles délimitées par les stries Z.", notion:'u1'},
-    {id:'f3', recto:"Filaments d'actine / myosine", verso:"Actine : filaments fins ancrés aux stries Z. Myosine : filaments épais au centre du sarcomère.", notion:'u1'},
-    {id:'f4', recto:"Théorie des filaments glissants", verso:"La contraction résulte du glissement de l'actine le long de la myosine, sans raccourcissement des filaments eux-mêmes.", notion:'u2'},
-    {id:'f5', recto:"Cycle de la tête de myosine", verso:"Attachement à l'actine, traction, détachement, ré-attachement plus loin — répété grâce à l'hydrolyse d'ATP.", notion:'u2'},
-    {id:'f6', recto:"Rôle de l'ATP dans la contraction", verso:"Fournit l'énergie de la traction ET permet le détachement de la tête de myosine (sans ATP : rigidité, ex. cadavérique).", notion:'u2'},
-    {id:'f7', recto:"Rôle du calcium (Ca2+) et de la tropomyosine", verso:"Au repos, la tropomyosine masque les sites de fixation sur l'actine ; le Ca2+ libéré la déplace et autorise la contraction.", notion:'u2'},
-    {id:'f8', recto:"Voie anaérobie alactique", verso:"Régénération très rapide de l'ATP via la phosphocréatine, sans O2 ; stock épuisé en quelques secondes.", notion:'u3'},
-    {id:'f9', recto:"Voie anaérobie lactique", verso:"Glycolyse sans O2, ATP rapide mais en faible quantité, production d'acide lactique ; quelques dizaines de secondes à minutes.", notion:'u3'},
-    {id:'f10', recto:"Voie aérobie", verso:"Respiration cellulaire mitochondriale avec O2, rendement élevé en ATP, mise en route plus lente ; efforts prolongés.", notion:'u3'},
-    {id:'f11', recto:"Fibres lentes / fibres rapides", verso:"Lentes (rouges, riches en mitochondries) : endurance. Rapides (blanches, pauvres en mitochondries) : efforts brefs et intenses.", notion:'u4'},
-    {id:'f12', recto:"Adaptation à l'entraînement", verso:"L'entraînement d'endurance augmente la biogenèse mitochondriale et l'angiogenèse dans les fibres sollicitées.", notion:'u4'}
+    {id:'f1', recto:"Tendon", verso:"Structure fibreuse reliant un muscle à un os, transmettant la force de contraction (à distinguer du ligament, os-os).", notion:'u1'},
+    {id:'f2', recto:"Muscles antagonistes", verso:"Paire de muscles aux actions opposées autour d'une articulation (ex. biceps/triceps) : un muscle ne peut que tirer, jamais pousser.", notion:'u1'},
+    {id:'f3', recto:"Fibre musculaire", verso:"Cellule musculaire allongée et plurinucléée, formée par fusion de myoblastes.", notion:'u2'},
+    {id:'f4', recto:"Myofibrille / sarcomère", verso:"La myofibrille est constituée d'une succession de sarcomères, unités contractiles délimitées par les stries Z.", notion:'u2'},
+    {id:'f5', recto:"Filaments d'actine / myosine", verso:"Actine : filaments fins ancrés aux stries Z. Myosine : filaments épais au centre du sarcomère.", notion:'u2'},
+    {id:'f6', recto:"Théorie des filaments glissants", verso:"La contraction résulte du glissement de l'actine le long de la myosine, sans raccourcissement des filaments eux-mêmes.", notion:'u3'},
+    {id:'f7', recto:"Cycle de la tête de myosine", verso:"Attachement à l'actine, traction, détachement, ré-attachement plus loin — répété grâce à l'hydrolyse d'ATP.", notion:'u3'},
+    {id:'f8', recto:"Rôle de l'ATP dans la contraction", verso:"Fournit l'énergie de la traction ET permet le détachement de la tête de myosine (sans ATP : rigidité, ex. cadavérique).", notion:'u3'},
+    {id:'f9', recto:"Rôle du calcium (Ca2+) et de la tropomyosine", verso:"Au repos, la tropomyosine masque les sites de fixation sur l'actine ; le Ca2+ libéré la déplace et autorise la contraction.", notion:'u3'},
+    {id:'f10', recto:"Dystrophine", verso:"Protéine reliant le cytosquelette d'actine à la matrice extracellulaire, protégeant la membrane pendant la contraction.", notion:'u4'},
+    {id:'f11', recto:"Myopathie de Duchenne", verso:"Maladie liée à une mutation de la dystrophine, fragilisant le lien cytosquelette-matrice et provoquant une dégénérescence progressive des fibres.", notion:'u4'},
+    {id:'f12', recto:"Glycolyse", verso:"Dégradation du glucose en 2 pyruvates dans le cytoplasme ; bilan net 2 ATP + 2 NADH,H+ ; ne nécessite pas directement de dioxygène.", notion:'u5'},
+    {id:'f13', recto:"Devenir du pyruvate avec O2", verso:"Entrée dans la mitochondrie, oxydation complète (cycle de Krebs, chaîne respiratoire) : beaucoup d'ATP, consomme O2.", notion:'u6'},
+    {id:'f14', recto:"Devenir du pyruvate sans O2", verso:"Réduction en lactate dans le cytoplasme (fermentation lactique) : régénère le NAD+, sans ATP supplémentaire.", notion:'u6'},
+    {id:'f15', recto:"Voie anaérobie alactique", verso:"Régénération très rapide de l'ATP via la phosphocréatine, sans O2 ; stock épuisé en quelques secondes.", notion:'u7'},
+    {id:'f16', recto:"Voie anaérobie lactique", verso:"Glycolyse suivie de fermentation lactique, ATP rapide mais en faible quantité ; quelques dizaines de secondes à minutes.", notion:'u7'},
+    {id:'f17', recto:"Voie aérobie", verso:"Glycolyse suivie de respiration cellulaire mitochondriale, rendement élevé en ATP, mise en route plus lente ; efforts prolongés.", notion:'u7'},
+    {id:'f18', recto:"Fibres lentes / rapides et adaptation", verso:"Lentes (rouges, riches en mitochondries) : endurance. Rapides (blanches) : efforts brefs intenses. L'entraînement module ces propriétés.", notion:'u7'}
   ],
 
   qcmMeta: {
@@ -110,59 +156,93 @@ const MODULE = {
     words: {connaissance:'connaissances', raisonnement:'raisonnement'}
   },
   diagnostic: {
-    unitNames: {u1:'Unité 1 — Fibre musculaire (p.424)', u2:'Unité 2 — Mécanisme de la contraction (p.428)', u3:"Unité 3 — Renouvellement de l'ATP (p.434)", u4:'Unité 4 — Types de fibres et adaptation (p.440)'},
-    bilanPage: 444, exosPage: 446, bacPage: 447,
+    unitNames: {
+      u1:'Unité 1 — Les muscles à l\'origine des mouvements (p.424)',
+      u2:'Unité 2 — La cellule musculaire (p.426)',
+      u3:'Unité 3 — ATP, Ca2+ et contraction (p.428)',
+      u4:'Unité 4 — Myopathies et matrice extracellulaire (p.430)',
+      u5:'Unité 5 — Le devenir du glucose dans le cytoplasme (p.432)',
+      u6:'Unité 6 — Le devenir du glucose avec dioxygène (p.434)',
+      u7:'Unité 7 — Voies métaboliques selon le type d\'effort (p.436)'
+    },
+    bilanPage: 442, exosPage: 444, bacPage: 447,
     nextStep: "Enchaîne sur le module suivant (contrôle des flux de glucose) dès qu'il sera prêt."
   },
 
   qcm: [
-    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"La fibre musculaire striée squelettique est :", options:["une cellule mononucléée classique", "une cellule plurinucléée formée par fusion de myoblastes", "un tissu conjonctif dépourvu de cellules"], correct:1},
-    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"Le sarcomère est :", options:["l'unité contractile répétée d'une myofibrille", "une autre appellation de la fibre musculaire entière", "une protéine spécifique du muscle"], correct:0},
-    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"L'aspect strié du muscle squelettique provient de :", options:["la présence de vaisseaux sanguins", "l'agencement régulier alterné des filaments d'actine et de myosine", "la présence de plusieurs noyaux"], correct:1,
-      image:{src:"https://upload.wikimedia.org/wikipedia/commons/5/56/Skeletal_muscle_-_longitudinal_section.jpg", alt:"Coupe longitudinale de muscle squelettique, montrant les stries", credit:"Photo : Department of Histology, Jagiellonian University Medical College, Wikimedia Commons, CC BY-SA 3.0"}},
-    {id:'q4', type:'connaissance', difficulty:2, notion:'u2', q:"Selon la théorie des filaments glissants, la contraction résulte de :", options:["un raccourcissement des filaments d'actine et de myosine eux-mêmes", "un glissement relatif des filaments d'actine le long des filaments de myosine, sans changement de leur longueur", "une rupture des filaments d'actine"], correct:1,
-      image:{src:"../assets/img/ch17/filaments-glissants.svg", alt:"Schéma d'un sarcomère au repos et contracté, montrant le glissement des filaments"}},
-    {id:'q5', type:'connaissance', difficulty:2, notion:'u2', q:"L'ATP est indispensable à la contraction musculaire car il permet :", options:["uniquement la traction de la tête de myosine", "à la fois la traction et le détachement de la tête de myosine", "uniquement le détachement de la tête de myosine"], correct:1},
-    {id:'q6', type:'connaissance', difficulty:2, notion:'u2', q:"Au repos, l'accès des têtes de myosine aux sites de fixation sur l'actine est bloqué par :", options:["le calcium", "la tropomyosine", "l'ATP"], correct:1},
-    {id:'q7', type:'connaissance', difficulty:1, notion:'u3', q:"La réserve d'ATP directement disponible dans la fibre musculaire permet de soutenir un effort intense pendant :", options:["plusieurs heures", "quelques secondes seulement", "plusieurs jours"], correct:1},
-    {id:'q8', type:'connaissance', difficulty:2, notion:'u3', q:"La voie anaérobie lactique produit de l'ATP :", options:["rapidement mais en faible quantité, avec production d'acide lactique", "lentement mais en grande quantité, sans aucun déchet", "uniquement en présence de dioxygène"], correct:0},
-    {id:'q9', type:'connaissance', difficulty:1, notion:'u3', q:"La voie aérobie (respiration cellulaire) se déroule principalement :", options:["dans le noyau, sans dioxygène", "dans les mitochondries, en présence de dioxygène", "dans le cytoplasme uniquement, sans dioxygène"], correct:1},
-    {id:'q10', type:'connaissance', difficulty:1, notion:'u4', q:"Les fibres musculaires lentes (« rouges ») sont particulièrement adaptées :", options:["aux efforts brefs et très intenses", "aux efforts prolongés d'endurance, grâce à leur richesse en mitochondries", "à l'absence totale de contraction"], correct:1},
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"Le tendon relie :", options:["un muscle à un os", "un os à un autre os", "deux muscles entre eux"], correct:0},
+    {id:'q2', type:'connaissance', difficulty:2, notion:'u1', q:"Un muscle squelettique peut, par sa contraction :", options:["uniquement tirer (se raccourcir), jamais pousser", "aussi bien tirer que pousser selon les besoins", "seulement s'allonger activement"], correct:0},
+    {id:'q3', type:'connaissance', difficulty:1, notion:'u1', q:"Le biceps brachial et le triceps brachial, de part et d'autre du coude, forment une paire de muscles :", options:["synergiques, se contractant toujours ensemble", "antagonistes, aux actions opposées", "sans aucun lien fonctionnel"], correct:1,
+      image:{src:"../assets/img/ch17/muscles-antagonistes.svg", alt:"Schéma des muscles antagonistes biceps/triceps lors de la flexion et de l'extension de l'avant-bras"}},
 
-    {id:'r1', type:'raisonnement', difficulty:2, notion:'u2', q:"Après la mort d'un individu, la production d'ATP cesse rapidement dans les cellules musculaires, ce qui provoque la rigidité cadavérique (les muscles restent contractés et rigides). Comment expliquer ce phénomène à partir du rôle de l'ATP dans le cycle de la tête de myosine ?",
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u2', q:"La fibre musculaire striée squelettique est :", options:["une cellule mononucléée classique", "une cellule plurinucléée formée par fusion de myoblastes", "un tissu conjonctif dépourvu de cellules"], correct:1},
+    {id:'q5', type:'connaissance', difficulty:1, notion:'u2', q:"Le sarcomère est :", options:["l'unité contractile répétée d'une myofibrille", "une autre appellation de la fibre musculaire entière", "une protéine spécifique du muscle"], correct:0},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u2', q:"L'aspect strié du muscle squelettique provient de :", options:["la présence de vaisseaux sanguins", "l'agencement régulier alterné des filaments d'actine et de myosine", "la présence de plusieurs noyaux"], correct:1,
+      image:{src:"https://upload.wikimedia.org/wikipedia/commons/5/56/Skeletal_muscle_-_longitudinal_section.jpg", alt:"Coupe longitudinale de muscle squelettique, montrant les stries", credit:"Photo : Department of Histology, Jagiellonian University Medical College, Wikimedia Commons, CC BY-SA 3.0"}},
+
+    {id:'q7', type:'connaissance', difficulty:2, notion:'u3', q:"Selon la théorie des filaments glissants, la contraction résulte de :", options:["un raccourcissement des filaments d'actine et de myosine eux-mêmes", "un glissement relatif des filaments d'actine le long des filaments de myosine, sans changement de leur longueur", "une rupture des filaments d'actine"], correct:1,
+      image:{src:"../assets/img/ch17/filaments-glissants.svg", alt:"Schéma d'un sarcomère au repos et contracté, montrant le glissement des filaments"}},
+    {id:'q8', type:'connaissance', difficulty:2, notion:'u3', q:"L'ATP est indispensable à la contraction musculaire car il permet :", options:["uniquement la traction de la tête de myosine", "à la fois la traction et le détachement de la tête de myosine", "uniquement le détachement de la tête de myosine"], correct:1},
+
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u4', q:"La dystrophine relie :", options:["le cytosquelette d'actine à la matrice extracellulaire", "le noyau à la membrane plasmique", "l'ADN aux ribosomes"], correct:0},
+    {id:'q10', type:'connaissance', difficulty:2, notion:'u4', q:"Une myopathie comme celle de Duchenne résulte d'un défaut :", options:["du lien mécanique entre cytosquelette et matrice extracellulaire, fragilisant la membrane pendant la contraction", "d'un excès d'ATP disponible dans la fibre", "d'une mutation touchant uniquement les filaments de myosine"], correct:0},
+
+    {id:'q11', type:'connaissance', difficulty:1, notion:'u5', q:"La glycolyse se déroule :", options:["dans le cytoplasme, sans nécessiter directement de dioxygène", "dans la mitochondrie, en présence de dioxygène", "dans le noyau de la cellule"], correct:0},
+    {id:'q12', type:'connaissance', difficulty:2, notion:'u5', q:"Le bilan net de la dégradation d'une molécule de glucose par la glycolyse est :", options:["2 molécules d'ATP et 2 molécules de pyruvate", "30 molécules d'ATP et aucun pyruvate", "aucun ATP produit"], correct:0},
+
+    {id:'q13', type:'connaissance', difficulty:2, notion:'u6', q:"En présence de dioxygène, le pyruvate issu de la glycolyse :", options:["entre dans la mitochondrie où il est complètement oxydé (cycle de Krebs, chaîne respiratoire)", "reste inchangé dans le cytoplasme", "est immédiatement excrété hors de la cellule"], correct:0,
+      image:{src:"../assets/img/ch17/glycolyse-mitochondrie.svg", alt:"Schéma du devenir du pyruvate issu de la glycolyse, selon la présence ou l'absence de dioxygène"}},
+    {id:'q14', type:'connaissance', difficulty:2, notion:'u6', q:"En l'absence de dioxygène, le devenir du pyruvate est :", options:["sa réduction en lactate dans le cytoplasme (fermentation lactique)", "son entrée normale dans la mitochondrie", "sa transformation directe en glycogène"], correct:0},
+
+    {id:'q15', type:'connaissance', difficulty:1, notion:'u7', q:"La réserve d'ATP directement disponible dans la fibre musculaire permet de soutenir un effort intense pendant :", options:["plusieurs heures", "quelques secondes seulement", "plusieurs jours"], correct:1},
+    {id:'q16', type:'connaissance', difficulty:1, notion:'u7', q:"Les fibres musculaires lentes (« rouges ») sont particulièrement adaptées :", options:["aux efforts brefs et très intenses", "aux efforts prolongés d'endurance, grâce à leur richesse en mitochondries", "à l'absence totale de contraction"], correct:1},
+
+    {id:'r1', type:'raisonnement', difficulty:2, notion:'u1', q:"Une lésion sectionne complètement le tendon du triceps brachial d'un patient, sans toucher ni au muscle lui-même ni au biceps. Quel mouvement du coude ce patient ne pourra-t-il plus réaliser normalement, et pourquoi ?",
+      options:["Il ne pourra plus étendre l'avant-bras, car la contraction du triceps ne peut plus être transmise à l'os par le tendon sectionné", "Il ne pourra plus fléchir l'avant-bras, car le biceps dépend du tendon du triceps", "Aucun mouvement du coude ne sera affecté, le tendon n'ayant qu'un rôle décoratif"], correct:0,
+      hint:"Repense au rôle du tendon dans la transmission de la force du muscle à l'os, et à quel mouvement le triceps est associé dans la paire antagoniste du coude."},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u2', q:"On observe au microscope électronique un sarcomère dont la zone de chevauchement entre filaments d'actine et de myosine a augmenté par rapport à l'état de repos, sans que la longueur totale des filaments n'ait changé. Que peut-on en conclure sur l'état de ce sarcomère ?",
+      options:["Le sarcomère est en train de se contracter (les filaments glissent l'un sur l'autre, augmentant leur zone de chevauchement)", "Le sarcomère est en train de s'allonger de façon anormale", "Les filaments d'actine sont en train de se dupliquer"], correct:0,
+      hint:"Repense à ce que prédit la théorie des filaments glissants sur l'évolution de la zone de chevauchement entre actine et myosine au cours de la contraction, sachant que la longueur des filaments eux-mêmes ne change pas."},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u3', q:"Après la mort d'un individu, la production d'ATP cesse rapidement dans les cellules musculaires, ce qui provoque la rigidité cadavérique (les muscles restent contractés et rigides). Comment expliquer ce phénomène à partir du rôle de l'ATP dans le cycle de la tête de myosine ?",
       options:["Sans ATP, les têtes de myosine restent fixées à l'actine car l'ATP est nécessaire à leur détachement, ce qui bloque les sarcomères en position raccourcie", "Sans ATP, les filaments d'actine se désintègrent complètement, provoquant la rigidité", "La rigidité cadavérique n'a aucun lien avec l'ATP ou la myosine"], correct:0,
       hint:"Repense aux deux rôles de l'ATP dans le cycle de la tête de myosine : lequel de ces deux rôles, s'il n'est plus assuré, laisserait les ponts actine-myosine bloqués en position fixée ?"},
-    {id:'r2', type:'raisonnement', difficulty:2, notion:'u3', q:"Un sprinteur effectue une course de 100 mètres en une dizaine de secondes, à intensité maximale. Quelle voie métabolique de régénération de l'ATP est la plus sollicitée pendant cet effort très bref et très intense, et pourquoi ?",
-      options:["La voie aérobie, car elle est la plus rapide à se mettre en route", "La voie anaérobie alactique (phosphocréatine), car elle fournit de l'ATP quasi instantanément, sans attendre la mise en route de voies plus lentes", "La voie anaérobie lactique exclusivement, car elle ne s'épuise jamais"], correct:1,
-      hint:"Compare la durée de l'effort décrit (quelques secondes) à la durée typique de disponibilité de chacune des voies métaboliques présentées dans ce chapitre."},
-    {id:'r3', type:'raisonnement', difficulty:2, notion:'u3', q:"Un coureur de marathon maintient un effort d'intensité modérée pendant plusieurs heures. Quelle voie métabolique soutient majoritairement cet effort prolongé, et quelle contrainte cela impose-t-il à l'organisme pendant la course ?",
-      options:["La voie anaérobie lactique, qui ne nécessite aucun apport particulier", "La voie aérobie, qui nécessite un apport continu de dioxygène et de nutriments pendant toute la durée de l'effort", "La voie anaérobie alactique, indéfiniment renouvelable"], correct:1,
-      hint:"Repense à ce que consomme la voie aérobie (respiration cellulaire mitochondriale) pour fonctionner en continu, et à ce que cela implique pour les systèmes respiratoire et circulatoire pendant un effort de plusieurs heures."},
-    {id:'r4', type:'raisonnement', difficulty:2, notion:'u4', q:"Deux athlètes s'entraînent différemment : l'un pratique exclusivement la course d'endurance depuis plusieurs années, l'autre exclusivement des sprints courts et intenses. Une biopsie musculaire révèle des différences dans la densité de mitochondries et la vascularisation de leurs fibres musculaires. Comment expliquer ces différences ?",
-      options:["Elles sont uniquement d'origine génétique, l'entraînement n'a aucun effet", "L'entraînement d'endurance a favorisé une biogenèse mitochondriale et une angiogenèse dans les fibres sollicitées, adaptant le tissu à la demande métabolique répétée de la voie aérobie", "Les fibres musculaires ne peuvent jamais changer au cours de la vie d'un individu"], correct:1,
-      hint:"Repense au principe de plasticité présenté en fin de chapitre : un tissu peut-il s'adapter, au cours de la vie d'un individu, à une sollicitation fonctionnelle répétée ?"},
-    {id:'r5', type:'raisonnement', difficulty:3, notion:'u2', q:"Une personne atteinte d'une maladie rare empêchant toute libération de calcium par le réticulum sarcoplasmique de ses fibres musculaires tente de contracter volontairement un muscle. Que peut-on prévoir, même si l'ATP est disponible en quantité normale dans ses cellules musculaires ?",
+    {id:'r4', type:'raisonnement', difficulty:3, notion:'u3', q:"Une personne atteinte d'une maladie rare empêchant toute libération de calcium par le réticulum sarcoplasmique de ses fibres musculaires tente de contracter volontairement un muscle. Que peut-on prévoir, même si l'ATP est disponible en quantité normale dans ses cellules musculaires ?",
       options:["La contraction se déroule normalement, le calcium n'ayant aucun rôle dans ce mécanisme", "La contraction est impossible ou très fortement réduite, car sans Ca2+ la tropomyosine continue de masquer les sites de fixation de la myosine sur l'actine, quelle que soit la disponibilité de l'ATP", "La contraction devient au contraire permanente et incontrôlable"], correct:1,
       hint:"Distingue bien les deux conditions nécessaires à la contraction : l'énergie (ATP) d'un côté, l'autorisation d'accès aux sites de fixation (calcium, tropomyosine) de l'autre. Que se passe-t-il si seule la seconde condition n'est pas remplie ?"},
-    {id:'r6', type:'raisonnement', difficulty:2, notion:'u1', q:"On observe au microscope électronique un sarcomère dont la zone de chevauchement entre filaments d'actine et de myosine a augmenté par rapport à l'état de repos, sans que la longueur totale des filaments n'ait changé. Que peut-on en conclure sur l'état de ce sarcomère ?",
-      options:["Le sarcomère est en train de se contracter (les filaments glissent l'un sur l'autre, augmentant leur zone de chevauchement)", "Le sarcomère est en train de s'allonger de façon anormale", "Les filaments d'actine sont en train de se dupliquer"], correct:0,
-      hint:"Repense à ce que prédit la théorie des filaments glissants sur l'évolution de la zone de chevauchement entre actine et myosine au cours de la contraction, sachant que la longueur des filaments eux-mêmes ne change pas."}
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u4', q:"Chez un patient atteint de myopathie de Duchenne, les fibres musculaires se contractent normalement au tout début de la maladie, mais se dégradent progressivement au fil des mois et des années, à mesure que le muscle est sollicité. Comment expliquer, à partir du rôle de la dystrophine, cette dégradation qui s'aggrave avec l'usage du muscle plutôt que d'apparaître d'emblée ?",
+      options:["Le défaut du lien cytosquelette-matrice fragilise la membrane de la fibre, qui se déchire un peu plus à chaque cycle de contraction répété, d'où une dégradation cumulative", "La dystrophine n'intervient pas dans la solidité de la fibre, la dégradation est due au hasard", "La contraction elle-même devient impossible dès la naissance dans cette maladie"], correct:0,
+      hint:"Repense au rôle mécanique de la dystrophine pendant chaque contraction (Unité 4) : que se passe-t-il, contraction après contraction, si ce lien de protection est défaillant ?"},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u6', q:"Une cellule musculaire soumise à un effort très intense épuise rapidement l'apport de dioxygène disponible localement. Quelle est alors la conséquence sur le devenir du pyruvate issu de la glycolyse, et quel est l'avantage immédiat de cette bascule malgré son faible rendement en ATP ?",
+      options:["Le pyruvate est réduit en lactate (fermentation), ce qui régénère le NAD+ nécessaire à la poursuite de la glycolyse, permettant à la production d'ATP de continuer même sans dioxygène", "Le pyruvate s'accumule sans aucune transformation possible", "Le pyruvate entre quand même normalement dans la mitochondrie, comme s'il y avait du dioxygène"], correct:0,
+      hint:"Repense à ce que la fermentation régénère (Unité 6) et à pourquoi la glycolyse a besoin de ce composé pour continuer à fonctionner."},
+    {id:'r7', type:'raisonnement', difficulty:2, notion:'u7', q:"Un sprinteur effectue une course de 100 mètres en une dizaine de secondes, à intensité maximale. Quelle voie métabolique de régénération de l'ATP est la plus sollicitée pendant cet effort très bref et très intense, et pourquoi ?",
+      options:["La voie aérobie, car elle est la plus rapide à se mettre en route", "La voie anaérobie alactique (phosphocréatine), car elle fournit de l'ATP quasi instantanément, sans attendre la mise en route de voies plus lentes", "La voie anaérobie lactique exclusivement, car elle ne s'épuise jamais"], correct:1,
+      hint:"Compare la durée de l'effort décrit (quelques secondes) à la durée typique de disponibilité de chacune des voies métaboliques présentées dans ce chapitre."},
+    {id:'r8', type:'raisonnement', difficulty:2, notion:'u7', q:"Un coureur de marathon maintient un effort d'intensité modérée pendant plusieurs heures. Quelle voie métabolique soutient majoritairement cet effort prolongé, et quelle contrainte cela impose-t-il à l'organisme pendant la course ?",
+      options:["La voie anaérobie lactique, qui ne nécessite aucun apport particulier", "La voie aérobie, qui nécessite un apport continu de dioxygène et de nutriments pendant toute la durée de l'effort", "La voie anaérobie alactique, indéfiniment renouvelable"], correct:1,
+      hint:"Repense à ce que consomme la voie aérobie (respiration cellulaire mitochondriale) pour fonctionner en continu, et à ce que cela implique pour les systèmes respiratoire et circulatoire pendant un effort de plusieurs heures."}
   ],
 
   mindmapModel: {
     label:"Cellule musculaire, ATP",
     children:[
-      {label:"Structure", children:[
-        {label:"Fibre musculaire (plurinucléée)"},{label:"Myofibrille / sarcomère"},{label:"Actine / myosine"}
+      {label:"Anatomie du mouvement", children:[
+        {label:"Tendon (muscle-os)"},{label:"Muscles antagonistes"}
+      ]},
+      {label:"Structure de la fibre musculaire", children:[
+        {label:"Fibre plurinucléée"},{label:"Myofibrille / sarcomère"},{label:"Actine / myosine"}
       ]},
       {label:"Mécanisme de la contraction", children:[
         {label:"Filaments glissants"},{label:"Tête de myosine"},{label:"ATP (traction + détachement)"},{label:"Ca2+ / tropomyosine"}
       ]},
-      {label:"Renouvellement de l'ATP", children:[
-        {label:"Anaérobie alactique (phosphocréatine)"},{label:"Anaérobie lactique (fermentation)"},{label:"Aérobie (mitochondries, O2)"}
+      {label:"Matrice extracellulaire et myopathies", children:[
+        {label:"Dystrophine"},{label:"Myopathie de Duchenne"}
       ]},
-      {label:"Adaptation à l'effort", children:[
-        {label:"Fibres lentes / rapides"},{label:"Entraînement → biogenèse mitochondriale →"}
+      {label:"Métabolisme du glucose", children:[
+        {label:"Glycolyse (cytoplasme)"},{label:"Avec O2 → mitochondrie"},{label:"Sans O2 → fermentation lactique"}
+      ]},
+      {label:"Voies de renouvellement de l'ATP", children:[
+        {label:"Anaérobie alactique (phosphocréatine)"},{label:"Anaérobie lactique"},{label:"Aérobie"},{label:"Fibres lentes / rapides"}
       ]}
     ]
   }

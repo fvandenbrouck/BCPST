@@ -30,27 +30,53 @@ const MODULE = {
   pages: "p.450 à 473",
   backHref: '../index.html',
   bridge: {
-    from: "En Seconde et en enseignement scientifique, la notion de glycémie et l'existence d'une régulation par le pancréas (notamment à propos du diabète) ont été abordées de façon introductive, sans étude détaillée des mécanismes cellulaires de sécrétion et d'action des hormones, ni du rôle précisément antagoniste de l'insuline et du glucagon.",
+    from: "En Seconde et en enseignement scientifique, la notion de glycémie et l'existence d'une régulation par le pancréas (notamment à propos du diabète) ont été abordées de façon introductive, sans étude détaillée de l'entrée cellulaire du glucose, des sources qui alimentent la glycémie, ni des mécanismes précis de sécrétion et d'action des hormones pancréatiques.",
     to: "En BCPST1, ce chapitre nourrit directement l'étude de la physiologie animale et des systèmes de régulation par rétrocontrôle (communication hormonale, boucles homéostatiques), en prolongement immédiat du chapitre précédent sur la bioénergétique musculaire (Ch.17) : c'est notamment ce glucose sanguin régulé qui alimente l'effort."
   },
 
   fiches: [
     {
       unit:'Unité 1', page:452,
+      title:"L'approvisionnement en glucose des cellules musculaires",
+      paragraphs:[
+        "Le glucose ne diffuse pas librement à travers la membrane plasmique des cellules musculaires : son entrée est assurée par des protéines de transport membranaires spécifiques, qui permettent une diffusion facilitée (dans le sens du gradient de concentration, sans consommation directe d'ATP par le transporteur lui-même).",
+        "Dans le muscle (comme dans le tissu adipeux), le transporteur principal est appelé GLUT4. Sa présence à la membrane plasmique est finement régulée : au repos, la majorité des GLUT4 est stockée dans des vésicules à l'intérieur du cytoplasme, à l'écart de la membrane."
+      ],
+      bullets:[
+        "L'insuline déclenche la translocation de ces vésicules vers la membrane plasmique, où les GLUT4 s'insèrent et augmentent la capacité d'entrée du glucose dans la cellule musculaire.",
+        "La contraction musculaire elle-même déclenche aussi cette translocation, indépendamment de l'insuline — ce qui explique pourquoi l'effort physique augmente la captation musculaire de glucose, y compris chez une personne dont la sécrétion d'insuline est déficiente.",
+        "Un dense réseau de capillaires sanguins irrigue chaque fibre musculaire, assurant que le glucose plasmatique reste disponible à proximité immédiate des cellules qui vont le consommer, notamment via les voies métaboliques étudiées au chapitre précédent (Ch.17)."
+      ]
+    },
+    {
+      unit:'Unité 2', page:454,
+      title:"Origines du glucose plasmatique",
+      paragraphs:[
+        "Le glucose présent dans le sang provient de deux sources principales, mobilisées selon l'état nutritionnel de l'organisme.",
+        "Après un repas, les glucides alimentaires sont digérés en glucose, qui traverse l'épithélium intestinal pour rejoindre la circulation sanguine : c'est l'origine intestinale. Entre les repas ou pendant un jeûne, cette source s'épuise et le foie prend le relais."
+      ],
+      bullets:[
+        "Le foie peut d'abord dégrader ses réserves de glycogène hépatique et libérer le glucose ainsi produit dans le sang : c'est la glycogénolyse.",
+        "Lorsque les réserves de glycogène hépatique s'épuisent à leur tour, le foie peut fabriquer du glucose de novo à partir de précurseurs non glucidiques (acides aminés, glycérol) : c'est la néoglucogenèse.",
+        "Ces deux origines (intestinale après un repas, hépatique entre les repas) se relaient dans le temps pour maintenir un approvisionnement en glucose plasmatique malgré des prises alimentaires discontinues — un mécanisme qui sera lui-même finement régulé, comme le montrent les unités suivantes."
+      ]
+    },
+    {
+      unit:'Unité 3', page:456,
       title:"La glycémie, une grandeur régulée en permanence",
       paragraphs:[
         "La glycémie désigne la concentration de glucose dans le sang, exprimée en g/L. Chez un individu en bonne santé, elle est maintenue dans une plage étroite autour d'une valeur de référence proche de 1 g/L, malgré des entrées et sorties de glucose très variables au cours de la journée (repas, jeûne, effort physique).",
         "Ce maintien dans une plage étroite est un exemple d'homéostasie : la stabilité d'un paramètre interne de l'organisme, assurée par des mécanismes de régulation actifs, et non par hasard."
       ],
       bullets:[
-        "Plusieurs organes échangent en permanence du glucose avec le sang : l'intestin (absorption après un repas), le foie (stockage et libération), les muscles et le tissu adipeux (consommation et mise en réserve).",
-        "Le cerveau occupe une place particulière : il consomme du glucose en continu et ne peut quasiment pas utiliser d'autre substrat énergétique à court terme — un apport de glucose interrompu ou trop faible menace rapidement son fonctionnement.",
-        "Deux situations opposées menacent l'homéostasie glycémique : l'hyperglycémie (excès de glucose, typiquement après un repas) et l'hypoglycémie (déficit de glucose, typiquement à jeun ou pendant un effort prolongé) — l'organisme doit pouvoir corriger l'une comme l'autre."
+        "Le cerveau occupe une place particulière parmi les organes consommateurs de glucose : il en consomme en continu et ne peut quasiment pas utiliser d'autre substrat énergétique à court terme — un apport de glucose interrompu ou trop faible menace rapidement son fonctionnement.",
+        "Deux situations opposées menacent l'homéostasie glycémique : l'hyperglycémie (excès de glucose, typiquement après un repas) et l'hypoglycémie (déficit de glucose, typiquement à jeun ou pendant un effort prolongé) — l'organisme doit pouvoir corriger l'une comme l'autre.",
+        "Cette régulation repose sur un organe effecteur central, le pancréas endocrine, étudié dans l'unité suivante."
       ]
     },
     {
-      unit:'Unité 2', page:458,
-      title:"Le pancréas endocrine, organe effecteur de la régulation",
+      unit:'Unité 4', page:458,
+      title:"Le rôle du pancréas endocrine dans la régulation de la glycémie",
       paragraphs:[
         "Le pancréas est une glande à double fonction : une fonction exocrine (sécrétion de sucs digestifs déversés dans l'intestin) et une fonction endocrine, assurée par de petits amas de cellules dispersés dans le tissu exocrine, les îlots de Langerhans.",
         "Les îlots de Langerhans contiennent notamment deux types cellulaires aux rôles opposés dans la régulation de la glycémie."
@@ -62,21 +88,21 @@ const MODULE = {
       ]
     },
     {
-      unit:'Unité 3', page:464,
-      title:"Effets cellulaires de l'insuline et du glucagon",
+      unit:'Unité 5', page:460,
+      title:"Les modalités d'action des hormones pancréatiques",
       paragraphs:[
         "Insuline et glucagon agissent en se fixant sur des récepteurs membranaires spécifiques présents à la surface de leurs cellules cibles, déclenchant une réponse cellulaire adaptée sans avoir besoin d'entrer dans la cellule.",
         "Leurs effets sont pour l'essentiel complémentaires et antagonistes, ce qui permet un ajustement fin et bidirectionnel de la glycémie."
       ],
       bullets:[
-        "L'insuline stimule l'entrée du glucose dans les cellules cibles (muscle, tissu adipeux) et sa mise en réserve sous forme de glycogène dans le foie et le muscle (glycogénogenèse) : la glycémie baisse.",
-        "Le glucagon agit principalement sur le foie : il stimule la dégradation du glycogène hépatique (glycogénolyse) et la fabrication de glucose à partir de précurseurs non glucidiques (néoglucogenèse), ce qui libère du glucose dans le sang : la glycémie remonte.",
+        "L'insuline stimule l'entrée du glucose dans les cellules cibles (muscle, tissu adipeux — via la translocation des GLUT4 vue en Unité 1) et sa mise en réserve sous forme de glycogène dans le foie et le muscle (glycogénogenèse) : la glycémie baisse.",
+        "Le glucagon agit principalement sur le foie : il stimule la glycogénolyse et la néoglucogenèse (Unité 2), ce qui libère du glucose dans le sang : la glycémie remonte.",
         "Différence importante entre foie et muscle : seul le foie possède l'enzyme nécessaire pour libérer du glucose libre dans le sang à partir de son glycogène. Le glycogène musculaire reste réservé à l'usage du muscle lui-même, pour ses propres besoins en ATP (à mettre en lien avec le chapitre précédent sur la bioénergétique musculaire, Ch.17)."
       ]
     },
     {
-      unit:'Unité 4', page:468,
-      title:"Dérèglements de la régulation : les diabètes",
+      unit:'Unité 6', page:462,
+      title:"Les dysfonctionnements de la régulation glycémique",
       paragraphs:[
         "Le diabète est une maladie caractérisée par une hyperglycémie chronique, non corrigée par les mécanismes de régulation habituels. Il en existe deux formes principales, aux origines très différentes.",
         "Dans les deux cas, l'hyperglycémie prolongée, si elle n'est pas prise en charge, favorise à terme des complications touchant notamment les vaisseaux sanguins et le système nerveux."
@@ -90,18 +116,20 @@ const MODULE = {
   ],
 
   flashcards: [
-    {id:'f1', recto:"Glycémie", verso:"Concentration de glucose dans le sang (g/L), maintenue autour d'une valeur de référence proche de 1 g/L.", notion:'u1'},
-    {id:'f2', recto:"Valeur de référence de la glycémie", verso:"Environ 1 g/L chez un individu à jeun en bonne santé (homéostasie).", notion:'u1'},
-    {id:'f3', recto:"Cerveau et glucose", verso:"Consommateur quasi obligatoire et continu de glucose, ne peut guère utiliser d'autre substrat à court terme.", notion:'u1'},
-    {id:'f4', recto:"Îlots de Langerhans", verso:"Amas de cellules endocrines dispersés dans le pancréas exocrine, contenant les cellules β et α.", notion:'u2'},
-    {id:'f5', recto:"Cellules β", verso:"Sécrètent l'insuline quand la glycémie augmente (hyperglycémie).", notion:'u2'},
-    {id:'f6', recto:"Cellules α", verso:"Sécrètent le glucagon quand la glycémie diminue (hypoglycémie).", notion:'u2'},
-    {id:'f7', recto:"Rétrocontrôle négatif (glycémie)", verso:"La correction de l'écart à la valeur de référence entraîne l'arrêt de la sécrétion hormonale qui l'a provoquée.", notion:'u2'},
-    {id:'f8', recto:"Effets de l'insuline", verso:"Entrée du glucose dans les cellules cibles + glycogénogenèse (stockage) dans le foie et le muscle.", notion:'u3'},
-    {id:'f9', recto:"Effets du glucagon", verso:"Glycogénolyse et néoglucogenèse hépatiques : libération de glucose dans le sang.", notion:'u3'},
-    {id:'f10', recto:"Pourquoi seul le foie libère du glucose au sang", verso:"Seul le foie possède l'enzyme permettant de libérer du glucose libre à partir du glycogène ; le glycogène musculaire reste local.", notion:'u3'},
-    {id:'f11', recto:"Diabète de type 1", verso:"Maladie auto-immune détruisant les cellules β : carence en insuline, traitement par injections.", notion:'u4'},
-    {id:'f12', recto:"Diabète de type 2", verso:"Insulino-résistance progressive des cellules cibles, favorisée par génétique et mode de vie.", notion:'u4'}
+    {id:'f1', recto:"GLUT4", verso:"Transporteur membranaire du glucose par diffusion facilitée, stocké en vésicules au repos, inséré à la membrane sous l'effet de l'insuline ou de la contraction musculaire.", notion:'u1'},
+    {id:'f2', recto:"Origines du glucose plasmatique", verso:"Intestinale après un repas (digestion des glucides) ; hépatique entre les repas (glycogénolyse puis néoglucogenèse).", notion:'u2'},
+    {id:'f3', recto:"Glycogénolyse / néoglucogenèse", verso:"Glycogénolyse : dégradation du glycogène en glucose. Néoglucogenèse : fabrication de glucose à partir de précurseurs non glucidiques.", notion:'u2'},
+    {id:'f4', recto:"Glycémie", verso:"Concentration de glucose dans le sang (g/L), maintenue autour d'une valeur de référence proche de 1 g/L.", notion:'u3'},
+    {id:'f5', recto:"Cerveau et glucose", verso:"Consommateur quasi obligatoire et continu de glucose, ne peut guère utiliser d'autre substrat à court terme.", notion:'u3'},
+    {id:'f6', recto:"Hyperglycémie / hypoglycémie", verso:"Deux écarts opposés à la valeur de référence de la glycémie, que la régulation doit pouvoir corriger dans les deux sens.", notion:'u3'},
+    {id:'f7', recto:"Îlots de Langerhans", verso:"Amas de cellules endocrines dispersés dans le pancréas exocrine, contenant les cellules β et α.", notion:'u4'},
+    {id:'f8', recto:"Cellules β", verso:"Sécrètent l'insuline quand la glycémie augmente (hyperglycémie).", notion:'u4'},
+    {id:'f9', recto:"Cellules α", verso:"Sécrètent le glucagon quand la glycémie diminue (hypoglycémie).", notion:'u4'},
+    {id:'f10', recto:"Rétrocontrôle négatif (glycémie)", verso:"La correction de l'écart à la valeur de référence entraîne l'arrêt de la sécrétion hormonale qui l'a provoquée.", notion:'u4'},
+    {id:'f11', recto:"Effets de l'insuline", verso:"Entrée du glucose dans les cellules cibles (GLUT4) + glycogénogenèse (stockage) dans le foie et le muscle.", notion:'u5'},
+    {id:'f12', recto:"Effets du glucagon", verso:"Glycogénolyse et néoglucogenèse hépatiques : libération de glucose dans le sang.", notion:'u5'},
+    {id:'f13', recto:"Diabète de type 1", verso:"Maladie auto-immune détruisant les cellules β : carence en insuline, traitement par injections.", notion:'u6'},
+    {id:'f14', recto:"Diabète de type 2", verso:"Insulino-résistance progressive des cellules cibles, favorisée par génétique et mode de vie.", notion:'u6'}
   ],
 
   qcmMeta: {
@@ -110,50 +138,71 @@ const MODULE = {
     words: {connaissance:'connaissances', raisonnement:'raisonnement'}
   },
   diagnostic: {
-    unitNames: {u1:'Unité 1 — Glycémie et homéostasie (p.452)', u2:'Unité 2 — Pancréas endocrine (p.458)', u3:"Unité 3 — Effets de l'insuline et du glucagon (p.464)", u4:'Unité 4 — Dérèglements : les diabètes (p.468)'},
-    bilanPage: 470, exosPage: 472, bacPage: 473,
+    unitNames: {
+      u1:"Unité 1 — L'approvisionnement en glucose des cellules musculaires (p.452)",
+      u2:'Unité 2 — Origines du glucose plasmatique (p.454)',
+      u3:'Unité 3 — Glycémie et homéostasie (p.456)',
+      u4:'Unité 4 — Pancréas endocrine (p.458)',
+      u5:"Unité 5 — Modalités d'action des hormones pancréatiques (p.460)",
+      u6:'Unité 6 — Dysfonctionnements : les diabètes (p.462)'
+    },
+    bilanPage: 468, exosPage: 470, bacPage: 473,
     nextStep: "Ch.18 clôt les chapitres du manuel déjà priorisés : la suite naturelle est un module « Première » sans renvoi de page (génétique de base ou géologie interne), dès qu'il sera prêt."
   },
 
   qcm: [
-    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"La glycémie désigne :", options:["la quantité totale de glucose ingérée au cours d'un repas", "la concentration de glucose dans le sang", "la quantité de glycogène stockée dans le foie"], correct:1},
-    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"Chez un individu à jeun en bonne santé, la glycémie est maintenue autour d'une valeur de référence proche de :", options:["0,1 g/L", "1 g/L", "10 g/L"], correct:1},
-    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"Parmi les organes suivants, lequel est un consommateur de glucose quasi obligatoire, incapable d'utiliser facilement un autre substrat à court terme ?", options:["le tissu adipeux", "le foie", "le cerveau"], correct:2},
-    {id:'q4', type:'connaissance', difficulty:1, notion:'u2', q:"Les îlots de Langerhans sont :", options:["des amas de cellules endocrines dispersés dans le pancréas exocrine", "des vaisseaux sanguins reliant l'intestin au foie", "une glande annexe du foie"], correct:0},
-    {id:'q5', type:'connaissance', difficulty:2, notion:'u2', q:"Les cellules β des îlots de Langerhans sécrètent :", options:["le glucagon", "l'insuline", "la bile"], correct:1,
-      image:{src:"https://upload.wikimedia.org/wikipedia/commons/f/fe/Pancreaticislet.jpg", alt:"Îlot de Langerhans en microscopie confocale : noyaux en bleu, cellules β (insuline) en vert, cellules α (glucagon) en rouge", credit:"Photo : Masur, Wikimedia Commons, CC BY-SA 3.0"}},
-    {id:'q6', type:'connaissance', difficulty:2, notion:'u2', q:"Les cellules α des îlots de Langerhans sécrètent :", options:["l'insuline", "le glucagon", "l'adrénaline"], correct:1},
-    {id:'q7', type:'connaissance', difficulty:2, notion:'u2', q:"Le mécanisme par lequel la correction de l'écart à la glycémie de référence entraîne l'arrêt de la sécrétion hormonale qui l'a provoquée s'appelle :", options:["un rétrocontrôle positif", "un rétrocontrôle négatif", "une amplification en cascade"], correct:1,
-      image:{src:"../assets/img/ch18/regulation-glycemie.svg", alt:"Schéma des deux boucles de rétrocontrôle négatif de la glycémie (insuline / glucagon)"}},
-    {id:'q8', type:'connaissance', difficulty:2, notion:'u3', q:"L'insuline agit sur ses cellules cibles en :", options:["entrant directement dans la cellule pour catalyser des réactions", "se fixant sur des récepteurs membranaires spécifiques", "détruisant la membrane plasmique des cellules cibles"], correct:1},
-    {id:'q9', type:'connaissance', difficulty:2, notion:'u3', q:"Les effets de l'insuline sur ses cellules cibles comprennent :", options:["l'entrée du glucose dans les cellules et sa mise en réserve sous forme de glycogène", "la libération de glucose stocké dans le foie", "la destruction du glycogène musculaire"], correct:0},
-    {id:'q10', type:'connaissance', difficulty:2, notion:'u3', q:"Le glucagon agit principalement sur :", options:["le tissu adipeux", "le foie, en stimulant la glycogénolyse et la néoglucogenèse", "les muscles, en stimulant l'entrée du glucose"], correct:1},
-    {id:'q11', type:'connaissance', difficulty:1, notion:'u4', q:"Le diabète de type 1 résulte :", options:["d'une maladie auto-immune détruisant les cellules β, entraînant une carence en insuline", "d'une alimentation trop riche en sucres pendant l'enfance", "d'un excès de sécrétion de glucagon"], correct:0},
-    {id:'q12', type:'connaissance', difficulty:2, notion:'u4', q:"Le diabète de type 2 est caractérisé par :", options:["une perte de sensibilité des cellules cibles à l'insuline (insulino-résistance)", "une absence totale de pancréas", "une production excessive de glucose par les muscles"], correct:0},
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"Le glucose entre dans une cellule musculaire :", options:["par diffusion libre à travers la membrane, sans transporteur", "via un transporteur membranaire spécifique (GLUT4), par diffusion facilitée", "uniquement par transport actif consommant directement de l'ATP"], correct:1,
+      image:{src:"../assets/img/ch18/glut4-translocation.svg", alt:"Schéma de la translocation des transporteurs GLUT4 vers la membrane sous l'effet de l'insuline ou de l'effort"}},
+    {id:'q2', type:'connaissance', difficulty:2, notion:'u1', q:"Chez une personne au repos, la majorité des transporteurs GLUT4 se trouve :", options:["déjà insérée dans la membrane plasmique", "stockée dans des vésicules à l'intérieur du cytoplasme", "totalement absente des cellules musculaires"], correct:1},
+    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"L'entrée de glucose dans la cellule musculaire est stimulée par :", options:["l'insuline et la contraction musculaire elle-même", "uniquement le jeûne prolongé", "exclusivement le glucagon"], correct:0},
 
-    {id:'r1', type:'raisonnement', difficulty:2, notion:'u1', q:"Après un jeûne prolongé de plusieurs heures, une personne ressent des vertiges et des difficultés de concentration, qui disparaissent après avoir mangé un fruit. Comment expliquer ce lien entre le jeûne, les symptômes ressentis et leur disparition après l'apport de glucose ?",
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u2', q:"Après un repas riche en glucides, le glucose plasmatique provient principalement :", options:["de l'absorption intestinale du glucose issu de la digestion", "de la dégradation du glycogène musculaire", "de la néoglucogenèse hépatique"], correct:0},
+    {id:'q5', type:'connaissance', difficulty:2, notion:'u2', q:"Lorsque le glycogène hépatique s'épuise, le foie peut encore produire du glucose par :", options:["la glycogénolyse uniquement, indéfiniment", "la néoglucogenèse, à partir de précurseurs non glucidiques", "la photosynthèse"], correct:1},
+    {id:'q6', type:'connaissance', difficulty:1, notion:'u2', q:"La glycogénolyse désigne :", options:["la dégradation du glycogène en glucose", "la fabrication de glycogène à partir de glucose", "la dégradation complète du glucose en CO2"], correct:0},
+
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u3', q:"La glycémie désigne :", options:["la quantité totale de glucose ingérée au cours d'un repas", "la concentration de glucose dans le sang", "la quantité de glycogène stockée dans le foie"], correct:1},
+    {id:'q8', type:'connaissance', difficulty:2, notion:'u3', q:"Parmi les organes suivants, lequel est un consommateur de glucose quasi obligatoire, incapable d'utiliser facilement un autre substrat à court terme ?", options:["le tissu adipeux", "le foie", "le cerveau"], correct:2},
+
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u4', q:"Les îlots de Langerhans sont :", options:["des amas de cellules endocrines dispersés dans le pancréas exocrine", "des vaisseaux sanguins reliant l'intestin au foie", "une glande annexe du foie"], correct:0,
+      image:{src:"https://upload.wikimedia.org/wikipedia/commons/f/fe/Pancreaticislet.jpg", alt:"Îlot de Langerhans en microscopie confocale : noyaux en bleu, cellules β (insuline) en vert, cellules α (glucagon) en rouge", credit:"Photo : Masur, Wikimedia Commons, CC BY-SA 3.0"}},
+    {id:'q10', type:'connaissance', difficulty:2, notion:'u4', q:"Le mécanisme par lequel la correction de l'écart à la glycémie de référence entraîne l'arrêt de la sécrétion hormonale qui l'a provoquée s'appelle :", options:["un rétrocontrôle positif", "un rétrocontrôle négatif", "une amplification en cascade"], correct:1,
+      image:{src:"../assets/img/ch18/regulation-glycemie.svg", alt:"Schéma des deux boucles de rétrocontrôle négatif de la glycémie (insuline / glucagon)"}},
+
+    {id:'q11', type:'connaissance', difficulty:2, notion:'u5', q:"L'insuline agit sur ses cellules cibles en :", options:["entrant directement dans la cellule pour catalyser des réactions", "se fixant sur des récepteurs membranaires spécifiques", "détruisant la membrane plasmique des cellules cibles"], correct:1},
+    {id:'q12', type:'connaissance', difficulty:2, notion:'u5', q:"Le glucagon agit principalement sur :", options:["le tissu adipeux", "le foie, en stimulant la glycogénolyse et la néoglucogenèse", "les muscles, en stimulant l'entrée du glucose"], correct:1},
+
+    {id:'q13', type:'connaissance', difficulty:1, notion:'u6', q:"Le diabète de type 1 résulte :", options:["d'une maladie auto-immune détruisant les cellules β, entraînant une carence en insuline", "d'une alimentation trop riche en sucres pendant l'enfance", "d'un excès de sécrétion de glucagon"], correct:0},
+    {id:'q14', type:'connaissance', difficulty:2, notion:'u6', q:"Le diabète de type 2 est caractérisé par :", options:["une perte de sensibilité des cellules cibles à l'insuline (insulino-résistance)", "une absence totale de pancréas", "une production excessive de glucose par les muscles"], correct:0},
+
+    {id:'r1', type:'raisonnement', difficulty:2, notion:'u1', q:"Après un repas, la glycémie augmente et la captation de glucose par les muscles augmente elle aussi, même chez une personne restée parfaitement immobile. Comment expliquer cette augmentation de la captation musculaire en l'absence de tout effort physique ?",
+      options:["L'insuline sécrétée en réponse au repas stimule la translocation des transporteurs GLUT4 vers la membrane des cellules musculaires, même sans contraction", "Seule la contraction musculaire peut stimuler l'entrée de glucose dans le muscle", "Le glucose entre toujours au même rythme dans la cellule musculaire, indépendamment de tout signal"], correct:0,
+      hint:"Repense aux deux stimulus capables de déclencher la translocation des GLUT4, présentés en Unité 1 : l'un d'eux ne nécessite pas de contraction musculaire."},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u2', q:"Une personne à jeun depuis 12 heures maintient malgré tout une glycémie proche de la normale, alors qu'elle n'a rien mangé depuis la veille. Quelle est la source de glucose plasmatique mobilisée dans cette situation, et pourquoi cette source ne peut-elle pas être illimitée dans le temps ?",
+      options:["Le foie libère du glucose par glycogénolyse puis néoglucogenèse, mais ses réserves de glycogène s'épuisent progressivement au cours du jeûne", "L'intestin continue d'absorber du glucose en continu, même en l'absence de tout repas", "Les muscles libèrent directement leur glycogène dans le sang pour compenser"], correct:0,
+      hint:"Repense aux deux origines du glucose plasmatique présentées en Unité 2, et à laquelle des deux reste disponible plusieurs heures après le dernier repas — et à ce qui limite sa durée."},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u3', q:"Après un jeûne prolongé de plusieurs heures, une personne ressent des vertiges et des difficultés de concentration, qui disparaissent après avoir mangé un fruit. Comment expliquer ce lien entre le jeûne, les symptômes ressentis et leur disparition après l'apport de glucose ?",
       options:["Le jeûne fait baisser la glycémie, ce qui prive le cerveau — consommateur quasi obligatoire de glucose — de son substrat énergétique habituel ; l'apport de glucose restaure la glycémie et donc le fonctionnement cérébral", "Le jeûne n'a aucun effet sur la glycémie, les symptômes viennent uniquement de la sensation de faim", "Le fruit agit uniquement en apportant de l'eau, sans lien avec le glucose"], correct:0,
-      hint:"Repense à la place particulière du cerveau parmi les organes consommateurs de glucose, présentée dans l'Unité 1."},
-    {id:'r2', type:'raisonnement', difficulty:2, notion:'u2', q:"Juste après un repas riche en glucides, la glycémie s'élève temporairement au-dessus de sa valeur de référence. Quel type cellulaire pancréatique est alors principalement sollicité, et quel effet attend-on de sa sécrétion sur la glycémie dans les instants qui suivent ?",
+      hint:"Repense à la place particulière du cerveau parmi les organes consommateurs de glucose, présentée dans l'Unité 3."},
+    {id:'r4', type:'raisonnement', difficulty:2, notion:'u4', q:"Juste après un repas riche en glucides, la glycémie s'élève temporairement au-dessus de sa valeur de référence. Quel type cellulaire pancréatique est alors principalement sollicité, et quel effet attend-on de sa sécrétion sur la glycémie dans les instants qui suivent ?",
       options:["Les cellules α, dont la sécrétion de glucagon va encore faire monter la glycémie", "Les cellules β, dont la sécrétion d'insuline va faire baisser la glycémie vers sa valeur de référence", "Aucune cellule pancréatique n'est sollicitée en cas d'hyperglycémie"], correct:1,
       hint:"Quel type cellulaire détecte un excès de glucose, et quelle hormone hypoglycémiante sécrète-t-il ?"},
-    {id:'r3', type:'raisonnement', difficulty:2, notion:'u3', q:"Un individu pratique un effort physique prolongé sans avoir mangé depuis plusieurs heures ; sa glycémie tend à baisser. Décris, dans l'ordre, la chaîne d'événements qui permet à son organisme de limiter cette baisse.",
-      options:["Les cellules α détectent le déficit de glucose, sécrètent du glucagon, qui stimule la glycogénolyse et la néoglucogenèse hépatiques, libérant du glucose dans le sang", "Les cellules β détectent le déficit de glucose et arrêtent totalement de fonctionner", "Le foie détecte directement le déficit de glucose, sans intervention hormonale"], correct:0,
-      hint:"Reprends dans l'ordre les étapes de la boucle hypoglycémie → cellules α → glucagon → foie présentées dans les Unités 2 et 3."},
-    {id:'r4', type:'raisonnement', difficulty:2, notion:'u3', q:"Pendant un effort musculaire intense, les muscles puisent dans leurs propres réserves de glycogène pour produire de l'ATP (cf. Ch.17), mais ce glycogène musculaire ne contribue pas à faire remonter la glycémie d'un individu en hypoglycémie. Comment l'expliquer ?",
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u5', q:"Pendant un effort musculaire intense, les muscles puisent dans leurs propres réserves de glycogène pour produire de l'ATP (cf. Ch.17), mais ce glycogène musculaire ne contribue pas à faire remonter la glycémie d'un individu en hypoglycémie. Comment l'expliquer ?",
       options:["Le muscle ne possède pas l'enzyme nécessaire pour libérer du glucose libre dans le sang à partir de son glycogène ; seul le foie en est capable", "Le muscle ne stocke jamais de glycogène", "Le glycogène musculaire est immédiatement transformé en insuline"], correct:0,
-      hint:"Repense à la différence, présentée en Unité 3, entre ce que peut faire le foie et ce que peut faire le muscle avec son propre glycogène."},
-    {id:'r5', type:'raisonnement', difficulty:2, notion:'u4', q:"Un enfant de 9 ans développe brutalement une hyperglycémie chronique associée à une carence quasi totale en insuline détectée par une prise de sang ; un adulte de 55 ans en surpoids développe progressivement une hyperglycémie modérée alors que son taux d'insuline sanguin reste normal, voire élevé. À quel type de diabète chacune de ces deux situations correspond-elle le plus probablement, et pourquoi ?",
+      hint:"Repense à la différence, présentée en Unité 5, entre ce que peut faire le foie et ce que peut faire le muscle avec son propre glycogène."},
+    {id:'r6', type:'raisonnement', difficulty:3, notion:'u6', q:"Un enfant de 9 ans développe brutalement une hyperglycémie chronique associée à une carence quasi totale en insuline détectée par une prise de sang ; un adulte de 55 ans en surpoids développe progressivement une hyperglycémie modérée alors que son taux d'insuline sanguin reste normal, voire élevé. À quel type de diabète chacune de ces deux situations correspond-elle le plus probablement, et pourquoi ?",
       options:["L'enfant : diabète de type 1 (carence en insuline, apparition brutale chez le jeune) ; l'adulte : diabète de type 2 (insulino-résistance malgré une insuline présente, apparition progressive)", "Les deux situations correspondent au diabète de type 1", "Les deux situations correspondent au diabète de type 2"], correct:0,
-      hint:"Compare, pour chaque situation, la présence ou l'absence d'insuline dans le sang à ce que tu sais des deux types de diabète (Unité 4)."},
-    {id:'r6', type:'raisonnement', difficulty:3, notion:'u4', q:"Pourquoi l'insuline utilisée pour traiter le diabète de type 1 doit-elle être injectée, et ne peut-elle pas être prise sous forme de comprimé avalé comme la plupart des autres médicaments ?",
-      options:["Parce que l'insuline est une protéine, qui serait dégradée par les enzymes digestives du tube digestif avant d'atteindre le sang", "Parce que l'insuline a un goût trop désagréable pour être avalée", "Parce que l'insuline ne peut agir que si elle est directement injectée dans le pancréas"], correct:0,
-      hint:"Repense à la nature chimique de l'insuline (une hormone protéique) et à ce que fait normalement la digestion à une protéine ingérée."}
+      hint:"Compare, pour chaque situation, la présence ou l'absence d'insuline dans le sang à ce que tu sais des deux types de diabète (Unité 6)."}
   ],
 
   mindmapModel: {
     label:"Contrôle des flux de glucose",
     children:[
+      {label:"Entrée du glucose dans le muscle", children:[
+        {label:"GLUT4 (diffusion facilitée)"},{label:"Régulation par insuline et par l'effort"}
+      ]},
+      {label:"Origines du glucose plasmatique", children:[
+        {label:"Intestinale (après un repas)"},{label:"Hépatique (glycogénolyse, néoglucogenèse)"}
+      ]},
       {label:"Glycémie", children:[
         {label:"Concentration de glucose dans le sang"},{label:"Valeur de référence ~1 g/L"},{label:"Cerveau : consommateur quasi obligatoire"}
       ]},
@@ -161,7 +210,7 @@ const MODULE = {
         {label:"Îlots de Langerhans"},{label:"Cellules β → insuline"},{label:"Cellules α → glucagon"}
       ]},
       {label:"Effets hormonaux", children:[
-        {label:"Insuline : entrée + stockage du glucose (glycogénogenèse)"},{label:"Glucagon : libération du glucose (glycogénolyse, néoglucogenèse)"},{label:"Rétrocontrôle négatif"}
+        {label:"Insuline : entrée + stockage du glucose (glycogénogenèse)"},{label:"Glucagon : libération du glucose"},{label:"Rétrocontrôle négatif"}
       ]},
       {label:"Dérèglements", children:[
         {label:"Diabète de type 1 (carence en insuline)"},{label:"Diabète de type 2 (insulino-résistance)"}
