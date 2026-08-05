@@ -1,0 +1,16 @@
+<svg viewBox="0 0 340 260" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', 'Arial', sans-serif">
+  <rect x="0" y="0" width="340" height="260" fill="#FBF8F0"/>
+
+  <!-- Liaisons O-H (doublets liants, un trait chacun) -->
+  <line x1="150" y1="130" x2="107" y2="182" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+  <line x1="190" y1="130" x2="233" y2="182" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Doublets non liants sur O (deux doublets, tangents aux points cardinaux NO et NE de la lettre O) -->
+  <line x1="152" y1="102" x2="165" y2="89" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+  <line x1="175" y1="89" x2="188" y2="102" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Atomes -->
+  <text x="170" y="118" font-size="30" font-weight="700" fill="#262319" text-anchor="middle">O</text>
+  <text x="93" y="205" font-size="27" font-weight="700" fill="#4C5B66" text-anchor="middle">H</text>
+  <text x="247" y="205" font-size="27" font-weight="700" fill="#4C5B66" text-anchor="middle">H</text>
+</svg>

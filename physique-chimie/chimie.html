@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chimie — Géométrie des molécules et nomenclature organique · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'pc-chimie',
+  chapNum: "Chimie",
+  subjectLabel: "Physique-Chimie",
+  accent: 'var(--ochre)',
+  title: "Géométrie des molécules et nomenclature organique",
+  pages: "Programme de Première et Terminale spécialité — BCPST1 : C.1.2, C.1.3, C.5.1",
+  noManual: true,
+  backHref: '../index.html',
+  bridge: {
+    from: "En Première, le schéma de Lewis permet, à l'aide de modèles moléculaires, de prévoir la géométrie de molécules simples (H₂O, CO₂, NH₃, CH₄...), et la chimie organique se limite à des molécules à un seul groupe caractéristique — alcool, aldéhyde, cétone ou acide carboxylique — sur un squelette carboné saturé.",
+    to: "Le programme de Terminale formalise la lecture des formules topologiques, étend les familles fonctionnelles aux esters, amines, amides et halogénoalcanes sur des squelettes pouvant être insaturés ou cycliques, et introduit les grands types de réactions (addition, substitution, élimination). En BCPST1, la méthode VSEPR et sa notation AXₚEq deviennent un outil systématique (code C.1.2), et la nomenclature organique un outil quotidien pour lire et écrire les mécanismes réactionnels étudiés dès le premier semestre (code C.5.1)."
+  },
+
+  fiches: [
+    {
+      unit:'1', badge:'Première',
+      title:"Rappels : le schéma de Lewis d'une molécule",
+      paragraphs:[
+        "Le schéma de Lewis d'une molécule ou d'un ion représente la façon dont les électrons de valence des atomes sont répartis en doublets. Un doublet liant, partagé entre deux atomes, est symbolisé par un trait placé entre ces deux atomes. Un doublet non liant, porté par un seul atome, est lui aussi symbolisé par un trait, mais placé à côté de cet atome, sans rejoindre aucun autre atome. Un point isolé n'est utilisé que pour représenter un électron célibataire (non apparié à un autre) — un cas rare, qui n'apparaît dans aucune des molécules étudiées dans ce module. Cette notion, déjà rencontrée en seconde puis en première, est le point de départ obligé pour prévoir la géométrie d'une molécule.",
+        "La règle de l'octet énonce que chaque atome (à l'exception de l'hydrogène, limité à un doublet) tend à s'entourer de 8 électrons au total, liants et non liants confondus, dans le schéma de Lewis le plus stable. Construire un schéma de Lewis consiste donc à répartir tous les électrons de valence disponibles de façon à satisfaire cette règle pour chaque atome, en utilisant si besoin des liaisons doubles ou triples."
+      ],
+      bullets:[
+        "Étape 1 : compter le nombre total d'électrons de valence disponibles (somme des électrons de valence de chaque atome, ± les charges éventuelles pour un ion).",
+        "Étape 2 : placer l'atome le moins électronégatif au centre (souvent le carbone, l'azote ou le soufre) et relier chaque atome périphérique par un doublet liant.",
+        "Étape 3 : compléter l'octet de chaque atome périphérique avec des doublets non liants, puis placer les électrons restants sur l'atome central.",
+        "Étape 4 : si l'atome central n'a pas son octet complet, transformer un ou plusieurs doublets non liants d'un atome voisin en doublet(s) liant(s) supplémentaire(s) — c'est ainsi qu'apparaissent les liaisons doubles ou triples."
+      ]
+    },
+    {
+      unit:'2', badge:'C.1.2',
+      title:"La méthode VSEPR : notation AXₚEq",
+      paragraphs:[
+        "Une fois le schéma de Lewis établi, la méthode VSEPR (« Valence Shell Electron Pair Repulsion », répulsion des doublets électroniques de la couche de valence) permet d'en déduire la géométrie de la molécule. Son principe : autour d'un atome central, les doublets d'électrons — liants et non liants — se repoussent mutuellement et s'orientent dans l'espace de façon à minimiser ces répulsions, c'est-à-dire à s'éloigner le plus possible les uns des autres.",
+        "Pour appliquer cette méthode, on note la structure autour de l'atome central A sous la forme AXₚEq : X représente un doublet liant, E représente un doublet non liant porté par l'atome central lui-même. Le programme de BCPST1 limite l'usage de cette méthode aux cas les plus courants, ceux où p + q = 3 ou 4."
+      ],
+      bullets:[
+        "X compte les doublets liants : une liaison simple, double ou triple entre l'atome central et un même voisin ne compte que pour un seul X, car elle n'occupe qu'une seule direction spatiale.",
+        "E compte les doublets non liants portés par l'atome central lui-même — jamais ceux des atomes périphériques.",
+        "Exemple guidé : dans NH₃, l'azote central porte 3 doublets liants (vers les 3 H) et 1 doublet non liant → structure AX₃E₁."
+      ]
+    },
+    {
+      unit:'3', badge:'C.1.2',
+      title:"Les géométries de référence (p+q = 2, 3 ou 4)",
+      paragraphs:[
+        "Chaque valeur de p+q autour de l'atome central correspond à une géométrie de référence, et la présence de doublets non liants (E) déforme cette géométrie par rapport au cas où tous les doublets sont liants (X), car un doublet non liant occupe davantage de place et repousse plus fortement les doublets liants voisins.",
+        "Ces géométries se lisent directement sur des exemples déjà rencontrés en Première : CO₂, NH₃, H₂O, CH₄ ou l'ion NH₄⁺ suffisent à couvrir tous les cas exigibles à ce niveau."
+      ],
+      bullets:[
+        "AX₂ (p+q=2, aucun E) — géométrie linéaire, angle de 180° — exemple : CO₂.",
+        "AX₃ (p+q=3, aucun E) — géométrie trigonale plane, angles de 120° — exemple : le carbone du groupe carbonyle C=O (méthanal, aldéhydes, cétones).",
+        "AX₃E₁ (p+q=4, un E) — géométrie pyramidale à base triangulaire — exemple : NH₃, H₃O⁺.",
+        "AX₂E₂ (p+q=4, deux E) — géométrie coudée (angulaire) — exemple : H₂O.",
+        "AX₄ (p+q=4, aucun E) — géométrie tétraédrique, angles de 109,5° — exemple : CH₄, NH₄⁺."
+      ]
+    },
+    {
+      unit:'4', badge:'Terminale',
+      title:"Formules brutes, semi-développées et topologiques",
+      paragraphs:[
+        "Une même espèce chimique organique peut s'écrire de plusieurs façons, chacune apportant un niveau d'information différent. La formule brute indique uniquement la nature et le nombre de chaque atome présent (par exemple C₄H₁₀O), sans aucune information sur leur enchaînement : plusieurs espèces différentes peuvent partager la même formule brute (ce sont des isomères).",
+        "La formule semi-développée détaille l'enchaînement des atomes de carbone et les groupes qui leur sont liés, sans représenter explicitement les liaisons entre chaque carbone et ses hydrogènes (par exemple CH₃–CH₂–CH₂–CH₂–OH). La formule topologique, exploitée à partir de Terminale, simplifie encore l'écriture : le squelette carboné est représenté par une ligne brisée, chaque sommet ou extrémité de segment figurant un atome de carbone (avec le nombre d'hydrogènes nécessaire pour compléter ses liaisons, jamais écrits) ; seuls les atomes autres que C et H sont notés explicitement."
+      ],
+      bullets:[
+        "Plus une formule est détaillée (brute → semi-développée → topologique), plus elle contient d'information sur la structure réelle de la molécule.",
+        "La formule topologique est la plus utilisée en Terminale et en BCPST1 car elle reste lisible même pour des molécules complexes (nombreux carbones, cycles).",
+        "Savoir passer d'une représentation à l'autre, dans les deux sens, est une compétence exigible : à partir d'une formule brute et d'un groupe caractéristique, ou à partir d'une formule topologique, il faut pouvoir reconstruire les autres écritures."
+      ]
+    },
+    {
+      unit:'5', badge:'Terminale',
+      title:"Le squelette carboné : saturé, insaturé, cyclique",
+      paragraphs:[
+        "Le squelette carboné d'une espèce organique est saturé lorsque tous les atomes de carbone qui le composent ne sont reliés entre eux que par des liaisons simples — c'est le cas des alcanes et de la plupart des exemples rencontrés en Première. Il peut être linéaire (une seule chaîne, sans ramification) ou ramifié (une chaîne principale portant une ou plusieurs chaînes latérales).",
+        "Le programme de Terminale étend cette notion : un squelette est dit insaturé s'il comporte au moins une liaison double ou triple carbone-carbone, et cyclique s'il forme une boucle fermée. Chaque insaturation ou chaque cycle fait perdre exactement deux atomes d'hydrogène par rapport à l'alcane saturé de même nombre de carbones — une façon rapide de repérer une insaturation ou un cycle à partir de la seule formule brute."
+      ],
+      bullets:[
+        "Squelette saturé et linéaire : …–CH₂–CH₂–CH₂–… (que des liaisons C–C simples, pas de ramification).",
+        "Squelette saturé et ramifié : une chaîne principale portant un ou plusieurs groupes latéraux.",
+        "Squelette insaturé : au moins une double (C=C) ou une triple (C≡C) liaison carbone-carbone.",
+        "Squelette cyclique : le squelette carboné forme un cycle fermé (représenté par un polygone en formule topologique)."
+      ]
+    },
+    {
+      unit:'6', badge:'C.1.3',
+      title:"Groupes caractéristiques et familles fonctionnelles",
+      paragraphs:[
+        "Un groupe caractéristique est un enchaînement particulier d'atomes qui détermine les propriétés chimiques d'une espèce organique et impose, par une règle de nomenclature, un préfixe ou un suffixe au nom de cette espèce. Le programme de Première introduit quatre familles construites sur un squelette saturé à un seul groupe caractéristique ; le programme de Terminale en ajoute quatre autres, sur des squelettes pouvant être insaturés ou cycliques.",
+        "Dans tous les cas, le principe de nomenclature est le même : on part du nom de la chaîne carbonée (déterminé par le nombre de carbones : méthane, éthane, propane, butane...) et on modifie sa terminaison — ou on ajoute un préfixe — selon le groupe caractéristique présent."
+      ],
+      bullets:[
+        "Alcool — groupe –OH, suffixe « -ol » — exemple : butan-1-ol, CH₃–CH₂–CH₂–CH₂–OH.",
+        "Aldéhyde — groupe –CHO en bout de chaîne, suffixe « -al » — exemple : butanal.",
+        "Cétone — groupe C=O à l'intérieur de la chaîne, suffixe « -one » — exemple : butan-2-one.",
+        "Acide carboxylique — groupe –COOH en bout de chaîne, préfixe « acide » et suffixe « -oïque » — exemple : acide butanoïque.",
+        "Ester (Terminale) — groupe –COO– entre deux chaînes carbonées, nommé « ...oate de ...yle » — exemple : éthanoate d'éthyle.",
+        "Amine (Terminale) — groupe –NH₂, suffixe « -amine » — exemple : butan-1-amine.",
+        "Amide (Terminale) — groupe –CONH₂, suffixe « -amide » — exemple : butanamide.",
+        "Halogénoalcane (Terminale) — un atome d'halogène (F, Cl, Br, I) lié au squelette carboné, préfixe « fluoro-, chloro-, bromo-, iodo- » — exemple : 1-chlorobutane.",
+        "Ce même principe — un enchaînement d'atomes qui définit une famille et une règle de nom — se retrouve, élargi, dans les grandes familles de la chimie du vivant étudiées en BCPST1 (oses, lipides, acides aminés, acides nucléiques) : un pont direct avec les modules de SVT sur la biologie moléculaire déjà construits."
+      ]
+    },
+    {
+      unit:'7', badge:'C.5.1',
+      title:"Types de réactions : addition, substitution, élimination",
+      paragraphs:[
+        "Une synthèse organique multi-étapes s'analyse comme une succession de modifications : modification d'un groupe caractéristique, modification de la chaîne carbonée (allongement ou coupure), ou polymérisation. Le programme de Terminale identifie plusieurs grands types de réactions, reconnaissables à ce qu'il advient des réactifs et des produits, sans qu'il soit nécessaire d'en connaître le mécanisme détaillé pour les identifier.",
+        "Trois types sont à distinguer avec soin, car ils sont souvent confondus : l'addition, la substitution et l'élimination. Le réflexe à avoir est de compter le nombre de produits formés et de repérer ce qui arrive aux liaisons multiples (apparition, disparition, ou aucun changement)."
+      ],
+      bullets:[
+        "Addition : deux réactifs se combinent pour former un seul produit ; une liaison multiple (double ou triple) devient simple. Exemple : un alcène + HBr → un halogénoalcane.",
+        "Substitution : un atome ou un groupe d'atomes est remplacé par un autre, sans changer le nombre total de liaisons multiples. Exemple : un halogénoalcane + HO⁻ → un alcool + un ion halogénure.",
+        "Élimination : une molécule se scinde en deux produits ; une liaison multiple apparaît, avec départ d'un petit groupe. Exemple : un alcool chauffé en milieu acide → un alcène + H₂O.",
+        "Un bon repère pour ne pas confondre substitution et élimination : dans une substitution, aucune liaison multiple n'apparaît ni ne disparaît (un groupe en remplace un autre) ; dans une élimination, une liaison multiple apparaît toujours."
+      ]
+    }
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {
+      u1:"1 — Rappels : le schéma de Lewis",
+      u2:"2 — La méthode VSEPR (AXₚEq)",
+      u3:"3 — Les géométries de référence",
+      u4:"4 — Formules brutes, semi-développées, topologiques",
+      u5:"5 — Le squelette carboné",
+      u6:"6 — Groupes caractéristiques et familles fonctionnelles",
+      u7:"7 — Types de réactions (addition, substitution, élimination)"
+    },
+    nextStep: "Enchaîne sur les six modules de Révisions de Terminale (mécanique, condensateur, cinétique, premier principe, oxydoréduction, acides-bases) dès qu'ils seront prêts."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"Dans un schéma de Lewis, un doublet non liant est représenté par :", options:["un trait porté par un seul atome, sans rejoindre un autre atome", "un trait placé entre deux atomes différents", "un point isolé au niveau d'un atome"], correct:0},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"La règle de l'octet impose qu'un atome (autre que l'hydrogène) s'entoure, dans la mesure du possible, de :", options:["8 électrons, liants et non liants confondus", "8 électrons non liants uniquement", "2 électrons, comme l'hydrogène"], correct:0},
+    {id:'q3', type:'connaissance', difficulty:1, notion:'u2', q:"Dans la notation AXₚEq de la méthode VSEPR, la lettre X désigne :", options:["un doublet d'électrons liant, partagé avec un atome périphérique", "un doublet d'électrons non liant, porté par l'atome central", "le nombre total d'électrons de valence de la molécule"], correct:0},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u2', q:"Dans la notation AXₚEq, la lettre E désigne :", options:["un doublet non liant porté par l'atome central", "un doublet liant", "un atome d'un élément électronégatif"], correct:0},
+    {id:'q5', type:'connaissance', difficulty:1, notion:'u2', q:"Le principe de la méthode VSEPR consiste à répartir les doublets autour de l'atome central de façon à :", options:["minimiser les répulsions électrostatiques entre doublets, en les éloignant le plus possible les uns des autres", "les rapprocher le plus possible pour renforcer les liaisons", "les aligner tous dans un même plan, quel que soit leur nombre"], correct:0},
+    {id:'q6', type:'connaissance', difficulty:1, notion:'u3', q:"Une structure AX₂, sans doublet non liant sur l'atome central, adopte une géométrie :", options:["linéaire (les deux liaisons forment un angle de 180°)", "coudée", "tétraédrique"], correct:0},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u3', q:"Une structure AX₄, sans doublet non liant, adopte une géométrie :", options:["tétraédrique", "plane carrée", "linéaire"], correct:0},
+    {id:'q8', type:'connaissance', difficulty:2, notion:'u3', q:"Une structure AX₃E₁ (trois doublets liants, un doublet non liant) adopte une géométrie :", options:["pyramidale à base triangulaire", "trigonale plane", "coudée"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u4', q:"La formule brute d'une espèce chimique organique indique :", options:["la nature et le nombre de chaque atome présent, sans information sur leur enchaînement", "l'enchaînement complet de tous les atomes et de toutes les liaisons", "uniquement le squelette carboné, sans les atomes d'hydrogène"], correct:0},
+    {id:'q10', type:'connaissance', difficulty:2, notion:'u4', q:"Dans une formule topologique, chaque extrémité ou sommet d'une ligne brisée représente, par convention :", options:["un atome de carbone, avec le nombre d'hydrogènes nécessaire pour compléter ses liaisons (non écrits)", "un atome d'oxygène", "un groupe caractéristique complet"], correct:0},
+    {id:'q11', type:'connaissance', difficulty:1, notion:'u5', q:"Un squelette carboné est dit saturé lorsque :", options:["tous les atomes de carbone ne sont reliés entre eux que par des liaisons simples", "il comporte au moins une liaison double ou triple carbone-carbone", "il forme un cycle fermé"], correct:0},
+    {id:'q12', type:'connaissance', difficulty:1, notion:'u6', q:"Le suffixe « -ol » dans le nom d'une espèce organique indique la présence du groupe caractéristique :", options:["hydroxyle –OH, caractéristique de la famille des alcools", "carbonyle C=O, caractéristique des cétones", "amine –NH₂"], correct:0},
+    {id:'q13', type:'connaissance', difficulty:1, notion:'u6', q:"Le suffixe « -one » indique la présence du groupe caractéristique :", options:["carbonyle C=O situé à l'intérieur de la chaîne carbonée (cétone)", "carboxyle –COOH (acide carboxylique)", "hydroxyle –OH (alcool)"], correct:0},
+    {id:'q14', type:'connaissance', difficulty:1, notion:'u6', q:"Le groupe caractéristique –COOH, nommé avec le suffixe « acide ... oïque », est celui de la famille :", options:["des acides carboxyliques", "des esters", "des amides"], correct:0},
+    {id:'q15', type:'connaissance', difficulty:1, notion:'u6', q:"Un halogénoalcane se caractérise par :", options:["un atome d'halogène (F, Cl, Br, I) lié à un atome de carbone du squelette", "un atome d'azote lié au squelette carboné", "un groupe carbonyle en bout de chaîne"], correct:0},
+    {id:'q16', type:'connaissance', difficulty:2, notion:'u7', q:"Une réaction de substitution en chimie organique se caractérise par :", options:["le remplacement d'un atome ou d'un groupe d'atomes par un autre, sans changer le nombre total de liaisons multiples", "l'ajout de deux réactifs qui se combinent en un seul produit", "la coupure d'une molécule en deux produits"], correct:0},
+
+    {id:'r1', type:'raisonnement', difficulty:2, notion:'u1', q:"L'oxygène (6 électrons de valence) forme H₂O avec deux atomes d'hydrogène. Laquelle de ces descriptions correspond au schéma de Lewis correct ?",
+      options:["O relié aux deux H par une liaison simple, avec deux doublets non liants sur O", "O relié aux deux H par une liaison double, sans doublet non liant sur O", "O relié à un seul H par une liaison simple, avec trois doublets non liants sur O"], correct:0,
+      hint:"L'oxygène a 6 électrons de valence ; 2 sont utilisés pour former les 2 liaisons O–H, il en reste 4, soit 2 doublets non liants."},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u1', q:"Le carbone (4 électrons de valence) et l'oxygène (6 électrons de valence) forment CO₂. Quel schéma de Lewis est correct ?",
+      options:["Chaque O est relié au C par une liaison double, et porte deux doublets non liants", "Chaque O est relié au C par une liaison simple, et porte trois doublets non liants", "Les deux O sont reliés entre eux, et le C porte quatre doublets non liants"], correct:0,
+      hint:"Le carbone doit former 4 liaisons au total pour respecter la règle de l'octet avec seulement 2 atomes voisins : deux doubles liaisons C=O conviennent exactement."},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u1', q:"L'azote (5 électrons de valence) forme NH₃ avec trois atomes d'hydrogène. Quel schéma de Lewis est correct ?",
+      options:["N relié aux trois H par une liaison simple, avec un doublet non liant sur N", "N relié aux trois H par une liaison simple, sans doublet non liant sur N", "N relié à deux H seulement, avec deux doublets non liants sur N"], correct:0,
+      hint:"L'azote a 5 électrons de valence ; 3 sont utilisés pour les 3 liaisons N–H, il en reste 2, soit un doublet non liant."},
+    {id:'r4', type:'raisonnement', difficulty:1, notion:'u1', q:"Le carbone (4 électrons de valence) forme CH₄ avec quatre atomes d'hydrogène. Quel schéma de Lewis est correct ?",
+      options:["C relié aux quatre H par une liaison simple, sans doublet non liant sur C", "C relié à trois H seulement, avec un doublet non liant sur C", "C relié aux quatre H, avec un doublet non liant supplémentaire sur C"], correct:0,
+      hint:"Le carbone a exactement 4 électrons de valence, tous utilisés pour former les 4 liaisons C–H : il ne reste aucun doublet non liant."},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u3', q:"D'après ce schéma de Lewis de la molécule d'eau, quel est le modèle AXₚEq de l'oxygène central, et quelle géométrie en découle ?",
+      image:{src:'../assets/img/pc-chimie/lewis-h2o.svg', alt:"Schéma de Lewis de la molécule d'eau : oxygène central relié à deux atomes d'hydrogène par une liaison simple, avec deux doublets non liants sur l'oxygène."},
+      options:["AX₂E₂ — molécule coudée (angulaire)", "AX₄ — molécule tétraédrique", "AX₂ — molécule linéaire"], correct:0,
+      hint:"Compte les traits qui relient l'oxygène à un autre atome (doublets liants, X) et les traits portés par l'oxygène seul, sans rejoindre un autre atome (doublets non liants, E)."},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u3', q:"D'après ce schéma de Lewis de CO₂, quel est le modèle AXₚEq du carbone central ?",
+      image:{src:'../assets/img/pc-chimie/lewis-co2.svg', alt:"Schéma de Lewis du dioxyde de carbone : carbone central relié à deux atomes d'oxygène par une liaison double de chaque côté, chaque oxygène portant deux doublets non liants."},
+      options:["AX₂ — molécule linéaire (180°)", "AX₂E₂ — molécule coudée", "AX₃ — molécule trigonale plane"], correct:0,
+      hint:"Le carbone central porte deux doubles liaisons et aucun doublet non liant : chaque double liaison ne compte que pour un seul X."},
+    {id:'r7', type:'raisonnement', difficulty:2, notion:'u3', q:"D'après ce schéma de Lewis de NH₃, quel est le modèle AXₚEq de l'azote central ?",
+      image:{src:'../assets/img/pc-chimie/lewis-nh3.svg', alt:"Schéma de Lewis de l'ammoniac : azote central relié à trois atomes d'hydrogène par une liaison simple, avec un doublet non liant sur l'azote."},
+      options:["AX₃E₁ — molécule pyramidale à base triangulaire", "AX₄ — molécule tétraédrique", "AX₃ — molécule trigonale plane"], correct:0,
+      hint:"Trois traits relient l'azote aux H (X) ; le quatrième trait, porté par l'azote seul sans rejoindre un autre atome, est le doublet non liant (E) : il compte dans p+q mais ne définit pas à lui seul la géométrie du squelette d'atomes."},
+    {id:'r8', type:'raisonnement', difficulty:1, notion:'u3', q:"D'après ce schéma de Lewis de CH₄, quel est le modèle AXₚEq du carbone central ?",
+      image:{src:'../assets/img/pc-chimie/lewis-ch4.svg', alt:"Schéma de Lewis du méthane : carbone central relié à quatre atomes d'hydrogène par une liaison simple, sans doublet non liant."},
+      options:["AX₄ — molécule tétraédrique", "AX₃E₁ — molécule pyramidale", "AX₂E₂ — molécule coudée"], correct:0,
+      hint:"Quatre traits partent du carbone central, aucun doublet non liant ne reste sur lui."},
+    {id:'r9', type:'raisonnement', difficulty:2, notion:'u3', q:"D'après ce schéma de Lewis de l'ion NH₄⁺, quel est le modèle AXₚEq de l'azote central ?",
+      image:{src:'../assets/img/pc-chimie/lewis-nh4-plus.svg', alt:"Schéma de Lewis de l'ion ammonium : azote central relié à quatre atomes d'hydrogène par une liaison simple, entre crochets avec une charge +, sans doublet non liant."},
+      options:["AX₄ — molécule tétraédrique", "AX₃E₁ — molécule pyramidale", "AX₂E₂ — molécule coudée"], correct:0,
+      hint:"L'azote de NH₄⁺ forme quatre liaisons N–H et ne porte plus aucun doublet non liant, contrairement à NH₃."},
+    {id:'r10', type:'raisonnement', difficulty:3, notion:'u3', q:"Ce schéma de Lewis représente le méthanal, la plus simple molécule à groupe carbonyle — celui que l'on retrouve dans les aldéhydes et les cétones. Quel est le modèle AXₚEq du carbone central ?",
+      image:{src:'../assets/img/pc-chimie/lewis-methanal.svg', alt:"Schéma de Lewis du méthanal : carbone central relié à un atome d'oxygène par une liaison double et à deux atomes d'hydrogène par une liaison simple, l'oxygène portant deux doublets non liants."},
+      options:["AX₃ — molécule trigonale plane", "AX₄ — molécule tétraédrique", "AX₂ — molécule linéaire"], correct:0,
+      hint:"Le carbone est relié à trois voisins (deux H et un O), la double liaison C=O ne comptant que pour un seul X ; il ne lui reste aucun doublet non liant."},
+    {id:'r11', type:'raisonnement', difficulty:2, notion:'u4', q:"Une espèce a pour formule brute C₄H₁₀O et ne comporte qu'un seul groupe caractéristique, un groupe hydroxyle porté par un squelette carboné saturé et non ramifié. Quelle formule semi-développée correspond à cette description ?",
+      options:["CH₃–CH₂–CH₂–CH₂–OH", "CH₃–CH₂–O–CH₂–CH₃", "CH₃–CO–CH₂–CH₃"], correct:0,
+      hint:"Élimine les propositions qui ne portent pas de groupe hydroxyle –OH terminal sur une chaîne saturée non ramifiée à 4 carbones."},
+    {id:'r12', type:'raisonnement', difficulty:3, notion:'u5', q:"Une espèce organique a pour formule brute C₄H₈. Que peut-on en déduire sur son squelette carboné, sachant qu'un alcane à 4 carbones a pour formule C₄H₁₀ ?",
+      options:["Le squelette comporte une insaturation (double liaison) ou un cycle, puisqu'il compte deux hydrogènes de moins que l'alcane correspondant", "Le squelette est nécessairement saturé et linéaire, comme celui d'un alcane", "La molécule comporte nécessairement un groupe caractéristique azoté"], correct:0,
+      hint:"Chaque insaturation (double liaison) ou cycle fait perdre exactement 2 atomes d'hydrogène par rapport à l'alcane saturé de même nombre de carbones."},
+    {id:'r13', type:'raisonnement', difficulty:2, notion:'u6', q:"Une espèce de formule semi-développée CH₃–CH₂–COO–CH₃ comporte le groupe –COO– au milieu de la chaîne, entre deux groupes carbonés. À quelle famille fonctionnelle appartient-elle ?",
+      options:["Un ester", "Un acide carboxylique", "Un amide"], correct:0,
+      hint:"Le groupe –COO– relié à deux chaînes carbonées (et non à –OH ni à –NH₂) est la signature d'un ester."},
+    {id:'r14', type:'raisonnement', difficulty:2, notion:'u7', q:"Un dérivé éthylénique (comportant une double liaison C=C) réagit avec du bromure d'hydrogène HBr : la double liaison disparaît et un seul produit se forme, un halogénoalcane. Quel type de réaction est-ce ?",
+      options:["Une addition : deux réactifs se combinent en un seul produit, la double liaison devient simple", "Une substitution : un atome est remplacé par un autre sans changer le nombre de liaisons", "Une élimination : la molécule se scinde en deux produits"], correct:0,
+      hint:"Compte le nombre de produits formés et regarde ce qui arrive à la liaison multiple : ici, deux réactifs ne forment qu'un seul produit."},
+    {id:'r15', type:'raisonnement', difficulty:2, notion:'u7', q:"Un halogénoalcane réagit avec l'ion hydroxyde HO⁻ : l'atome d'halogène est remplacé par le groupe –OH, un alcool est obtenu, avec départ de l'ion halogénure. Quel type de réaction est-ce ?",
+      options:["Une substitution : un groupe est remplacé par un autre sur le squelette carboné", "Une addition : deux réactifs se combinent sans qu'aucun groupe ne parte", "Une élimination : une double liaison se forme avec départ d'un petit groupe"], correct:0,
+      hint:"L'halogène est remplacé par –OH : c'est le remplacement d'un groupe par un autre, pas la formation d'une liaison multiple."},
+    {id:'r16', type:'raisonnement', difficulty:2, notion:'u7', q:"Un alcool, chauffé en présence d'un catalyseur acide, perd une molécule d'eau et forme un alcène (apparition d'une double liaison C=C). Quel type de réaction est-ce ?",
+      options:["Une élimination : une liaison multiple se forme avec départ d'un petit groupe (ici l'eau)", "Une substitution : un groupe est remplacé par un autre", "Une addition : deux réactifs se combinent en un seul produit"], correct:0,
+      hint:"Une liaison double apparaît et une petite molécule (l'eau) est libérée à part : c'est la signature d'une élimination."}
+  ],
+
+  mindmapModel: {
+    label:"Géométrie des molécules et nomenclature organique",
+    children:[
+      {label:"VSEPR", children:[
+        {label:"Notation AXₚEq"},{label:"Doublets liants X / non liants E"},{label:"Linéaire, trigonale plane, pyramidale, coudée, tétraédrique"}
+      ]},
+      {label:"Formules", children:[
+        {label:"Brute"},{label:"Semi-développée"},{label:"Topologique"}
+      ]},
+      {label:"Squelette carboné", children:[
+        {label:"Saturé"},{label:"Insaturé"},{label:"Cyclique"}
+      ]},
+      {label:"Familles fonctionnelles", children:[
+        {label:"Alcool -ol"},{label:"Aldéhyde -al"},{label:"Cétone -one"},{label:"Acide carboxylique -oïque"},
+        {label:"Ester -oate de ...yle"},{label:"Amine -amine"},{label:"Amide -amide"},{label:"Halogénoalcane"}
+      ]},
+      {label:"Types de réaction", children:[
+        {label:"Addition"},{label:"Substitution"},{label:"Élimination"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>

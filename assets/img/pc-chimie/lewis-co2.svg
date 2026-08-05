@@ -1,0 +1,22 @@
+<svg viewBox="0 0 340 260" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', 'Arial', sans-serif">
+  <rect x="0" y="0" width="340" height="260" fill="#FBF8F0"/>
+
+  <!-- Double liaisons O=C=O (deux doublets liants de chaque côté) -->
+  <line x1="95" y1="122" x2="150" y2="122" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+  <line x1="95" y1="138" x2="150" y2="138" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+  <line x1="190" y1="122" x2="245" y2="122" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+  <line x1="190" y1="138" x2="245" y2="138" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Doublets non liants sur le O gauche : à 45°, côté opposé à la double liaison (NO et SO) -->
+  <line x1="27" y1="124" x2="40" y2="111" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+  <line x1="27" y1="134" x2="40" y2="147" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Doublets non liants sur le O droit : à 45°, côté opposé à la double liaison (NE et SE) -->
+  <line x1="313" y1="124" x2="300" y2="111" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+  <line x1="313" y1="134" x2="300" y2="147" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Atomes -->
+  <text x="45" y="140" font-size="30" font-weight="700" fill="#4C5B66" text-anchor="middle">O</text>
+  <text x="170" y="140" font-size="30" font-weight="700" fill="#262319" text-anchor="middle">C</text>
+  <text x="295" y="140" font-size="30" font-weight="700" fill="#4C5B66" text-anchor="middle">O</text>
+</svg>

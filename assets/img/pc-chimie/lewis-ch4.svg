@@ -1,0 +1,16 @@
+<svg viewBox="0 0 340 260" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', 'Arial', sans-serif">
+  <rect x="0" y="0" width="340" height="260" fill="#FBF8F0"/>
+
+  <!-- Liaisons C-H, quatre directions -->
+  <line x1="170" y1="105" x2="170" y2="55" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+  <line x1="170" y1="145" x2="170" y2="195" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+  <line x1="145" y1="125" x2="95" y2="125" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+  <line x1="195" y1="125" x2="245" y2="125" stroke="#262319" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Atomes -->
+  <text x="170" y="135" font-size="30" font-weight="700" fill="#262319" text-anchor="middle">C</text>
+  <text x="170" y="45" font-size="27" font-weight="700" fill="#4C5B66" text-anchor="middle">H</text>
+  <text x="170" y="218" font-size="27" font-weight="700" fill="#4C5B66" text-anchor="middle">H</text>
+  <text x="78" y="133" font-size="27" font-weight="700" fill="#4C5B66" text-anchor="middle">H</text>
+  <text x="262" y="133" font-size="27" font-weight="700" fill="#4C5B66" text-anchor="middle">H</text>
+</svg>
