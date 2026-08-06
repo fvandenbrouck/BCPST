@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Premier principe de la thermodynamique · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/applications-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'pc-premier-principe',
+  chapNum: "Révisions de Terminale",
+  subjectLabel: "Physique-Chimie",
+  accent: 'var(--ochre)',
+  title: "Premier principe de la thermodynamique",
+  pages: "Programme de Première et Terminale spécialité — BCPST1 : E.1, E.2, E.4",
+  noManual: true,
+  backHref: '../index.html',
+  bridge: {
+    from: "En Première, un fluide au repos est décrit par sa masse volumique, sa pression et sa température, la loi de Mariotte relie pression et volume à température constante, et la loi fondamentale de la statique des fluides relie pression et profondeur ($P_2-P_1=\\rho g(z_1-z_2)$). Le travail d'une force et les échanges d'énergie liés aux transformations physiques et chimiques ont déjà été rencontrés.",
+    to: "La Terminale généralise ce cadre : l'équation d'état du gaz parfait $PV=nRT$ remplace la loi de Mariotte, le premier principe de la thermodynamique $\\Delta U = W+Q$ formalise les bilans d'énergie d'un système fermé, et les trois modes de transfert thermique (conduction, convection, rayonnement) sont caractérisés. En BCPST1, ce cadre est retravaillé dès les premières semaines (codes E.1, E.2) : les grandeurs sont formellement classées en grandeurs intensives et extensives, l'énergie interne et l'enthalpie sont manipulées comme fonctions d'état, et la statique des fluides (E.4) est formalisée sous forme différentielle pour établir, entre autres, la poussée d'Archimède."
+  },
+
+  fiches: [
+    {
+      unit:'1', badge:'Première',
+      title:"Décrire l'état d'un fluide",
+      paragraphs:[
+        "Décrire l'état d'un fluide (un gaz ou un liquide) au repos suppose de préciser la valeur de plusieurs grandeurs macroscopiques : la masse volumique ρ, la pression P, la température T, et la quantité de matière n. Ces grandeurs traduisent, à l'échelle macroscopique, l'agitation et la répartition des entités (atomes, molécules) qui constituent le fluide à l'échelle microscopique.",
+        "Ces grandeurs ne se comportent cependant pas toutes de la même façon lorsqu'on change la portion de fluide étudiée. Certaines gardent la même valeur en tout point du fluide, indépendamment du volume qu'on choisit d'observer : c'est le cas de la masse volumique, de la pression et de la température d'un fluide homogène à l'équilibre. D'autres, au contraire, dépendent directement de la quantité de fluide considérée : si l'on double le volume de fluide étudié, sa masse double, sa quantité de matière double — ces grandeurs s'additionnent lorsqu'on réunit deux portions de fluide identiques."
+      ],
+      bullets:[
+        "Masse volumique $\\rho = m/V$ (en kg·m⁻³) : la même en tout point d'un fluide homogène, quel que soit le volume observé.",
+        "Pression P (en pascal, Pa) : la même en tout point d'un fluide au repos à une altitude donnée (elle varie seulement avec l'altitude, cf. fiche 3).",
+        "Température T (en kelvin, K, ou en degré Celsius, °C) : la même en tout point d'un fluide à l'équilibre thermique.",
+        "Volume V, masse m et quantité de matière n : ces grandeurs dépendent directement de la portion de fluide considérée — elles s'additionnent si l'on réunit deux portions de fluide.",
+        "Cette distinction — grandeurs qui ne dépendent pas de la portion de fluide observée, grandeurs qui s'additionnent avec la quantité de fluide — recevra un nom précis dès les premières semaines de BCPST1 (grandeurs intensives et extensives) ; elle est présentée ici sans ce vocabulaire, pour construire d'abord l'intuition physique."
+      ]
+    },
+    {
+      unit:'2', badge:'Terminale',
+      title:"Le modèle du gaz parfait",
+      paragraphs:[
+        "Le modèle du gaz parfait décrit un gaz dans lequel les entités sont supposées ponctuelles et sans interaction entre elles, en dehors des chocs. C'est un modèle — donc une simplification valable dans certaines conditions — qui rend compte avec une bonne précision du comportement de nombreux gaz réels dans les conditions usuelles de température et de pression.",
+        "En Première, ce comportement est d'abord observé à travers la loi de Mariotte : à température constante, le produit de la pression par le volume d'une quantité de gaz donnée reste constant, $P\\cdot V = \\text{constante}$. La Terminale généralise cette observation à l'équation d'état du gaz parfait, valable quels que soient les changements de température, de pression ou de volume : $$P \\cdot V = n \\cdot R \\cdot T$$ où P est la pression (en Pa), V le volume (en m³), n la quantité de matière (en mol), T la température thermodynamique (en K), et R la constante des gaz parfaits ($R \\approx 8{,}314\\ \\text{J}\\cdot\\text{mol}^{-1}\\cdot\\text{K}^{-1}$)."
+      ],
+      bullets:[
+        "La loi de Mariotte est un cas particulier de l'équation d'état, obtenu en fixant n et T : si $PV=nRT$ et que n, R, T sont constants, alors $P\\cdot V$ est constant.",
+        "Attention aux unités : dans $PV=nRT$, la température doit impérativement être exprimée en kelvin — conversion : $T(\\text{K}) = T(°\\text{C}) + 273{,}15$.",
+        "Le modèle du gaz parfait a des limites : il ne décrit plus correctement un gaz à très basse température ou à très haute pression, lorsque les interactions entre entités et leur volume propre ne sont plus négligeables."
+      ]
+    },
+    {
+      unit:'3', badge:'Première',
+      title:"Fluides incompressibles et statique des fluides",
+      paragraphs:[
+        "Contrairement à un gaz, un liquide usuel (comme l'eau) est considéré, en première approximation, comme incompressible (son volume ne varie pas si on le comprime) et indilatable (son volume ne varie pas si sa température change). Sa masse volumique ρ peut alors être traitée comme une constante caractéristique du liquide, indépendante de la pression et de la température.",
+        "Dans un fluide au repos, la pression n'est pas la même partout : elle augmente avec la profondeur, car chaque couche de fluide doit soutenir le poids de toutes les couches situées au-dessus d'elle. C'est ce qu'exprime la loi fondamentale de la statique des fluides, valable pour un fluide incompressible au repos dans le champ de pesanteur : $$P_2 - P_1 = \\rho \\cdot g \\cdot (z_1 - z_2)$$ où $z_1$ et $z_2$ sont les altitudes des points 1 et 2 (axe orienté vers le haut), et g l'intensité de la pesanteur."
+      ],
+      bullets:[
+        "Concrètement : plus on descend en profondeur dans un liquide (z diminue), plus la pression augmente.",
+        "Conséquence directe, exigible dès la Première : la force pressante exercée par un fluide sur une surface plane S soumise à la pression P vaut $F = P \\cdot S$.",
+        "Ce module se limite à la relation algébrique entre deux points ; le programme de BCPST1 la formalise sous forme différentielle ($\\mathrm{d}P = \\pm\\rho g\\,\\mathrm{d}z$, code E.4) et l'utilise pour établir, entre autres, la poussée d'Archimède."
+      ]
+    },
+    {
+      unit:'4', badge:'Terminale',
+      title:"Système thermodynamique et énergie interne",
+      paragraphs:[
+        "Un système thermodynamique est la portion de matière que l'on choisit d'étudier, délimitée par une frontière (réelle ou imaginaire) qui la sépare du milieu extérieur. Un système est dit fermé s'il n'échange pas de matière avec l'extérieur (mais peut échanger de l'énergie), isolé s'il n'échange ni matière ni énergie.",
+        "À l'échelle microscopique, l'énergie interne U d'un système rassemble toutes les formes d'énergie liées à l'agitation désordonnée de ses entités (énergie cinétique microscopique) et à leurs interactions (énergie potentielle d'interaction) — mais pas l'énergie cinétique ni potentielle macroscopique du système dans son ensemble, qui relèvent de la mécanique. Comme la masse ou le volume, l'énergie interne dépend de la quantité de matière considérée."
+      ],
+      bullets:[
+        "Système fermé : peut échanger de l'énergie (travail, transfert thermique) avec l'extérieur, mais pas de matière — c'est le cas le plus souvent étudié en thermodynamique de première approche.",
+        "Une transformation thermodynamique fait passer le système d'un état d'équilibre initial à un état d'équilibre final : par exemple une transformation isochore (à volume constant), isobare (à pression constante) ou monotherme (en contact avec un thermostat à température constante).",
+        "L'énergie interne est une fonction d'état : sa variation entre l'état initial et l'état final ne dépend que de ces deux états, jamais du chemin suivi pour passer de l'un à l'autre."
+      ]
+    },
+    {
+      unit:'5', badge:'Terminale',
+      title:"Travail et transferts thermiques",
+      paragraphs:[
+        "Un système fermé échange de l'énergie avec l'extérieur selon deux grandes catégories : le travail W, associé à une action mécanique organisée (en particulier les forces de pression lors d'une variation de volume), et le transfert thermique Q, associé à un échange d'énergie lié à une différence de température, sans déplacement macroscopique organisé.",
+        "Le transfert thermique peut se faire selon trois modes, qu'il faut savoir distinguer qualitativement : la conduction (transfert de proche en proche au sein d'un milieu, sans déplacement de matière), la convection (transfert par déplacement macroscopique de matière au sein d'un fluide), et le rayonnement thermique (transfert par ondes électromagnétiques, ne nécessitant aucun support matériel)."
+      ],
+      bullets:[
+        "Travail des forces de pression : un gaz qui se comprime sous l'effet d'une pression extérieure reçoit du travail ; un gaz qui se détend en fournit à l'extérieur.",
+        "Conduction : de proche en proche, sans transport de matière (ex. la chaleur qui se propage le long d'une tige métallique).",
+        "Convection : par déplacement macroscopique de matière, propre aux fluides (ex. l'air chaud qui s'élève au-dessus d'un radiateur).",
+        "Rayonnement : par ondes électromagnétiques, seul mode possible dans le vide (ex. l'énergie du Soleil reçue par la Terre).",
+        "Convention de signe systématique en thermodynamique : W et Q sont comptés positivement quand ils sont reçus par le système, négativement quand ils sont cédés par le système à l'extérieur."
+      ]
+    },
+    {
+      unit:'6', badge:'Terminale',
+      title:"Le bilan énergétique ΔU = W + Q",
+      paragraphs:[
+        "Le premier principe de la thermodynamique énonce que, pour un système fermé passant d'un état d'équilibre initial à un état d'équilibre final, la variation de son énergie interne est égale à la somme des énergies qu'il a échangées avec l'extérieur, sous forme de travail et de transfert thermique : $$\\Delta U = W + Q$$ Ce principe est un principe de conservation : l'énergie ne se crée ni ne se détruit, elle se transforme et se transfère.",
+        "Ce bilan permet, sans connaître le détail de ce qui se passe à l'intérieur du système, de relier ce qui le caractérise (la variation de son énergie interne, une fonction d'état) à ce qu'il échange avec l'extérieur (le travail et le transfert thermique, qui dépendent eux du chemin suivi, contrairement à ΔU)."
+      ],
+      bullets:[
+        "Pour un système incompressible (un liquide, un solide) qui n'échange pas de travail, ΔU se relie simplement à la variation de température par la capacité thermique C du système : $\\Delta U = C \\cdot \\Delta T$.",
+        "Exemple guidé : un système reçoit un travail $W=+150\\ \\text{J}$ et cède un transfert thermique $Q=-40\\ \\text{J}$. Sa variation d'énergie interne vaut $\\Delta U = W+Q = 150+(-40)=110\\ \\text{J}$ : l'énergie interne du système augmente.",
+        "Prévoir le sens d'un transfert thermique : la chaleur s'écoule toujours spontanément du corps le plus chaud vers le corps le plus froid, jamais l'inverse sans apport extérieur."
+      ]
+    }
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {
+      u1:"1 — Décrire l'état d'un fluide",
+      u2:"2 — Le modèle du gaz parfait",
+      u3:"3 — Fluides incompressibles et statique des fluides",
+      u4:"4 — Système thermodynamique et énergie interne",
+      u5:"5 — Travail et transferts thermiques",
+      u6:"6 — Le bilan énergétique ΔU = W + Q"
+    },
+    nextStep: "Enchaîne sur les autres modules de Révisions de Terminale (mouvement dans le champ de pesanteur, condensateur, cinétique chimique, oxydoréduction, acides-bases) dès qu'ils seront prêts."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"Dans un fluide homogène à l'équilibre, laquelle de ces grandeurs a la même valeur en tout point, quel que soit le volume de fluide observé ?", options:["La pression", "Le volume", "La quantité de matière"], correct:0},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"Si l'on réunit deux portions identiques d'un même fluide, laquelle de ces grandeurs double ?", options:["La masse", "La masse volumique", "La température"], correct:0},
+    {id:'q3', type:'connaissance', difficulty:1, notion:'u1', q:"L'unité du système international pour la pression est :", options:["le pascal (Pa)", "le bar", "le newton"], correct:0},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u2', q:"L'équation d'état du gaz parfait s'écrit :", options:["PV = nRT", "PV = nT/R", "P/V = nRT"], correct:0},
+    {id:'q5', type:'connaissance', difficulty:1, notion:'u2', q:"Dans l'équation d'état du gaz parfait, la température T doit être exprimée :", options:["en kelvin", "en degré Celsius", "peu importe l'unité"], correct:0},
+    {id:'q6', type:'connaissance', difficulty:1, notion:'u2', q:"La loi de Mariotte s'applique :", options:["à température constante, pour une quantité de gaz donnée", "à pression constante", "quelle que soit la transformation subie par le gaz"], correct:0},
+    {id:'q7', type:'connaissance', difficulty:2, notion:'u2', q:"Le modèle du gaz parfait cesse d'être valable :", options:["à très basse température ou très haute pression", "à température et pression usuelles", "uniquement pour les gaz monoatomiques"], correct:0},
+    {id:'q8', type:'connaissance', difficulty:1, notion:'u3', q:"Un fluide incompressible et indilatable est un fluide dont :", options:["le volume ne varie ni avec la pression ni avec la température", "la masse volumique varie fortement avec la pression", "la masse varie avec le volume considéré"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u3', q:"Dans un fluide au repos dans le champ de pesanteur, la pression :", options:["augmente avec la profondeur", "diminue avec la profondeur", "reste constante quelle que soit l'altitude"], correct:0},
+    {id:'q10', type:'connaissance', difficulty:1, notion:'u3', q:"La force pressante exercée par un fluide de pression P sur une surface plane S vaut :", options:["F = P × S", "F = P / S", "F = P + S"], correct:0},
+    {id:'q11', type:'connaissance', difficulty:1, notion:'u4', q:"Un système fermé est un système qui :", options:["peut échanger de l'énergie mais pas de matière avec l'extérieur", "n'échange ni matière ni énergie avec l'extérieur", "échange à la fois matière et énergie avec l'extérieur"], correct:0},
+    {id:'q12', type:'connaissance', difficulty:2, notion:'u4', q:"L'énergie interne d'un système rassemble, à l'échelle microscopique :", options:["l'énergie cinétique désordonnée et l'énergie potentielle d'interaction des entités qui le composent", "uniquement l'énergie cinétique macroscopique du système", "uniquement l'énergie potentielle de pesanteur du système"], correct:0},
+    {id:'q13', type:'connaissance', difficulty:2, notion:'u4', q:"Une fonction d'état, comme l'énergie interne, a la propriété suivante :", options:["sa variation ne dépend que de l'état initial et de l'état final, pas du chemin suivi", "sa variation dépend du chemin suivi entre l'état initial et l'état final", "elle ne peut jamais varier au cours d'une transformation"], correct:0},
+    {id:'q14', type:'connaissance', difficulty:1, notion:'u5', q:"Le transfert thermique par conduction se caractérise par :", options:["un transfert d'énergie de proche en proche, sans déplacement macroscopique de matière", "un transfert par déplacement macroscopique de matière", "un transfert par ondes électromagnétiques, possible dans le vide"], correct:0},
+    {id:'q15', type:'connaissance', difficulty:1, notion:'u5', q:"Le rayonnement thermique est le seul mode de transfert thermique possible :", options:["dans le vide", "dans un solide", "dans un fluide en mouvement"], correct:0},
+    {id:'q16', type:'connaissance', difficulty:1, notion:'u6', q:"Le premier principe de la thermodynamique, pour un système fermé, s'écrit :", options:["ΔU = W + Q", "ΔU = W − Q", "ΔU = W × Q"], correct:0},
+    {id:'q17', type:'connaissance', difficulty:1, notion:'u6', q:"Le premier principe de la thermodynamique traduit :", options:["la conservation de l'énergie : elle ne se crée ni ne se détruit, elle se transforme et se transfère", "que l'énergie interne d'un système reste toujours constante", "que le travail et le transfert thermique sont toujours égaux"], correct:0},
+
+    {id:'r1', type:'raisonnement', difficulty:1, notion:'u1', q:"On verse la moitié du contenu d'un verre d'eau dans un second verre identique. Que peut-on dire de la masse volumique de l'eau dans chacun des deux verres ?",
+      options:["Elle est la même dans les deux verres : c'est une propriété du liquide, indépendante du volume observé", "Elle est deux fois plus faible dans le second verre, puisqu'il contient moitié moins d'eau", "Elle double dans le premier verre resté plein"], correct:0,
+      hint:"La masse volumique ne dépend pas du volume de fluide observé : diviser le volume d'eau ne change ni sa nature ni son état."},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u2', q:"Un gaz parfait occupe un volume V₁ à la pression P₁ et à température constante. On double la pression (P₂=2P₁) sans changer la température. Que devient son volume ?",
+      options:["Il est divisé par deux : V₂ = V₁/2", "Il double : V₂ = 2V₁", "Il ne change pas"], correct:0,
+      hint:"À température constante, la loi de Mariotte impose P·V = constante : si P double, V doit être divisé par deux pour que le produit reste inchangé."},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u2', q:"Une quantité de gaz parfait est enfermée dans un volume constant. Sa température augmente. Comment évolue sa pression, d'après PV=nRT ?",
+      options:["Elle augmente, proportionnellement à la température (en kelvin)", "Elle diminue", "Elle reste constante"], correct:0,
+      hint:"À V et n constants, PV=nRT se réécrit P = (nR/V)×T : P est directement proportionnelle à T."},
+    {id:'r4', type:'raisonnement', difficulty:2, notion:'u3', q:"Deux points A et B sont situés dans un même liquide incompressible au repos, B étant 2 m plus profond que A. Sachant que ρ_eau ≈ 1000 kg·m⁻³ et g ≈ 9,8 m·s⁻², quelle est la différence de pression P_B − P_A ?",
+      options:["environ 19 600 Pa, soit environ 0,2 bar", "environ 1000 Pa", "la pression est la même en A et en B"], correct:0,
+      hint:"Utilise P_B − P_A = ρ·g·(z_A − z_B), avec z_A − z_B = 2 m puisque B est 2 m plus bas que A."},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u3', q:"Pourquoi un plongeur ressent-il une pression nettement croissante en descendant dans l'eau, alors qu'il ne ressentirait presque aucune variation de pression en montant de la même hauteur dans l'air ?",
+      options:["Parce que la masse volumique de l'eau est environ 800 fois plus grande que celle de l'air, ce qui rend le terme ρgΔz bien plus sensible à l'altitude dans l'eau", "Parce que l'air n'exerce aucune pression", "Parce que l'eau n'est pas un fluide"], correct:0,
+      hint:"La variation de pression ρgΔz dépend directement de la masse volumique ρ du fluide : compare celle de l'eau à celle de l'air."},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u4', q:"Un gaz enfermé dans un cylindre voit son volume diminuer sous l'effet d'un piston qui le comprime, sans échange de chaleur. Le gaz reçoit-il ou cède-t-il du travail ?",
+      options:["Il reçoit du travail : le piston lui fournit de l'énergie en réduisant son volume", "Il cède du travail à l'extérieur", "Aucun travail n'est échangé puisqu'il n'y a pas de transfert thermique"], correct:0,
+      hint:"C'est le piston qui agit sur le gaz pour réduire son volume : c'est donc le gaz qui reçoit de l'énergie sous forme de travail."},
+    {id:'r7', type:'raisonnement', difficulty:2, notion:'u5', q:"Une casserole d'eau posée sur une plaque chauffante s'échauffe d'abord par le fond (contact avec la plaque), puis l'eau chaude s'élève et l'eau froide redescend, homogénéisant la température. Quels sont, dans l'ordre, les deux modes de transfert thermique successivement impliqués ?",
+      options:["Conduction (à travers le fond métallique), puis convection (mouvement de l'eau)", "Convection, puis rayonnement", "Rayonnement, puis conduction"], correct:0,
+      hint:"Le contact plaque-casserole sans déplacement de matière est un premier mode ; le mouvement de l'eau chaude qui s'élève en est un second."},
+    {id:'r8', type:'raisonnement', difficulty:1, notion:'u5', q:"Pourquoi la chaleur du Soleil parvient-elle jusqu'à la Terre, alors que l'espace entre les deux est un vide quasi parfait ?",
+      options:["Parce que le rayonnement thermique se propage par ondes électromagnétiques, qui n'ont besoin d'aucun support matériel", "Parce que la conduction se fait très bien dans le vide", "Parce que la convection transporte la chaleur à travers le vide"], correct:0,
+      hint:"Seul un des trois modes de transfert thermique ne nécessite aucune matière pour se propager."},
+    {id:'r9', type:'raisonnement', difficulty:2, notion:'u6', q:"Un système reçoit un travail W = +80 J et cède un transfert thermique Q = −120 J. Quelle est la variation de son énergie interne ΔU ?",
+      options:["ΔU = −40 J : l'énergie interne du système diminue", "ΔU = +200 J", "ΔU = −200 J"], correct:0,
+      hint:"Applique directement ΔU = W + Q = 80 + (−120)."},
+    {id:'r10', type:'raisonnement', difficulty:2, notion:'u6', q:"Un système de capacité thermique C = 500 J·K⁻¹ voit sa température passer de 20°C à 35°C sans échanger de travail. Quel est le transfert thermique Q reçu par le système (W = 0, donc Q = ΔU) ?",
+      options:["Q = +7500 J", "Q = +15 J", "Q = −7500 J"], correct:0,
+      hint:"ΔU = C×ΔT, avec ΔT = 35−20 = 15 K (une variation de température en degrés Celsius est numériquement égale à une variation en kelvin)."},
+    {id:'r11', type:'raisonnement', difficulty:1, notion:'u6', q:"Deux blocs métalliques, l'un à 80°C, l'autre à 20°C, sont mis en contact et isolés du reste de l'extérieur. Dans quel sens s'effectue spontanément le transfert thermique ?",
+      options:["Du bloc à 80°C vers le bloc à 20°C", "Du bloc à 20°C vers le bloc à 80°C", "Aucun transfert thermique n'a lieu puisque les deux blocs sont solides"], correct:0,
+      hint:"Un transfert thermique spontané va toujours du corps le plus chaud vers le corps le plus froid."},
+    {id:'r12', type:'raisonnement', difficulty:2, notion:'u4', q:"On compare deux béchers contenant chacun 100 mL d'une même solution à la même température, réunis ensuite dans un même récipient de 200 mL. Que peut-on dire de l'énergie interne totale du système réuni ?",
+      options:["Elle est la somme des énergies internes des deux béchers de 100 mL", "Elle est la même que celle d'un seul bécher de 100 mL", "Elle ne peut pas être définie pour un liquide"], correct:0,
+      hint:"Comme la masse ou le volume, l'énergie interne dépend de la quantité de matière considérée : elle s'additionne quand on réunit deux systèmes identiques."}
+  ],
+
+  applications: [
+    {id:'a1', difficulty:1, notion:'u2', statement:"Une bouteille de volume V = 10 L contient n = 0,40 mol de gaz parfait à la température T = 20°C. Calcule la pression P du gaz, en bar (R ≈ 8,314 J·mol⁻¹·K⁻¹, 1 bar = 10⁵ Pa).",
+      unit:'bar', answer:0.97, tolerance:{type:'pct', value:5},
+      methode:"Utilise PV=nRT : convertis le volume en m³ et la température en kelvin avant de calculer.",
+      correction:["Convertir : V = 10 L = 0,010 m³ ; T = 20+273,15 = 293,15 K.", "P = nRT/V = (0,40 × 8,314 × 293,15) / 0,010 ≈ 97 500 Pa.", "Soit P ≈ 0,97 bar (975 hPa)."]},
+    {id:'a2', difficulty:1, notion:'u2', statement:"Un gaz occupe un volume V₁ = 3,0 L sous une pression P₁ = 2,0 bar, à température constante. Quel est son volume V₂ si la pression passe à P₂ = 1,2 bar, toujours à température constante ?",
+      unit:'L', answer:5.0, tolerance:{type:'pct', value:3},
+      methode:"La loi de Mariotte impose P₁V₁ = P₂V₂ à température constante.",
+      correction:["P₁V₁ = P₂V₂ donc V₂ = P₁V₁/P₂.", "V₂ = (2,0 × 3,0) / 1,2 = 6,0/1,2 = 5,0 L."]},
+    {id:'a3', difficulty:1, notion:'u3', statement:"Quelle est la différence de pression, en Pa, entre la surface d'une piscine et un point situé 3,0 m sous la surface (ρ_eau = 1000 kg·m⁻³, g = 9,8 m·s⁻²) ?",
+      unit:'Pa', answer:29400, tolerance:{type:'pct', value:3},
+      methode:"Utilise ΔP = ρ·g·Δz avec Δz la différence de profondeur.",
+      correction:["ΔP = ρ × g × Δz = 1000 × 9,8 × 3,0.", "ΔP = 29 400 Pa, soit environ 0,29 bar."]},
+    {id:'a4', difficulty:2, notion:'u3', statement:"Un hublot circulaire de sous-marin a une surface S = 0,050 m². Il est soumis à une pression de 3,0×10⁵ Pa supérieure à la pression intérieure. Quelle est l'intensité de la force pressante résultante exercée sur le hublot, en newtons ?",
+      unit:'N', answer:15000, tolerance:{type:'pct', value:3},
+      methode:"F = P × S (attention aux unités : S en m², P en Pa).",
+      correction:["F = P × S = 3,0×10⁵ × 0,050.", "F = 1,5×10⁴ N, soit 15 000 N (environ 1,5 tonne-force)."]},
+    {id:'a5', difficulty:1, notion:'u6', statement:"Un système reçoit un travail W = 250 J et un transfert thermique Q = −90 J. Calcule la variation d'énergie interne ΔU du système, en joules.",
+      unit:'J', answer:160, tolerance:{type:'abs', value:2},
+      methode:"Applique directement le premier principe ΔU = W + Q.",
+      correction:["ΔU = W + Q = 250 + (−90).", "ΔU = 160 J : l'énergie interne du système augmente."]},
+    {id:'a6', difficulty:2, notion:'u6', statement:"Un bloc de cuivre de capacité thermique C = 180 J·K⁻¹ passe de 15°C à 45°C sans échanger de travail. Quel transfert thermique Q a-t-il reçu, en joules ?",
+      unit:'J', answer:5400, tolerance:{type:'pct', value:3},
+      methode:"Sans travail échangé, ΔU = Q. Utilise ΔU = C×ΔT avec ΔT en kelvin (numériquement égal à ΔT en °C).",
+      correction:["ΔT = 45−15 = 30 K (l'écart est le même en °C et en K).", "ΔU = C×ΔT = 180×30 = 5400 J.", "Comme W=0, Q = ΔU = 5400 J."]}
+  ],
+
+  mindmapModel: {
+    label:"Premier principe de la thermodynamique",
+    children:[
+      {label:"Décrire un fluide", children:[
+        {label:"Masse volumique, pression, température"},{label:"Volume, masse, quantité de matière"}
+      ]},
+      {label:"Gaz parfait", children:[
+        {label:"Équation d'état PV=nRT"},{label:"Loi de Mariotte (T constante)"},{label:"Limites du modèle"}
+      ]},
+      {label:"Fluides incompressibles", children:[
+        {label:"Masse volumique constante"},{label:"Loi de la statique des fluides"},{label:"Force pressante F=P×S"}
+      ]},
+      {label:"Premier principe", children:[
+        {label:"Énergie interne U"},{label:"Travail W"},{label:"Transfert thermique Q"},{label:"Bilan ΔU=W+Q"}
+      ]},
+      {label:"Modes de transfert thermique", children:[
+        {label:"Conduction"},{label:"Convection"},{label:"Rayonnement"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>

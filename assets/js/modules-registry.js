@@ -26,7 +26,7 @@ window.MODULES = [
   {id:'pc-mecanique', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Révisions de Terminale', title:"Mouvement dans le champ de pesanteur", pages:"M.1, M.2", status:'soon', accent:'var(--ochre)', href:null},
   {id:'pc-condensateur', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Révisions de Terminale', title:"Charge et décharge d'un condensateur", pages:"S.3", status:'soon', accent:'var(--ochre)', href:null},
   {id:'pc-cinetique', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Révisions de Terminale', title:"Cinétique chimique", pages:"C.4", status:'soon', accent:'var(--ochre)', href:null},
-  {id:'pc-premier-principe', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Révisions de Terminale', title:"Premier principe de la thermodynamique", pages:"E.1, E.2, E.3", status:'soon', accent:'var(--ochre)', href:null},
+  {id:'pc-premier-principe', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Révisions de Terminale', title:"Premier principe de la thermodynamique", pages:"E.1, E.2, E.4", status:'available', accent:'var(--ochre)', href:'physique-chimie/premier-principe.html'},
   {id:'pc-oxydoreduction', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Révisions de Terminale', title:"Oxydants/réducteurs, demi-équations", pages:"C.2", status:'soon', accent:'var(--ochre)', href:null},
   {id:'pc-acide-base', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Révisions de Terminale', title:"Acides et bases, Henderson-Hasselbalch", pages:"C.2", status:'soon', accent:'var(--ochre)', href:null},
 
