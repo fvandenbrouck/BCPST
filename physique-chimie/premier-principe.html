@@ -48,7 +48,7 @@ const MODULE = {
         "Pression P (en pascal, Pa) : la même en tout point d'un fluide au repos à une altitude donnée (elle varie seulement avec l'altitude, cf. fiche 3).",
         "Température T (en kelvin, K, ou en degré Celsius, °C) : la même en tout point d'un fluide à l'équilibre thermique.",
         "Volume V, masse m et quantité de matière n : ces grandeurs dépendent directement de la portion de fluide considérée — elles s'additionnent si l'on réunit deux portions de fluide.",
-        "Cette distinction — grandeurs qui ne dépendent pas de la portion de fluide observée, grandeurs qui s'additionnent avec la quantité de fluide — recevra un nom précis dès les premières semaines de BCPST1 (grandeurs intensives et extensives) ; elle est présentée ici sans ce vocabulaire, pour construire d'abord l'intuition physique."
+        "Cette distinction (grandeurs qui ne dépendent pas de la portion de fluide observée, grandeurs qui s'additionnent avec la quantité de fluide) recevra un nom précis dès les premières semaines de BCPST1 ; elle est présentée ici sans ce vocabulaire, pour construire d'abord l'intuition physique."
       ]
     },
     {
@@ -60,7 +60,7 @@ const MODULE = {
       ],
       bullets:[
         "La loi de Mariotte est un cas particulier de l'équation d'état, obtenu en fixant n et T : si $PV=nRT$ et que n, R, T sont constants, alors $P\\cdot V$ est constant.",
-        "Attention aux unités : dans $PV=nRT$, la température doit impérativement être exprimée en kelvin — conversion : $T(\\text{K}) = T(°\\text{C}) + 273{,}15$.",
+        "Attention aux unités : dans $PV=nRT$, la température doit impérativement être exprimée en kelvin ; conversion : $T(\\text{K}) = T(°\\text{C}) + 273{,}15$.",
         "Le modèle du gaz parfait a des limites : il ne décrit plus correctement un gaz à très basse température ou à très haute pression, lorsque les interactions entre entités et leur volume propre ne sont plus négligeables."
       ]
     },
@@ -69,12 +69,12 @@ const MODULE = {
       title:"Fluides incompressibles et statique des fluides",
       paragraphs:[
         "Contrairement à un gaz, un liquide usuel (comme l'eau) est considéré, en première approximation, comme incompressible (son volume ne varie pas si on le comprime) et indilatable (son volume ne varie pas si sa température change). Sa masse volumique ρ peut alors être traitée comme une constante caractéristique du liquide, indépendante de la pression et de la température.",
-        "Dans un fluide au repos, la pression n'est pas la même partout : elle augmente avec la profondeur, car chaque couche de fluide doit soutenir le poids de toutes les couches situées au-dessus d'elle. C'est ce qu'exprime la loi fondamentale de la statique des fluides, valable pour un fluide incompressible au repos dans le champ de pesanteur : la quantité $$P_1 + \\rho \\cdot g z_1 = P_2 + \\rho g \\cdot z_2$$ où $z_1$ et $z_2$ sont les altitudes des points 1 et 2 (axe orienté vers le haut), et g l'intensité de la pesanteur. Autrement dit, la quantité $$P + \\rho \\cdot g z$$ reste invariable dans le fluide, c'est-à-dire qu'elle garde la même valeur en tout point du fluide."
+        "Dans un fluide au repos, la pression n'est pas la même partout : elle augmente avec la profondeur, car chaque couche de fluide doit soutenir le poids de toutes les couches situées au-dessus d'elle. C'est ce qu'exprime la loi fondamentale de la statique des fluides, valable pour un fluide incompressible au repos dans le champ de pesanteur : $$P_1 + \\rho \\cdot g z_1 = P_2 + \\rho g \\cdot z_2$$ où $z_1$ et $z_2$ sont les altitudes des points 1 et 2 (axe orienté vers le haut), et g l'intensité de la pesanteur. Autrement dit, la quantité $$P + \\rho \\cdot g z$$ reste invariable dans le fluide, c'est-à-dire qu'elle garde la même valeur en tout point du fluide."
       ],
       bullets:[
         "Concrètement : plus on descend en profondeur dans un liquide (z diminue), plus la pression augmente.",
         "Conséquence directe, exigible dès la Première : la force pressante exercée par un fluide sur une surface plane S soumise à la pression P vaut $F = P \\cdot S$.",
-        "Ce module se limite à la relation algébrique entre deux points ; le programme de BCPST1 la formalise sous forme différentielle ($\\mathrm{d}P = \\pm\\rho g\\,\\mathrm{d}z$, code E.4) et l'utilise pour établir, entre autres, la poussée d'Archimède."
+        "Ce module se limite à la relation algébrique entre deux points ; le programme de BCPST1 la formalise sous le forme d'une équation différentielle ($\\frac{\\mathrm{d}P}{\\mathrm{d}z} = \\rho g_z\\$, où $g_z$ est la valeur algébrique de l'accélération de la pesanteur sur l'axe orienté $(Oz)$)."
       ]
     },
     {
@@ -85,8 +85,8 @@ const MODULE = {
         "À l'échelle microscopique, l'énergie interne U d'un système rassemble toutes les formes d'énergie liées à l'agitation désordonnée de ses entités (énergie cinétique microscopique) et à leurs interactions (énergie potentielle d'interaction) — mais pas l'énergie cinétique ni potentielle macroscopique du système dans son ensemble, qui relèvent de la mécanique. Comme la masse ou le volume, l'énergie interne dépend de la quantité de matière considérée."
       ],
       bullets:[
-        "Système fermé : peut échanger de l'énergie (travail, transfert thermique) avec l'extérieur, mais pas de matière — c'est le cas le plus souvent étudié en thermodynamique de première approche.",
-        "Une transformation thermodynamique fait passer le système d'un état d'équilibre initial à un état d'équilibre final : par exemple une transformation isochore (à volume constant), isobare (à pression constante) ou monotherme (en contact avec un thermostat à température constante).",
+        "Système fermé : peut échanger de l'énergie (travail, transfert thermique) avec l'extérieur, mais pas de matière (c'est le cas le plus souvent étudié en thermodynamique de première approche).",
+        "Une transformation thermodynamique fait passer le système d'un état d'équilibre initial à un état d'équilibre final : on peut, par exemple, comprimer un gaz de différentes façons. Une compression suffisamment lente permet de maintenir constante la température du gaz (compression isotherme) alors qu'une compression rapide empêchera tout transfert d'énergie sous forme thermique entre le gaz et l'extérieur (compression adiabatique)",
         "L'énergie interne est une fonction d'état : sa variation entre l'état initial et l'état final ne dépend que de ces deux états, jamais du chemin suivi pour passer de l'un à l'autre."
       ]
     },
@@ -113,7 +113,7 @@ const MODULE = {
         "Ce bilan permet, sans connaître le détail de ce qui se passe à l'intérieur du système, de relier ce qui le caractérise (la variation de son énergie interne, une fonction d'état) à ce qu'il échange avec l'extérieur (le travail et le transfert thermique, qui dépendent eux du chemin suivi, contrairement à ΔU)."
       ],
       bullets:[
-        "Pour un système incompressible (un liquide, un solide) qui n'échange pas de travail, ΔU se relie simplement à la variation de température par la capacité thermique C du système : $\\Delta U = C \\cdot \\Delta T$.",
+        "Pour un système incompressible et indilatable (un liquide, un solide), $ΔU$ se relie simplement à la variation de température par la capacité thermique $C$ du système : $\\Delta U = C \\cdot \\Delta T$.",
         "Exemple guidé : un système reçoit un travail $W=+150\\ \\text{J}$ et cède un transfert thermique $Q=-40\\ \\text{J}$. Sa variation d'énergie interne vaut $\\Delta U = W+Q = 150+(-40)=110\\ \\text{J}$ : l'énergie interne du système augmente.",
         "Prévoir le sens d'un transfert thermique : la chaleur s'écoule toujours spontanément du corps le plus chaud vers le corps le plus froid, jamais l'inverse sans apport extérieur."
       ]
