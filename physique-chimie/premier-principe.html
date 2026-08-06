@@ -31,7 +31,7 @@ const MODULE = {
   noManual: true,
   backHref: '../index.html',
   bridge: {
-    from: "En Première, un fluide au repos est décrit par sa masse volumique, sa pression et sa température, la loi de Mariotte relie pression et volume à température constante, et la loi fondamentale de la statique des fluides relie pression et profondeur ($P_2-P_1=\\rho g(z_1-z_2)$). Le travail d'une force et les échanges d'énergie liés aux transformations physiques et chimiques ont déjà été rencontrés.",
+    from: "En Première, un fluide au repos est décrit par sa masse volumique, sa pression et sa température, la loi de Mariotte relie pression et volume à température constante, et la loi fondamentale de la statique des fluides relie pression et profondeur ($P_2+\\rho g z_2=P_1+\\rho g z_1$). Le travail d'une force et les échanges d'énergie liés aux transformations physiques et chimiques ont déjà été rencontrés.",
     to: "La Terminale généralise ce cadre : l'équation d'état du gaz parfait $PV=nRT$ généralise la loi de Mariotte, le premier principe de la thermodynamique $\\Delta U = W+Q$ formalise les bilans d'énergie d'un système fermé, et les trois modes de transfert thermique (conduction, convection, rayonnement) sont caractérisés. En BCPST1, ce cadre est retravaillé dès les premières semaines (codes E.1, E.2) : les grandeurs sont formellement classées en grandeurs intensives et extensives, l'énergie interne et l'enthalpie sont manipulées comme fonctions d'état, et la statique des fluides (E.4) est formalisée sous forme différentielle pour établir, entre autres, la poussée d'Archimède."
   },
 
@@ -74,7 +74,7 @@ const MODULE = {
       bullets:[
         "Concrètement : plus on descend en profondeur dans un liquide (z diminue), plus la pression augmente.",
         "Conséquence directe, exigible dès la Première : la force pressante exercée par un fluide sur une surface plane S soumise à la pression P vaut $F = P \\cdot S$.",
-        "Ce module se limite à la relation algébrique entre deux points ; le programme de BCPST1 la formalise sous le forme d'une équation différentielle ($\\frac{\\mathrm{d}P}{\\mathrm{d}z} = \\rho g_z\\$, où $g_z$ est la valeur algébrique de l'accélération de la pesanteur sur l'axe orienté $(Oz)$)."
+        "Ce module se limite à la relation algébrique entre deux points ; le programme de BCPST1 la formalise sous le forme d'une équation différentielle ($\\frac{\\mathrm{d}P}{\\mathrm{d}z} = \\rho g_z$), où $g_z$ est la valeur algébrique de l'accélération de la pesanteur sur l'axe orienté $(Oz)$)."
       ]
     },
     {
