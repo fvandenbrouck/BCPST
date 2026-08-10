@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charge et décharge d'un condensateur · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+/* Schémas de circuit dans le cours : plus larges que les illustrations QCM par défaut, pour rester lisibles. */
+.card .q-figure img{max-width:100%;}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/applications-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'pc-condensateur',
+  chapNum: "Révisions de Terminale",
+  subjectLabel: "Physique-Chimie",
+  accent: 'var(--ochre)',
+  title: "Charge et décharge d'un condensateur",
+  pages: "Programme de Terminale spécialité — BCPST1 : S.2, S.3",
+  noManual: true,
+  backHref: '../index.html',
+  bridge: {
+    from: "Depuis le collège, les lois de base des circuits électriques (conservation du courant, additivité des tensions) sont utilisées de façon informelle pour analyser des circuits en série ou en dérivation. La Première a introduit le lien entre intensité et débit de charges, ainsi que les bilans de puissance dans un circuit.",
+    to: "La Terminale nomme formellement la loi des nœuds et la loi des mailles, introduit le modèle du condensateur ($q=Cu$) et étudie pour la première fois un circuit dont le comportement est régi par une équation différentielle : le circuit RC, en charge et en décharge, avec son temps caractéristique $\\tau=RC$. En BCPST1, ce cadre est repris et formalisé dès le premier semestre (code S.2 pour les lois de circuit, avec l'algébrisation systématique des grandeurs et la représentation de Thévenin, puis code S.3 pour la dynamique complète du circuit RC, incluant le bilan énergétique) — la résolution d'équations différentielles linéaires du premier ordre devient une compétence mathématique transversale, retravaillée aussi en thermodynamique."
+  },
+
+  fiches: [
+    {
+      unit:'1', badge:'Prérequis',
+      title:"Loi des nœuds et loi des mailles",
+      paragraphs:[
+        "L'étude d'un circuit électrique repose sur deux lois de conservation, déjà rencontrées dès le collège sous une forme plus simple, et qui portent ici un nom précis : la loi des nœuds et la loi des mailles. Elles permettent de relier entre elles les intensités et les tensions dans n'importe quel circuit, aussi complexe soit-il.",
+        "Une branche est une portion de circuit reliant deux nœuds consécutifs, parcourue par une seule et même intensité — elle peut contenir un seul dipôle ou plusieurs dipôles en série. Un nœud est un point du circuit où se rejoignent au moins trois branches (donc au moins trois fils).",
+        "La loi des nœuds traduit la conservation de la charge électrique : en un nœud, la somme des intensités qui arrivent est égale à la somme des intensités qui repartent — aucune charge ne peut s'accumuler en un point du circuit. La loi des mailles traduit quant à elle l'additivité des tensions : le long d'une maille (une boucle fermée du circuit), la somme algébrique des tensions, parcourue dans un sens donné, est nulle."
+      ],
+      bullets:[
+        "Loi des nœuds, illustrée ci-dessous en un nœud A où i₁ et i₂ arrivent tandis que i₃ repart : $i_1 + i_2 - i_3 = 0$ (une intensité est comptée positivement si elle arrive au nœud, négativement si elle en repart).",
+        "Loi des mailles, illustrée ci-dessous sur une maille carrée à quatre dipôles D₁ à D₄ : après avoir choisi un sens de parcours arbitraire (la flèche incurvée), chaque tension est comptée positivement si sa flèche est orientée dans le sens du parcours, négativement sinon.",
+        "Un circuit à une seule maille — le cas étudié dans ce module pour le condensateur — simplifie beaucoup l'analyse : la loi des nœuds n'intervient même pas, puisqu'il n'y a qu'un seul chemin possible pour le courant, donc une seule intensité $i(t)$ commune à tous les dipôles.",
+        "Ce vocabulaire sera formalisé rigoureusement dès les premières semaines de BCPST1 (code S.2), avec l'algébrisation systématique des grandeurs électriques et les conventions récepteur/générateur."
+      ],
+      images:[
+        {src:'../assets/img/pc-condensateur/loi-noeuds.svg', alt:"Schéma d'un nœud A où arrivent deux branches parcourues par les intensités i1 et i2, et d'où repart une troisième branche parcourue par i3 ; loi des nœuds : i1 + i2 - i3 = 0."},
+        {src:'../assets/img/pc-condensateur/loi-mailles.svg', alt:"Schéma d'une maille carrée à quatre dipôles D1, D2, D3, D4, avec un sens de parcours arbitraire (flèche incurvée) et les tensions u1, u2, u3, u4 ; loi des mailles : u1 - u2 + u3 - u4 = 0."}
+      ]
+    },
+    {
+      unit:'2', badge:'Terminale',
+      title:"Charge et tension d'un condensateur",
+      paragraphs:[
+        "Un condensateur est un dipôle constitué de deux surfaces conductrices en regard (les armatures), séparées par un isolant. Lorsqu'il est parcouru par un courant, des charges électriques de signes opposés s'accumulent sur chacune de ses armatures : c'est ce qu'on appelle le comportement capacitif.",
+        "La charge q portée par l'armature reliée au courant entrant est proportionnelle à la tension u à ses bornes : $$q = C \\cdot u$$ où C est la capacité du condensateur, exprimée en farads (F) — une unité qui correspond en pratique à des valeurs très grandes ; les condensateurs usuels ont des capacités de l'ordre du nanofarad (nF, $10^{-9}$ F) au millifarad (mF, $10^{-3}$ F)."
+      ],
+      bullets:[
+        "L'intensité du courant qui charge (ou décharge) le condensateur est, par définition, le débit de charge : $i = \\dfrac{\\mathrm{d}q}{\\mathrm{d}t}$.",
+        "En combinant les deux relations ($q=Cu$ et $i=\\mathrm{d}q/\\mathrm{d}t$), et puisque C est constante, on obtient la relation la plus utile en pratique : $$i = C\\,\\dfrac{\\mathrm{d}u}{\\mathrm{d}t}$$",
+        "Une propriété essentielle, utilisée pour déterminer les conditions initiales d'un circuit : la tension aux bornes d'un condensateur ne peut pas subir de discontinuité (elle est continue au cours du temps), même si l'intensité qui le traverse, elle, peut varier brusquement."
+      ]
+    },
+    {
+      unit:'3', badge:'Terminale',
+      title:"La charge d'un condensateur à travers une résistance",
+      paragraphs:[
+        "On étudie le circuit RC série le plus simple : un générateur idéal de force électromotrice E, une résistance R et un condensateur de capacité C, montés en une seule maille. À l'instant initial t=0, le condensateur est déchargé ($u_C(0)=0$) et on ferme l'interrupteur qui connecte le générateur.",
+        "La loi des mailles, appliquée à cette unique maille, donne $E = R\\,i + u_C$. En remplaçant i par $C\\,\\mathrm{d}u_C/\\mathrm{d}t$ (relation du condensateur), on obtient l'équation différentielle du premier ordre vérifiée par la tension à ses bornes : $$RC\\,\\dfrac{\\mathrm{d}u_C}{\\mathrm{d}t} + u_C = E$$"
+      ],
+      bullets:[
+        "La solution de cette équation, compte tenu de la condition initiale $u_C(0)=0$, s'écrit : $$u_C(t) = E\\left(1 - e^{-t/\\tau}\\right), \\quad \\tau = RC$$",
+        "Allure de la courbe $u_C(t)$ : elle part de 0, croît en s'aplatissant progressivement, et tend asymptotiquement vers E sans jamais l'atteindre exactement (mathématiquement) — en pratique, on considère le régime stationnaire atteint au bout de quelques τ.",
+        "L'intensité, elle, vaut $i(t) = C\\,\\mathrm{d}u_C/\\mathrm{d}t = \\dfrac{E}{R}e^{-t/\\tau}$ : maximale à l'instant initial (le condensateur se comporte alors comme un simple fil), elle décroît ensuite vers 0 (le condensateur, une fois chargé, se comporte comme un interrupteur ouvert : plus aucun courant ne circule en régime stationnaire)."
+      ],
+      images:[
+        {src:'../assets/img/pc-condensateur/rc-charge.svg', alt:"Circuit RC série en charge : générateur idéal de f.é.m. E, résistance R parcourue par le courant i, condensateur de capacité C sous la tension u_C, montés en une seule maille."}
+      ]
+    },
+    {
+      unit:'4', badge:'Terminale',
+      title:"La décharge d'un condensateur",
+      paragraphs:[
+        "On étudie maintenant le condensateur, initialement chargé sous la tension E, que l'on débranche du générateur pour le relier directement à la résistance R (toujours en une seule maille, mais sans force électromotrice cette fois).",
+        "La loi des mailles s'écrit maintenant $0 = R\\,i + u_C$, ce qui donne, avec la même substitution que pour la charge, l'équation différentielle : $$RC\\,\\dfrac{\\mathrm{d}u_C}{\\mathrm{d}t} + u_C = 0$$ Une équation différentielle homogène (sans second membre), dont la solution, avec la condition initiale $u_C(0)=E$, est : $$u_C(t) = E\\,e^{-t/\\tau}, \\quad \\tau=RC$$"
+      ],
+      bullets:[
+        "Allure de la courbe $u_C(t)$ : elle part de E et décroît de façon exponentielle vers 0, sans jamais l'atteindre exactement — le condensateur restitue progressivement l'énergie qu'il avait stockée, en la dissipant par effet Joule dans la résistance.",
+        "L'intensité de décharge vaut $i(t) = -\\dfrac{E}{R}e^{-t/\\tau}$ : le signe négatif traduit le fait que le courant circule maintenant dans le sens opposé à celui de la charge (le condensateur, récepteur pendant la charge, devient générateur pendant la décharge).",
+        "Charge et décharge partagent exactement le même temps caractéristique $\\tau=RC$ : lui seul dépend des composants du circuit, pas de la valeur de E ni du sens de l'évolution."
+      ],
+      images:[
+        {src:'../assets/img/pc-condensateur/rc-generic.svg', alt:"Circuit de décharge : résistance R parcourue par le courant i et condensateur de capacité C sous la tension u_C, montés en une seule maille, sans générateur."}
+      ]
+    },
+    {
+      unit:'5', badge:'Terminale',
+      title:"Le temps caractéristique τ = RC",
+      paragraphs:[
+        "Le temps caractéristique $\\tau=RC$ (exprimé en secondes lorsque R est en ohms et C en farads) donne l'ordre de grandeur de la durée du régime transitoire : c'est le temps qu'il faudrait pour atteindre la valeur finale si l'évolution se poursuivait à sa vitesse initiale. En pratique, on retient qu'au bout d'une durée de $5\\tau$, le régime stationnaire est atteint à moins de 1% près.",
+        "Deux méthodes graphiques permettent de déterminer expérimentalement τ à partir d'une courbe $u_C(t)$ enregistrée à l'oscilloscope ou avec une carte d'acquisition, sans avoir besoin de connaître R ni C séparément."
+      ],
+      bullets:[
+        "Méthode de la tangente à l'origine : la tangente à la courbe $u_C(t)$ au point $t=0$ coupe l'asymptote horizontale (la valeur finale) à l'instant $t=\\tau$ — une conséquence directe du fait que la pente initiale de l'exponentielle vaut $\\pm E/\\tau$.",
+        "Méthode des 63% (charge) ou 37% (décharge) : à l'instant $t=\\tau$, la charge a atteint 63% de sa valeur finale ($1-e^{-1}\\approx 0{,}63$), et la décharge est retombée à 37% de sa valeur initiale ($e^{-1}\\approx 0{,}37$) — il suffit de repérer graphiquement à quel instant la courbe passe par ce niveau.",
+        "Ce temps caractéristique conditionne directement le choix des composants dans une application pratique : un capteur capacitif, par exemple, doit avoir un τ adapté à la rapidité du phénomène que l'on souhaite mesurer."
+      ]
+    }
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {
+      u1:"1 — Loi des nœuds et loi des mailles",
+      u2:"2 — Charge et tension d'un condensateur",
+      u3:"3 — La charge d'un condensateur à travers une résistance",
+      u4:"4 — La décharge d'un condensateur",
+      u5:"5 — Le temps caractéristique τ = RC"
+    },
+    nextStep: "Enchaîne sur les autres modules de Révisions de Terminale (mouvement dans le champ de pesanteur, cinétique chimique, oxydoréduction, acides-bases) dès qu'ils seront prêts."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"La loi des nœuds traduit :", options:["la conservation de la charge électrique : la somme des intensités entrantes égale la somme des intensités sortantes en un nœud", "l'additivité des tensions le long d'une maille", "la proportionnalité entre tension et intensité dans une résistance"], correct:0},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"La loi des mailles s'applique :", options:["le long d'une boucle fermée du circuit (une maille)", "uniquement en un nœud du circuit", "uniquement pour les circuits comportant un condensateur"], correct:0},
+    {id:'q3', type:'connaissance', difficulty:1, notion:'u1', q:"Dans un circuit à une seule maille, comme le circuit RC étudié dans ce module :", options:["l'intensité i(t) est la même en tout point du circuit à un instant donné", "la loi des nœuds doit être appliquée à chaque composant", "il existe plusieurs intensités différentes à un instant donné"], correct:0},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u2', q:"La relation entre la charge q portée par un condensateur et la tension u à ses bornes s'écrit :", options:["q = C·u", "q = u/C", "q = C + u"], correct:0},
+    {id:'q5', type:'connaissance', difficulty:1, notion:'u2', q:"L'unité de la capacité C d'un condensateur est :", options:["le farad (F)", "l'ohm (Ω)", "le henry (H)"], correct:0},
+    {id:'q6', type:'connaissance', difficulty:1, notion:'u2', q:"L'intensité du courant qui traverse un condensateur est reliée à la charge q par :", options:["i = dq/dt", "i = q/dt", "i = dq × dt"], correct:0},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u2', q:"En combinant q=Cu et i=dq/dt, on obtient pour un condensateur de capacité constante :", options:["i = C·du/dt", "i = C/(du·dt)", "i = du/(C·dt)"], correct:0},
+    {id:'q8', type:'connaissance', difficulty:2, notion:'u2', q:"La tension aux bornes d'un condensateur :", options:["ne peut pas subir de discontinuité (elle est continue au cours du temps)", "peut changer instantanément à tout moment", "est toujours nulle"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u3', q:"Dans le circuit RC série en charge (générateur E, résistance R, condensateur C), la loi des mailles s'écrit :", options:["E = R·i + u_C", "E = R·i − u_C", "E = R/i + u_C"], correct:0},
+    {id:'q10', type:'connaissance', difficulty:2, notion:'u3', q:"L'équation différentielle vérifiée par u_C(t) lors de la charge d'un condensateur à travers une résistance R par une source E s'écrit :", options:["RC·du_C/dt + u_C = E", "RC·du_C/dt − u_C = E", "RC·du_C/dt = E·u_C"], correct:0},
+    {id:'q11', type:'connaissance', difficulty:1, notion:'u3', q:"Juste après la fermeture de l'interrupteur (t=0⁺), un condensateur initialement déchargé se comporte comme :", options:["un simple fil (court-circuit)", "un interrupteur ouvert", "une résistance infinie"], correct:0},
+    {id:'q12', type:'connaissance', difficulty:1, notion:'u3', q:"Une fois le régime stationnaire atteint, lors de la charge d'un condensateur, celui-ci se comporte comme :", options:["un interrupteur ouvert : plus aucun courant ne circule", "un simple fil", "une résistance de valeur R"], correct:0},
+    {id:'q13', type:'connaissance', difficulty:1, notion:'u4', q:"Lors de la décharge d'un condensateur dans une résistance (sans générateur), la loi des mailles s'écrit :", options:["0 = R·i + u_C", "E = R·i + u_C", "0 = R·i − u_C"], correct:0},
+    {id:'q14', type:'connaissance', difficulty:1, notion:'u4', q:"Lors de la décharge, l'énergie initialement stockée dans le condensateur est :", options:["dissipée par effet Joule dans la résistance", "totalement conservée indéfiniment", "transformée en énergie chimique"], correct:0},
+    {id:'q15', type:'connaissance', difficulty:1, notion:'u5', q:"Le temps caractéristique τ d'un circuit RC est défini par :", options:["τ = RC", "τ = R/C", "τ = R + C"], correct:0},
+    {id:'q16', type:'connaissance', difficulty:1, notion:'u5', q:"Au bout d'une durée de 5τ après le début de la charge ou de la décharge, on considère que :", options:["le régime stationnaire est atteint à moins de 1% près", "le condensateur vient tout juste de commencer à évoluer", "τ a changé de valeur"], correct:0},
+
+    {id:'r1', type:'raisonnement', difficulty:1, notion:'u2', q:"Un condensateur de capacité C = 100 μF porte une charge q = 5,0×10⁻⁴ C. Quelle est la tension à ses bornes ?",
+      options:["5,0 V", "0,5 V", "50 V"], correct:0,
+      hint:"u = q/C ; convertis C en farads (100 μF = 100×10⁻⁶ F) avant de diviser."},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u3', q:"Un condensateur initialement déchargé est mis en charge à travers une résistance par un générateur idéal de tension E = 6,0 V. Quelle est la valeur de u_C lorsque le régime stationnaire est atteint ?",
+      options:["6,0 V, la même valeur que E", "0 V", "la moitié de E, soit 3,0 V"], correct:0,
+      hint:"En régime stationnaire, l'intensité est nulle, donc la tension R·i aux bornes de la résistance est nulle : toute la tension E se retrouve donc aux bornes du condensateur."},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u3', q:"Dans le circuit RC série en charge, pourquoi l'intensité i(t) décroît-elle au cours du temps, alors que la tension E du générateur reste constante ?",
+      options:["Parce que u_C augmente progressivement, donc la tension R·i = E − u_C aux bornes de la résistance diminue", "Parce que la résistance R change de valeur au cours du temps", "Parce que le générateur fournit de moins en moins de tension"], correct:0,
+      hint:"Réécris la loi des mailles E = Ri + u_C sous la forme Ri = E − u_C, puis regarde ce qui se passe quand u_C augmente."},
+    {id:'r4', type:'raisonnement', difficulty:2, notion:'u4', q:"Un condensateur chargé sous 12 V est déchargé dans une résistance. Quelle est la tension à ses bornes au bout d'un temps t=τ (avec τ le temps caractéristique) ?",
+      options:["environ 4,4 V (12 × e⁻¹)", "6,0 V (la moitié)", "0 V"], correct:0,
+      hint:"u_C(τ) = E·e⁻¹ ≈ 0,37×E."},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u5', q:"Sur une courbe u_C(t) de charge d'un condensateur, on trace la tangente à l'origine (t=0). Cette tangente coupe l'asymptote horizontale u_C=E à l'instant t=1,5 s. Que peut-on en déduire ?",
+      options:["τ = 1,5 s", "τ = 3,0 s (le double)", "τ = 0,75 s (la moitié)"], correct:0,
+      hint:"La méthode de la tangente à l'origine donne directement τ à l'abscisse du point d'intersection avec l'asymptote."},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u5', q:"Deux circuits RC ont respectivement τ₁ = 1 ms et τ₂ = 1 s. Lequel atteint son régime stationnaire le plus rapidement ?",
+      options:["Le circuit 1 (τ₁ = 1 ms), car un temps caractéristique plus petit signifie une évolution plus rapide", "Le circuit 2 (τ₂ = 1 s)", "Les deux circuits évoluent à la même vitesse, τ n'influence pas la rapidité"], correct:0,
+      hint:"Le régime stationnaire est atteint au bout d'environ 5τ : compare 5×1 ms et 5×1 s."},
+    {id:'r7', type:'raisonnement', difficulty:1, notion:'u2', q:"On double la capacité C d'un condensateur tout en maintenant la même charge q à ses bornes. Que devient la tension u à ses bornes ?",
+      options:["Elle est divisée par deux", "Elle double", "Elle ne change pas"], correct:0,
+      hint:"u = q/C : à q fixée, u et C varient en sens inverse."},
+    {id:'r8', type:'raisonnement', difficulty:2, notion:'u3', q:"On augmente la valeur de la résistance R dans un circuit RC série, sans changer C ni E. Quel est l'effet sur la durée de charge du condensateur ?",
+      options:["La charge est plus lente (τ=RC augmente)", "La charge est plus rapide", "La durée de charge ne dépend pas de R"], correct:0,
+      hint:"τ=RC est proportionnel à R : une résistance plus grande limite davantage l'intensité, donc ralentit la charge."},
+    {id:'r9', type:'raisonnement', difficulty:2, notion:'u4', q:"Un condensateur se décharge dans une résistance. Après combien de temps caractéristiques τ la tension est-elle descendue à moins de 5% de sa valeur initiale ?",
+      options:["environ 3τ (e⁻³ ≈ 0,05)", "environ 1τ", "environ 10τ"], correct:0,
+      hint:"Cherche n tel que e⁻ⁿ ≈ 0,05 : essaie n=3."},
+    {id:'r10', type:'raisonnement', difficulty:1, notion:'u1', q:"Dans un circuit comportant un générateur, une résistance et un condensateur montés en série (une seule maille), combien de nœuds distincts (points où au moins trois fils se rejoignent) le circuit comporte-t-il ?",
+      options:["Aucun : un circuit série n'a pas de nœud à proprement parler", "Trois, un pour chaque composant", "Un seul"], correct:0,
+      hint:"Un nœud nécessite au moins trois fils qui se rejoignent ; dans un circuit série, chaque point ne relie que deux composants voisins."}
+  ],
+
+  applications: [
+    {id:'a1', difficulty:1, notion:'u2', statement:"Un condensateur de capacité C = 220 nF porte une tension u = 9,0 V. Calcule la charge q qu'il porte, en microcoulombs (μC).",
+      unit:'μC', answer:1.98, tolerance:{type:'pct', value:3},
+      methode:"q = C×u ; convertis C en farads si besoin, puis exprime le résultat en μC (1 μC = 10⁻⁶ C).",
+      correction:["q = C×u = 220×10⁻⁹ × 9,0 = 1,98×10⁻⁶ C.", "Soit q ≈ 1,98 μC."]},
+    {id:'a2', difficulty:1, notion:'u5', statement:"Un circuit RC série a pour composants R = 2,2 kΩ et C = 470 nF. Calcule son temps caractéristique τ, en millisecondes (ms).",
+      unit:'ms', answer:1.03, tolerance:{type:'pct', value:3},
+      methode:"τ = R×C, en veillant à utiliser des ohms et des farads pour obtenir un résultat en secondes.",
+      correction:["τ = R×C = 2200 × 470×10⁻⁹ = 1,034×10⁻³ s.", "Soit τ ≈ 1,03 ms."]},
+    {id:'a3', difficulty:2, notion:'u3', statement:"Un condensateur initialement déchargé est chargé à travers une résistance par un générateur idéal de f.é.m. E = 5,0 V. Quelle est la tension u_C aux bornes du condensateur à l'instant t = τ (le temps caractéristique), en volts ?",
+      unit:'V', answer:3.16, tolerance:{type:'pct', value:3},
+      methode:"u_C(t) = E(1−e^(−t/τ)) ; évalue cette expression pour t=τ, donc pour t/τ=1.",
+      correction:["u_C(τ) = E×(1−e⁻¹) = 5,0×(1−0,368).", "u_C(τ) ≈ 5,0×0,632 ≈ 3,16 V."]},
+    {id:'a4', difficulty:2, notion:'u4', statement:"Un condensateur chargé sous E = 8,0 V se décharge dans une résistance R = 10 kΩ, avec C = 100 nF. Calcule la tension u_C à l'instant t = 2,0 ms, en volts.",
+      unit:'V', answer:1.08, tolerance:{type:'pct', value:5},
+      methode:"Calcule d'abord τ=RC, puis évalue u_C(t)=E·e^(−t/τ) avec t=2,0 ms.",
+      correction:["τ = R×C = 10000×100×10⁻⁹ = 1,0×10⁻³ s = 1,0 ms.", "t/τ = 2,0/1,0 = 2,0.", "u_C(t) = E×e⁻² = 8,0×0,135 ≈ 1,08 V."]},
+    {id:'a5', difficulty:2, notion:'u2', statement:"L'intensité qui traverse un condensateur de capacité C = 4,7 μF vaut i = 2,0 mA à un instant donné. Quelle est alors la valeur de du_C/dt, en volts par seconde (V/s) ?",
+      unit:'V/s', answer:426, tolerance:{type:'pct', value:3},
+      methode:"Utilise i = C×du/dt, donc du/dt = i/C.",
+      correction:["du_C/dt = i/C = 2,0×10⁻³ / 4,7×10⁻⁶.", "du_C/dt ≈ 426 V/s."]},
+    {id:'a6', difficulty:1, notion:'u5', statement:"Sur une courbe expérimentale de décharge u_C(t), on repère que la tension est passée à 37% de sa valeur initiale à l'instant t = 45 ms. Quelle est la valeur du temps caractéristique τ, en millisecondes ?",
+      unit:'ms', answer:45, tolerance:{type:'abs', value:2},
+      methode:"À t=τ, la décharge est retombée à 37% de sa valeur initiale (e⁻¹≈0,37) : identifie directement τ à cet instant.",
+      correction:["e⁻¹ ≈ 0,37, donc la tension atteint 37% de sa valeur initiale précisément à t=τ.", "Ici cet instant est t=45 ms, donc τ=45 ms."]}
+  ],
+
+  mindmapModel: {
+    label:"Charge et décharge d'un condensateur",
+    children:[
+      {label:"Lois de circuit", children:[
+        {label:"Loi des nœuds"},{label:"Loi des mailles"}
+      ]},
+      {label:"Le condensateur", children:[
+        {label:"q = C·u"},{label:"i = dq/dt = C·du/dt"},{label:"Continuité de u_C"}
+      ]},
+      {label:"Charge (RC série, E)", children:[
+        {label:"RC·du_C/dt + u_C = E"},{label:"u_C(t) = E(1−e^(−t/τ))"}
+      ]},
+      {label:"Décharge (RC série)", children:[
+        {label:"RC·du_C/dt + u_C = 0"},{label:"u_C(t) = E·e^(−t/τ)"}
+      ]},
+      {label:"Temps caractéristique", children:[
+        {label:"τ = RC"},{label:"Méthode de la tangente"},{label:"Méthode des 63%/37%"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>

@@ -7,9 +7,14 @@
  * Contrat attendu sur MODULE (voir svt/ch05-datation-relative.html pour un exemple SVT complet,
  * physique-chimie/analyse-dimensionnelle.html pour un exemple PC complet) :
  *   id, chapNum, subjectLabel, title, pages, noManual?, bridge:{from,to}, backHref,
- *   fiches:[{unit,page,title,paragraphs,bullets,terrainBadge?,badge?}],
+ *   fiches:[{unit,page,title,paragraphs,bullets,terrainBadge?,badge?,images?}],
  *   qcm, qcmMeta, diagnostic,
  *   flashcards?, applications?, mindmapModel?
+ *
+ * `fiche.images` (optionnel) : [{src, alt, credit?}, ...] — un ou plusieurs schémas affichés
+ * après les puces, dans l'ordre du tableau. Même contrat que `question.image` du QCM (cf.
+ * qcm-engine.js) : `credit` obligatoire pour toute image sous licence externe, omis pour les
+ * schémas originaux dessinés pour le site.
  *
  * Le 2e onglet est déterminé par détection de champ, pas par un indicateur de matière explicite :
  * `mod.flashcards` → onglet "Flashcards" (SVT) ; sinon `mod.applications` → onglet "Applications
@@ -61,6 +66,10 @@
         <h3>${esc(f.unit)} — ${esc(f.title)} <span class="page-tag">${f.badge ? esc(f.badge) : 'p.'+f.page}</span></h3>
         ${f.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}
         <ul>${f.bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>
+        ${(f.images||[]).map(img=>`<figure class="q-figure">
+          <img src="${img.src}" alt="${esc(img.alt)}" loading="lazy">
+          ${img.credit ? `<figcaption>${esc(img.credit)}</figcaption>` : ''}
+        </figure>`).join('')}
         ${f.terrainBadge ? `<a class="terrain-badge" href="${f.terrainBadge.href}">🏔️ Vu sur le terrain — ${esc(f.terrainBadge.label)}</a>` : ''}
       </div>`;
     });

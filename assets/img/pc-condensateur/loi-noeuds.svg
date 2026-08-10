@@ -1,0 +1,28 @@
+<svg viewBox="0 0 440 320" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', 'Arial', sans-serif">
+  <rect x="0" y="0" width="440" height="320" fill="#FBF8F0"/>
+
+  <!-- Branche 1 : arrive vers A, en haut à gauche -->
+  <line x1="40" y1="40" x2="110" y2="95" stroke="#262319" stroke-width="2" stroke-dasharray="6 5"/>
+  <line x1="110" y1="95" x2="220" y2="170" stroke="#262319" stroke-width="2.5"/>
+  <polygon points="178,140 190,148 175,153" fill="#7E3A1D"/>
+  <text x="150" y="128" font-size="24" font-weight="700" fill="#7E3A1D">i<tspan font-size="16" dy="4">1</tspan></text>
+
+  <!-- Branche 2 : arrive vers A, en bas à gauche -->
+  <line x1="40" y1="280" x2="110" y2="225" stroke="#262319" stroke-width="2" stroke-dasharray="6 5"/>
+  <line x1="110" y1="225" x2="220" y2="170" stroke="#262319" stroke-width="2.5"/>
+  <polygon points="178,200 175,187 190,192" fill="#7E3A1D"/>
+  <text x="150" y="222" font-size="24" font-weight="700" fill="#7E3A1D">i<tspan font-size="16" dy="4">2</tspan></text>
+
+  <!-- Branche 3 : repart de A, vers la droite -->
+  <line x1="220" y1="170" x2="350" y2="170" stroke="#262319" stroke-width="2.5"/>
+  <line x1="350" y1="170" x2="410" y2="170" stroke="#262319" stroke-width="2" stroke-dasharray="6 5"/>
+  <polygon points="300,164 314,170 300,176" fill="#7E3A1D"/>
+
+  <!-- Nœud A -->
+  <circle cx="220" cy="170" r="5.5" fill="#262319"/>
+  <text x="236" y="152" font-size="26" font-weight="700" fill="#262319">A</text>
+  <text x="330" y="152" font-size="24" font-weight="700" fill="#7E3A1D">i<tspan font-size="16" dy="4">3</tspan></text>
+
+  <!-- Équation -->
+  <text x="220" y="280" font-size="24" fill="#262319" text-anchor="middle">En A : i₁ + i₂ − i₃ = 0</text>
+</svg>
