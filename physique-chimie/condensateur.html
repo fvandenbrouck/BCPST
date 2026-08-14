@@ -182,7 +182,27 @@ const MODULE = {
       hint:"Cherche n tel que e⁻ⁿ ≈ 0,05 : essaie n=3."},
     {id:'r10', type:'raisonnement', difficulty:1, notion:'u1', q:"Dans un circuit comportant un générateur, une résistance et un condensateur montés en série (une seule maille), combien de nœuds distincts (points où au moins trois fils se rejoignent) le circuit comporte-t-il ?",
       options:["Aucun : un circuit série n'a pas de nœud à proprement parler", "Trois, un pour chaque composant", "Un seul"], correct:0,
-      hint:"Un nœud nécessite au moins trois fils qui se rejoignent ; dans un circuit série, chaque point ne relie que deux composants voisins."}
+      hint:"Un nœud nécessite au moins trois fils qui se rejoignent ; dans un circuit série, chaque point ne relie que deux composants voisins."},
+    {id:'r11', type:'raisonnement', difficulty:2, notion:'u1', q:"Dans le circuit ci-dessous, on donne U₁ = 15 V, U₂ = 5 V, U_BD = 10 V, I₁ = 3 A et I₃ = 2 A. En appliquant la loi des nœuds au nœud B, quelle est la valeur de l'intensité I₂ (orientée de C vers B, comme indiqué sur le schéma) ?",
+      options:["I₂ = −1 A", "I₂ = +1 A", "I₂ = +5 A"], correct:0,
+      hint:"Au nœud B arrivent I₁ et I₂ (dans le sens où elles sont orientées sur le schéma), et en repart I₃ : la loi des nœuds s'écrit I₁ + I₂ = I₃, donc I₂ = I₃ − I₁ = 2 − 3.",
+      image:{src:'../assets/img/pc-condensateur/schema1.svg', alt:"Circuit à cinq nœuds A, B, C, D, E avec deux générateurs U1 et U2 et trois résistances, utilisé pour calculer l'intensité I2 par la loi des nœuds."}},
+    {id:'r12', type:'raisonnement', difficulty:2, notion:'u1', q:"Dans ce même circuit (U₁ = 15 V, U₂ = 5 V, U_BD = 10 V), quelle est la valeur de U_CE = V_C − V_E ?",
+      options:["U_CE = +5 V", "U_CE = +15 V", "U_CE = −5 V"], correct:0,
+      hint:"B et C sont reliés par un simple fil, donc V_C = V_B. D est relié par un simple fil au point bas du générateur U₂, donc U_CE = V_B − V_E = U_BD − U₂.",
+      image:{src:'../assets/img/pc-condensateur/schema1.svg', alt:"Circuit à cinq nœuds A, B, C, D, E avec deux générateurs U1 et U2 et trois résistances, utilisé pour calculer la tension U_CE."}},
+    {id:'r13', type:'raisonnement', difficulty:1, notion:'u1', q:"Dans le circuit ci-dessous, combien de nœuds distincts ce circuit comporte-t-il ?",
+      options:["4 (les points A, B, C et D)", "6", "2"], correct:0,
+      hint:"Un nœud est un point où se rejoignent au moins trois fils : examine, pour chacun des points A, B, C, D, le nombre de branches qui y arrivent.",
+      image:{src:'../assets/img/pc-condensateur/schema2.svg', alt:"Circuit à quatre nœuds A, B, C, D, un générateur et cinq résistances, utilisé pour dénombrer les nœuds et les branches."}},
+    {id:'r14', type:'raisonnement', difficulty:1, notion:'u1', q:"Dans ce même circuit, combien de branches distinctes ce circuit comporte-t-il ?",
+      options:["6", "4", "5"], correct:0,
+      hint:"Compte les portions de circuit reliant deux nœuds consécutifs et parcourues par une seule intensité : A-B, A-D, B-C, B-D, D-C, et la branche du générateur A-C.",
+      image:{src:'../assets/img/pc-condensateur/schema2.svg', alt:"Circuit à quatre nœuds A, B, C, D, un générateur et cinq résistances, utilisé pour dénombrer les nœuds et les branches."}},
+    {id:'r15', type:'raisonnement', difficulty:2, notion:'u1', q:"Dans ce même circuit, on donne U_AC = 20 V, I₁ = 3 A, I₂ = 4 A et I₅ = 1 A. Quelle est la valeur de l'intensité I₄ ?",
+      options:["I₄ = +5 A", "I₄ = +7 A", "I₄ = +2 A"], correct:0,
+      hint:"Applique la loi des nœuds en B (I₁ = I₃ + I₅) pour trouver I₃, puis en A (I = I₁ + I₂) pour trouver I, puis en C (I₃ + I₄ = I) pour en déduire I₄.",
+      image:{src:'../assets/img/pc-condensateur/schema2.svg', alt:"Circuit à quatre nœuds A, B, C, D, un générateur et cinq résistances, utilisé pour calculer l'intensité I4 par la loi des nœuds."}}
   ],
 
   applications: [

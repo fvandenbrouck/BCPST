@@ -1,0 +1,47 @@
+<svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', 'Arial', sans-serif">
+  <rect x="0" y="0" width="560" height="300" fill="#FBF8F0"/>
+  <line x1="110.0" y1="44.0" x2="203.6" y2="44.0" stroke="#262319" stroke-width="1.8"/>
+  <rect x="203.6" y="36.0" width="93.6" height="16" fill="#FBF8F0" stroke="#262319" stroke-width="1.8"/>
+  <line x1="297.2" y1="44.0" x2="370.0" y2="44.0" stroke="#262319" stroke-width="1.8"/>
+  <line x1="370.0" y1="44.0" x2="474.0" y2="44.0" stroke="#262319" stroke-width="1.8"/>
+  <line x1="370.0" y1="44.0" x2="370.0" y2="83.0" stroke="#262319" stroke-width="1.8"/>
+  <rect x="362.0" y="83.0" width="16" height="78.0" fill="#FBF8F0" stroke="#262319" stroke-width="1.8"/>
+  <line x1="370.0" y1="161.0" x2="370.0" y2="252.0" stroke="#262319" stroke-width="1.8"/>
+  <line x1="474.0" y1="44.0" x2="474.0" y2="83.0" stroke="#262319" stroke-width="1.8"/>
+  <rect x="466.0" y="83.0" width="16" height="62.4" fill="#FBF8F0" stroke="#262319" stroke-width="1.8"/>
+  <line x1="474.0" y1="145.4" x2="474.0" y2="163.6" stroke="#262319" stroke-width="1.8"/>
+  <line x1="370.0" y1="252.0" x2="474.0" y2="252.0" stroke="#262319" stroke-width="1.8"/>
+  <line x1="110.0" y1="44.0" x2="110.0" y2="126.0" stroke="#262319" stroke-width="1.8"/>
+  <circle cx="110.0" cy="148.0" r="22" fill="#FBF8F0" stroke="#262319" stroke-width="1.8"/>
+  <line x1="110.0" y1="170.0" x2="110.0" y2="252.0" stroke="#262319" stroke-width="1.8"/>
+  <line x1="110.0" y1="252.0" x2="370.0" y2="252.0" stroke="#262319" stroke-width="1.8"/>
+  <line x1="72.0" y1="172.0" x2="72.0" y2="124.0" stroke="#5F6F42" stroke-width="1.8"/>
+  <polygon points="72.0,118.0 76.5,130.0 67.5,130.0" fill="#5F6F42"/>
+  <text x="62.0" y="153.0" font-size="19" font-style="italic" fill="#5F6F42" text-anchor="end">U<tspan font-size="13" dy="4">1</tspan></text>
+  <line x1="474.0" y1="252.0" x2="474.0" y2="230.4" stroke="#262319" stroke-width="1.8"/>
+  <circle cx="474.0" cy="210.4" r="20" fill="#FBF8F0" stroke="#262319" stroke-width="1.8"/>
+  <line x1="474.0" y1="190.4" x2="474.0" y2="168.8" stroke="#262319" stroke-width="1.8"/>
+  <line x1="474.0" y1="168.8" x2="474.0" y2="163.6" stroke="#262319" stroke-width="1.8"/>
+  <line x1="512.0" y1="232.4" x2="512.0" y2="188.4" stroke="#5F6F42" stroke-width="1.8"/>
+  <polygon points="512.0,182.4 516.5,194.4 507.5,194.4" fill="#5F6F42"/>
+  <text x="522.0" y="215.4" font-size="19" font-style="italic" fill="#5F6F42">U<tspan font-size="13" dy="4">2</tspan></text>
+  <circle cx="110.0" cy="44.0" r="3.5" fill="#262319"/>
+  <circle cx="370.0" cy="44.0" r="3.5" fill="#262319"/>
+  <circle cx="474.0" cy="44.0" r="3.5" fill="#262319"/>
+  <circle cx="370.0" cy="252.0" r="3.5" fill="#262319"/>
+  <circle cx="474.0" cy="163.6" r="3.5" fill="#262319"/>
+  <text x="96.0" y="49.0" font-size="19" font-weight="700" fill="#262319" font-style="italic" text-anchor="end">A</text>
+  <text x="370.0" y="32.0" font-size="19" font-weight="700" fill="#262319" font-style="italic" text-anchor="middle">B</text>
+  <text x="484.0" y="34.0" font-size="19" font-weight="700" fill="#262319" font-style="italic">C</text>
+  <text x="370.0" y="274.0" font-size="19" font-weight="700" fill="#262319" font-style="italic" text-anchor="middle">D</text>
+  <text x="486.0" y="168.6" font-size="19" font-weight="700" fill="#262319" font-style="italic">E</text>
+  <line x1="143.8" y1="44.0" x2="175.0" y2="44.0" stroke="#A6512B" stroke-width="1.8"/>
+  <polygon points="181.0,44.0 169.0,48.5 169.0,39.5" fill="#A6512B"/>
+  <text x="159.4" y="34.0" font-size="19" font-style="italic" fill="#A6512B" text-anchor="middle">I<tspan font-size="13" dy="4">1</tspan></text>
+  <line x1="445.4" y1="44.0" x2="414.2" y2="44.0" stroke="#A6512B" stroke-width="1.8"/>
+  <polygon points="408.2,44.0 420.2,39.5 420.2,48.5" fill="#A6512B"/>
+  <text x="429.8" y="34.0" font-size="19" font-style="italic" fill="#A6512B" text-anchor="middle">I<tspan font-size="13" dy="4">2</tspan></text>
+  <line x1="370.0" y1="181.8" x2="370.0" y2="210.4" stroke="#A6512B" stroke-width="1.8"/>
+  <polygon points="370.0,216.4 365.5,204.4 374.5,204.4" fill="#A6512B"/>
+  <text x="356.0" y="201.1" font-size="19" font-style="italic" fill="#A6512B" text-anchor="end">I<tspan font-size="13" dy="4">3</tspan></text>
+</svg>
