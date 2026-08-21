@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mouvement dans un champ de force uniforme · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/applications-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'pc-mecanique',
+  chapNum: "Révisions de Terminale",
+  subjectLabel: "Physique-Chimie",
+  accent: 'var(--ochre)',
+  title: "Mouvement dans un champ de force uniforme",
+  pages: "Programme de Première et Terminale spécialité — BCPST1 : M.1, M.2",
+  noManual: true,
+  backHref: '../index.html',
+  bridge: {
+    from: "En classe de première, l'énergie cinétique d'un système modélisé par un point matériel ($E_c=\\frac12 mv^2$), le travail d'une force constante ($W_{AB}(\\vec F)=\\vec F\\cdot\\vec{AB}$), le théorème de l'énergie cinétique, l'énergie potentielle de pesanteur ($E_p=mgz$) et l'énergie mécanique ($E_m=E_c+E_p$) ont été introduits, avec la conservation de $E_m$ en l'absence de frottement — en particulier dans le cas de la chute libre. La deuxième loi de Newton a, quant à elle, été rencontrée sous une forme approchée.",
+    to: "La Terminale formalise la deuxième loi de Newton et l'applique au mouvement d'un système dans un champ de force uniforme : le champ de pesanteur $\\vec g$ au voisinage du sol, mais aussi le champ électrique $\\vec E$ uniforme créé entre les plaques d'un condensateur plan, qui accélère ou dévie une particule chargée — c'est le principe de l'accélérateur linéaire de particules. Dans les deux cas, la trajectoire est une parabole, et son étude combine équations horaires et bilan énergétique (conservation de $E_m$ ou théorème de l'énergie cinétique). En BCPST1, ce cadre est repris dès les premières semaines (code M.1 pour la description vectorielle du mouvement en coordonnées cartésiennes, code M.2 pour les lois de Newton), avec une algébrisation systématique des grandeurs — mais toujours sans frottement dans les situations traitées ici, le frottement fluide faisant l'objet d'un approfondissement séparé."
+  },
+
+  fiches: [
+    {
+      unit:'1', badge:'Terminale',
+      title:"Deux champs de force uniforme",
+      paragraphs:[
+        "Dans un référentiel galiléen, la deuxième loi de Newton relie l'accélération $\\vec a$ d'un système de masse m à la résultante $\\vec F$ des forces qu'il subit : $$m\\,\\vec a = \\sum \\vec F$$ Ce module s'intéresse à deux situations où cette résultante se réduit à une force unique, constante en direction, sens et valeur en tout point de la zone étudiée — on parle de champ de force uniforme.",
+        "La première situation, déjà rencontrée en première, est celle du champ de pesanteur uniforme $\\vec g$ au voisinage du sol. Si le frottement de l'air est négligé, la seule force qui s'exerce sur un système de masse m est son poids $\\vec P = m\\vec g$, si bien que $\\vec a = \\vec g$ : l'accélération est la même pour tous les systèmes, quelle que soit leur masse.",
+        "La seconde situation est celle du champ électrique uniforme $\\vec E$ créé entre les deux plaques planes et parallèles d'un condensateur plan, distantes de d et soumises à une tension U : $E = U/d$. Une particule ponctuelle de charge q y subit une force électrique $\\vec F = q\\vec E$, dirigée dans le sens de $\\vec E$ si q est positive, dans le sens opposé si q est négative."
+      ],
+      bullets:[
+        "Champ de pesanteur : $\\vec a = \\vec g$, indépendant de la masse du système (en l'absence de frottement).",
+        "Champ électrique uniforme entre les plaques d'un condensateur plan : $E = U/d$ (E en V·m⁻¹, U en V, d en m), dirigé de la plaque portée au potentiel le plus élevé vers l'autre.",
+        "Force électrique : $\\vec F = q\\vec E$ ; accélération correspondante : $\\vec a = \\dfrac{q}{m}\\vec E$ — qui dépend cette fois du rapport charge sur masse de la particule, contrairement au champ de pesanteur.",
+        "Dans les deux situations étudiées ici, aucun autre frottement n'est pris en compte : la force de pesanteur (ou électrique) est la seule force qui s'exerce sur le système."
+      ]
+    },
+    {
+      unit:'2', badge:'Terminale',
+      title:"Mouvement à accélération constante : trajectoire plane et parabolique",
+      paragraphs:[
+        "Lorsque le vecteur accélération $\\vec a$ d'un système reste constant au cours du mouvement, sa trajectoire se déroule dans le plan contenant le point de départ et défini par les vecteurs vitesse initiale $\\vec v_0$ et accélération $\\vec a$ — à condition que ces deux vecteurs ne soient pas colinéaires (sinon le mouvement reste rectiligne, sur la droite portée par $\\vec v_0$).",
+        "La méthode générale pour établir les équations horaires du mouvement consiste à choisir un repère cartésien adapté à la situation, à projeter le vecteur accélération sur les axes de ce repère (ses composantes sont alors constantes), puis à intégrer successivement : une première intégration, utilisant les conditions initiales sur la vitesse, donne les composantes du vecteur vitesse en fonction du temps ; une seconde intégration, utilisant les conditions initiales sur la position, donne les coordonnées du point en fonction du temps.",
+        "L'équation de la trajectoire — la relation entre les coordonnées du point, indépendante du temps — s'obtient en éliminant le temps t entre les équations horaires des deux coordonnées du plan du mouvement. Dans les deux situations étudiées ici (accélération constante non colinéaire à $\\vec v_0$), cette élimination conduit systématiquement à une équation du second degré : la trajectoire est une parabole."
+      ],
+      bullets:[
+        "Condition du mouvement plan : $\\vec v_0$ et $\\vec a$ non colinéaires (sinon le mouvement est rectiligne).",
+        "Méthode en trois étapes : projeter $\\vec a$ sur les axes, intégrer une fois (→ vitesse), intégrer une seconde fois (→ position).",
+        "L'équation de la trajectoire s'obtient en éliminant t entre les deux équations horaires de position : elle ne fait plus intervenir le temps.",
+        "Dans les deux cas étudiés dans ce module, la trajectoire obtenue est une parabole."
+      ]
+    },
+    {
+      unit:'3', badge:'Terminale',
+      title:"Mouvement dans le champ de pesanteur : équations horaires et trajectoire",
+      paragraphs:[
+        "Considérons un système lancé avec une vitesse initiale $\\vec v_0$ faisant un angle α avec l'horizontale, dans un repère (O, x, z) où x est horizontal et z vertical ascendant, avec pour origine le point de lancement. Le vecteur accélération est $\\vec a = (0\\,;\\,-g)$. Une première intégration, utilisant $v_x(0)=v_0\\cos\\alpha$ et $v_z(0)=v_0\\sin\\alpha$, donne : $$v_x(t) = v_0\\cos\\alpha \\qquad v_z(t) = -gt + v_0\\sin\\alpha$$",
+        "Une seconde intégration, utilisant $x(0)=0$ et $z(0)=0$, donne les équations horaires de la position : $$x(t) = (v_0\\cos\\alpha)\\,t \\qquad z(t) = -\\frac12 g t^2 + (v_0\\sin\\alpha)\\,t$$ En éliminant t (en tirant $t=x/(v_0\\cos\\alpha)$ de la première équation et en le substituant dans la seconde), on obtient l'équation de la trajectoire, une parabole de concavité tournée vers le bas : $$z(x) = -\\dfrac{g}{2v_0^2\\cos^2\\alpha}\\,x^2 + x\\tan\\alpha$$",
+        "Le cas particulier du tir horizontal (α=0) est fréquent : la composante horizontale de la vitesse reste constante ($v_x=v_0$) pendant que le système chute verticalement, exactement comme s'il était lâché sans vitesse initiale ($z(t)=-\\frac12 gt^2$) — les deux mouvements, horizontal et vertical, sont indépendants l'un de l'autre."
+      ],
+      bullets:[
+        "La composante horizontale de la vitesse $v_x$ reste constante tout au long du mouvement : seule la force verticale (le poids) agit.",
+        "La composante verticale $v_z$ décroît régulièrement (de $-g$ par seconde) : c'est un mouvement uniformément accéléré selon cet axe.",
+        "La trajectoire est une parabole, sauf dans le cas particulier d'un lancer purement vertical (α=90°), où le mouvement reste rectiligne.",
+        "Mouvement et vitesse horizontale, mouvement et vitesse verticale sont deux mouvements indépendants qui se superposent : c'est l'idée clé pour résoudre un exercice de tir ou de chute."
+      ]
+    },
+    {
+      unit:'4', badge:'Terminale',
+      title:"Mouvement d'une particule chargée dans un champ électrique uniforme",
+      paragraphs:[
+        "Une particule chargée qui pénètre dans un condensateur plan peut se trouver dans deux configurations typiques, selon l'orientation de sa vitesse initiale $\\vec v_0$ par rapport au champ électrique $\\vec E$ entre les plaques.",
+        "Si $\\vec E$ est parallèle à $\\vec v_0$ (la particule entre dans l'axe du champ), l'accélération $\\vec a = q\\vec E/m$ est elle aussi colinéaire à $\\vec v_0$ : le mouvement reste rectiligne, uniformément accéléré ou décéléré selon les signes de q et de la composante du champ. C'est le principe de l'accélérateur linéaire de particules chargées : en traversant une distance d entre les plaques soumises à une tension U, la particule voit son énergie cinétique varier de $qU$ (calcul détaillé en fiche 5).",
+        "Si $\\vec E$ est perpendiculaire à $\\vec v_0$ (la particule entre parallèlement aux plaques), l'accélération $\\vec a = q\\vec E/m$ est perpendiculaire à $\\vec v_0$ : on retrouve exactement la structure mathématique du mouvement dans le champ de pesanteur (fiche 3), avec $q\\vec E/m$ à la place de $\\vec g$. La trajectoire est parabolique : la particule est déviée de sa direction initiale — c'est le principe utilisé, par exemple, dans un tube cathodique."
+      ],
+      bullets:[
+        "$\\vec E$ parallèle à $\\vec v_0$ → mouvement rectiligne accéléré ou décéléré : principe de l'accélérateur linéaire.",
+        "$\\vec E$ perpendiculaire à $\\vec v_0$ → mouvement parabolique : principe de la déviation (tube cathodique).",
+        "Dans les deux cas, l'accélération $\\vec a = q\\vec E/m$ dépend du rapport q/m de la particule : contrairement au champ de pesanteur, deux particules différentes n'ont pas la même trajectoire dans un même champ électrique.",
+        "Le signe de la charge q détermine le sens de la force électrique par rapport à $\\vec E$ : une charge négative (un électron, par exemple) subit une force opposée au champ."
+      ]
+    },
+    {
+      unit:'5', badge:'Première',
+      title:"Énergie cinétique, travail d'une force, théorème de l'énergie cinétique",
+      paragraphs:[
+        "L'énergie cinétique d'un système modélisé par un point matériel de masse m, animé d'une vitesse de norme v, s'écrit $E_c = \\frac12 mv^2$ (en joules, avec m en kg et v en m·s⁻¹) : c'est l'énergie associée au mouvement du système.",
+        "Le travail d'une force constante $\\vec F$ entre deux points A et B, notés $W_{AB}(\\vec F) = \\vec F \\cdot \\vec{AB}$ (produit scalaire), mesure l'énergie échangée grâce à l'action de cette force lors du déplacement de A vers B. Une force est dite motrice si son travail est positif (elle favorise le mouvement), résistante s'il est négatif.",
+        "Le théorème de l'énergie cinétique (TEC) énonce que, dans un référentiel galiléen, la variation d'énergie cinétique d'un système entre deux instants est égale à la somme des travaux de toutes les forces qui s'exercent sur lui : $$\\Delta E_c = \\sum W(\\vec F_i)$$ Appliqué à l'accélérateur linéaire (fiche 4), entre l'entrée et la sortie du condensateur, seule la force électrique travaille (le poids est négligeable à cette échelle, il n'y a pas de frottement dans le vide) : $\\Delta E_c = W(\\vec F_{elec}) = qEd = qU$, ce qui permet de calculer directement la vitesse de sortie de la particule."
+      ],
+      bullets:[
+        "$E_c = \\frac12 mv^2$ : ne dépend que de la norme de la vitesse, pas de sa direction.",
+        "$W_{AB}(\\vec F) = \\vec F \\cdot \\vec{AB} = F \\times AB \\times \\cos\\theta$, où θ est l'angle entre la force et le déplacement.",
+        "Force motrice (W>0, θ<90°) ou résistante (W<0, θ>90°) ; une force perpendiculaire au déplacement a un travail nul.",
+        "TEC : $\\Delta E_c = \\sum W(\\vec F_i)$ — un bilan valable dans un référentiel galiléen, quelle que soit la nature des forces en jeu."
+      ]
+    },
+    {
+      unit:'6', badge:'Terminale',
+      title:"Énergie potentielle, énergie mécanique, conservation",
+      paragraphs:[
+        "Une force est dite conservative lorsque son travail entre deux points A et B ne dépend que des positions de A et de B, jamais du chemin suivi pour aller de l'un à l'autre. On lui associe alors une énergie potentielle $E_p$, définie à une constante additive près, telle que $W_{AB}(\\vec F) = E_p(A) - E_p(B) = -\\Delta E_p$.",
+        "Le poids est une force conservative : dans un champ de pesanteur uniforme, l'énergie potentielle de pesanteur s'écrit $E_p = mgz$ (à une constante près, z étant l'altitude sur un axe vertical ascendant). La force électrique dans un champ uniforme est, de la même façon, une force conservative, à laquelle on associe une énergie potentielle électrique qui joue exactement le même rôle, en remplaçant m par q et g par E.",
+        "L'énergie mécanique d'un système est la somme de son énergie cinétique et de son énergie potentielle : $E_m = E_c + E_p$. Si le système n'est soumis qu'à des forces conservatives — c'est le cas des deux situations étudiées dans ce module, puisqu'aucun frottement n'y est pris en compte — son énergie mécanique se conserve au cours du mouvement : $E_m$ reste constante, alors même que $E_c$ et $E_p$ varient individuellement."
+      ],
+      bullets:[
+        "Énergie potentielle de pesanteur : $E_p = mgz$ (z vertical ascendant, à une constante additive près).",
+        "Énergie mécanique : $E_m = E_c + E_p$.",
+        "Conservation de $E_m$ si et seulement si le système n'est soumis qu'à des forces conservatives (pas de frottement) — c'est le cas dans les deux situations de ce module.",
+        "Lien avec le TEC : si $E_m$ se conserve, $\\Delta E_c = -\\Delta E_p$, ce qui redonne exactement le résultat du TEC puisque le seul travail est celui de la force conservative, $W=-\\Delta E_p$. Les deux méthodes sont équivalentes ici ; la conservation de $E_m$ est souvent la plus rapide pour relier une vitesse à une position, sans repasser par les équations horaires."
+      ]
+    }
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {
+      u1:"1 — Deux champs de force uniforme",
+      u2:"2 — Mouvement à accélération constante",
+      u3:"3 — Mouvement dans le champ de pesanteur",
+      u4:"4 — Particule chargée dans un champ électrique",
+      u5:"5 — Énergie cinétique, travail, théorème de l'énergie cinétique",
+      u6:"6 — Énergie potentielle, énergie mécanique, conservation"
+    },
+    nextStep: "Enchaîne sur les autres modules de Révisions de Terminale (cinétique chimique, oxydoréduction, acides-bases) dès qu'ils seront prêts."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"Dans un référentiel galiléen, la deuxième loi de Newton s'écrit :", options:["m·a⃗ = ΣF⃗ (la somme vectorielle des forces)", "m·v⃗ = ΣF⃗", "a⃗ = F⃗/v⃗"], correct:0},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"Dans le champ de pesanteur uniforme, en l'absence de frottement, l'accélération d'un système :", options:["est égale à g, quelle que soit sa masse", "dépend de sa masse : plus il est lourd, plus il accélère", "est toujours nulle"], correct:0},
+    {id:'q3', type:'connaissance', difficulty:1, notion:'u1', q:"Le champ électrique uniforme entre les plaques d'un condensateur plan, distantes de d et soumises à une tension U, a pour valeur :", options:["E = U/d", "E = U×d", "E = d/U"], correct:0},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u1', q:"La force électrique subie par une particule de charge q dans un champ électrique E⃗ s'écrit :", options:["F⃗ = qE⃗", "F⃗ = q/E⃗", "F⃗ = qE⃗²"], correct:0},
+    {id:'q5', type:'connaissance', difficulty:2, notion:'u1', q:"Contrairement à l'accélération dans le champ de pesanteur, l'accélération d'une particule chargée dans un champ électrique uniforme :", options:["dépend du rapport charge sur masse (q/m) de la particule", "ne dépend jamais de la particule considérée", "est toujours dirigée vers le bas"], correct:0},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u2', q:"Un système soumis à une accélération vectorielle constante, non colinéaire à sa vitesse initiale, décrit :", options:["une trajectoire plane, en général parabolique", "toujours une trajectoire rectiligne", "toujours une trajectoire circulaire"], correct:0},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u2', q:"Pour établir les équations horaires du mouvement à partir du vecteur accélération, il faut :", options:["intégrer deux fois successivement, en utilisant les conditions initiales de vitesse puis de position", "dériver deux fois le vecteur accélération", "multiplier directement l'accélération par le temps écoulé"], correct:0},
+    {id:'q8', type:'connaissance', difficulty:1, notion:'u2', q:"L'équation de la trajectoire d'un point s'obtient :", options:["en éliminant le temps t entre les équations horaires des coordonnées", "en dérivant les équations horaires par rapport au temps", "en additionnant les équations horaires des coordonnées"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u3', q:"Pour un tir avec vitesse initiale faisant un angle α avec l'horizontale, dans le champ de pesanteur sans frottement, la composante horizontale de la vitesse :", options:["reste constante au cours du mouvement", "diminue régulièrement au cours du temps", "s'annule au sommet de la trajectoire"], correct:0},
+    {id:'q10', type:'connaissance', difficulty:1, notion:'u3', q:"Dans un mouvement dans le champ de pesanteur uniforme sans frottement, la trajectoire est :", options:["une parabole, sauf dans le cas particulier d'un lancer purement vertical", "toujours un cercle", "toujours une droite, quel que soit l'angle de lancement"], correct:0},
+    {id:'q11', type:'connaissance', difficulty:2, notion:'u4', q:"Si le champ électrique E⃗ est parallèle à la vitesse initiale v⃗₀ d'une particule chargée, le mouvement est :", options:["rectiligne, accéléré ou décéléré selon les signes de q et du champ", "toujours circulaire", "toujours parabolique"], correct:0},
+    {id:'q12', type:'connaissance', difficulty:2, notion:'u4', q:"Si le champ électrique E⃗ est perpendiculaire à la vitesse initiale v⃗₀ d'une particule chargée, le mouvement est :", options:["parabolique, comme un projectile dans le champ de pesanteur", "rectiligne uniforme", "impossible à décrire simplement"], correct:0},
+    {id:'q13', type:'connaissance', difficulty:1, notion:'u4', q:"Le principe de l'accélérateur linéaire de particules chargées repose sur :", options:["un champ électrique parallèle au mouvement, qui modifie l'énergie cinétique de la particule", "un champ magnétique qui dévie la particule sur un cercle", "l'absence totale de champ électrique dans l'appareil"], correct:0},
+    {id:'q14', type:'connaissance', difficulty:1, notion:'u5', q:"L'énergie cinétique d'un système modélisé par un point matériel de masse m et de vitesse de norme v s'écrit :", options:["Ec = ½mv²", "Ec = mv", "Ec = mv²"], correct:0},
+    {id:'q15', type:'connaissance', difficulty:1, notion:'u5', q:"Le travail d'une force constante F⃗ entre deux points A et B s'écrit :", options:["W_AB(F⃗) = F⃗·AB⃗ (produit scalaire)", "W_AB(F⃗) = F⃗ + AB⃗", "W_AB(F⃗) = F⃗ / AB⃗"], correct:0},
+    {id:'q16', type:'connaissance', difficulty:1, notion:'u5', q:"Le théorème de l'énergie cinétique énonce que, dans un référentiel galiléen, la variation d'énergie cinétique d'un système est égale :", options:["à la somme des travaux de toutes les forces qui s'exercent sur lui", "au travail de la seule force de pesanteur", "à l'opposé de la variation de l'énergie potentielle, quelles que soient les forces en jeu"], correct:0},
+    {id:'q17', type:'connaissance', difficulty:1, notion:'u6', q:"Une force est dite conservative lorsque son travail entre deux points :", options:["ne dépend que des positions de ces deux points, pas du chemin suivi", "dépend uniquement de la durée du trajet", "est toujours nul, quels que soient les points"], correct:0},
+    {id:'q18', type:'connaissance', difficulty:1, notion:'u6', q:"L'énergie potentielle de pesanteur d'un système de masse m à l'altitude z (axe vertical ascendant) s'écrit, à une constante additive près :", options:["Ep = mgz", "Ep = ½mv²", "Ep = mgz²"], correct:0},
+    {id:'q19', type:'connaissance', difficulty:1, notion:'u6', q:"L'énergie mécanique d'un système est définie comme :", options:["la somme de son énergie cinétique et de son énergie potentielle", "le produit de son énergie cinétique et de son énergie potentielle", "uniquement son énergie cinétique"], correct:0},
+    {id:'q20', type:'connaissance', difficulty:1, notion:'u6', q:"L'énergie mécanique d'un système se conserve au cours du mouvement :", options:["si le système n'est soumis qu'à des forces conservatives (pas de frottement)", "toujours, quelles que soient les forces en jeu", "uniquement si le système est immobile"], correct:0},
+
+    {id:'r1', type:'raisonnement', difficulty:1, notion:'u1', q:"On lance, dans le vide (sans frottement de l'air), un caillou et une plume verticalement vers le haut avec la même vitesse initiale. Lequel retombe le premier ?",
+      options:["Ils retombent en même temps : l'accélération g ne dépend pas de la masse", "Le caillou, car il est plus lourd", "La plume, car elle est plus légère"], correct:0,
+      hint:"En l'absence de frottement, a⃗=g⃗ pour tous les systèmes, quelle que soit leur masse."},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u1', q:"Une particule de charge q=+2e est accélérée plus rapidement, dans un champ électrique donné, qu'une particule de charge q=+e et de même masse. Pourquoi ?",
+      options:["Parce que la force électrique F=qE est proportionnelle à q : à E et m fixés, une charge double donne une accélération double", "Parce que sa masse est en réalité différente", "Le champ électrique n'a aucun effet sur l'accélération d'une particule chargée"], correct:0,
+      hint:"a = qE/m : compare les deux valeurs de q, à m et E fixés."},
+    {id:'r3', type:'raisonnement', difficulty:1, notion:'u2', q:"Un système est lancé avec une vitesse initiale non nulle, colinéaire au vecteur accélération constant qu'il subit. Quelle est la forme de sa trajectoire ?",
+      options:["Une droite (mouvement rectiligne)", "Une parabole", "Un cercle"], correct:0,
+      hint:"Le mouvement n'est parabolique que si v⃗₀ et a⃗ ne sont pas colinéaires ; sinon le mouvement reste sur la droite portée par v⃗₀."},
+    {id:'r4', type:'raisonnement', difficulty:2, notion:'u3', q:"Deux billes sont lancées horizontalement depuis la même hauteur h, avec des vitesses initiales différentes v₁ < v₂ (frottement de l'air négligé). Laquelle touche le sol la première ?",
+      options:["Elles touchent le sol en même temps : la durée de chute ne dépend que de h et de g, pas de la vitesse horizontale", "La bille la plus rapide (v₂), car elle avance plus vite", "La bille la plus lente (v₁)"], correct:0,
+      hint:"Le mouvement vertical z(t)=−½gt² est indépendant du mouvement horizontal x(t)=v·t : seule la hauteur h détermine la durée de chute."},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u3', q:"À vitesse initiale fixée et sans frottement, pour quel angle de tir (parmi 30°, 45°, 60°) la portée horizontale sur un sol plat est-elle maximale ?",
+      options:["45°", "30°", "60°"], correct:0,
+      hint:"La portée horizontale d'un tir sans frottement est proportionnelle à sin(2α) ; elle est maximale quand 2α=90°."},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u4', q:"Dans un tube cathodique, des électrons traversent un champ électrique perpendiculaire à leur vitesse initiale, entre deux plaques. Quel est l'effet de ce champ sur leur trajectoire ?",
+      options:["Il dévie les électrons selon une trajectoire parabolique, comme un projectile dans le champ de pesanteur", "Il accélère les électrons en ligne droite, sans les dévier", "Il n'a aucun effet sur leur trajectoire"], correct:0,
+      hint:"Un champ perpendiculaire à la vitesse initiale produit une accélération perpendiculaire : c'est la configuration de la déviation, pas de l'accélération rectiligne."},
+    {id:'r7', type:'raisonnement', difficulty:1, notion:'u4', q:"Dans un accélérateur linéaire, si l'on double la tension U appliquée entre les plaques (charge q et distance d inchangées), comment évolue l'énergie cinétique gagnée par la particule (ΔEc=qU) ?",
+      options:["Elle double", "Elle reste inchangée", "Elle est divisée par deux"], correct:0,
+      hint:"ΔEc=qU : à q fixé, ΔEc est directement proportionnelle à U."},
+    {id:'r8', type:'raisonnement', difficulty:1, notion:'u5', q:"Une force reste perpendiculaire à la trajectoire du système sur lequel elle s'exerce, tout au long du mouvement. Que peut-on dire de son travail ?",
+      options:["Il est nul à chaque instant : F⃗ et le déplacement sont perpendiculaires, leur produit scalaire est nul", "Il est toujours positif", "Il est toujours négatif"], correct:0,
+      hint:"Le travail d'une force est proportionnel au cosinus de l'angle entre la force et le déplacement ; ce cosinus est nul à 90°."},
+    {id:'r9', type:'raisonnement', difficulty:2, notion:'u5', q:"Un système part du repos et atteint une vitesse de norme v après avoir reçu un travail total W de la part de toutes les forces qui s'exercent sur lui. Comment W s'exprime-t-il en fonction de m et v ?",
+      options:["W = ½mv² (le système part du repos, donc ΔEc = Ec finale)", "W = mv", "W = mgv"], correct:0,
+      hint:"TEC : ΔEc = W. Ici Ec initiale = 0 (repos), donc ΔEc = ½mv² − 0."},
+    {id:'r10', type:'raisonnement', difficulty:2, notion:'u6', q:"Un système en chute libre (sans frottement) voit son énergie potentielle de pesanteur diminuer de 200 J entre deux instants. Que peut-on dire de son énergie cinétique sur ce même intervalle, sachant que l'énergie mécanique se conserve ?",
+      options:["Elle augmente de 200 J", "Elle diminue de 200 J", "Elle reste inchangée"], correct:0,
+      hint:"Em = Ec + Ep constante ⟹ ΔEc = −ΔEp."},
+    {id:'r11', type:'raisonnement', difficulty:1, notion:'u6', q:"Un pendule oscille en subissant un frottement de l'air non négligeable. Que peut-on dire de son énergie mécanique au cours du temps ?",
+      options:["Elle diminue progressivement : le frottement est une force non conservative qui dissipe de l'énergie", "Elle reste rigoureusement constante", "Elle augmente progressivement"], correct:0,
+      hint:"La conservation de l'énergie mécanique suppose l'absence de forces non conservatives comme le frottement."},
+    {id:'r12', type:'raisonnement', difficulty:2, notion:'u6', q:"Pour déterminer la vitesse d'un système en un point donné de sa trajectoire, dans un champ de force uniforme sans frottement, on peut utiliser soit le théorème de l'énergie cinétique, soit la conservation de l'énergie mécanique. Que peut-on dire de ces deux méthodes ici ?",
+      options:["Elles sont équivalentes (pas de frottement) et donnent le même résultat", "Seul le théorème de l'énergie cinétique est valable dans ce cas", "Seule la conservation de l'énergie mécanique est valable dans ce cas"], correct:0,
+      hint:"Sans force non conservative, la conservation de Em découle directement du TEC : ΔEc = W(force conservative) = −ΔEp."}
+  ],
+
+  applications: [
+    {id:'a1', difficulty:1, notion:'u3', statement:"Un objet est lâché sans vitesse initiale d'une hauteur h = 20 m (g = 9,8 m·s⁻², frottement négligé). Calcule, via la conservation de l'énergie mécanique, sa vitesse à l'arrivée au sol, en m/s.",
+      unit:'m/s', answer:19.8, tolerance:{type:'pct', value:3},
+      methode:"Utilise la conservation de l'énergie mécanique entre le départ (v=0, altitude h) et le sol (z=0) : mgh = ½mv² (la masse se simplifie).",
+      correction:["Em conservée : Ep(départ) + Ec(départ) = Ep(sol) + Ec(sol), avec Ec(départ)=0 et Ep(sol)=0.", "mgh = ½mv² donc v = √(2gh).", "v = √(2×9,8×20) = √392 ≈ 19,8 m/s."]},
+    {id:'a2', difficulty:2, notion:'u3', statement:"Un objet est lancé horizontalement avec une vitesse v₀ = 15 m/s depuis une hauteur h = 45 m (g = 9,8 m·s⁻², frottement négligé). Calcule la portée horizontale D (distance parcourue avant de toucher le sol), en mètres.",
+      unit:'m', answer:45.5, tolerance:{type:'pct', value:3},
+      methode:"Calcule d'abord la durée de chute t avec z(t)=h−½gt²=0, puis la portée D=v₀×t.",
+      correction:["Durée de chute : h = ½gt² donc t = √(2h/g) = √(2×45/9,8) ≈ 3,03 s.", "Portée horizontale : D = v₀×t = 15×3,03.", "D ≈ 45,5 m."]},
+    {id:'a3', difficulty:2, notion:'u4', statement:"Un électron (charge |q| = 1,6×10⁻¹⁹ C, masse m = 9,1×10⁻³¹ kg), initialement au repos, est accéléré par une tension U = 1000 V dans un accélérateur linéaire. Calcule sa vitesse de sortie, en ×10⁶ m/s (donne le nombre qui précède ×10⁶ m/s).",
+      unit:'×10⁶ m/s', answer:18.8, tolerance:{type:'pct', value:3},
+      methode:"Applique le théorème de l'énergie cinétique entre l'entrée (v=0) et la sortie : ΔEc=|q|U, avec ΔEc=½mv² puisque l'électron part du repos.",
+      correction:["TEC : ½mv² − 0 = |q|×U.", "v = √(2|q|U/m) = √(2×1,6×10⁻¹⁹×1000 / 9,1×10⁻³¹).", "v ≈ 1,88×10⁷ m/s, soit environ 18,8×10⁶ m/s."]},
+    {id:'a4', difficulty:1, notion:'u5', statement:"Un système de masse m = 2,0 kg, initialement au repos, reçoit un travail total W = 64 J de la part des forces qui s'exercent sur lui. Calcule sa vitesse finale, en m/s.",
+      unit:'m/s', answer:8.0, tolerance:{type:'pct', value:3},
+      methode:"TEC : ΔEc = W. Le système part du repos, donc Ec initiale = 0, d'où ½mv² = W.",
+      correction:["½mv² = W = 64 J.", "v² = 2W/m = 2×64/2,0 = 64.", "v = √64 = 8,0 m/s."]},
+    {id:'a5', difficulty:2, notion:'u6', statement:"Une balle est lancée verticalement vers le haut avec une vitesse initiale v₀ = 20 m/s (g = 9,8 m·s⁻², frottement négligé). Calcule, par conservation de l'énergie mécanique, la hauteur maximale atteinte, en mètres.",
+      unit:'m', answer:20.4, tolerance:{type:'pct', value:3},
+      methode:"Au sommet, la vitesse est nulle : utilise la conservation de l'énergie mécanique entre le départ (v₀) et le sommet (v=0).",
+      correction:["Em conservée : ½mv₀² + 0 = 0 + mgh_max (Ep prise nulle au départ, m se simplifie).", "h_max = v₀²/(2g) = 20²/(2×9,8) = 400/19,6.", "h_max ≈ 20,4 m."]},
+    {id:'a6', difficulty:2, notion:'u6', statement:"Un skieur de masse m = 70 kg part du repos en haut d'une piste sans frottement. Calcule sa vitesse, en m/s, après avoir descendu une dénivelée de 12 m (g = 9,8 m·s⁻²).",
+      unit:'m/s', answer:15.3, tolerance:{type:'pct', value:3},
+      methode:"Conservation de l'énergie mécanique entre le sommet (v=0) et le point situé 12 m plus bas : mgh = ½mv² (la masse se simplifie).",
+      correction:["mgh = ½mv² (m se simplifie des deux côtés — la masse du skieur n'intervient pas dans le résultat).", "v = √(2gh) = √(2×9,8×12) = √235,2.", "v ≈ 15,3 m/s."]}
+  ],
+
+  mindmapModel: {
+    label:"Mouvement dans un champ de force uniforme",
+    children:[
+      {label:"Deux champs uniformes", children:[
+        {label:"Champ de pesanteur g⃗"},{label:"Champ électrique E=U/d"},{label:"F⃗=qE⃗, a⃗=qE⃗/m"}
+      ]},
+      {label:"Trajectoire", children:[
+        {label:"Accélération constante"},{label:"Mouvement plan"},{label:"Parabole (équations horaires)"}
+      ]},
+      {label:"Particule chargée : deux cas", children:[
+        {label:"E⃗ ∥ v⃗₀ : accélérateur linéaire"},{label:"E⃗ ⊥ v⃗₀ : déviation"}
+      ]},
+      {label:"Énergie cinétique", children:[
+        {label:"Ec=½mv²"},{label:"Travail W=F⃗·AB⃗"},{label:"Théorème de l'énergie cinétique"}
+      ]},
+      {label:"Énergie potentielle et mécanique", children:[
+        {label:"Force conservative"},{label:"Ep=mgz"},{label:"Em=Ec+Ep"},{label:"Conservation sans frottement"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>
