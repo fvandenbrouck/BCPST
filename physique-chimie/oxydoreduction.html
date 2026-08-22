@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oxydants/réducteurs, demi-équations · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/applications-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'pc-oxydoreduction',
+  chapNum: "Révisions de Terminale",
+  subjectLabel: "Physique-Chimie",
+  accent: 'var(--ochre)',
+  title: "Oxydants/réducteurs, demi-équations",
+  pages: "Programme de Première et Terminale spécialité — BCPST1 : C.2",
+  noManual: true,
+  backHref: '../index.html',
+  bridge: {
+    from: "En première, une transformation chimique modélisée par un transfert d'électrons entre deux espèces a été introduite : oxydant, réducteur, couple oxydant-réducteur, demi-équation électronique. À partir de deux couples donnés, une équation de réaction complète a pu être établie, en particulier pour suivre l'évolution d'un système lors d'un titrage à équivalence colorée.",
+    to: "La Terminale prolonge cette étude avec le fonctionnement des piles : deux demi-piles séparées par un pont salin, réactions aux électrodes, tension à vide, usure et capacité électrique. Le critère d'évolution spontanée (quotient de réaction, déjà rencontré pour d'autres transformations) s'applique aux systèmes oxydant-réducteur, et le passage forcé d'un courant permet, à l'inverse, de faire fonctionner un électrolyseur dans le sens non spontané. En BCPST1, ce cadre est repris et formalisé (code C.2.3) : le nombre d'oxydation généralise et précise les notions d'oxydant et de réducteur, le potentiel d'électrode et la relation de Nernst permettent de calculer quantitativement une tension à l'équilibre, les diagrammes de prédominance ou d'existence prévoient graphiquement la composition d'un système, et l'influence du pH sur le pouvoir oxydant ou réducteur d'un couple est étudiée à travers le potentiel standard apparent."
+  },
+
+  fiches: [
+    {
+      unit:'1', badge:'Première',
+      title:"Oxydant, réducteur, couple oxydant-réducteur",
+      paragraphs:[
+        "Une transformation chimique peut être modélisée comme un transfert d'un ou plusieurs électrons entre deux espèces chimiques : c'est une réaction d'oxydoréduction. Un oxydant est une espèce chimique capable de capter un ou plusieurs électrons ; un réducteur est une espèce chimique capable d'en céder un ou plusieurs.",
+        "Un oxydant Ox et le réducteur Red qu'il devient après avoir capté n électrons (ou, réciproquement, le réducteur et l'oxydant qu'il devient en cédant n électrons) forment un couple oxydant-réducteur, noté Ox/Red. Ce couple est relié par la demi-équation électronique : $$\\mathrm{Ox} + n\\,e^- = \\mathrm{Red}$$ Cette demi-équation n'est jamais, à elle seule, une transformation réelle : elle décrit seulement la relation entre les deux membres d'un même couple.",
+        "Quelques couples usuels, à connaître, servent de base à de nombreux exercices : $\\mathrm{Cu^{2+}(aq)/Cu(s)}$, $\\mathrm{Fe^{3+}(aq)/Fe^{2+}(aq)}$, $\\mathrm{MnO_4^-(aq)/Mn^{2+}(aq)}$, $\\mathrm{H_3O^+(aq)/H_2(g)}$, $\\mathrm{I_2(aq)/I^-(aq)}$."
+      ],
+      bullets:[
+        "Oxydant : espèce capable de capter un ou plusieurs électrons.",
+        "Réducteur : espèce capable de céder un ou plusieurs électrons.",
+        "Couple Ox/Red, relié par la demi-équation électronique $\\mathrm{Ox}+n\\,e^-=\\mathrm{Red}$.",
+        "Une demi-équation électronique, seule, ne décrit pas une transformation réelle : il faut toujours l'associer à une seconde demi-équation (fiche 2)."
+      ]
+    },
+    {
+      unit:'2', badge:'Première',
+      title:"Demi-équations électroniques et équation d'oxydoréduction",
+      paragraphs:[
+        "Pour équilibrer une demi-équation électronique en milieu acide aqueux, on procède dans un ordre précis : équilibrer d'abord l'élément caractéristique du couple (autre que O et H) ; équilibrer ensuite l'oxygène à l'aide de molécules d'eau $\\mathrm{H_2O}$ ; équilibrer l'hydrogène à l'aide d'ions $\\mathrm{H^+}$ ; équilibrer enfin les charges électriques en ajoutant le nombre d'électrons nécessaire. Exemple, pour le couple $\\mathrm{MnO_4^-/Mn^{2+}}$ : $$\\mathrm{MnO_4^- + 8\\,H^+ + 5\\,e^- = Mn^{2+} + 4\\,H_2O}$$",
+        "Une demi-équation seule n'est pas une transformation réelle (fiche 1) : pour obtenir l'équation d'une réaction d'oxydoréduction entre un oxydant et un réducteur de deux couples différents, il faut combiner leurs deux demi-équations — l'une écrite dans le sens $\\mathrm{Ox_1}+n_1e^-=\\mathrm{Red_1}$, l'autre dans le sens inverse $\\mathrm{Red_2}=\\mathrm{Ox_2}+n_2e^-$ — après les avoir multipliées par des coefficients choisis pour égaliser le nombre d'électrons échangés, afin de les éliminer par simple addition.",
+        "Exemple guidé, le dosage de $\\mathrm{Fe^{2+}}$ par les ions permanganate : $$\\mathrm{MnO_4^- + 8\\,H^+ + 5\\,e^- = Mn^{2+} + 4\\,H_2O} \\quad (\\times 1)$$ $$\\mathrm{Fe^{2+} = Fe^{3+} + e^-} \\quad (\\times 5)$$ La somme, après élimination des $5\\,e^-$ communs aux deux demi-équations, donne l'équation bilan : $$\\mathrm{MnO_4^- + 8\\,H^+ + 5\\,Fe^{2+} = Mn^{2+} + 4\\,H_2O + 5\\,Fe^{3+}}$$"
+      ],
+      bullets:[
+        "Ordre d'équilibrage d'une demi-équation : élément caractéristique → oxygène (H₂O) → hydrogène (H⁺) → charges (électrons).",
+        "Pour combiner deux demi-équations : égaliser d'abord le nombre d'électrons échangés (à l'aide de coefficients), puis additionner en éliminant les électrons.",
+        "Exemple à retenir : $\\mathrm{MnO_4^-+8H^++5e^-=Mn^{2+}+4H_2O}$, souvent combiné avec $\\mathrm{Fe^{2+}=Fe^{3+}+e^-}$ dans les titrages.",
+        "Cette méthode de combinaison des demi-équations est aussi celle utilisée, plus loin (fiches 3 et 4), pour écrire le bilan global d'une pile à partir des réactions à ses deux électrodes."
+      ]
+    },
+    {
+      unit:'3', badge:'Terminale',
+      title:"La pile : deux demi-piles, un pont salin",
+      paragraphs:[
+        "Une pile est un dispositif qui convertit l'énergie chimique libérée par une transformation d'oxydoréduction spontanée en énergie électrique. Elle est constituée de deux demi-piles, chacune associant un couple oxydant-réducteur en solution à une électrode (le métal du couple lui-même s'il en comporte un, ou une électrode inerte comme le platine ou le graphite sinon).",
+        "Les deux demi-piles sont séparées physiquement, pour éviter tout contact direct entre l'oxydant de l'une et le réducteur de l'autre — un contact direct court-circuiterait le transfert d'électrons, qui se ferait alors sans passer par le circuit extérieur, donc sans produire de courant utilisable. Elles restent néanmoins reliées par un pont salin (ou une membrane poreuse), qui assure la fermeture du circuit électrique par migration d'ions, tout en maintenant l'électroneutralité de chaque compartiment.",
+        "Le circuit extérieur (fil conducteur, éventuellement associé à un appareil de mesure ou à un récepteur) est le chemin emprunté par les électrons, de l'électrode négative vers l'électrode positive. La tension à vide de la pile est la différence de potentiel mesurée à ses bornes lorsqu'aucun courant significatif ne circule (circuit ouvert, mesurée à l'aide d'un voltmètre dont la résistance interne est très grande)."
+      ],
+      bullets:[
+        "Une pile = deux demi-piles (couple + électrode) + un pont salin + un circuit extérieur.",
+        "Le pont salin évite le contact direct entre réactifs tout en fermant le circuit électrique par migration d'ions.",
+        "Les électrons circulent, dans le circuit extérieur, de l'électrode négative vers l'électrode positive.",
+        "Tension à vide : différence de potentiel mesurée en circuit ouvert (courant quasi nul)."
+      ]
+    },
+    {
+      unit:'4', badge:'Terminale',
+      title:"Réactions aux électrodes, usure, capacité électrique",
+      paragraphs:[
+        "Dans une pile en fonctionnement, chaque électrode est le siège d'une des deux demi-réactions. À l'électrode négative (l'anode), le réducteur cède des électrons : c'est une oxydation, $\\mathrm{Red}=\\mathrm{Ox}+n\\,e^-$. À l'électrode positive (la cathode), l'oxydant capte les électrons arrivés par le circuit extérieur : c'est une réduction, $\\mathrm{Ox}+n\\,e^-=\\mathrm{Red}$. La somme de ces deux demi-réactions, combinées comme en fiche 2, redonne l'équation de la réaction d'oxydoréduction spontanée qui fait fonctionner la pile.",
+        "Au fur et à mesure du fonctionnement, les réactifs — l'oxydant consommé à la cathode, le réducteur consommé à l'anode — sont progressivement consommés. La pile est usée lorsque l'un des deux réactifs, le réactif limitant, est entièrement consommé.",
+        "La capacité électrique d'une pile est la quantité d'électricité maximale qu'elle peut débiter avant d'être usée. Elle se relie à la quantité de matière maximale d'électrons échangeables, elle-même déterminée par la quantité de matière du réactif limitant et le nombre d'électrons échangés par mole de cette espèce selon sa demi-équation : $$Q = n(e^-) \\times F$$ où F est la constante de Faraday ($F\\approx 96\\,500\\ \\mathrm{C\\cdot mol^{-1}}$), la charge électrique portée par une mole d'électrons."
+      ],
+      bullets:[
+        "Électrode négative (anode) : oxydation, le réducteur cède des électrons.",
+        "Électrode positive (cathode) : réduction, l'oxydant capte des électrons.",
+        "Une pile est usée quand son réactif limitant est entièrement consommé.",
+        "Capacité électrique : $Q=n(e^-)\\times F$, avec $F\\approx 96\\,500\\ \\mathrm{C\\cdot mol^{-1}}$."
+      ]
+    },
+    {
+      unit:'5', badge:'Terminale',
+      title:"Sens spontané, électrolyseurs, espèces usuelles",
+      paragraphs:[
+        "Comme toute transformation chimique, celle qui se produit dans une pile évolue spontanément dans le sens qui rapproche son quotient de réaction $Q_r$ de la constante d'équilibre $K$ : c'est ce sens spontané qui permet à la pile de produire un courant électrique exploitable, sans intervention extérieure.",
+        "À l'inverse, un électrolyseur impose, grâce à un générateur électrique extérieur, le sens non spontané d'une transformation d'oxydoréduction : on force ainsi une réaction qui ne se produirait pas spontanément — par exemple pour réaliser un dépôt métallique (une électrolyse) ou pour recharger un accumulateur. Les rôles des électrodes ne changent pas de nature (l'anode reste le siège d'une oxydation, la cathode celui d'une réduction), mais leur polarité par rapport au générateur s'inverse par rapport à une pile.",
+        "Quelques oxydants et réducteurs usuels sont à connaître : l'eau de Javel (dont le pouvoir oxydant provient de l'ion hypochlorite $\\mathrm{ClO^-}$), le dioxygène $\\mathrm{O_2}$ et le dichlore $\\mathrm{Cl_2}$ (oxydants), le dihydrogène $\\mathrm{H_2}$ et l'acide ascorbique — la vitamine C — (réducteurs), ainsi que les métaux en général, en particulier ceux du bloc s du tableau périodique, de bons réducteurs en cohérence avec leur position dans le tableau périodique."
+      ],
+      bullets:[
+        "Pile : fonctionne dans le sens spontané de la transformation.",
+        "Électrolyseur : impose, grâce à un générateur extérieur, le sens non spontané.",
+        "Anode = oxydation, cathode = réduction, dans les deux dispositifs — seule la polarité par rapport au générateur diffère.",
+        "Oxydants usuels : eau de Javel (ion ClO⁻), O₂, Cl₂. Réducteurs usuels : H₂, acide ascorbique, métaux (bloc s en particulier)."
+      ]
+    }
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {
+      u1:"1 — Oxydant, réducteur, couple oxydant-réducteur",
+      u2:"2 — Demi-équations et équation d'oxydoréduction",
+      u3:"3 — La pile : deux demi-piles, un pont salin",
+      u4:"4 — Réactions aux électrodes, usure, capacité électrique",
+      u5:"5 — Sens spontané, électrolyseurs, espèces usuelles"
+    },
+    nextStep: "Enchaîne sur le dernier module de Révisions de Terminale (acides et bases) dès qu'il sera prêt."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"Un oxydant est une espèce chimique capable de :", options:["capter un ou plusieurs électrons", "céder un ou plusieurs électrons", "ne jamais réagir"], correct:0},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"Un réducteur est une espèce chimique capable de :", options:["céder un ou plusieurs électrons", "capter un ou plusieurs électrons", "rester toujours sous sa forme oxydée"], correct:0},
+    {id:'q3', type:'connaissance', difficulty:1, notion:'u1', q:"Un couple oxydant-réducteur Ox/Red est relié par la demi-équation électronique :", options:["Ox + n e⁻ = Red", "Ox = Red + n e⁻", "Ox × n = Red"], correct:0},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u1', q:"Lequel de ces couples est correctement écrit sous la forme Ox/Red ?", options:["Cu²⁺/Cu", "Cu/Cu²⁺", "Cu²⁺/Cu²⁺"], correct:0},
+    {id:'q5', type:'connaissance', difficulty:2, notion:'u2', q:"Pour équilibrer une demi-équation électronique en milieu acide aqueux, on équilibre dans l'ordre :", options:["l'élément caractéristique, puis l'oxygène avec H₂O, puis l'hydrogène avec H⁺, puis les charges avec des électrons", "uniquement les charges électriques", "l'hydrogène avant l'oxygène et l'élément caractéristique"], correct:0},
+    {id:'q6', type:'connaissance', difficulty:2, notion:'u2', q:"Pour obtenir l'équation bilan d'une réaction d'oxydoréduction à partir de deux demi-équations, il faut :", options:["les multiplier par des coefficients pour égaliser le nombre d'électrons échangés, puis les additionner en éliminant les électrons", "simplement les additionner telles quelles", "soustraire l'une de l'autre"], correct:0},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u2', q:"La demi-équation du couple MnO₄⁻/Mn²⁺ en milieu acide s'écrit :", options:["MnO₄⁻ + 8H⁺ + 5e⁻ = Mn²⁺ + 4H₂O", "MnO₄⁻ + 4H⁺ + 5e⁻ = Mn²⁺ + 2H₂O", "MnO₄⁻ + 5e⁻ = Mn²⁺"], correct:0},
+    {id:'q8', type:'connaissance', difficulty:1, notion:'u3', q:"Une pile est constituée de :", options:["deux demi-piles reliées par un pont salin et un circuit extérieur", "une seule solution contenant tous les réactifs", "un unique couple oxydant-réducteur"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:2, notion:'u3', q:"Le rôle du pont salin dans une pile est :", options:["d'assurer la fermeture du circuit électrique par migration d'ions, en évitant le contact direct entre les réactifs des deux demi-piles", "de fournir les électrons nécessaires à la réaction", "de servir uniquement de support mécanique aux électrodes"], correct:0},
+    {id:'q10', type:'connaissance', difficulty:1, notion:'u3', q:"La tension à vide d'une pile est mesurée :", options:["en circuit ouvert, lorsqu'aucun courant significatif ne circule", "uniquement lorsque la pile débite un courant maximal", "avec un ampèremètre"], correct:0},
+    {id:'q11', type:'connaissance', difficulty:2, notion:'u4', q:"Dans une pile en fonctionnement, l'électrode négative est le siège :", options:["d'une oxydation (le réducteur y cède des électrons)", "d'une réduction (l'oxydant y capte des électrons)", "d'aucune réaction"], correct:0},
+    {id:'q12', type:'connaissance', difficulty:2, notion:'u4', q:"Dans une pile en fonctionnement, l'électrode positive est le siège :", options:["d'une réduction (l'oxydant y capte des électrons)", "d'une oxydation (le réducteur y cède des électrons)", "d'aucune réaction"], correct:0},
+    {id:'q13', type:'connaissance', difficulty:1, notion:'u4', q:"Une pile est usée lorsque :", options:["l'un de ses réactifs limitants est entièrement consommé", "la tension à vide devient infinie", "le pont salin déborde"], correct:0},
+    {id:'q14', type:'connaissance', difficulty:1, notion:'u4', q:"La capacité électrique d'une pile se relie à la quantité de matière d'électrons échangeables par :", options:["Q = n(e⁻) × F, où F est la constante de Faraday", "Q = n(e⁻) / F", "Q = F − n(e⁻)"], correct:0},
+    {id:'q15', type:'connaissance', difficulty:1, notion:'u5', q:"Une pile produit de l'électricité grâce à une transformation :", options:["spontanée", "forcée par un générateur extérieur", "impossible thermodynamiquement"], correct:0},
+    {id:'q16', type:'connaissance', difficulty:1, notion:'u5', q:"Un électrolyseur impose :", options:["le sens non spontané d'une transformation d'oxydoréduction, grâce à un générateur extérieur", "toujours le même sens que la transformation spontanée", "l'arrêt total de toute réaction chimique"], correct:0},
+    {id:'q17', type:'connaissance', difficulty:1, notion:'u5', q:"L'eau de Javel contient un oxydant usuel, l'ion :", options:["hypochlorite ClO⁻", "chlorure Cl⁻", "sulfate SO₄²⁻"], correct:0},
+    {id:'q18', type:'connaissance', difficulty:1, notion:'u5', q:"Les métaux du bloc s du tableau périodique sont en général des :", options:["réducteurs", "oxydants", "espèces totalement inertes chimiquement"], correct:0},
+    {id:'q19', type:'connaissance', difficulty:1, notion:'u5', q:"L'acide ascorbique (vitamine C) est un exemple usuel de :", options:["réducteur", "oxydant", "catalyseur"], correct:0},
+    {id:'q20', type:'connaissance', difficulty:2, notion:'u5', q:"Dans un électrolyseur, contrairement à une pile, c'est :", options:["le générateur extérieur qui impose le sens du courant, donc de la réaction", "la réaction chimique qui impose spontanément le sens du courant", "le pont salin qui détermine le sens de la réaction"], correct:0},
+
+    {id:'r1', type:'raisonnement', difficulty:1, notion:'u1', q:"Dans la réaction Zn + Cu²⁺ → Zn²⁺ + Cu, quelle espèce joue le rôle du réducteur ?",
+      options:["Le zinc Zn, qui cède des électrons pour former Zn²⁺", "L'ion Cu²⁺, qui capte des électrons", "Le cuivre Cu, produit de la réaction"], correct:0,
+      hint:"Un réducteur cède des électrons ; identifie l'espèce qui passe de l'état non chargé à l'état chargé positivement."},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u1', q:"On observe expérimentalement la réaction spontanée Zn + 2Ag⁺ → Zn²⁺ + 2Ag entre les couples Ag⁺/Ag et Zn²⁺/Zn. Quels étaient les deux réactifs initialement mis en présence ?",
+      options:["Ag⁺ et Zn : Zn (réducteur) cède ses électrons à Ag⁺ (oxydant)", "Ag et Zn²⁺ : deux espèces déjà réduite et oxydée ne peuvent pas réagir", "Les deux couples ne peuvent jamais réagir entre eux"], correct:0,
+      hint:"Dans l'équation de la réaction observée, identifie qui est consommé (les réactifs, à gauche) et qui est produit (à droite)."},
+    {id:'r3', type:'raisonnement', difficulty:1, notion:'u2', q:"Pour équilibrer la demi-équation du couple Fe³⁺/Fe²⁺, combien d'électrons faut-il ajouter ?",
+      options:["Un seul électron : Fe³⁺ + e⁻ = Fe²⁺", "Deux électrons", "Aucun électron n'est nécessaire"], correct:0,
+      hint:"Compare les charges : Fe³⁺ porte une charge +3, Fe²⁺ une charge +2 ; la différence donne le nombre d'électrons échangés."},
+    {id:'r4', type:'raisonnement', difficulty:2, notion:'u2', q:"On combine les deux demi-équations Ox₁ + 2e⁻ = Red₁ et Red₂ = Ox₂ + e⁻ pour obtenir l'équation bilan d'une réaction d'oxydoréduction. Par quel coefficient doit-on multiplier chaque demi-équation avant de les additionner ?",
+      options:["×1 pour la première, ×2 pour la seconde, afin d'égaliser le nombre d'électrons échangés (2)", "×2 pour les deux demi-équations", "Aucun coefficient n'est nécessaire, on additionne directement"], correct:0,
+      hint:"Le nombre d'électrons cédés par l'une doit être égal au nombre d'électrons captés par l'autre pour qu'ils s'éliminent lors de l'addition."},
+    {id:'r5', type:'raisonnement', difficulty:1, notion:'u3', q:"Pourquoi ne peut-on pas simplement plonger les deux électrodes d'une pile Cu²⁺/Cu et Zn²⁺/Zn dans une seule et même solution contenant à la fois Cu²⁺ et Zn ?",
+      options:["Le transfert d'électrons se ferait directement par contact, sans passer par le circuit extérieur : aucun courant électrique utilisable ne serait produit", "Le cuivre et le zinc ne peuvent jamais réagir ensemble", "Cela rendrait la réaction non spontanée"], correct:0,
+      hint:"Le rôle du pont salin est justement d'éviter ce contact direct, pour forcer les électrons à emprunter le circuit extérieur."},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u3', q:"Le voltmètre utilisé pour mesurer la tension à vide d'une pile a une résistance interne très grande. Pourquoi ce choix est-il important ?",
+      options:["Pour que le courant débité par la pile pendant la mesure soit quasiment nul, ce qui correspond à la définition du circuit ouvert (« à vide »)", "Pour que la pile se décharge le plus vite possible pendant la mesure", "La résistance interne du voltmètre n'a aucune importance"], correct:0,
+      hint:"« À vide » signifie qu'aucun courant significatif ne doit circuler pendant la mesure de la tension."},
+    {id:'r7', type:'raisonnement', difficulty:2, notion:'u4', q:"Une pile Zn/Cu est constituée avec n(Cu²⁺)=0,010 mol initialement dans le compartiment cuivre, et une plaque de zinc en excès dans l'autre compartiment. Lequel des deux réactifs limite la capacité électrique de la pile ?",
+      options:["L'ion Cu²⁺ (réactif en quantité limitée), pas le zinc métallique qui est en excès", "Le zinc métallique, car c'est toujours l'électrode qui limite", "Aucun réactif ne limite jamais la capacité d'une pile"], correct:0,
+      hint:"La capacité électrique est déterminée par le réactif présent en quantité insuffisante : identifie lequel est en excès et lequel ne l'est pas."},
+    {id:'r8', type:'raisonnement', difficulty:1, notion:'u4', q:"À l'électrode où se produit une oxydation dans une pile, cette électrode est qualifiée de :",
+      options:["électrode négative (l'anode, dans le cas d'une pile)", "électrode positive", "électrode neutre"], correct:0,
+      hint:"Dans une pile, l'oxydation (perte d'électrons par le réducteur) a lieu à l'électrode qui constitue le pôle négatif."},
+    {id:'r9', type:'raisonnement', difficulty:2, notion:'u5', q:"On souhaite recouvrir un objet métallique d'une fine couche d'argent (une argenture), une transformation qui n'est pas spontanée dans le sens souhaité. Quel dispositif utiliser ?",
+      options:["Un électrolyseur, qui force le sens non spontané de la réaction grâce à un générateur extérieur", "Une pile, qui ne peut fonctionner que dans le sens spontané", "Aucun dispositif électrochimique ne permet cette opération"], correct:0,
+      hint:"Puisque la transformation souhaitée n'est pas spontanée, il faut la forcer à l'aide d'un courant imposé de l'extérieur."},
+    {id:'r10', type:'raisonnement', difficulty:1, notion:'u5', q:"Pourquoi les métaux du bloc s (comme le sodium ou le calcium) sont-ils qualifiés de bons réducteurs ?",
+      options:["Parce qu'ils cèdent facilement leur(s) électron(s) de valence, en cohérence avec leur position dans le tableau périodique", "Parce qu'ils captent facilement des électrons supplémentaires", "Parce qu'ils sont toujours présents sous forme d'ions dans la nature"], correct:0,
+      hint:"Relie cette propriété à la position de ces éléments dans le tableau périodique et à leur configuration électronique de valence."},
+    {id:'r11', type:'raisonnement', difficulty:2, notion:'u5', q:"Dans un électrolyseur, l'anode est reliée à la borne positive du générateur extérieur, contrairement à une pile où l'anode constitue le pôle négatif. Cette différence remet-elle en cause la définition de l'anode comme siège de l'oxydation ?",
+      options:["Non : dans les deux cas, l'anode reste le siège de l'oxydation ; seule sa polarité par rapport au reste du circuit change", "Oui : dans un électrolyseur, l'anode est le siège d'une réduction", "Oui : la notion d'anode n'a de sens que pour une pile"], correct:0,
+      hint:"La définition de l'anode (siège de l'oxydation) et de la cathode (siège de la réduction) reste valable dans les deux dispositifs ; seule la polarité s'inverse."},
+    {id:'r12', type:'raisonnement', difficulty:1, notion:'u2', q:"Dans l'équation bilan MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 4H₂O + 5Fe³⁺, quel est le réducteur ?",
+      options:["Fe²⁺, qui cède un électron pour devenir Fe³⁺", "MnO₄⁻, qui capte des électrons", "H⁺, qui ne participe pas au transfert d'électrons"], correct:0,
+      hint:"Repère quelle espèce s'oxyde (perd des électrons) dans cette équation bilan."}
+  ],
+
+  applications: [
+    {id:'a1', difficulty:1, notion:'u4', statement:"Un compartiment d'une pile contient initialement n(MnO₄⁻) = 2,0×10⁻³ mol, réactif limitant, associé à la demi-équation MnO₄⁻ + 8H⁺ + 5e⁻ = Mn²⁺ + 4H₂O. Calcule la quantité de matière maximale d'électrons échangeables par la pile, en mol.",
+      unit:'mol', answer:0.010, tolerance:{type:'pct', value:3},
+      methode:"D'après la demi-équation, 1 mol de MnO₄⁻ échange 5 mol d'électrons : n(e⁻) = 5 × n(MnO₄⁻).",
+      correction:["n(e⁻) = 5 × n(MnO₄⁻) = 5 × 2,0×10⁻³.", "n(e⁻) = 1,0×10⁻² mol, soit 0,010 mol."]},
+    {id:'a2', difficulty:2, notion:'u4', statement:"Calcule la capacité électrique Q de cette même pile, en coulombs (F ≈ 96 500 C/mol).",
+      unit:'C', answer:965, tolerance:{type:'pct', value:3},
+      methode:"Utilise Q = n(e⁻) × F.",
+      correction:["Q = n(e⁻) × F = 0,010 × 96 500.", "Q ≈ 965 C."]},
+    {id:'a3', difficulty:2, notion:'u4', statement:"Exprime cette capacité électrique en ampères-heures (A·h), sachant que 1 A·h = 3600 C.",
+      unit:'A·h', answer:0.268, tolerance:{type:'pct', value:3},
+      methode:"Divise la capacité en coulombs par 3600 (1 A·h = 3600 C).",
+      correction:["Q(A·h) = Q(C)/3600 = 965/3600.", "Q ≈ 0,268 A·h."]},
+    {id:'a4', difficulty:2, notion:'u2', statement:"Pour combiner les deux demi-équations Ox₁+3e⁻=Red₁ et Red₂=Ox₂+2e⁻ en une équation bilan sans électrons, quel est le nombre minimal d'électrons — le même dans les deux demi-équations une fois multipliées — par lequel il faut passer ?",
+      unit:'électrons', answer:6, tolerance:{type:'abs', value:0.1},
+      methode:"Cherche le plus petit commun multiple des deux nombres d'électrons échangés (3 et 2).",
+      correction:["PPCM(3, 2) = 6.", "La première demi-équation est donc multipliée par 2 (3×2=6), la seconde par 3 (2×3=6), afin que chacune échange 6 électrons avant de les éliminer par addition."]},
+    {id:'a5', difficulty:2, notion:'u2', statement:"On dose un volume V=20,0 mL d'une solution de Fe²⁺ par une solution de permanganate de potassium de concentration c=2,0×10⁻² mol/L, selon MnO₄⁻+8H⁺+5Fe²⁺→Mn²⁺+4H₂O+5Fe³⁺. L'équivalence est atteinte pour un volume versé V_E=8,0 mL. Calcule la concentration initiale en Fe²⁺, en mol/L.",
+      unit:'mol/L', answer:0.040, tolerance:{type:'pct', value:3},
+      methode:"À l'équivalence, n(Fe²⁺) initial = 5×n(MnO₄⁻) versé (rapport stœchiométrique 5:1 de l'équation bilan). Calcule d'abord n(MnO₄⁻) versé à l'équivalence, puis n(Fe²⁺), puis la concentration.",
+      correction:["n(MnO₄⁻)_E = c×V_E = 2,0×10⁻² × 8,0×10⁻³ = 1,6×10⁻⁴ mol.", "n(Fe²⁺) = 5×n(MnO₄⁻)_E = 8,0×10⁻⁴ mol.", "c(Fe²⁺) = n(Fe²⁺)/V = 8,0×10⁻⁴/0,020 = 4,0×10⁻² mol/L."]},
+    {id:'a6', difficulty:2, notion:'u2', statement:"La demi-équation du couple Cr₂O₇²⁻/Cr³⁺ s'écrit Cr₂O₇²⁻+14H⁺+6e⁻=2Cr³⁺+7H₂O. Quelle quantité de matière de Cr₂O₇²⁻, en mol, faut-il pour échanger n(e⁻)=0,030 mol d'électrons ?",
+      unit:'mol', answer:0.0050, tolerance:{type:'pct', value:3},
+      methode:"D'après la demi-équation, 1 mol de Cr₂O₇²⁻ échange 6 mol d'électrons : n(Cr₂O₇²⁻) = n(e⁻)/6.",
+      correction:["n(Cr₂O₇²⁻) = n(e⁻)/6 = 0,030/6.", "n(Cr₂O₇²⁻) = 5,0×10⁻³ mol, soit 0,0050 mol."]}
+  ],
+
+  mindmapModel: {
+    label:"Oxydants/réducteurs, demi-équations",
+    children:[
+      {label:"Oxydant, réducteur, couple", children:[
+        {label:"Ox capte des électrons"},{label:"Red cède des électrons"},{label:"Couple Ox/Red"}
+      ]},
+      {label:"Demi-équations et équation bilan", children:[
+        {label:"Équilibrage : élément, O, H, charges"},{label:"Combiner deux demi-équations"}
+      ]},
+      {label:"La pile", children:[
+        {label:"Deux demi-piles"},{label:"Pont salin"},{label:"Tension à vide"}
+      ]},
+      {label:"Électrodes et capacité", children:[
+        {label:"Anode = oxydation"},{label:"Cathode = réduction"},{label:"Q=n(e⁻)×F"}
+      ]},
+      {label:"Sens de la transformation", children:[
+        {label:"Pile : sens spontané"},{label:"Électrolyseur : sens forcé"},{label:"Oxydants/réducteurs usuels"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>
