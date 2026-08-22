@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acides et bases, Henderson-Hasselbalch · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/applications-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'pc-acide-base',
+  chapNum: "Révisions de Terminale",
+  subjectLabel: "Physique-Chimie",
+  accent: 'var(--ochre)',
+  title: "Acides et bases, Henderson-Hasselbalch",
+  pages: "Programme de Terminale spécialité — BCPST1 : C.2",
+  noManual: true,
+  backHref: '../index.html',
+  bridge: {
+    from: "Depuis le collège et la classe de seconde, l'échelle de pH (de 0 à 14) et le caractère acide, basique ou neutre d'une solution ont été rencontrés de façon qualitative, notamment à l'aide d'indicateurs colorés (comme le chou rouge) ou de papier pH — sans définition formelle de ce qu'est, chimiquement, un acide ou une base.",
+    to: "La Terminale formalise ce cadre : couple acide-base, constante d'acidité $K_A$ d'un couple et produit ionique de l'eau $K_e$, distinction entre acides et bases forts ou faibles, diagrammes de prédominance et de distribution, propriétés d'une solution tampon. En BCPST1, ce cadre est repris et approfondi (code C.2.2) : la relation entre la constante thermodynamique d'équilibre d'une réaction acide-base et les constantes d'acidité des couples mis en jeu est formalisée, l'application aux acides aminés (point isoélectrique) est étudiée — mais l'approche y reste résolument graphique : aucune formule de calcul direct du pH n'est exigible, les diagrammes de prédominance et de distribution restant l'outil de référence. La relation de Henderson-Hasselbalch (fiche 6), bien qu'absente de cette liste d'exigibles, s'en déduit simplement et offre un raccourci quantitatif précieux, en particulier pour les solutions tampons."
+  },
+
+  fiches: [
+    {
+      unit:'1', badge:'Terminale',
+      title:"Acide, base, couple acide-base, pH",
+      paragraphs:[
+        "Au sens de Brønsted, un acide est une espèce chimique capable de céder un proton $H^+$ ; une base est une espèce chimique capable d'en capter un. Cette définition est directement analogue à celle d'un réducteur (qui cède des électrons) et d'un oxydant (qui en capte) : seule la particule échangée diffère — un proton $H^+$ ici, un ou plusieurs électrons $e^-$ pour un couple oxydant-réducteur.",
+        "Un acide AH et la base $A^-$ qu'il devient après avoir cédé un proton forment un couple acide-base, noté $\\mathrm{AH/A^-}$, relié par la demi-équation acido-basique : $$\\mathrm{AH = A^- + H^+}$$ Comme pour un couple oxydant-réducteur, cette demi-équation seule ne décrit pas une transformation réelle : un acide ne cède son proton qu'à une base effectivement présente — le plus souvent l'eau elle-même.",
+        "Le pH d'une solution aqueuse mesure son acidité, à partir de la concentration en ions oxonium $\\mathrm{H_3O^+}$ : $$\\mathrm{pH} = -\\log[\\mathrm{H_3O^+}]$$ L'eau intervient elle-même dans deux couples acide-base : $\\mathrm{H_3O^+/H_2O}$ (l'eau y est la base) et $\\mathrm{H_2O/HO^-}$ (l'eau y est l'acide) — l'eau est dite amphotère, puisqu'elle peut jouer l'un ou l'autre rôle selon la réaction considérée."
+      ],
+      bullets:[
+        "Acide (Brønsted) : espèce capable de céder un proton H⁺. Base : espèce capable d'en capter un.",
+        "Couple acide-base AH/A⁻, relié par $\\mathrm{AH=A^-+H^+}$ — analogue au couple oxydant-réducteur, avec H⁺ à la place de e⁻.",
+        "$\\mathrm{pH}=-\\log[\\mathrm{H_3O^+}]$.",
+        "L'eau est amphotère : base dans le couple $\\mathrm{H_3O^+/H_2O}$, acide dans le couple $\\mathrm{H_2O/HO^-}$."
+      ]
+    },
+    {
+      unit:'2', badge:'Terminale',
+      title:"Constante d'acidité KA, produit ionique de l'eau Ke",
+      paragraphs:[
+        "La constante d'acidité $K_A$ d'un couple $\\mathrm{AH/A^-}$ est la constante thermodynamique d'équilibre associée à la réaction de l'acide AH sur l'eau : $$\\mathrm{AH + H_2O \\rightleftharpoons A^- + H_3O^+} \\qquad K_A = \\dfrac{[\\mathrm{A^-}]_{\\text{éq}}\\,[\\mathrm{H_3O^+}]_{\\text{éq}}}{[\\mathrm{AH}]_{\\text{éq}}}$$ Comme toute constante d'équilibre, $K_A$ ne dépend que de la température, jamais de la concentration de la solution étudiée. On définit, par commodité, $\\mathrm{p}K_A=-\\log(K_A)$, sur le même principe que le pH.",
+        "Le produit ionique de l'eau $K_e$ est la constante d'équilibre associée à l'autoprotolyse de l'eau — la réaction de l'eau sur elle-même : $$\\mathrm{2\\,H_2O \\rightleftharpoons H_3O^+ + HO^-} \\qquad K_e = [\\mathrm{H_3O^+}]_{\\text{éq}}\\,[\\mathrm{HO^-}]_{\\text{éq}}$$ À 25°C, $K_e\\approx 10^{-14}$, soit $\\mathrm{p}K_e=14$. Dans l'eau pure à cette température, la neutralité électrique impose $[\\mathrm{H_3O^+}]=[\\mathrm{HO^-}]=10^{-7}\\ \\mathrm{mol\\cdot L^{-1}}$, d'où le pH neutre bien connu, $\\mathrm{pH}=7$."
+      ],
+      bullets:[
+        "$K_A = \\dfrac{[\\mathrm{A^-}][\\mathrm{H_3O^+}]}{[\\mathrm{AH}]}$ à l'équilibre ; $\\mathrm{p}K_A=-\\log(K_A)$.",
+        "$K_e = [\\mathrm{H_3O^+}][\\mathrm{HO^-}]$, avec $K_e\\approx 10^{-14}$ à 25°C (soit $\\mathrm{p}K_e=14$).",
+        "$K_A$ et $K_e$ ne dépendent que de la température, jamais de la concentration de la solution étudiée.",
+        "Neutralité de l'eau pure à 25°C : $[\\mathrm{H_3O^+}]=[\\mathrm{HO^-}]=10^{-7}\\ \\mathrm{mol\\cdot L^{-1}}$, soit pH=7."
+      ]
+    },
+    {
+      unit:'3', badge:'Terminale',
+      title:"Acides et bases forts ou faibles",
+      paragraphs:[
+        "Un acide fort réagit de façon quasi-totale avec l'eau : pratiquement tous les ions $\\mathrm{H_3O^+}$ attendus sont effectivement libérés, si bien que $[\\mathrm{H_3O^+}]\\approx c$, la concentration apportée en acide. Un acide faible, au contraire, ne réagit que partiellement avec l'eau (un équilibre s'établit), si bien que $[\\mathrm{H_3O^+}] < c$ — le pH mesuré est alors plus élevé que celui attendu pour un acide fort de même concentration apportée.",
+        "C'est précisément cette comparaison qui permet de trancher expérimentalement : on mesure le pH d'une solution de concentration apportée c connue, et on le compare à la valeur $\\mathrm{pH}=-\\log(c)$ attendue pour un acide fort. Un pH plus élevé que cette valeur signale un acide faible ; un raisonnement symétrique s'applique aux bases.",
+        "Quelques exemples usuels à connaître : parmi les acides, l'acide chlorhydrique et l'acide nitrique sont forts, l'acide éthanoïque (acide acétique) est faible ; parmi les bases, la soude (hydroxyde de sodium) est forte, l'ammoniac est faible."
+      ],
+      bullets:[
+        "Acide fort : réaction quasi-totale avec l'eau, $[\\mathrm{H_3O^+}]\\approx c$.",
+        "Acide faible : réaction partielle (équilibre), $[\\mathrm{H_3O^+}] < c$, donc un pH plus élevé qu'un acide fort de même concentration.",
+        "Pour distinguer expérimentalement : comparer le pH mesuré à $-\\log(c)$.",
+        "Acides forts usuels : chlorhydrique, nitrique. Acide faible usuel : éthanoïque. Base forte usuelle : soude. Base faible usuelle : ammoniac."
+      ]
+    },
+    {
+      unit:'4', badge:'Terminale',
+      title:"Diagrammes de prédominance et de distribution",
+      paragraphs:[
+        "Un diagramme de prédominance d'un couple $\\mathrm{AH/A^-}$ indique, en fonction du pH, quelle espèce du couple est majoritaire en solution. La frontière entre les deux domaines se situe exactement à $\\mathrm{pH}=\\mathrm{p}K_A$ du couple (là où $[\\mathrm{AH}]=[\\mathrm{A^-}]$) : pour $\\mathrm{pH}<\\mathrm{p}K_A$, la forme acide AH prédomine ; pour $\\mathrm{pH}>\\mathrm{p}K_A$, c'est la forme basique $\\mathrm{A^-}$ qui prédomine.",
+        "Un diagramme de distribution représente, plus précisément, le pourcentage de chaque espèce du couple en fonction du pH : deux courbes continues, qui se croisent exactement à $\\mathrm{pH}=\\mathrm{p}K_A$, où chaque espèce représente alors 50 % de la quantité totale du couple.",
+        "Ces diagrammes ont une application directe et fréquente : le choix d'un indicateur coloré pour repérer l'équivalence d'un titrage acido-basique. Un indicateur coloré est lui-même un couple acide-base dont les deux formes ont des couleurs différentes ; il faut choisir un indicateur dont la zone de virage (l'intervalle de pH où sa teinte change) encadre le pH atteint à l'équivalence du titrage."
+      ],
+      bullets:[
+        "Diagramme de prédominance : frontière à $\\mathrm{pH}=\\mathrm{p}K_A$ — AH prédomine en-dessous, A⁻ au-dessus.",
+        "Diagramme de distribution : les deux courbes se croisent à $\\mathrm{pH}=\\mathrm{p}K_A$ (50 % / 50 %).",
+        "Un indicateur coloré est un couple acide-base dont les deux formes ont des teintes différentes.",
+        "Choix d'un indicateur pour un titrage : sa zone de virage doit encadrer le pH à l'équivalence."
+      ]
+    },
+    {
+      unit:'5', badge:'Terminale',
+      title:"La solution tampon",
+      paragraphs:[
+        "Une solution tampon est un mélange, en quantités comparables, d'un acide faible AH et de sa base conjuguée $\\mathrm{A^-}$ (le même couple, mélangé dans les deux formes). Sa propriété caractéristique est que son pH varie très peu lors de l'ajout modéré d'un acide, d'une base, ou lors d'une dilution modérée — contrairement à une solution non tamponnée, dont le pH peut varier fortement pour les mêmes ajouts.",
+        "Cette résistance aux perturbations s'explique qualitativement par la présence simultanée des deux formes du couple : un ajout d'acide est en grande partie consommé par la base $\\mathrm{A^-}$ présente (qui le capte), un ajout de base est en grande partie consommé par l'acide AH présent (qui le cède) — le système amortit ainsi la perturbation plutôt que de la subir intégralement.",
+        "Les solutions tampons jouent un rôle essentiel dans de nombreux systèmes biologiques et géologiques, où elles maintiennent un pH stable malgré des apports ou des productions locales d'espèces acides ou basiques : c'est le cas, par exemple, du couple $\\mathrm{CO_2,H_2O/HCO_3^-}$ dans le sang et dans les océans."
+      ],
+      bullets:[
+        "Solution tampon : mélange, en quantités comparables, d'un acide faible et de sa base conjuguée.",
+        "Propriété clé : pH peu sensible à un ajout modéré d'acide, de base, ou à une dilution modérée.",
+        "Explication qualitative : chacune des deux formes du couple peut consommer, en partie, la perturbation apportée.",
+        "Rôle biologique et géologique important : par exemple le couple CO₂,H₂O/HCO₃⁻ dans le sang et les océans."
+      ]
+    },
+    {
+      unit:'6', badge:'Pont physique-chimie',
+      title:"La relation de Henderson-Hasselbalch",
+      paragraphs:[
+        "Le programme de BCPST1 n'exige, on l'a vu (fiche 4), aucune formule de calcul direct du pH : l'approche graphique, via les diagrammes de prédominance et de distribution, y reste l'outil de référence. Il est pourtant utile, et très simple, de savoir retrouver soi-même une relation quantitative : elle se déduit directement de la définition de $K_A$ (fiche 2), en repérant que les concentrations à l'équilibre d'un mélange AH/A⁻ suffisamment concentré sont proches des concentrations apportées.",
+        "En prenant le logarithme de $K_A=[\\mathrm{A^-}][\\mathrm{H_3O^+}]/[\\mathrm{AH}]$ et en réarrangeant, on obtient la relation de Henderson-Hasselbalch : $$\\mathrm{pH} = \\mathrm{p}K_A + \\log\\left(\\dfrac{[\\mathrm{A^-}]}{[\\mathrm{AH}]}\\right)$$ Elle offre une lecture immédiate, cohérente avec le diagramme de prédominance (fiche 4) : quand $[\\mathrm{A^-}]=[\\mathrm{AH}]$ (mélange à parts égales), le logarithme est nul et $\\mathrm{pH}=\\mathrm{p}K_A$ exactement — la frontière du diagramme de prédominance. Quand $[\\mathrm{A^-}]>[\\mathrm{AH}]$ (excès de forme basique), $\\mathrm{pH}>\\mathrm{p}K_A$ ; quand $[\\mathrm{A^-}]<[\\mathrm{AH}]$, $\\mathrm{pH}<\\mathrm{p}K_A$.",
+        "Cette relation permet, en particulier, d'estimer rapidement le pH d'une solution tampon (fiche 5) à partir des quantités d'acide faible et de base conjuguée introduites, sans reconstruire tout un tableau d'avancement. Elle doit néanmoins être utilisée avec discernement : elle repose sur l'approximation que les concentrations à l'équilibre restent proches des concentrations apportées, ce qui suppose un mélange où aucune des deux formes n'est en trop faible quantité — le cas typique d'un tampon correctement dosé."
+      ],
+      bullets:[
+        "Relation de Henderson-Hasselbalch : $\\mathrm{pH}=\\mathrm{p}K_A+\\log([\\mathrm{A^-}]/[\\mathrm{AH}])$, déduite directement de la définition de $K_A$.",
+        "Cohérente avec le diagramme de prédominance : $[\\mathrm{A^-}]=[\\mathrm{AH}] \\Leftrightarrow \\mathrm{pH}=\\mathrm{p}K_A$.",
+        "Très utile pour estimer rapidement le pH d'une solution tampon.",
+        "À utiliser avec discernement : valable seulement si les concentrations à l'équilibre restent proches des concentrations apportées (mélange où aucune des deux formes n'est en trop faible quantité)."
+      ]
+    }
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {
+      u1:"1 — Acide, base, couple acide-base, pH",
+      u2:"2 — Constante d'acidité KA, produit ionique de l'eau Ke",
+      u3:"3 — Acides et bases forts ou faibles",
+      u4:"4 — Diagrammes de prédominance et de distribution",
+      u5:"5 — La solution tampon",
+      u6:"6 — La relation de Henderson-Hasselbalch"
+    },
+    nextStep: "Ce module clôt les Révisions de Terminale en Physique-Chimie : les 9 modules prévus pour cette phase sont désormais construits et en ligne."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"Un acide, au sens de Brønsted, est une espèce capable de :", options:["céder un proton H⁺", "capter un proton H⁺", "céder un électron"], correct:0},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"Une base, au sens de Brønsted, est une espèce capable de :", options:["capter un proton H⁺", "céder un proton H⁺", "capter un électron"], correct:0},
+    {id:'q3', type:'connaissance', difficulty:1, notion:'u1', q:"Un couple acide-base AH/A⁻ est relié par la demi-équation :", options:["AH = A⁻ + H⁺", "AH + H⁺ = A⁻", "AH = A⁻ × H⁺"], correct:0},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u1', q:"Le pH d'une solution aqueuse est défini, à 25°C, par :", options:["pH = −log[H₃O⁺]", "pH = [H₃O⁺]", "pH = log[H₃O⁺]"], correct:0},
+    {id:'q5', type:'connaissance', difficulty:1, notion:'u2', q:"La constante d'acidité KA d'un couple AH/A⁻ est associée à l'équation :", options:["AH + H₂O = A⁻ + H₃O⁺", "AH = A⁻ + H⁺ (sans eau)", "A⁻ + H₃O⁺ = AH + H₂O⁻"], correct:0},
+    {id:'q6', type:'connaissance', difficulty:1, notion:'u2', q:"Le produit ionique de l'eau Ke est défini par :", options:["Ke = [H₃O⁺]×[HO⁻]", "Ke = [H₃O⁺]/[HO⁻]", "Ke = [H₃O⁺]+[HO⁻]"], correct:0},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u2', q:"À 25°C, la valeur usuelle de Ke est proche de :", options:["10⁻¹⁴", "10⁻⁷", "1"], correct:0},
+    {id:'q8', type:'connaissance', difficulty:1, notion:'u2', q:"pKA est défini, comme pH, à partir de KA par :", options:["pKA = −log(KA)", "pKA = log(KA)", "pKA = KA/10"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u3', q:"Un acide fort, mis en solution aqueuse, réagit avec l'eau de façon :", options:["quasi-totale", "toujours très limitée", "impossible"], correct:0},
+    {id:'q10', type:'connaissance', difficulty:2, notion:'u3', q:"Pour un acide faible de concentration apportée c, le pH mesuré est :", options:["supérieur à celui attendu pour un acide fort de même concentration (−log c)", "toujours égal à −log(c)", "toujours nul"], correct:0},
+    {id:'q11', type:'connaissance', difficulty:1, notion:'u3', q:"Parmi ces espèces, laquelle est un acide fort usuel ?", options:["L'acide chlorhydrique", "L'acide éthanoïque", "L'ammoniac"], correct:0},
+    {id:'q12', type:'connaissance', difficulty:1, notion:'u3', q:"Parmi ces espèces, laquelle est une base faible usuelle ?", options:["L'ammoniac", "La soude (hydroxyde de sodium)", "L'acide nitrique"], correct:0},
+    {id:'q13', type:'connaissance', difficulty:1, notion:'u4', q:"Sur un diagramme de prédominance d'un couple AH/A⁻, la frontière entre les deux domaines se situe :", options:["à pH = pKA", "à pH = 7 dans tous les cas", "à pH = 0"], correct:0},
+    {id:'q14', type:'connaissance', difficulty:1, notion:'u4', q:"Pour pH < pKA d'un couple AH/A⁻, l'espèce qui prédomine est :", options:["la forme acide AH", "la forme basique A⁻", "aucune des deux, elles sont toujours en proportions égales"], correct:0},
+    {id:'q15', type:'connaissance', difficulty:2, notion:'u4', q:"Sur un diagramme de distribution, les deux courbes (AH et A⁻) se croisent :", options:["à pH = pKA, où chaque espèce représente 50 %", "à pH = 0", "elles ne se croisent jamais"], correct:0},
+    {id:'q16', type:'connaissance', difficulty:1, notion:'u4', q:"Le choix d'un indicateur coloré pour un titrage acido-basique doit se faire de sorte que :", options:["sa zone de virage encadre le pH à l'équivalence du titrage", "sa couleur soit la plus vive possible", "il réagisse avec l'eau plutôt qu'avec les réactifs du titrage"], correct:0},
+    {id:'q17', type:'connaissance', difficulty:1, notion:'u5', q:"Une solution tampon est un mélange, en quantités comparables, de :", options:["un acide faible et de sa base conjuguée", "un acide fort et une base forte en excès", "de l'eau pure uniquement"], correct:0},
+    {id:'q18', type:'connaissance', difficulty:1, notion:'u5', q:"La propriété principale d'une solution tampon est que son pH :", options:["varie peu lors d'un ajout modéré d'acide, de base, ou d'une dilution modérée", "varie fortement au moindre ajout de réactif", "est toujours égal à 7"], correct:0},
+    {id:'q19', type:'connaissance', difficulty:1, notion:'u6', q:"La relation de Henderson-Hasselbalch s'écrit, pour un couple AH/A⁻ :", options:["pH = pKA + log([A⁻]/[AH])", "pH = pKA − [A⁻]/[AH]", "pH = KA × log([A⁻]/[AH])"], correct:0},
+    {id:'q20', type:'connaissance', difficulty:1, notion:'u6', q:"D'après la relation de Henderson-Hasselbalch, lorsque [A⁻] = [AH] dans une solution, on a :", options:["pH = pKA", "pH = 0", "pH = 2×pKA"], correct:0},
+
+    {id:'r1', type:'raisonnement', difficulty:1, notion:'u1', q:"Dans la réaction NH₃ + H₂O ⇌ NH₄⁺ + HO⁻, quelle espèce joue le rôle de la base ?",
+      options:["NH₃, qui capte un proton pour former NH₄⁺", "H₂O, qui cède un proton", "HO⁻, produit de la réaction"], correct:0,
+      hint:"Une base capte un proton H⁺ ; identifie l'espèce qui gagne un H⁺ entre les réactifs et les produits."},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u1', q:"L'eau intervient à la fois dans le couple H₃O⁺/H₂O et dans le couple H₂O/HO⁻. Que peut-on en conclure sur son comportement ?",
+      options:["L'eau peut se comporter à la fois comme un acide (couple H₂O/HO⁻) et comme une base (couple H₃O⁺/H₂O) : elle est dite amphotère", "L'eau ne peut jamais réagir avec elle-même", "L'eau est toujours un acide, jamais une base"], correct:0,
+      hint:"Repère, dans chacun des deux couples, si l'eau occupe la position de l'acide (à gauche) ou de la base (à droite) de la demi-équation."},
+    {id:'r3', type:'raisonnement', difficulty:2, notion:'u2', q:"Pour l'acide éthanoïque, pKA=4,8. Que représente cette valeur ?",
+      options:["pKA = −log(KA), une grandeur qui caractérise la force du couple, indépendante de la concentration", "Le pH d'une solution d'acide éthanoïque, quelle que soit sa concentration", "La concentration en acide éthanoïque en mol/L"], correct:0,
+      hint:"pKA (comme KA) est une constante caractéristique du couple, associée à sa demi-équation — elle ne dépend ni de la concentration ni du volume de la solution étudiée."},
+    {id:'r4', type:'raisonnement', difficulty:2, notion:'u2', q:"Dans l'eau pure à 25°C, sachant que Ke=[H₃O⁺]×[HO⁻]≈10⁻¹⁴ et que [H₃O⁺]=[HO⁻] (neutralité), quel est le pH de l'eau pure ?",
+      options:["pH = 7", "pH = 14", "pH = 0"], correct:0,
+      hint:"[H₃O⁺]²=Ke=10⁻¹⁴, donc [H₃O⁺]=10⁻⁷ mol/L ; applique ensuite pH=−log[H₃O⁺]."},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u3', q:"On mesure le pH de deux solutions de concentration apportée c=0,10 mol/L, l'une d'acide chlorhydrique, l'autre d'acide éthanoïque. Laquelle a le pH le plus faible (la plus acide) ?",
+      options:["La solution d'acide chlorhydrique, acide fort qui réagit totalement avec l'eau", "La solution d'acide éthanoïque, car c'est un acide organique", "Les deux solutions ont rigoureusement le même pH"], correct:0,
+      hint:"Un acide fort libère davantage d'ions H₃O⁺, à concentration apportée égale, qu'un acide faible qui ne réagit que partiellement."},
+    {id:'r6', type:'raisonnement', difficulty:1, notion:'u3', q:"Comment peut-on distinguer expérimentalement un acide fort d'un acide faible de même concentration apportée c, par une simple mesure de pH ?",
+      options:["Comparer le pH mesuré à la valeur −log(c) attendue pour un acide fort : un pH plus élevé signale un acide faible", "Mesurer uniquement la couleur de la solution", "C'est impossible sans connaître la formule chimique de l'acide"], correct:0,
+      hint:"Un acide fort réagit totalement, donc [H₃O⁺]≈c ; un acide faible réagit partiellement, donc [H₃O⁺]<c."},
+    {id:'r7', type:'raisonnement', difficulty:1, notion:'u4', q:"Un couple acide-base a un pKA=9,2. À pH=7, quelle est l'espèce prédominante ?",
+      options:["La forme acide AH, car pH < pKA", "La forme basique A⁻, car pH < pKA", "Les deux espèces sont rigoureusement en quantités égales"], correct:0,
+      hint:"Pour un pH inférieur au pKA du couple, c'est la forme acide qui prédomine."},
+    {id:'r8', type:'raisonnement', difficulty:2, notion:'u4', q:"Lors d'un titrage acido-basique, le pH à l'équivalence vaut 8,5. Lequel de ces indicateurs colorés choisir ? Phénolphtaléine (zone de virage 8,2–10,0), bleu de bromothymol (6,0–7,6), hélianthine (3,1–4,4).",
+      options:["La phénolphtaléine, dont la zone de virage encadre 8,5", "L'hélianthine, dont la zone de virage est la plus basse", "N'importe lequel, le choix de l'indicateur n'a pas d'importance"], correct:0,
+      hint:"Il faut choisir l'indicateur dont la zone de virage contient le pH à l'équivalence du titrage."},
+    {id:'r9', type:'raisonnement', difficulty:2, notion:'u5', q:"On ajoute une petite quantité d'acide fort à une solution tampon, puis la même quantité à un volume égal d'eau pure. Dans quel cas la variation de pH sera-t-elle la plus faible ?",
+      options:["Dans la solution tampon, dont le pH varie peu par ajout modéré d'acide", "Dans l'eau pure, qui résiste toujours mieux aux ajouts d'acide", "La variation de pH sera rigoureusement identique dans les deux cas"], correct:0,
+      hint:"C'est précisément la propriété qui définit une solution tampon."},
+    {id:'r10', type:'raisonnement', difficulty:1, notion:'u6', q:"D'après la relation de Henderson-Hasselbalch, si dans un mélange tampon [A⁻] est dix fois plus grande que [AH], comment se compare le pH au pKA du couple ?",
+      options:["pH = pKA + 1 (puisque log(10)=1)", "pH = pKA − 1", "pH = pKA (aucun effet)"], correct:0,
+      hint:"pH = pKA + log([A⁻]/[AH]) ; calcule log(10)."},
+    {id:'r11', type:'raisonnement', difficulty:2, notion:'u6', q:"Pourquoi la relation de Henderson-Hasselbalch doit-elle être utilisée « avec discernement », en particulier si le mélange acide/base conjuguée n'est pas un vrai tampon bien dosé ?",
+      options:["Parce qu'elle suppose que les concentrations à l'équilibre sont proches des concentrations apportées, une approximation qui n'est plus valable si l'une des deux espèces est en très faible quantité", "Parce qu'elle n'est jamais valable, quelle que soit la situation", "Parce qu'elle ne s'applique qu'aux acides forts"], correct:0,
+      hint:"La relation dérive de KA=[A⁻][H₃O⁺]/[AH] en assimilant les concentrations à l'équilibre aux concentrations apportées — une approximation à vérifier."},
+    {id:'r12', type:'raisonnement', difficulty:1, notion:'u2', q:"Sachant que Ke=[H₃O⁺]×[HO⁻] reste constant à température fixée, si [H₃O⁺] augmente dans une solution, comment évolue [HO⁻] ?",
+      options:["Elle diminue, pour que le produit [H₃O⁺]×[HO⁻] reste égal à Ke", "Elle augmente elle aussi", "Elle reste inchangée"], correct:0,
+      hint:"Ke est une constante à température donnée : si l'un des deux facteurs du produit augmente, l'autre doit diminuer en proportion inverse."}
+  ],
+
+  applications: [
+    {id:'a1', difficulty:1, notion:'u1', statement:"Calcule le pH d'une solution pour laquelle [H₃O⁺] = 2,0×10⁻³ mol/L.",
+      unit:'(sans unité)', answer:2.70, tolerance:{type:'abs', value:0.05},
+      methode:"Utilise pH = −log[H₃O⁺].",
+      correction:["pH = −log(2,0×10⁻³).", "pH ≈ 2,70."]},
+    {id:'a2', difficulty:2, notion:'u1', statement:"Calcule la concentration [H₃O⁺] d'une solution de pH=4,50, en ×10⁻⁵ mol/L (donne le nombre qui précède ×10⁻⁵ mol/L).",
+      unit:'×10⁻⁵ mol/L', answer:3.16, tolerance:{type:'pct', value:3},
+      methode:"Utilise [H₃O⁺] = 10^(−pH).",
+      correction:["[H₃O⁺] = 10^(−4,50).", "[H₃O⁺] ≈ 3,16×10⁻⁵ mol/L."]},
+    {id:'a3', difficulty:2, notion:'u3', statement:"Une solution d'acide fort de concentration apportée c=5,0×10⁻³ mol/L est préparée. En supposant la réaction avec l'eau quasi-totale, calcule le pH attendu.",
+      unit:'(sans unité)', answer:2.30, tolerance:{type:'abs', value:0.05},
+      methode:"Pour un acide fort, [H₃O⁺]≈c (réaction quasi-totale). Utilise ensuite pH=−log(c).",
+      correction:["[H₃O⁺] ≈ c = 5,0×10⁻³ mol/L (acide fort).", "pH = −log(5,0×10⁻³).", "pH ≈ 2,30."]},
+    {id:'a4', difficulty:2, notion:'u6', statement:"On mélange n(AH)=0,020 mol et n(A⁻)=0,060 mol d'un couple de pKA=4,75, dans un même volume. Calcule le pH du mélange par la relation de Henderson-Hasselbalch.",
+      unit:'(sans unité)', answer:5.23, tolerance:{type:'abs', value:0.05},
+      methode:"Utilise pH=pKA+log([A⁻]/[AH]) ; le rapport des concentrations est égal au rapport des quantités de matière, les deux espèces étant dans le même volume.",
+      correction:["pH = pKA + log(n(A⁻)/n(AH)) = 4,75 + log(0,060/0,020).", "log(3) ≈ 0,477.", "pH ≈ 4,75 + 0,48 = 5,23."]},
+    {id:'a5', difficulty:2, notion:'u6', statement:"On souhaite préparer une solution tampon de pH=9,00 à partir d'un couple de pKA=9,25. Calcule le rapport [A⁻]/[AH] nécessaire.",
+      unit:'(sans unité)', answer:0.562, tolerance:{type:'pct', value:3},
+      methode:"Réarrange la relation de Henderson-Hasselbalch : [A⁻]/[AH] = 10^(pH−pKA).",
+      correction:["[A⁻]/[AH] = 10^(pH−pKA) = 10^(9,00−9,25) = 10^(−0,25).", "[A⁻]/[AH] ≈ 0,56."]},
+    {id:'a6', difficulty:1, notion:'u2', statement:"Calcule [HO⁻], en ×10⁻¹¹ mol/L, d'une solution pour laquelle [H₃O⁺]=1,0×10⁻³ mol/L, sachant que Ke=1,0×10⁻¹⁴ à 25°C (donne le nombre qui précède ×10⁻¹¹ mol/L).",
+      unit:'×10⁻¹¹ mol/L', answer:1.0, tolerance:{type:'pct', value:5},
+      methode:"Utilise Ke=[H₃O⁺]×[HO⁻], donc [HO⁻]=Ke/[H₃O⁺].",
+      correction:["[HO⁻] = Ke/[H₃O⁺] = 1,0×10⁻¹⁴ / 1,0×10⁻³.", "[HO⁻] = 1,0×10⁻¹¹ mol/L."]}
+  ],
+
+  mindmapModel: {
+    label:"Acides et bases",
+    children:[
+      {label:"Définitions", children:[
+        {label:"Acide cède H⁺"},{label:"Base capte H⁺"},{label:"Couple AH/A⁻"},{label:"pH=−log[H₃O⁺]"}
+      ]},
+      {label:"KA et Ke", children:[
+        {label:"KA=[A⁻][H₃O⁺]/[AH]"},{label:"pKA=−log(KA)"},{label:"Ke=[H₃O⁺][HO⁻]≈10⁻¹⁴"}
+      ]},
+      {label:"Forts et faibles", children:[
+        {label:"Acide fort : réaction quasi-totale"},{label:"Acide faible : réaction partielle"},{label:"HCl, HNO₃ forts ; CH₃COOH, NH₃ faibles"}
+      ]},
+      {label:"Diagrammes", children:[
+        {label:"Prédominance : frontière à pH=pKA"},{label:"Distribution : 50/50 à pH=pKA"},{label:"Choix d'un indicateur coloré"}
+      ]},
+      {label:"Solution tampon", children:[
+        {label:"Acide faible + base conjuguée"},{label:"pH peu sensible aux ajouts/dilution"}
+      ]},
+      {label:"Henderson-Hasselbalch", children:[
+        {label:"pH=pKA+log([A⁻]/[AH])"},{label:"Complémentaire aux diagrammes"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>
