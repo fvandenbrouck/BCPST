@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cinétique chimique · Strates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/strates.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/math-render.js"></script>
+<script src="../assets/js/applications-engine.js"></script>
+<script src="../assets/js/qcm-engine.js"></script>
+<script src="../assets/js/mindmap-engine.js"></script>
+<script src="../assets/js/module-page.js"></script>
+<script>
+const MODULE = {
+  id: 'pc-cinetique',
+  chapNum: "Révisions de Terminale",
+  subjectLabel: "Physique-Chimie",
+  accent: 'var(--ochre)',
+  title: "Cinétique chimique",
+  pages: "Programme de Terminale spécialité — BCPST1 : C.4",
+  noManual: true,
+  backHref: '../index.html',
+  bridge: {
+    from: "En première, les notions de concentration, d'équation de réaction et d'avancement ont été manipulées, mais toujours du point de vue de l'état final d'une transformation — sans jamais s'interroger sur la vitesse à laquelle cette transformation se déroule dans le temps.",
+    to: "La Terminale introduit la cinétique chimique : la vitesse volumique de disparition d'un réactif ou d'apparition d'un produit, le temps de demi-réaction, les facteurs cinétiques (température, concentration) et le rôle d'un catalyseur, ainsi qu'une première loi de vitesse (l'ordre 1) et le modèle microscopique du mécanisme réactionnel. En BCPST1, ce cadre est repris et étendu dès le code C.4 : aux côtés de l'ordre 1, les ordres 0 et 2 sont introduits, avec des méthodes systématiques de détermination expérimentale (méthode différentielle, méthode intégrale) ; l'influence quantitative de la température est formalisée par la loi d'Arrhenius ; le traitement cinétique des mécanismes réactionnels est approfondi (approximation de l'étape cinétiquement déterminante, approximation du pré-équilibre rapide) ; et la catalyse enzymatique est étudiée à travers le modèle de Michaelis-Menten."
+  },
+
+  fiches: [
+    {
+      unit:'1', badge:'Terminale',
+      title:"Suivre l'évolution temporelle d'une transformation",
+      paragraphs:[
+        "Pour caractériser la rapidité d'une transformation chimique, on définit la vitesse volumique de disparition d'un réactif A, $-\\dfrac{\\mathrm{d}[A]}{\\mathrm{d}t}$, et la vitesse volumique d'apparition d'un produit P, $\\dfrac{\\mathrm{d}[P]}{\\mathrm{d}t}$ — les dérivées temporelles des concentrations, exprimées par exemple en mol·L⁻¹·s⁻¹. On raisonne en grandeur volumique (par unité de volume) plutôt qu'en quantité de matière, précisément parce que cette vitesse ne dépend alors pas de la taille du système étudié : doubler le volume du milieu réactionnel, à concentrations identiques, ne change pas la vitesse volumique.",
+        "Le temps de demi-réaction $t_{1/2}$ est la durée au bout de laquelle l'avancement de la réaction — ou, de façon équivalente, la concentration du réactif limitant — a atteint la moitié de sa valeur finale. C'est une grandeur commode pour comparer rapidement la rapidité de deux transformations, ou pour suivre l'effet d'un facteur cinétique.",
+        "Expérimentalement, on suit l'évolution d'une concentration au cours du temps à l'aide d'une méthode physique qui ne perturbe pas le milieu réactionnel (spectrophotométrie, conductimétrie, pH-métrie, mesure de pression pour un gaz, etc.), ce qui permet d'obtenir une courbe [A](t) ou [P](t) exploitable point par point, sans avoir à arrêter la réaction pour effectuer chaque mesure."
+      ],
+      bullets:[
+        "Vitesse volumique de disparition d'un réactif A : $-\\dfrac{\\mathrm{d}[A]}{\\mathrm{d}t}$ (toujours positive, puisque $[A]$ diminue).",
+        "Vitesse volumique d'apparition d'un produit P : $\\dfrac{\\mathrm{d}[P]}{\\mathrm{d}t}$.",
+        "Ces vitesses sont volumiques (par unité de volume) : elles ne dépendent pas de la taille du système, contrairement à une vitesse qui serait exprimée en quantité de matière par unité de temps.",
+        "Temps de demi-réaction $t_{1/2}$ : durée nécessaire pour que l'avancement atteigne la moitié de sa valeur finale."
+      ]
+    },
+    {
+      unit:'2', badge:'Terminale',
+      title:"Facteurs cinétiques et catalyse",
+      paragraphs:[
+        "Deux facteurs cinétiques permettent d'agir sur la rapidité d'une transformation : la température (une élévation de température accélère presque toujours une réaction) et la concentration des réactifs (des réactifs plus concentrés réagissent en général plus vite). Ces deux leviers sont couramment utilisés au laboratoire : chauffer à reflux pour accélérer une synthèse, diluer ou refroidir brutalement (une trempe) pour ralentir, voire figer, une réaction avant de l'analyser.",
+        "Un catalyseur est une espèce qui augmente la vitesse d'une réaction sans être consommée : il n'apparaît pas dans l'équation bilan de la réaction, bien qu'il intervienne activement dans son mécanisme (fiche 5). Un même catalyseur est en général sélectif : il n'accélère efficacement qu'un nombre restreint de réactions, voire une seule."
+      ],
+      bullets:[
+        "Température : plus elle est élevée, plus la réaction est en général rapide.",
+        "Concentration des réactifs : plus elle est élevée, plus la réaction est en général rapide.",
+        "Catalyseur : accélère la réaction sans être consommé, sans apparaître dans l'équation bilan, et sans modifier l'état final atteint.",
+        "Un catalyseur ne fait qu'accélérer l'atteinte d'un état final qui aurait de toute façon été atteint sans lui, seulement plus lentement."
+      ]
+    },
+    {
+      unit:'3', badge:'Terminale → BCPST1',
+      title:"La réaction d'ordre 1",
+      paragraphs:[
+        "Le suivi d'un réactif A est dit d'ordre 1 lorsque sa vitesse volumique de disparition est, à chaque instant, proportionnelle à sa concentration : $$-\\dfrac{\\mathrm{d}[A]}{\\mathrm{d}t} = k\\,[A]$$ où k, la constante de vitesse (ou constante cinétique), a pour unité l'inverse d'un temps (s⁻¹) dans le cas de l'ordre 1. Cette équation différentielle se résout en $$[A](t) = [A]_0\\,e^{-kt} = [A]_0\\,e^{-t/\\tau}$$ où $[A]_0$ est la concentration initiale et $\\tau = 1/k$ le temps caractéristique de la réaction : la concentration décroît exponentiellement depuis $[A]_0$ vers 0.",
+        "Le temps de demi-réaction s'en déduit directement : $[A](t_{1/2}) = [A]_0/2$ conduit à $e^{-t_{1/2}/\\tau} = 1/2$, soit $$t_{1/2} = \\tau \\ln 2 = \\dfrac{\\ln 2}{k}$$ Propriété remarquable, caractéristique de l'ordre 1 : ce temps de demi-réaction ne dépend pas de la concentration initiale $[A]_0$. C'est précisément ce que l'on teste expérimentalement pour identifier un ordre 1 : si des temps de demi-réaction successifs, mesurés à partir de concentrations de départ différentes, sont égaux, l'ordre 1 est confirmé."
+      ],
+      bullets:[
+        "Loi de vitesse d'ordre 1 : $-\\dfrac{\\mathrm{d}[A]}{\\mathrm{d}t} = k[A]$, avec k en s⁻¹.",
+        "Solution : $[A](t) = [A]_0\\,e^{-t/\\tau}$, avec $\\tau = 1/k$ le temps caractéristique.",
+        "Temps de demi-réaction : $t_{1/2} = \\tau\\ln 2 = \\ln(2)/k$ — indépendant de $[A]_0$.",
+        "L'indépendance de $t_{1/2}$ vis-à-vis de la concentration initiale est la signature expérimentale d'un ordre 1."
+      ]
+    },
+    {
+      unit:'4', badge:'Pont physique-chimie',
+      title:"Analogie avec la charge et la décharge d'un condensateur",
+      paragraphs:[
+        "L'équation différentielle d'une réaction d'ordre 1, $\\dfrac{\\mathrm{d}[A]}{\\mathrm{d}t} = -\\dfrac{[A]}{\\tau}$, a exactement la même forme mathématique que celle vérifiée par la tension $u_C(t)$ lors de la décharge d'un condensateur dans une résistance : $\\dfrac{\\mathrm{d}u_C}{\\mathrm{d}t} = -\\dfrac{u_C}{\\tau}$, avec $\\tau=RC$ (module Charge et décharge d'un condensateur). Ce n'est pas une coïncidence : les deux situations sont régies par la même équation différentielle linéaire du premier ordre, sans second membre — celle d'une grandeur qui décroît en étant, à chaque instant, consommée (ou déchargée) proportionnellement à sa propre valeur.",
+        "On notera que c'est bien la décharge, et non la charge, qui constitue l'analogue exact : l'équation de la charge comporte un second membre ($RC\\,\\mathrm{d}u_C/\\mathrm{d}t + u_C = E$), qui n'a pas d'équivalent dans $-\\mathrm{d}[A]/\\mathrm{d}t=k[A]$ — cette dernière équation décrit une disparition, pas un apport extérieur constant. La correspondance est donc terme à terme : $[A](t) \\leftrightarrow u_C(t)$, $[A]_0 \\leftrightarrow E$, $k=1/\\tau \\leftrightarrow 1/(RC)$.",
+        "Cette analogie n'est pas qu'une curiosité : elle permet de transposer directement les méthodes graphiques déjà rencontrées pour déterminer expérimentalement τ (et donc k) à partir d'une courbe $[A](t)$, sans refaire aucun calcul. La méthode de la tangente à l'origine (qui coupe l'asymptote $[A]=0$ à l'instant $t=\\tau$) et la méthode des 37 % (à $t=\\tau$, $[A]$ est retombée à $37\\,\\%$ de $[A]_0$, puisque $e^{-1}\\approx 0{,}37$) s'appliquent ici à l'identique."
+      ],
+      bullets:[
+        "Même équation différentielle : $\\mathrm{d}y/\\mathrm{d}t = -y/\\tau$, quelle que soit la nature physique de y (concentration, tension...).",
+        "C'est la décharge du condensateur (équation homogène, sans second membre) qui est l'analogue exact — pas la charge, qui comporte un second membre E.",
+        "Correspondance : $[A](t)\\leftrightarrow u_C(t)$, $[A]_0\\leftrightarrow E$, $\\tau=1/k \\leftrightarrow \\tau=RC$.",
+        "Les méthodes graphiques de détermination de τ (tangente à l'origine, méthode des 37 %) se transposent directement de l'une à l'autre situation — et plus généralement à tout système physique régi par la même équation différentielle du premier ordre (par exemple la désintégration radioactive)."
+      ]
+    },
+    {
+      unit:'5', badge:'Terminale',
+      title:"Le mécanisme réactionnel : modèle microscopique",
+      paragraphs:[
+        "Au niveau microscopique, une transformation chimique est modélisée comme une succession d'actes élémentaires — des chocs entre entités (atomes, ions, molécules) au cours desquels des liaisons se rompent et se forment. Cette succession d'actes élémentaires constitue le mécanisme réactionnel de la transformation.",
+        "Un intermédiaire réactionnel est une espèce formée au cours d'un acte élémentaire puis entièrement consommée au cours d'un acte élémentaire ultérieur : il n'apparaît donc pas dans l'équation bilan globale de la réaction, alors même qu'il joue un rôle actif dans le mécanisme. Le déplacement d'un doublet d'électrons au cours d'un acte élémentaire se représente par le formalisme de la flèche courbe, déjà rencontré à propos des mécanismes de la chimie organique.",
+        "Ce modèle microscopique éclaire l'effet des facteurs cinétiques : une température plus élevée traduit une agitation thermique plus grande des entités, donc des chocs plus fréquents et plus efficaces ; une concentration plus élevée augmente elle aussi la fréquence des chocs. Un catalyseur, quant à lui, intervient dans le mécanisme réactionnel en ouvrant un chemin différent, emprunté par des actes élémentaires distincts et plus faciles à réaliser — sans changer le bilan global de la transformation."
+      ],
+      bullets:[
+        "Mécanisme réactionnel : succession d'actes élémentaires (chocs entre entités) au niveau microscopique.",
+        "Intermédiaire réactionnel : formé puis consommé au cours du mécanisme, absent de l'équation bilan globale.",
+        "Flèche courbe : représente le déplacement d'un doublet d'électrons au cours d'un acte élémentaire.",
+        "Un catalyseur ouvre, au niveau microscopique, un chemin réactionnel différent et plus facile — sans apparaître dans le bilan global ni changer l'état final."
+      ]
+    }
+  ],
+
+  qcmMeta: {
+    order: ['connaissance','raisonnement'],
+    labels: {connaissance:'Connaissance', raisonnement:'Raisonnement'},
+    words: {connaissance:'connaissances', raisonnement:'raisonnement'}
+  },
+  diagnostic: {
+    unitNames: {
+      u1:"1 — Suivre l'évolution temporelle d'une transformation",
+      u2:"2 — Facteurs cinétiques et catalyse",
+      u3:"3 — La réaction d'ordre 1",
+      u4:"4 — Analogie avec la charge et la décharge d'un condensateur",
+      u5:"5 — Le mécanisme réactionnel"
+    },
+    nextStep: "Enchaîne sur les autres modules de Révisions de Terminale (oxydoréduction, acides-bases) dès qu'ils seront prêts."
+  },
+
+  qcm: [
+    {id:'q1', type:'connaissance', difficulty:1, notion:'u1', q:"La vitesse volumique de disparition d'un réactif A s'écrit :", options:["−d[A]/dt", "d[A]/dt", "−[A]/t"], correct:0},
+    {id:'q2', type:'connaissance', difficulty:1, notion:'u1', q:"La vitesse volumique d'apparition d'un produit P s'écrit :", options:["d[P]/dt", "−d[P]/dt", "[P]×t"], correct:0},
+    {id:'q3', type:'connaissance', difficulty:2, notion:'u1', q:"On raisonne en vitesse volumique (plutôt qu'en vitesse liée à la quantité de matière) car :", options:["elle est indépendante de la taille (du volume) du système étudié", "elle est plus simple à calculer mathématiquement", "elle ne dépend jamais de la concentration"], correct:0},
+    {id:'q4', type:'connaissance', difficulty:1, notion:'u1', q:"Le temps de demi-réaction t½ est :", options:["la durée au bout de laquelle l'avancement a atteint la moitié de sa valeur finale", "la durée totale de la réaction", "le double du temps nécessaire pour amorcer la réaction"], correct:0},
+    {id:'q5', type:'connaissance', difficulty:1, notion:'u2', q:"Une augmentation de la température d'un système chimique a généralement pour effet :", options:["d'augmenter la vitesse de la réaction", "de diminuer la vitesse de la réaction", "de n'avoir aucun effet sur la vitesse"], correct:0},
+    {id:'q6', type:'connaissance', difficulty:1, notion:'u2', q:"Une augmentation de la concentration des réactifs a généralement pour effet :", options:["d'augmenter la vitesse de la réaction", "de diminuer la vitesse de la réaction", "de stopper la réaction"], correct:0},
+    {id:'q7', type:'connaissance', difficulty:1, notion:'u2', q:"Un catalyseur est une espèce qui :", options:["augmente la vitesse d'une réaction sans être consommée, sans apparaître dans l'équation bilan", "est un réactif comme les autres, consommé au cours de la réaction", "ralentit systématiquement une réaction"], correct:0},
+    {id:'q8', type:'connaissance', difficulty:2, notion:'u2', q:"Pour ralentir ou figer temporairement une réaction avant analyse, on peut par exemple :", options:["diluer fortement ou refroidir brutalement le milieu réactionnel (une trempe)", "augmenter fortement la température", "concentrer davantage les réactifs"], correct:0},
+    {id:'q9', type:'connaissance', difficulty:1, notion:'u3', q:"Une réaction (le suivi d'un réactif A) suit une loi de vitesse d'ordre 1 lorsque :", options:["la vitesse volumique de disparition de A est proportionnelle à [A] : −d[A]/dt = k[A]", "la vitesse est constante, indépendante de [A]", "la vitesse est proportionnelle à [A]²"], correct:0},
+    {id:'q10', type:'connaissance', difficulty:1, notion:'u3', q:"Pour une réaction d'ordre 1 de constante k, la concentration évolue selon :", options:["[A](t) = [A]₀ × e^(−kt)", "[A](t) = [A]₀ − kt", "[A](t) = [A]₀ × kt"], correct:0},
+    {id:'q11', type:'connaissance', difficulty:2, notion:'u3', q:"Pour une réaction d'ordre 1, le temps de demi-réaction t½ vaut :", options:["t½ = ln(2)/k", "t½ = k/ln(2)", "t½ = 2/k"], correct:0},
+    {id:'q12', type:'connaissance', difficulty:2, notion:'u3', q:"Caractéristique remarquable du temps de demi-réaction d'une réaction d'ordre 1 :", options:["il est indépendant de la concentration initiale [A]₀", "il double si la concentration initiale double", "il dépend fortement de [A]₀"], correct:0},
+    {id:'q13', type:'connaissance', difficulty:1, notion:'u3', q:"Le temps caractéristique τ d'une réaction d'ordre 1 de constante k est défini par :", options:["τ = 1/k", "τ = k", "τ = ln(2)×k"], correct:0},
+    {id:'q14', type:'connaissance', difficulty:2, notion:'u4', q:"L'équation différentielle d'une réaction d'ordre 1 (d[A]/dt = −[A]/τ) a la même forme mathématique que celle vérifiée par :", options:["u_C(t) lors de la décharge d'un condensateur", "i(t) dans un circuit purement résistif", "q(t) lors de la charge d'un condensateur (avec second membre)"], correct:0},
+    {id:'q15', type:'connaissance', difficulty:1, notion:'u4', q:"Dans l'analogie entre cinétique d'ordre 1 et décharge d'un condensateur, la constante de temps τ=1/k joue le même rôle que :", options:["τ=RC pour le circuit RC", "la tension E du générateur", "la résistance R seule"], correct:0},
+    {id:'q16', type:'connaissance', difficulty:1, notion:'u4', q:"Dans les deux cas (décharge du condensateur, réaction d'ordre 1), la solution mathématique a la forme :", options:["une décroissance exponentielle depuis la valeur initiale vers 0", "une croissance linéaire", "une oscillation périodique"], correct:0},
+    {id:'q17', type:'connaissance', difficulty:1, notion:'u5', q:"Un mécanisme réactionnel décrit une transformation chimique comme :", options:["une succession d'actes élémentaires au niveau microscopique", "une seule étape instantanée", "un phénomène purement macroscopique, sans lien avec les entités chimiques"], correct:0},
+    {id:'q18', type:'connaissance', difficulty:1, notion:'u5', q:"Un intermédiaire réactionnel est une espèce :", options:["formée puis consommée au cours du mécanisme, absente de l'équation bilan globale", "présente uniquement dans les réactifs de départ", "qui catalyse systématiquement la réaction"], correct:0},
+    {id:'q19', type:'connaissance', difficulty:1, notion:'u5', q:"Le formalisme de la flèche courbe représente :", options:["le déplacement d'un doublet d'électrons au cours d'un acte élémentaire", "le sens d'écoulement du courant électrique", "la trajectoire d'une particule dans un champ"], correct:0},
+    {id:'q20', type:'connaissance', difficulty:2, notion:'u5', q:"Au niveau microscopique, une augmentation de température accélère une réaction principalement parce qu'elle :", options:["augmente la fréquence et l'efficacité des chocs entre entités", "diminue le nombre d'entités présentes", "change la nature des produits formés"], correct:0},
+
+    {id:'r1', type:'raisonnement', difficulty:1, notion:'u1', q:"On suit l'apparition d'un produit P par spectrophotométrie. Sa concentration augmente rapidement au début, puis de plus en plus lentement, jusqu'à atteindre un palier. Que peut-on dire de la vitesse volumique de formation de P au cours du temps ?",
+      options:["Elle diminue au cours du temps, jusqu'à s'annuler quand le palier est atteint", "Elle est constante tout au long de la réaction", "Elle augmente continûment"], correct:0,
+      hint:"La vitesse volumique de formation est la pente de la courbe [P](t) ; observe comment cette pente évolue entre le début et le palier."},
+    {id:'r2', type:'raisonnement', difficulty:2, notion:'u1', q:"Une réaction est réalisée deux fois : une première fois dans un ballon de 100 mL, une seconde fois en doublant toutes les quantités dans un ballon de 200 mL (mêmes concentrations initiales). Comment se comparent les vitesses volumiques de disparition d'un réactif dans les deux cas, à un instant où les concentrations sont identiques ?",
+      options:["Elles sont égales : la vitesse volumique est indépendante de la taille du système", "Elle est deux fois plus grande dans le ballon de 200 mL", "Elle est deux fois plus petite dans le ballon de 200 mL"], correct:0,
+      hint:"C'est précisément l'intérêt de raisonner en grandeur volumique (par unité de volume) plutôt qu'en quantité de matière."},
+    {id:'r3', type:'raisonnement', difficulty:1, notion:'u2', q:"Pour accélérer une réaction de synthèse organique, on la porte à reflux (chauffage prolongé à température élevée). Quel facteur cinétique met-on ainsi en jeu ?",
+      options:["La température", "La concentration des réactifs", "La pression"], correct:0,
+      hint:"Le reflux permet de chauffer fortement le milieu réactionnel sans perdre de solvant par évaporation."},
+    {id:'r4', type:'raisonnement', difficulty:2, notion:'u2', q:"Deux expériences identiques sont réalisées, sauf qu'un catalyseur est ajouté dans la seconde. Que peut-on dire de l'état final atteint dans les deux cas ?",
+      options:["Le même état final est atteint dans les deux cas, mais plus rapidement avec le catalyseur", "L'état final est différent : le catalyseur change la nature des produits formés", "Le catalyseur empêche la réaction d'atteindre son état final"], correct:0,
+      hint:"Un catalyseur accélère une réaction sans en modifier le bilan : il n'apparaît pas dans l'équation bilan et ne déplace pas l'état final."},
+    {id:'r5', type:'raisonnement', difficulty:2, notion:'u3', q:"On mesure, pour une réaction, un temps de demi-réaction de 10 min à partir d'une concentration initiale [A]₀, puis de nouveau 10 min pour la réaction restante à partir de [A]₀/2. Que peut-on en conclure sur l'ordre de la réaction ?",
+      options:["Cette réaction est vraisemblablement d'ordre 1, car t½ est indépendant de la concentration de départ", "Cette réaction est forcément d'ordre 2", "On ne peut rien conclure sur l'ordre à partir de cette seule observation"], correct:0,
+      hint:"L'indépendance du temps de demi-réaction vis-à-vis de la concentration initiale est une signature caractéristique de l'ordre 1."},
+    {id:'r6', type:'raisonnement', difficulty:2, notion:'u3', q:"Une réaction d'ordre 1 a une constante de vitesse k = 2,0×10⁻³ s⁻¹. Quel est, approximativement, son temps de demi-réaction (ln2 ≈ 0,69) ?",
+      options:["environ 345 s", "environ 690 s", "environ 173 s"], correct:0,
+      hint:"t½ = ln(2)/k."},
+    {id:'r7', type:'raisonnement', difficulty:2, notion:'u4', q:"Pourquoi peut-on affirmer que c'est la décharge d'un condensateur (et non sa charge) qui est l'analogue exact d'une réaction d'ordre 1 comme d[A]/dt=−k[A] ?",
+      options:["Parce que l'équation de la décharge est homogène (sans second membre), comme d[A]/dt=−k[A], alors que celle de la charge comporte un second membre E", "Parce que la charge et la décharge sont mathématiquement identiques", "Parce qu'un condensateur ne peut être qu'en train de se décharger"], correct:0,
+      hint:"Compare RC·du_C/dt+u_C=0 (décharge) et RC·du_C/dt+u_C=E (charge, avec second membre) à d[A]/dt=−k[A] (sans second membre)."},
+    {id:'r8', type:'raisonnement', difficulty:1, notion:'u4', q:"Dans l'analogie entre la décharge d'un condensateur et une réaction d'ordre 1, à quelle grandeur électrique correspond la concentration [A](t) ?",
+      options:["La tension u_C(t) aux bornes du condensateur", "La résistance R", "La capacité C"], correct:0,
+      hint:"Ce sont les deux grandeurs qui décroissent exponentiellement au cours du temps dans chacune des deux situations."},
+    {id:'r9', type:'raisonnement', difficulty:2, notion:'u4', q:"Par analogie avec la méthode des 37 % utilisée pour déterminer graphiquement τ=RC lors de la décharge d'un condensateur, comment pourrait-on déterminer graphiquement le temps caractéristique τ=1/k d'une réaction d'ordre 1, à partir d'une courbe [A](t) ?",
+      options:["En repérant l'instant où [A] est retombée à 37 % de sa valeur initiale [A]₀", "En repérant l'instant où [A] a doublé", "Cette méthode ne peut pas s'appliquer à la cinétique chimique"], correct:0,
+      hint:"[A](t)=[A]₀e^(−t/τ) a exactement la même forme que u_C(t)=Ee^(−t/τ) : les mêmes méthodes graphiques s'appliquent."},
+    {id:'r10', type:'raisonnement', difficulty:1, notion:'u5', q:"Dans un mécanisme réactionnel en deux actes élémentaires successifs, une espèce est formée au cours du premier acte puis entièrement consommée au cours du second. Comment qualifie-t-on cette espèce ?",
+      options:["Un intermédiaire réactionnel", "Un catalyseur", "Un produit final"], correct:0,
+      hint:"Une espèce formée puis consommée en cours de mécanisme, absente du bilan global, porte un nom précis."},
+    {id:'r11', type:'raisonnement', difficulty:2, notion:'u5', q:"Dans le formalisme de la flèche courbe, une flèche part d'un doublet d'électrons (liant ou non liant) et pointe vers :",
+      options:["l'endroit où ce doublet va se retrouver après l'acte élémentaire (nouvelle liaison ou nouveau doublet non liant)", "toujours vers un atome d'hydrogène", "le sens de propagation de la chaleur dans le milieu"], correct:0,
+      hint:"La flèche courbe trace le déplacement d'un doublet d'électrons, de son origine vers sa destination."},
+    {id:'r12', type:'raisonnement', difficulty:2, notion:'u5', q:"Un catalyseur intervient dans un mécanisme réactionnel en :",
+      options:["ouvrant un chemin réactionnel différent, avec des actes élémentaires plus faciles à réaliser", "empêchant tout acte élémentaire de se produire", "remplaçant définitivement l'un des réactifs dans l'équation bilan"], correct:0,
+      hint:"Le catalyseur ne change pas le bilan, mais il modifie le mécanisme emprunté par la transformation, en le rendant plus rapide."}
+  ],
+
+  applications: [
+    {id:'a1', difficulty:1, notion:'u3', statement:"Une réaction d'ordre 1 a une constante de vitesse k = 5,0×10⁻³ s⁻¹. Calcule son temps caractéristique τ, en secondes.",
+      unit:'s', answer:200, tolerance:{type:'pct', value:3},
+      methode:"Utilise τ = 1/k.",
+      correction:["τ = 1/k = 1/(5,0×10⁻³).", "τ = 200 s."]},
+    {id:'a2', difficulty:2, notion:'u3', statement:"Une réaction d'ordre 1 a une constante de vitesse k = 1,4×10⁻² min⁻¹. Calcule son temps de demi-réaction t½, en minutes (ln2 ≈ 0,693).",
+      unit:'min', answer:49.5, tolerance:{type:'pct', value:3},
+      methode:"Utilise t½ = ln(2)/k.",
+      correction:["t½ = ln(2)/k = 0,693/(1,4×10⁻²).", "t½ ≈ 49,5 min."]},
+    {id:'a3', difficulty:2, notion:'u3', statement:"Une réaction d'ordre 1 a une concentration initiale [A]₀ = 0,50 mol/L et une constante k = 0,10 min⁻¹. Calcule [A] après t = 15 min, en mol/L.",
+      unit:'mol/L', answer:0.112, tolerance:{type:'pct', value:5},
+      methode:"Utilise [A](t) = [A]₀ × e^(−kt).",
+      correction:["[A](15) = 0,50 × e^(−0,10×15) = 0,50 × e^(−1,5).", "e^(−1,5) ≈ 0,223.", "[A](15) ≈ 0,112 mol/L."]},
+    {id:'a4', difficulty:2, notion:'u4', statement:"Par analogie avec τ=RC pour un circuit RC, une réaction d'ordre 1 a un temps caractéristique τ = 250 s. Calcule sa constante de vitesse k, en ×10⁻³ s⁻¹ (donne le nombre qui précède ×10⁻³ s⁻¹).",
+      unit:'×10⁻³ s⁻¹', answer:4.0, tolerance:{type:'pct', value:3},
+      methode:"Utilise k = 1/τ, exactement comme 1/τ = 1/(RC) pour le circuit RC.",
+      correction:["k = 1/τ = 1/250.", "k = 4,0×10⁻³ s⁻¹."]},
+    {id:'a5', difficulty:2, notion:'u4', statement:"Le suivi expérimental d'une réaction d'ordre 1 donne une concentration initiale [A]₀ = 0,80 mol/L. Par la méthode des 37 % (comme pour la décharge d'un condensateur), calcule la concentration [A] à l'instant t=τ, en mol/L.",
+      unit:'mol/L', answer:0.294, tolerance:{type:'pct', value:5},
+      methode:"Utilise [A](τ) = [A]₀ × e⁻¹ ≈ 0,37 × [A]₀, exactement comme u_C(τ) ≈ 0,37×E lors d'une décharge de condensateur.",
+      correction:["[A](τ) = [A]₀ × e⁻¹ = 0,80 × 0,368.", "[A](τ) ≈ 0,29 mol/L."]},
+    {id:'a6', difficulty:1, notion:'u3', statement:"Le temps de demi-réaction d'une transformation d'ordre 1 vaut t½ = 25 s. Calcule sa constante de vitesse k, en ×10⁻² s⁻¹ (donne le nombre qui précède ×10⁻² s⁻¹, ln2 ≈ 0,693).",
+      unit:'×10⁻² s⁻¹', answer:2.77, tolerance:{type:'pct', value:3},
+      methode:"Utilise k = ln(2)/t½.",
+      correction:["k = ln(2)/t½ = 0,693/25.", "k ≈ 2,77×10⁻² s⁻¹."]}
+  ],
+
+  mindmapModel: {
+    label:"Cinétique chimique",
+    children:[
+      {label:"Suivi temporel", children:[
+        {label:"Vitesse volumique de disparition/formation"},{label:"Temps de demi-réaction t½"}
+      ]},
+      {label:"Facteurs cinétiques", children:[
+        {label:"Température"},{label:"Concentration"},{label:"Catalyseur"}
+      ]},
+      {label:"Réaction d'ordre 1", children:[
+        {label:"−d[A]/dt = k[A]"},{label:"[A](t)=[A]₀e^(−kt)"},{label:"τ=1/k"},{label:"t½=τln2"}
+      ]},
+      {label:"Analogie circuit RC", children:[
+        {label:"Même équation que la décharge du condensateur"},{label:"[A]↔u_C, τ=1/k↔τ=RC"},{label:"Méthodes graphiques transposables"}
+      ]},
+      {label:"Mécanisme réactionnel", children:[
+        {label:"Actes élémentaires"},{label:"Intermédiaire réactionnel"},{label:"Flèche courbe"},{label:"Catalyseur au niveau microscopique"}
+      ]}
+    ]
+  }
+};
+
+ModulePage.init(MODULE);
+</script>
+</body>
+</html>
