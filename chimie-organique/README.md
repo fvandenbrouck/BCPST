@@ -82,6 +82,12 @@ Régénérer les SVG nécessite une distribution LaTeX (TeX Live / MacTeX) avec
 le paquet `chemfig`, et `pdftocairo` (Poppler) — uniquement sur la machine
 de développement, jamais côté utilisateur final. Voir `CONTRIBUTING.md`.
 
+Les exercices de nomenclature (Module C) donnent la molécule à nommer sous
+l'une de ces deux formes : une structure topologique dessinée (SVG, comme
+ci-dessus), ou une formule semi-développée donnée en texte (ex.
+`CH3–CH2–OH`) — un second mode de lecture, tout aussi courant dans le
+cours, qui ne nécessite aucune génération graphique.
+
 ## Déploiement (GitHub Pages)
 
 Aucune étape de build n'est nécessaire : l'intégralité du dossier

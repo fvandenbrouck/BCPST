@@ -6,7 +6,7 @@
  */
 (function(){
   'use strict';
-  const { esc, molFigure } = ChimorgApp;
+  const { esc, molFigure, molFormula } = ChimorgApp;
   const MODULE_LABEL = { A:'Module A — Familles', B:'Module B — Vivant', C:'Module C — Nomenclature' };
 
   function render(container){
@@ -49,9 +49,11 @@
         <span class="side-label">${state.flipped ? 'Réponse' : 'Question'}</span>`;
       if(!state.flipped){
         if(card.rectoImg) html += molFigure(card.rectoImg, 'formule');
+        else if(card.rectoFormula) html += molFormula(card.rectoFormula, {small:true});
         html += `<div class="fc-text">${esc(card.recto).replace(/\n/g,'<br>')}</div>`;
       } else {
         if(card.versoImg) html += molFigure(card.versoImg, 'formule');
+        else if(card.versoFormula) html += molFormula(card.versoFormula, {small:true});
         html += `<div class="fc-text">${esc(card.verso).replace(/\n/g,'<br>')}</div>`;
       }
       html += `</div>`;

@@ -64,8 +64,10 @@
   });
   exercises.forEach(e=>{
     assert(`Exercice ${e.id} : champs requis non vides`,
-      e.name && e.img && e.explanation && Array.isArray(e.hints) && e.hints.length>0, e.id);
+      e.name && (e.img || e.formula) && e.explanation && Array.isArray(e.hints) && e.hints.length>0, e.id);
   });
+  const formulaExercises = exercises.filter(e=>e.formula);
+  assert('Exercices « formule semi-développée » : au moins 50 présents', formulaExercises.length >= 50, 'trouvé '+formulaExercises.length);
 
   // ------------------------------------------------------ Module B : vivant
   const B = window.CHIMORG_BIOMOLECULES;
@@ -106,7 +108,7 @@
   // ---------------------------------------- Existence des fichiers SVG
   const imgPaths = new Set();
   families.forEach(f=>{ imgPaths.add(f.img); if(f.img2) imgPaths.add(f.img2); });
-  exercises.forEach(e=>imgPaths.add(e.img));
+  exercises.forEach(e=>{ if(e.img) imgPaths.add(e.img); });
   Object.keys(B).forEach(k=>B[k].notions.forEach(n=>{ if(n.img) imgPaths.add(n.img); }));
   const checks = await Promise.all([...imgPaths].map(async p=>{
     try{ const r = await fetch('../'+p, {method:'GET'}); return {p, ok:r.ok}; }

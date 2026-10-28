@@ -10,7 +10,7 @@
  */
 (function(){
   'use strict';
-  const { esc, molFigure } = ChimorgApp;
+  const { esc, molFigure, molFormula } = ChimorgApp;
 
   const normalize = ChimorgApp.normalizeAnswer;
 
@@ -50,8 +50,8 @@
         <div class="module-head"><h1>Exercices de nomenclature</h1></div>
         <div class="diff-toggle">${[1,2,3].map(l=>`<button data-lvl="${l}" class="${state.level===l?'active':''}">Niveau ${l}</button>`).join('')}</div>
         <p class="progress-tag">Molécule ${state.index+1}/${items.length} · niveau ${state.level}</p>
-        ${molFigure(ex.img, 'molécule à nommer')}
-        <p class="q-title">Donne le nom systématique de cette molécule.</p>`;
+        ${ex.img ? molFigure(ex.img, 'molécule à nommer') : molFormula(ex.formula)}
+        <p class="q-title">Donne le nom systématique de cette molécule${ex.formula?' (formule semi-développée)':''}.</p>`;
 
       if(!state.submitted){
         html += `<input type="text" class="answer-input" id="answerInput" placeholder="ex. but-2-ène" value="${esc(state.value)}" autocomplete="off" autocapitalize="off" spellcheck="false">`;

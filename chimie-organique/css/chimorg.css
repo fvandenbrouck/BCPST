@@ -125,6 +125,8 @@ a{color:var(--rust-deep);}
 .mol-card img{width:100%; max-width:320px; height:auto; display:block; color:var(--mol-ink);}
 .mol-card.small{min-height:80px; padding:8px;}
 .mol-card.small img{max-width:220px;}
+.mol-card.formula .formula-text{font-family:'IBM Plex Mono',monospace; font-size:19px; font-weight:500; color:var(--mol-ink); text-align:center; letter-spacing:.01em; line-height:1.5;}
+.mol-card.formula.small .formula-text{font-size:15px;}
 .mol-caption{text-align:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); margin-top:6px;}
 
 /* ---------- GENERIC CARD / BUTTONS ---------- */

@@ -48,13 +48,22 @@
     return `<div class="${cls}"><img src="${esc(path)}" alt="${esc(alt||'formule topologique')}" loading="lazy"></div>`;
   }
 
+  // ------------------------------------------------- formule semi-développée
+  // Pour les exercices qui donnent la molécule comme texte (ex. CH3-CH2-OH)
+  // plutôt que comme structure topologique dessinée (cf. data/nomenclature.js).
+  function molFormula(text, opts){
+    opts = opts || {};
+    const cls = opts.small ? 'mol-card formula small' : 'mol-card formula';
+    return `<div class="${cls}"><span class="formula-text">${esc(text)}</span></div>`;
+  }
+
   // ------------------------------------------------------- banque unifiée
   function nomenclatureAsQuestions(){
     const ex = (window.CHIMORG_NOMENCLATURE && window.CHIMORG_NOMENCLATURE.exercises) || [];
     return ex.map(e => ({
       id:'no:'+e.id, module:'C', theme:'nomenclature-n'+e.level, difficulty:e.level, type:'nomenclature',
-      question:"Donne le nom systématique de cette molécule.",
-      structure:e.img, answer:e.name, explanation:e.explanation, hints:e.hints,
+      question: e.formula ? "Donne le nom systématique de cette molécule (formule semi-développée)." : "Donne le nom systématique de cette molécule.",
+      structure:e.img||null, formula:e.formula||null, answer:e.name, explanation:e.explanation, hints:e.hints,
       sourcePage:'p.16-23', tags:['nomenclature']
     }));
   }
@@ -96,9 +105,9 @@
     });
     ((window.CHIMORG_NOMENCLATURE && window.CHIMORG_NOMENCLATURE.exercises) || []).forEach(e=>{
       cards.push({ id:'fc:no:'+e.id+':s2n', module:'C', theme:'nomenclature-n'+e.level,
-        recto:"Donne le nom systématique de cette molécule.", rectoImg:e.img, verso:e.name });
+        recto:"Donne le nom systématique de cette molécule.", rectoImg:e.img||null, rectoFormula:e.formula||null, verso:e.name });
       cards.push({ id:'fc:no:'+e.id+':n2s', module:'C', theme:'nomenclature-n'+e.level,
-        recto:`Reconnais/dessine mentalement la structure de : ${e.name}`, verso:e.explanation, versoImg:e.img });
+        recto:`Reconnais/dessine mentalement la structure de : ${e.name}`, verso:e.explanation, versoImg:e.img||null, versoFormula:e.formula||null });
     });
     return cards;
   }
@@ -197,7 +206,7 @@
   }
 
   window.ChimorgApp = {
-    esc, normalizeAnswer, molFigure, allQuestions, buildDeck,
+    esc, normalizeAnswer, molFigure, molFormula, allQuestions, buildDeck,
     loadItems, saveItems, getRecord, reviewItem, loadSessions, logSession,
     exportProgress, importProgress,
     route, navigate, renderRoute, parseHash, renderTopbar

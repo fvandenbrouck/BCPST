@@ -8,7 +8,7 @@
  */
 (function(){
   'use strict';
-  const { esc, molFigure } = ChimorgApp;
+  const { esc, molFigure, molFormula } = ChimorgApp;
 
   function shuffle(arr){
     const a = arr.slice();
@@ -98,6 +98,7 @@
         <p class="progress-tag">Question ${state.index+1}/${state.pool.length} · <span class="q-tag">${typeLabel(q.type)}</span></p>
         <p class="q-title">${esc(q.question)}</p>`;
       if(q.structure) html += molFigure(q.structure, 'molécule');
+      else if(q.formula) html += molFormula(q.formula);
 
       if(q.type === 'recognition'){
         html += renderRecognition(q, state);

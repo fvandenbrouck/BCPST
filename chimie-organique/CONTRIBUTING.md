@@ -103,10 +103,19 @@ l'expliquer — ne pas en fabriquer un pour « faire complet ».
 Ajouter une entrée dans `data/nomenclature.js` (`exercises`), avec un
 niveau (`level: 1|2|3`), le nom systématique **vérifié à la main** selon
 les règles de `reference` (priorité des suffixes, règles de numérotation),
-une explication pas-à-pas, 2-3 indices progressifs, et la structure
-chemfig correspondante (partie 2 ci-dessus). Les flashcards et le quiz
-rapide réutilisent automatiquement cette entrée — aucune autre
-modification n'est nécessaire.
+une explication pas-à-pas, 2-3 indices progressifs, et la molécule à
+nommer sous l'une de ces deux formes (mutuellement exclusives) :
+
+- `img:'assets/mol/no-xx.svg'` — une structure topologique dessinée (voir
+  partie 2 ci-dessus) ;
+- `formula:'CH3–CH2–OH'` — une formule semi-développée donnée directement
+  en texte (aucun SVG à générer ; utiliser le tiret long « – » entre les
+  groupes et les indices unicode ₂₃… pour les atomes d'hydrogène, comme
+  dans les entrées `no-29` et suivantes).
+
+Les flashcards et le quiz rapide réutilisent automatiquement cette entrée,
+quelle que soit la forme choisie — aucune autre modification n'est
+nécessaire.
 
 Toute modification de `data/*.js` est automatiquement reflétée dans :
 tableau de bord (comptage), flashcards (générées depuis les données), quiz
