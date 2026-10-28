@@ -29,6 +29,7 @@ window.MODULES = [
   {id:'pc-premier-principe', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Révisions de Terminale', title:"Premier principe de la thermodynamique", pages:"E.1, E.2, E.4", status:'available', accent:'var(--ochre)', href:'physique-chimie/premier-principe.html'},
   {id:'pc-oxydoreduction', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Révisions de Terminale', title:"Oxydants/réducteurs, demi-équations", pages:"C.2", status:'available', accent:'var(--ochre)', href:'physique-chimie/oxydoreduction.html'},
   {id:'pc-acide-base', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Révisions de Terminale', title:"Acides et bases, Henderson-Hasselbalch", pages:"C.2", status:'available', accent:'var(--ochre)', href:'physique-chimie/acide-base.html'},
+  {id:'pc-chimie-organique', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Chimie organique — BCPST Trainer', title:"Familles d'entités chimiques organiques et nomenclature (CC03)", pages:"6 modes d'entraînement", status:'available', accent:'var(--ochre)', href:'chimie-organique/index.html'},
 
   // ---------- Mathématiques ----------
   {id:'ma-fractions-puissances', subject:'maths', subjectLabel:'Mathématiques', cat:'Calcul de base', title:"Fractions et puissances", pages:"Fiches 1, 2", status:'soon', accent:'var(--slate)', href:null},

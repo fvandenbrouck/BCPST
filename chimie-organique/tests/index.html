@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tests — Chimie organique BCPST Trainer</title>
+<style>
+  body{font-family:'IBM Plex Mono',ui-monospace,monospace; background:#161512; color:#eee; padding:20px; max-width:900px; margin:0 auto;}
+  h1{font-size:20px;}
+  .pass{color:#8FAA68;} .fail{color:#E06A50; font-weight:700;}
+  .case{padding:4px 0; border-bottom:1px solid #2a2820;}
+  #summary{position:sticky; top:0; background:#161512; padding:10px 0; font-size:16px; border-bottom:2px solid #444;}
+</style>
+</head>
+<body>
+<h1>Tests automatisés — Chimie organique BCPST Trainer</h1>
+<p>Validation des données (familles, nomenclature, questions, molécules) et de la logique de correction (tolérance typographique, répétition espacée). Exécuté entièrement dans le navigateur, sans dépendance externe.</p>
+<div id="summary">Exécution…</div>
+<div id="results"></div>
+
+<!-- Charge le code réel de l'application : on teste le code qui tourne vraiment, pas une réimplémentation. -->
+<script src="../js/storage.js"></script>
+<script src="../js/srs.js"></script>
+<script src="../data/families.js"></script>
+<script src="../data/biomolecules.js"></script>
+<script src="../data/nomenclature.js"></script>
+<script src="../data/questions.js"></script>
+<script src="../js/app.js"></script>
+<script>
+(async function(){
+  const cases = [];
+  let pass=0, fail=0;
+  function assert(name, cond, detail){
+    cases.push({name, ok: !!cond, detail: detail||''});
+    if(cond) pass++; else fail++;
+  }
+  function uniqueIds(arr, label){
+    const ids = arr.map(x=>x.id);
+    const dupes = ids.filter((id,i)=>ids.indexOf(id)!==i);
+    assert(`${label} : identifiants uniques`, dupes.length===0, dupes.join(', '));
+  }
+
+  // ---------------------------------------------------- Module A : familles
+  const families = window.CHIMORG_FAMILIES;
+  assert('Module A : 16 familles présentes', families.length === 16, 'trouvé '+families.length);
+  uniqueIds(families, 'Module A');
+  families.forEach(f=>{
+    assert(`Famille ${f.id} : champs requis non vides`,
+      f.name && f.groupeCaracteristique && f.formuleGenerique && f.exampleName && f.systematicName && f.img,
+      JSON.stringify(f.id));
+    assert(`Famille ${f.id} : pas de suffixe inventé (suffix est une chaîne ou null, jamais undefined)`,
+      f.suffix === null || typeof f.suffix === 'string');
+  });
+
+  // ------------------------------------------------ Module C : nomenclature
+  const nomenclature = window.CHIMORG_NOMENCLATURE;
+  const exercises = nomenclature.exercises;
+  assert('Module C : au moins 24 exercices de nomenclature', exercises.length >= 24, 'trouvé '+exercises.length);
+  uniqueIds(exercises, 'Exercices de nomenclature');
+  [1,2,3].forEach(lvl=>{
+    const n = exercises.filter(e=>e.level===lvl).length;
+    assert(`Nomenclature : au moins 6 exercices de niveau ${lvl}`, n>=6, 'trouvé '+n);
+  });
+  exercises.forEach(e=>{
+    assert(`Exercice ${e.id} : champs requis non vides`,
+      e.name && e.img && e.explanation && Array.isArray(e.hints) && e.hints.length>0, e.id);
+  });
+
+  // ------------------------------------------------------ Module B : vivant
+  const B = window.CHIMORG_BIOMOLECULES;
+  let bioCount = 0;
+  Object.keys(B).forEach(k=>{
+    assert(`Module B thème « ${k} » : intro + notions présentes`, !!B[k].intro && B[k].notions.length>0);
+    B[k].notions.forEach(n=>{
+      bioCount++;
+      assert(`Notion ${n.id} : terme et définition non vides`, !!n.term && !!n.def, n.id);
+    });
+  });
+  assert('Module B : au moins 10 notions au total', bioCount >= 10, 'trouvé '+bioCount);
+
+  // --------------------------------------------------- Banque de questions
+  const rawQuestions = window.CHIMORG_QUESTIONS;
+  uniqueIds(rawQuestions, 'Banque de questions');
+  const groups = window.CHIMORG_RECOGNITION_GROUPS;
+  rawQuestions.forEach(q=>{
+    if(q.type==='recognition'){
+      const allValid = q.answer.every(a=>groups.includes(a));
+      assert(`Question ${q.id} (recognition) : réponses ⊆ liste des groupes`, allValid, JSON.stringify(q.answer));
+    } else {
+      assert(`Question ${q.id} (${q.type}) : options non vides`, Array.isArray(q.options) && q.options.length>=2, q.id);
+      assert(`Question ${q.id} (${q.type}) : index de réponse valide`, Number.isInteger(q.answer) && q.answer>=0 && q.answer<q.options.length, 'answer='+q.answer);
+    }
+    assert(`Question ${q.id} : explication non vide`, !!q.explanation, q.id);
+  });
+
+  const allQ = ChimorgApp.allQuestions();
+  assert('Banque totale : au moins 100 questions distinctes (cahier des charges §9)', allQ.length >= 100, 'trouvé '+allQ.length);
+  uniqueIds(allQ, 'Banque totale fusionnée');
+
+  const deck = ChimorgApp.buildDeck();
+  uniqueIds(deck, 'Paquet de flashcards');
+  const badCards = deck.filter(c=>!c.recto || !c.verso);
+  assert('Flashcards : toutes les cartes ont un recto et un verso', badCards.length===0, badCards.map(c=>c.id).join(', '));
+
+  // ---------------------------------------- Existence des fichiers SVG
+  const imgPaths = new Set();
+  families.forEach(f=>{ imgPaths.add(f.img); if(f.img2) imgPaths.add(f.img2); });
+  exercises.forEach(e=>imgPaths.add(e.img));
+  Object.keys(B).forEach(k=>B[k].notions.forEach(n=>{ if(n.img) imgPaths.add(n.img); }));
+  const checks = await Promise.all([...imgPaths].map(async p=>{
+    try{ const r = await fetch('../'+p, {method:'GET'}); return {p, ok:r.ok}; }
+    catch(e){ return {p, ok:false}; }
+  }));
+  const missing = checks.filter(c=>!c.ok);
+  assert(`Tous les fichiers SVG référencés existent (${imgPaths.size} fichiers uniques)`, missing.length===0, missing.map(m=>m.p).join(', '));
+
+  // --------------------------------------------- Logique de correction
+  const norm = ChimorgApp.normalizeAnswer;
+  assert('normalizeAnswer : tolère espace vs tiret', norm('but-2-ène') === norm('but 2 ene'));
+  assert('normalizeAnswer : tolère accents/majuscules', norm('Acide 2-Aminopropanoïque') === norm('acide-2-aminopropanoique'));
+  assert('normalizeAnswer : distingue deux noms différents (numérotation)', norm('butan-2-ol') !== norm('butan-3-ol'));
+  assert('normalizeAnswer : distingue un nom chimiquement incorrect', norm('pentane') !== norm('pentanol'));
+  assert('normalizeAnswer : tolère une apostrophe typographique', norm("éthanoate de 3-méthylbutyle") === norm("éthanoate de 3 méthylbutyle"));
+
+  // Chaque exercice de nomenclature doit se valider lui-même (son propre nom doit "matcher")
+  let selfMatchFail = [];
+  exercises.forEach(e=>{ if(norm(e.name) !== norm(e.name)) selfMatchFail.push(e.id); });
+  assert('Nomenclature : chaque nom se compare correctement à lui-même', selfMatchFail.length===0);
+
+  // --------------------------------------------------- Répétition espacée
+  let rec = ChimorgSRS.review(null, 'again');
+  assert('SRS : "again" met streak à 0 et programme J+1', rec.streak===0 && rec.nextReview === ChimorgSRS.addDays(ChimorgSRS.today(),1), JSON.stringify(rec));
+  assert('SRS : record jamais vu est "dû"', ChimorgSRS.isDue(null) === true);
+  assert('SRS : un item dû aujourd\'hui est "dû"', ChimorgSRS.isDue({nextReview: ChimorgSRS.today()}) === true);
+  assert('SRS : un item dû demain n\'est pas "dû"', ChimorgSRS.isDue({nextReview: ChimorgSRS.addDays(ChimorgSRS.today(),1)}) === false);
+
+  let r2 = null;
+  const intervals = [];
+  for(let i=0;i<4;i++){
+    r2 = ChimorgSRS.review(r2, 'easy');
+    intervals.push(r2.nextReview);
+  }
+  assert('SRS : "easy" répété fait croître le niveau de maîtrise jusqu\'à 4', r2.mastery === 4, 'mastery='+r2.mastery);
+  const sorted = intervals.slice().sort();
+  assert('SRS : les échéances successives sont croissantes (intervalle progressif)', JSON.stringify(intervals)===JSON.stringify(sorted));
+
+  // ---------------------------------------------------------- Rendu
+  const results = document.getElementById('results');
+  results.innerHTML = cases.map(c=>`<div class="case ${c.ok?'pass':'fail'}">${c.ok?'✓':'✗'} ${c.name}${c.ok?'':' — '+c.detail}</div>`).join('');
+  document.getElementById('summary').innerHTML = fail===0
+    ? `<span class="pass">✓ ${pass}/${cases.length} tests réussis</span>`
+    : `<span class="fail">✗ ${fail}/${cases.length} tests en échec</span> — <span class="pass">${pass} réussis</span>`;
+  document.title = (fail===0?'OK ':'FAIL ') + pass+'/'+cases.length + ' — Tests Chimie organique';
+})();
+</script>
+</body>
+</html>

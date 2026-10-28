@@ -1,0 +1,246 @@
+[
+  {
+    "id": "fam-alcane",
+    "chemfig": "-[:30]-[:-30]-[:30]"
+  },
+  {
+    "id": "fam-alcene",
+    "chemfig": "=[:30]-[:-30]-[:30]-[:-30]-[:30]"
+  },
+  {
+    "id": "fam-alcyne",
+    "chemfig": "~[:30]"
+  },
+  {
+    "id": "fam-halogene",
+    "chemfig": "-[:30]-[:-30]-[:30]-[:-30]Cl"
+  },
+  {
+    "id": "fam-alcool",
+    "chemfig": "-[:30]-[:-30]OH"
+  },
+  {
+    "id": "fam-aldehyde",
+    "chemfig": "=[:30]O"
+  },
+  {
+    "id": "fam-cetone",
+    "chemfig": "-[:30](=[:90]O)-[:-30]"
+  },
+  {
+    "id": "fam-acide-carboxylique",
+    "chemfig": "-[:30](=[:90]O)-[:-30]OH"
+  },
+  {
+    "id": "fam-amine",
+    "chemfig": "-[:30]-[:-30]-[:30]-[:-30]NH_2"
+  },
+  {
+    "id": "fam-amine-2",
+    "chemfig": "-[:30]-[:-30]N(-[:90]-[:60])-[:-30]-[:30]"
+  },
+  {
+    "id": "fam-amide",
+    "chemfig": "-[:30](-[:90])-[:-30]-[:30](=[:90]O)-[:-30]NH_2"
+  },
+  {
+    "id": "fam-amide-2",
+    "chemfig": "(=[:90]O)-[:-30]N(-[:150])-[:-150]"
+  },
+  {
+    "id": "fam-ester",
+    "chemfig": "-[:30](=[:90]O)-[:-30]O-[:30]-[:-30]-[:30](-[:90])-[:-30]"
+  },
+  {
+    "id": "fam-ether",
+    "chemfig": "-[:30]-[:-30]O-[:30]-[:-30]"
+  },
+  {
+    "id": "fam-thiol",
+    "chemfig": "-[:30]SH"
+  },
+  {
+    "id": "fam-hemiacetal",
+    "chemfig": "-[:30]-[:-30]-[:30](-[:90]OH)(-[:-30]O-[:30]-[:-30])"
+  },
+  {
+    "id": "fam-acetal",
+    "chemfig": "-[:30]-[:-30]-[:30](-[:90]O-[:60]-[:30])(-[:-90]O-[:-60]-[:-30])"
+  },
+  {
+    "id": "fam-anhydride-phosphorique",
+    "chemfig": "P(=[:90]O)(-[:-90]OH)-[:30]O-[:30]P(=[:90]O)(-[:-90]OH)"
+  },
+  {
+    "id": "no-1",
+    "chemfig": "-[:30]-[:-30]-[:30]-[:-30]"
+  },
+  {
+    "id": "no-2",
+    "chemfig": "-[:30](-[:90])-[:-30]-[:30]"
+  },
+  {
+    "id": "no-3",
+    "chemfig": "=[:30]-[:-30]-[:30]"
+  },
+  {
+    "id": "no-4",
+    "chemfig": "-[:30]=[:-30]-[:30]"
+  },
+  {
+    "id": "no-5",
+    "chemfig": "~[:30]-[:-30]-[:30]-[:-30]"
+  },
+  {
+    "id": "no-6",
+    "chemfig": "=[:30]-[:-30](-[:90])-[:30]-[:-30]"
+  },
+  {
+    "id": "no-7",
+    "chemfig": "*6(------)"
+  },
+  {
+    "id": "no-8",
+    "chemfig": "*5(-(-[:90])----)"
+  },
+  {
+    "id": "no-9",
+    "chemfig": "-[:30]-[:-30](-[:90]-[:60])-[:30]-[:-30]-[:30]"
+  },
+  {
+    "id": "no-10",
+    "chemfig": "*6(-(-[:90])-(-[:-30])----)"
+  },
+  {
+    "id": "no-11",
+    "chemfig": "-[:30](-[:90]Cl)-[:-30]-[:30]"
+  },
+  {
+    "id": "no-12",
+    "chemfig": "HO-[:30](-[:90])-[:-30]"
+  },
+  {
+    "id": "no-13",
+    "chemfig": "-[:30](-[:90]OH)-[:-30]-[:30]-[:-30]"
+  },
+  {
+    "id": "no-14",
+    "chemfig": "-[:30](-[:90]NH_2)-[:-30]-[:30]"
+  },
+  {
+    "id": "no-15",
+    "chemfig": "H_2N-[:30]-[:-30]-[:30](-[:90])-[:-30]"
+  },
+  {
+    "id": "no-16",
+    "chemfig": "(=[:90]O)-[:30](-[:90])-[:-30]"
+  },
+  {
+    "id": "no-17",
+    "chemfig": "-[:30](=[:90]O)-[:-30](-[:90])-[:30]"
+  },
+  {
+    "id": "no-18",
+    "chemfig": "(=[:90]O)(-[:-90]OH)-[:30](-[:90])-[:-30]"
+  },
+  {
+    "id": "no-19",
+    "chemfig": "Br-[:30](-[:90])-[:-30]"
+  },
+  {
+    "id": "no-20",
+    "chemfig": "HO-[:30]-[:-30](-[:90])(-[:-90])-[:30]"
+  },
+  {
+    "id": "no-21",
+    "chemfig": "(=[:90]O)-[:30]-[:-30](-[:90]OH)-[:30]"
+  },
+  {
+    "id": "no-22",
+    "chemfig": "(=[:90]O)-[:30]-[:-30]-[:30]OH"
+  },
+  {
+    "id": "no-23",
+    "chemfig": "(=[:90]O)(-[:-90]OH)-[:30]-[:-30](=[:90]O)-[:30]"
+  },
+  {
+    "id": "no-24",
+    "chemfig": "(=[:90]O)(-[:-90]OH)-[:30](-[:90]NH_2)-[:-30]"
+  },
+  {
+    "id": "no-25",
+    "chemfig": "HO-[:30]-[:-30]-[:30](-[:90]NH_2)-[:-30]"
+  },
+  {
+    "id": "no-26",
+    "chemfig": "-[:30](=[:90]O)-[:-30]-[:30]Cl"
+  },
+  {
+    "id": "no-27",
+    "chemfig": "HO-[:30]-[:-30]=[:30]-[:-30]-[:30]Cl"
+  },
+  {
+    "id": "no-28",
+    "chemfig": "(=[:90]O)(-[:-90]OH)-[:30]-[:-30]-[:30](=[:90]O)-[:-30]"
+  },
+  {
+    "id": "bio-glucose",
+    "chemfig": "(=[:90]O)-[:-90](-[:0]OH)(-[:180]H)-[:-90](-[:0]H)(-[:180]OH)-[:-90](-[:0]OH)(-[:180]H)-[:-90](-[:0]OH)(-[:180]H)-[:-90]CH_2OH"
+  },
+  {
+    "id": "bio-acide-gras-sature",
+    "chemfig": "-[:30]-[:-30]-[:30]-[:-30]-[:30]-[:-30]-[:30]-[:-30]-[:30]-[:-30]-[:30]-[:-30]-[:30]-[:-30]-[:30](=[:90]O)-[:-30]OH"
+  },
+  {
+    "id": "bio-acide-gras-insature",
+    "chemfig": "-[:30]-[:-30]-[:30]-[:-30]-[:30]-[:-30]-[:30]=[:-30]-[:-30]-[:30]-[:-30]-[:30]-[:-30]-[:30]-[:-30]-[:30](=[:90]O)-[:-30]OH"
+  },
+  {
+    "id": "bio-triglyceride",
+    "chemfig": "(-[:90]O-[:30](=[:90]O)-[:-30]-[:30]-[:-30]-[:30]-[:-30])-[:30](-[:-90]O-[:-30](=[:-90]O)-[:30]-[:-30]-[:30]-[:-30]-[:30])-[:-30](-[:90]O-[:30](=[:90]O)-[:-30]-[:30]-[:-30]-[:30]-[:-30])"
+  },
+  {
+    "id": "bio-phosphoglyceride",
+    "chemfig": "(-[:90]O-[:30](=[:90]O)-[:-30]-[:30]-[:-30]-[:30]-[:-30])-[:30](-[:-90]O-[:-30](=[:-90]O)-[:30]-[:-30]-[:30]-[:-30]-[:30])-[:-90]O-[:-30]P(=[:-90]O)(-[:-150]OH)-[:30]O-[:-30]-[:30]NH_2"
+  },
+  {
+    "id": "bio-acide-amine-general",
+    "chemfig": "H_2N-[:30](-[:-90]R)-[:30](=[:90]O)-[:-30]OH"
+  },
+  {
+    "id": "bio-alanine",
+    "chemfig": "H_2N-[:30](-[:-90])-[:30](=[:90]O)-[:-30]OH"
+  },
+  {
+    "id": "bio-serine",
+    "chemfig": "H_2N-[:30](-[:-90]-[:-150]OH)-[:30](=[:90]O)-[:-30]OH"
+  },
+  {
+    "id": "bio-cysteine",
+    "chemfig": "H_2N-[:30](-[:-90]-[:-150]SH)-[:30](=[:90]O)-[:-30]OH"
+  },
+  {
+    "id": "bio-dipeptide",
+    "chemfig": "H_2N-[:30]-[:-30](=[:90]O)-[:30]N(-[:-90]H)-[:-30](-[:90])-[:30](=[:-30]O)-[:150]OH"
+  },
+  {
+    "id": "bio-amphiphile",
+    "tikz": "\n\\draw[fill=black!12,draw=black] (0,0) circle (0.32);\n\\draw[line width=0.9pt] (0.3,-0.08) -- (0.95,-0.42) -- (1.3,-0.05) -- (1.95,-0.4) -- (2.3,-0.02) -- (2.95,-0.38);\n\\node[font=\\scriptsize,align=center] at (0,0.75) {tête\\\\hydrophile};\n\\node[font=\\scriptsize,align=center] at (1.6,-0.95) {queue hydrophobe};\n"
+  },
+  {
+    "id": "bio-nucleoside-schema",
+    "tikz": "\n\\tikzset{box/.style={draw,rounded corners,minimum height=0.8cm,inner sep=5pt,font=\\small}}\n\\node[box,fill=yellow!20] (s) {Pentose};\n\\node[box,fill=cyan!15,right=0.6cm of s] (b) {Base azotée};\n\\draw[line width=0.9pt] (s) -- (b);\n"
+  },
+  {
+    "id": "bio-nucleotide-schema",
+    "tikz": "\n\\tikzset{box/.style={draw,rounded corners,minimum height=0.8cm,inner sep=5pt,font=\\small}}\n\\node[box,fill=orange!20] (p) {Phosphate};\n\\node[box,fill=yellow!20,right=0.6cm of p] (s) {Pentose};\n\\node[box,fill=cyan!15,right=0.6cm of s] (b) {Base azotée};\n\\draw[line width=0.9pt] (p) -- (s);\n\\draw[line width=0.9pt] (s) -- (b);\n"
+  },
+  {
+    "id": "bio-maltose-schema",
+    "tikz": "\n\\tikzset{glc/.style={draw,line width=0.9pt,minimum size=1cm,font=\\scriptsize}}\n\\node[regular polygon,regular polygon sides=6,glc] (g1) at (0,0) {Glc};\n\\node[regular polygon,regular polygon sides=6,glc] (g2) at (2.1,0) {Glc};\n\\draw[line width=0.9pt] (g1) -- node[above,font=\\scriptsize]{O} (g2);\n\\node[font=\\scriptsize] at (1.05,-1) {liaison glycosidique};\n"
+  },
+  {
+    "id": "bio-amylose-schema",
+    "tikz": "\n\\tikzset{glc/.style={draw,line width=0.9pt,minimum size=0.9cm,font=\\scriptsize}}\n\\node[regular polygon,regular polygon sides=6,glc] (g1) at (0,0) {Glc};\n\\node[regular polygon,regular polygon sides=6,glc] (g2) at (1.8,0) {Glc};\n\\node[regular polygon,regular polygon sides=6,glc] (g3) at (3.6,0) {Glc};\n\\draw[line width=0.9pt] (g1) -- (g2);\n\\draw[line width=0.9pt] (g2) -- (g3);\n\\draw[line width=0.9pt,decorate,decoration={brace,amplitude=4pt}] (4.15,0.55) -- (4.15,-0.55) node[midway,right=4pt,font=\\small] {n};\n"
+  }
+]
