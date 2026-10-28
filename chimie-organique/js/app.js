@@ -104,8 +104,10 @@
   }
 
   // ------------------------------------------------------------ progress
-  function loadItems(){ return ChimorgStorage.get('items', {}); }
-  function saveItems(items){ ChimorgStorage.set('items', items); }
+  // Scopée par profil actif (cf. js/profile.js) : chaque étudiant a sa
+  // propre progression sur un même appareil partagé.
+  function loadItems(){ return ChimorgStorage.getScoped('items', {}); }
+  function saveItems(items){ ChimorgStorage.setScoped('items', items); }
   function getRecord(items, id){ return items[id] || null; }
   function reviewItem(id, rating){
     const items = loadItems();
@@ -113,17 +115,19 @@
     saveItems(items);
     return items[id];
   }
-  function loadSessions(){ return ChimorgStorage.get('sessions', []); }
+  function loadSessions(){ return ChimorgStorage.getScoped('sessions', []); }
   function logSession(mode, score, total){
     const sessions = loadSessions();
     sessions.push({ date:new Date().toISOString(), mode, score, total, pct: total? Math.round(score/total*100):0 });
     while(sessions.length > 40) sessions.shift();
-    ChimorgStorage.set('sessions', sessions);
+    ChimorgStorage.setScoped('sessions', sessions);
   }
 
   function exportProgress(){
+    const profile = window.ChimorgProfile.getActiveProfile();
     return JSON.stringify({
       exportedAt:new Date().toISOString(),
+      profile: profile ? profile.name : null,
       items:loadItems(),
       sessions:loadSessions(),
       theme:ChimorgStorage.get('theme','auto')
@@ -132,7 +136,7 @@
   function importProgress(json){
     const data = JSON.parse(json);
     if(data.items) saveItems(data.items);
-    if(data.sessions) ChimorgStorage.set('sessions', data.sessions);
+    if(data.sessions) ChimorgStorage.setScoped('sessions', data.sessions);
     if(data.theme) ChimorgStorage.set('theme', data.theme);
   }
 
@@ -149,8 +153,18 @@
   }
   function navigate(hash){ location.hash = hash; }
   function renderRoute(){
-    const { path, query } = parseHash();
     const app = document.getElementById('app');
+    // Identification obligatoire (cf. js/profile.js) : tant qu'aucun profil
+    // n'est actif, on affiche la porte d'entrée à la place de toute route,
+    // y compris la bibliothèque de fiches et l'accueil.
+    const profile = window.ChimorgProfile.getActiveProfile();
+    if(!profile){
+      window.scrollTo(0,0);
+      window.ChimorgProfile.renderGate(app, renderRoute);
+      renderTopbar();
+      return;
+    }
+    const { path, query } = parseHash();
     const fn = routes[path] || routes['home'];
     window.scrollTo(0,0);
     fn(app, query);
@@ -163,12 +177,23 @@
     if(!bar) return;
     const pref = currentThemePref();
     const icon = pref==='dark' ? '🌙' : pref==='light' ? '☀️' : '🌓';
+    const profile = window.ChimorgProfile.getActiveProfile();
     bar.innerHTML = `
       <a class="brand" href="#/home"><span style="font-size:20px;">🧪</span><b>Chimie organique</b></a>
       <div class="actions">
+        ${profile ? `<button class="icon-btn" id="profileBtn" title="Changer d'étudiant" aria-label="Changer d'étudiant" style="width:auto;border-radius:20px;padding:0 12px;font-size:12.5px;font-family:'IBM Plex Mono',monospace;gap:6px;display:flex;align-items:center;">🙋 ${esc(profile.name)}</button>` : ''}
         <button class="icon-btn" id="themeBtn" title="Thème : ${esc(pref)}" aria-label="Changer de thème">${icon}</button>
       </div>`;
     document.getElementById('themeBtn').addEventListener('click', ()=>{ cycleTheme(); renderTopbar(); });
+    const profileBtn = document.getElementById('profileBtn');
+    if(profileBtn) profileBtn.addEventListener('click', ()=>{
+      // Non destructif : la progression du profil reste enregistrée, on
+      // revient simplement à la porte d'identification (pas de confirm()
+      // natif, peu fiable selon le contexte du navigateur).
+      window.ChimorgProfile.clearActiveProfile();
+      navigate('#/home');
+      renderRoute();
+    });
   }
 
   window.ChimorgApp = {

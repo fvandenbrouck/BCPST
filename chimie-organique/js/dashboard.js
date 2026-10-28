@@ -42,6 +42,7 @@
     const deckSize = ChimorgApp.buildDeck().length;
     const stats = computeStats();
     const sessions = ChimorgApp.loadSessions().slice().reverse().slice(0,8);
+    const profile = ChimorgProfile.getActiveProfile();
 
     const modeCards = [
       { href:'#/mode/flashcards', icon:'🗂️', title:'Flashcards interactives', desc:"Retourne la carte, autoévalue-toi (à revoir / difficile / maîtrisé).", accent:'var(--rust)' },
@@ -54,8 +55,8 @@
 
     container.innerHTML = `
       <div class="hero">
-        <p class="eyebrow">Chimie organique · BCPST 1</p>
-        <h1>Chimie organique — BCPST Trainer</h1>
+        <p class="eyebrow">Chimie organique · BCPST 1${profile ? ' · '+esc(profile.name) : ''}</p>
+        <h1>${profile ? 'Bonjour '+esc(profile.name)+' 👋' : 'Chimie organique — BCPST Trainer'}</h1>
         <p>CC03 — Familles d'entités chimiques organiques et nomenclature. Révise par rappel actif et répétition espacée, 10 à 20 minutes par jour.</p>
       </div>
 
@@ -111,7 +112,8 @@
       const blob = new Blob([ChimorgApp.exportProgress()], {type:'application/json'});
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = url; a.download = 'chimie-organique-progression.json';
+      const who = profile ? ChimorgProfile.slugify(profile.name) : 'progression';
+      a.href = url; a.download = 'chimie-organique-'+who+'.json';
       document.body.appendChild(a); a.click(); document.body.removeChild(a);
       URL.revokeObjectURL(url);
     });

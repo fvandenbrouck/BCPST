@@ -21,6 +21,7 @@
 <!-- Charge le code réel de l'application : on teste le code qui tourne vraiment, pas une réimplémentation. -->
 <script src="../js/storage.js"></script>
 <script src="../js/srs.js"></script>
+<script src="../js/profile.js"></script>
 <script src="../data/families.js"></script>
 <script src="../data/biomolecules.js"></script>
 <script src="../data/nomenclature.js"></script>
@@ -143,6 +144,47 @@
   assert('SRS : "easy" répété fait croître le niveau de maîtrise jusqu\'à 4', r2.mastery === 4, 'mastery='+r2.mastery);
   const sorted = intervals.slice().sort();
   assert('SRS : les échéances successives sont croissantes (intervalle progressif)', JSON.stringify(intervals)===JSON.stringify(sorted));
+
+  // ------------------------------------------------- Profils (multi-session)
+  // Ce fichier de tests partage le localStorage réel du site (même origine
+  // que index.html) : on sauvegarde l'état existant, on teste avec des
+  // profils temporaires dédiés, puis on restaure tout avant de rendre les
+  // résultats, pour ne jamais corrompre la progression d'un vrai élève.
+  const savedProfiles = ChimorgStorage.get('profiles', []);
+  const savedActive = ChimorgStorage.get('activeProfile', null);
+  try{
+    assert('slugify : ignore accents, espaces et casse',
+      ChimorgProfile.slugify('Éléonore  Dûpont') === 'eleonore-dupont', ChimorgProfile.slugify('Éléonore  Dûpont'));
+    assert('slugify : chaîne vide → slug vide', ChimorgProfile.slugify('   ') === '');
+
+    ChimorgStorage.set('profiles', []);
+    ChimorgStorage.set('activeProfile', null);
+    const p1 = ChimorgProfile.createOrGetProfile('Qa-Test-Étudiant');
+    const p2 = ChimorgProfile.createOrGetProfile('qa test étudiant'); // même personne, casse/accents différents
+    assert('createOrGetProfile : ne crée pas de doublon pour un prénom équivalent', p1.slug === p2.slug, p1.slug+' vs '+p2.slug);
+    assert('createOrGetProfile : un seul profil enregistré après les deux appels', ChimorgProfile.getProfiles().length === 1);
+
+    const p3 = ChimorgProfile.createOrGetProfile('Qa-Test-Autre');
+    assert('createOrGetProfile : un second prénom distinct crée un second profil', ChimorgProfile.getProfiles().length === 2);
+
+    ChimorgProfile.activateProfile(p1.slug);
+    ChimorgStorage.setScoped('items', {marker:'depuis-p1'});
+    ChimorgProfile.activateProfile(p3.slug);
+    const crossRead = ChimorgStorage.getScoped('items', null);
+    assert('Isolation des profils : les données scopées ne fuient pas d\'un profil à l\'autre',
+      crossRead === null, JSON.stringify(crossRead));
+    ChimorgProfile.activateProfile(p1.slug);
+    const ownRead = ChimorgStorage.getScoped('items', null);
+    assert('Isolation des profils : un profil retrouve bien ses propres données scopées',
+      ownRead && ownRead.marker === 'depuis-p1', JSON.stringify(ownRead));
+
+    ChimorgProfile.clearActiveProfile();
+    assert('clearActiveProfile : plus aucun profil actif ensuite', ChimorgProfile.getActiveProfile() === null);
+  } finally {
+    ChimorgStorage.set('profiles', savedProfiles);
+    ChimorgStorage.set('activeProfile', savedActive);
+    ChimorgStorage.setScope(savedActive);
+  }
 
   // ---------------------------------------------------------- Rendu
   const results = document.getElementById('results');

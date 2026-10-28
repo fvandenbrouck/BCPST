@@ -15,6 +15,14 @@ chimiques sont des fichiers **SVG statiques pré-générés** (voir plus bas).
 
 Elle propose :
 
+- Un **mode multi-session** : l'identification par prénom est obligatoire
+  (porte d'entrée affichée tant qu'aucun profil n'est actif, cf.
+  `js/profile.js`), ce qui permet à plusieurs élèves d'utiliser le même
+  ordinateur (salle de classe) sans mélanger leurs progressions — chaque
+  profil a ses propres données, isolées dans le `localStorage` du
+  navigateur (rien ne quitte l'appareil, aucun serveur, aucun mot de
+  passe : ce n'est pas une authentification, juste une séparation des
+  profils).
 - Un **tableau de bord** (page d'accueil) : nombre de questions disponibles,
   notions maîtrisées / à revoir, révisions dues aujourd'hui, pourcentage de
   réussite par module, historique des séances, export/import JSON de la
@@ -41,8 +49,9 @@ chimie-organique/
     nomenclature.js        Module C — tables de référence + 28 exercices
     questions.js           Banque de QCM / reconnaissance / définitions / liaisons
   js/
-    storage.js            Wrapper localStorage (clé `chimorg:`)
+    storage.js            Wrapper localStorage (clé `chimorg:`), lecture/écriture scopée par profil
     srs.js                 Répétition espacée
+    profile.js              Profils étudiants (identification obligatoire par prénom)
     app.js                  Routeur (hash), thème, utilitaires partagés
     dashboard.js            Page d'accueil / tableau de bord
     fiches.js                Bibliothèque de fiches
@@ -100,10 +109,14 @@ quel serveur statique) suffit à lancer la suite.
 
 ## Progression et vie privée
 
-Toute la progression est locale au navigateur (`localStorage`). Le bouton
-« Exporter ma progression » du tableau de bord télécharge un fichier JSON
-que l'on peut réimporter sur un autre appareil via « Importer une
-progression », afin de ne pas perdre l'historique en changeant de machine.
+Toute la progression est locale au navigateur (`localStorage`), isolée par
+profil (prénom). Le bouton « Exporter ma progression » du tableau de bord
+télécharge un fichier JSON (nommé d'après le profil actif) que l'on peut
+réimporter sur un autre appareil via « Importer une progression », afin de
+ne pas perdre l'historique en changeant de machine. Le bouton « Changer
+d'étudiant » (topbar) revient à la porte d'identification sans rien
+supprimer : un autre élève peut alors continuer sur son propre profil, ou
+un nouveau profil peut être créé.
 
 ## Vérifications effectuées avant mise en ligne
 
