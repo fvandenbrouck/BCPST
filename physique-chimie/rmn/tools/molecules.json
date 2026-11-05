@@ -1,0 +1,32 @@
+[
+  { "id": "propanone-plain", "chemfig": "H_3C-[:30]C(=[:90]O)-[:-30]H_3C" },
+  { "id": "propanone-all", "chemfig": "{\\color{rust}H_3C}-[:30]C(=[:90]O)-[:-30]{\\color{rust}H_3C}" },
+
+  { "id": "ethanol-plain", "chemfig": "H_3C-[:-30]H_2C-[:30]OH" },
+  { "id": "ethanol-all", "chemfig": "{\\color{rust}H_3C}-[:-30]{\\color{moss}H_2C}-[:30]{\\color{slate}OH}" },
+  { "id": "ethanol-grp-ch3", "chemfig": "{\\color{rust}H_3C}-[:-30]H_2C-[:30]OH" },
+  { "id": "ethanol-grp-ch2", "chemfig": "H_3C-[:-30]{\\color{moss}H_2C}-[:30]OH" },
+  { "id": "ethanol-grp-oh", "chemfig": "H_3C-[:-30]H_2C-[:30]{\\color{slate}OH}" },
+
+  { "id": "propane-plain", "chemfig": "H_3C-[:-30]H_2C-[:30]H_3C" },
+  { "id": "propane-all", "chemfig": "{\\color{rust}H_3C}-[:-30]{\\color{moss}H_2C}-[:30]{\\color{rust}H_3C}" },
+  { "id": "propane-grp-ch3", "chemfig": "{\\color{rust}H_3C}-[:-30]H_2C-[:30]{\\color{rust}H_3C}" },
+  { "id": "propane-grp-ch2", "chemfig": "H_3C-[:-30]{\\color{moss}H_2C}-[:30]H_3C" },
+
+  { "id": "propan2ol-plain", "chemfig": "H_3C-[:30]HC(-[:90]OH)-[:-30]H_3C" },
+  { "id": "propan2ol-all", "chemfig": "{\\color{rust}H_3C}-[:30]{\\color{moss}HC}(-[:90]{\\color{slate}OH})-[:-30]{\\color{rust}H_3C}" },
+  { "id": "propan2ol-grp-ch3", "chemfig": "{\\color{rust}H_3C}-[:30]HC(-[:90]OH)-[:-30]{\\color{rust}H_3C}" },
+  { "id": "propan2ol-grp-ch", "chemfig": "H_3C-[:30]{\\color{moss}HC}(-[:90]OH)-[:-30]H_3C" },
+  { "id": "propan2ol-grp-oh", "chemfig": "H_3C-[:30]HC(-[:90]{\\color{slate}OH})-[:-30]H_3C" },
+
+  { "id": "ethylacetate-plain", "chemfig": "H_3C-[:30]C(=[:90]O)-[:-30]O-[:30]H_2C-[:-30]H_3C" },
+  { "id": "ethylacetate-all", "chemfig": "{\\color{rust}H_3C}-[:30]C(=[:90]O)-[:-30]O-[:30]{\\color{moss}H_2C}-[:-30]{\\color{ochre}H_3C}" },
+  { "id": "ethylacetate-grp-ch3a", "chemfig": "{\\color{rust}H_3C}-[:30]C(=[:90]O)-[:-30]O-[:30]H_2C-[:-30]H_3C" },
+  { "id": "ethylacetate-grp-ch2", "chemfig": "H_3C-[:30]C(=[:90]O)-[:-30]O-[:30]{\\color{moss}H_2C}-[:-30]H_3C" },
+  { "id": "ethylacetate-grp-ch3b", "chemfig": "H_3C-[:30]C(=[:90]O)-[:-30]O-[:30]H_2C-[:-30]{\\color{ochre}H_3C}" },
+
+  { "id": "bromoethane-plain", "chemfig": "H_3C-[:-30]H_2C-[:30]Br" },
+  { "id": "butan2one-plain", "chemfig": "H_3C-[:30]C(=[:90]O)-[:-30]H_2C-[:30]H_3C" },
+  { "id": "propan1ol-plain", "chemfig": "H_3C-[:30]H_2C-[:-30]H_2C-[:30]OH" },
+  { "id": "methoxyethane-plain", "chemfig": "H_3C-[:30]O-[:-30]H_2C-[:30]H_3C" }
+]
