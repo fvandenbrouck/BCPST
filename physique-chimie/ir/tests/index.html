@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tests — Module IR</title>
+<style>
+  body{font-family:'IBM Plex Mono',ui-monospace,monospace; background:#161512; color:#eee; padding:20px; max-width:940px; margin:0 auto;}
+  h1{font-size:20px;}
+  .pass{color:#8FAA68;} .fail{color:#E06A50; font-weight:700;}
+  .case{padding:4px 0; border-bottom:1px solid #2a2820; font-size:13px;}
+  #summary{position:sticky; top:0; background:#161512; padding:10px 0; font-size:16px; border-bottom:2px solid #444;}
+</style>
+</head>
+<body>
+<h1>Tests automatisés — Module IR (spectroscopie infrarouge)</h1>
+<p>Valide l'intégrité des données (compétences, spectres, questions) et la logique des moteurs de correction et de maîtrise. Charge et exécute le CODE RÉEL de l'application. Entièrement local, sans dépendance externe.</p>
+<div id="summary">Exécution…</div>
+<div id="results"></div>
+
+<script src="../data/competences.js"></script>
+<script src="../data/spectres.js"></script>
+<script src="../data/cours.js"></script>
+<script src="../data/methode.js"></script>
+<script src="../data/diagnostic-initial.js"></script>
+<script src="../data/activites.js"></script>
+<script src="../data/diagnostics-sortie.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/grading-engine.js"></script>
+<script src="../js/mastery-engine.js"></script>
+
+<script>
+(function(){
+  const cases = [];
+  let pass = 0, fail = 0;
+  function assert(name, cond, detail){
+    cases.push({ name, ok: !!cond, detail: detail || '' });
+    if (cond) pass++; else fail++;
+  }
+  function uniqueIds(arr, label){
+    const ids = arr.map(x => x.id);
+    const dupes = ids.filter((id, i) => ids.indexOf(id) !== i);
+    assert(`${label} : identifiants uniques`, dupes.length === 0, dupes.join(', '));
+  }
+
+  // ============================================================ DONNÉES
+  assert('7 compétences définies (C1 à C7)', window.IR_COMPETENCES.length === 7);
+  uniqueIds(window.IR_COMPETENCES, 'Compétences');
+
+  assert('Diagnostic initial : au moins 12 questions', window.IR_DIAGNOSTIC_INITIAL.length >= 12, 'trouvé ' + window.IR_DIAGNOSTIC_INITIAL.length);
+  uniqueIds(window.IR_DIAGNOSTIC_INITIAL, 'Diagnostic initial');
+  {
+    const covered = new Set();
+    window.IR_DIAGNOSTIC_INITIAL.forEach(q => (q.competences || []).forEach(c => covered.add(c)));
+    assert('Diagnostic initial : les 7 compétences sont couvertes', window.IR_COMPETENCES.every(c => covered.has(c.id)), [...covered].join(','));
+  }
+
+  assert('6 activités définies', window.IR_ACTIVITES.length === 6);
+  window.IR_ACTIVITES.forEach(a => {
+    assert(`Activité ${a.id} : au moins 4 exercices`, a.exercices.length >= 4, 'trouvé ' + a.exercices.length);
+    uniqueIds(a.exercices, 'Activité ' + a.id);
+  });
+
+  const dKeys = ['D1', 'D2', 'D3', 'D4', 'D5', 'D6'];
+  assert('6 diagnostics de sortie définis (D1 à D6)', dKeys.every(k => !!window.IR_DIAGNOSTICS_SORTIE[k]));
+  dKeys.forEach(k => {
+    const def = window.IR_DIAGNOSTICS_SORTIE[k];
+    assert(`${k} : au moins 6 questions`, def.questions.length >= 6, 'trouvé ' + def.questions.length);
+    uniqueIds(def.questions, k);
+  });
+
+  {
+    const initIds = new Set(window.IR_DIAGNOSTIC_INITIAL.map(q => q.id));
+    const actIds = new Set();
+    window.IR_ACTIVITES.forEach(a => a.exercices.forEach(e => actIds.add(e.id)));
+    let overlap = [];
+    dKeys.forEach(k => window.IR_DIAGNOSTICS_SORTIE[k].questions.forEach(q => {
+      if (initIds.has(q.id) || actIds.has(q.id)) overlap.push(q.id);
+    }));
+    assert('Diagnostics de sortie : aucun identifiant réutilisé du diagnostic initial ou des activités', overlap.length === 0, overlap.join(','));
+  }
+
+  assert('Banque de remédiation : une question pour chacune des 7 compétences', window.IR_COMPETENCES.every(c => window.IR_REMEDIATION[c.id] && window.IR_REMEDIATION[c.id].length >= 1));
+
+  assert('Au moins 6 spectres de référence', window.IR_SPECTRES.length >= 6, 'trouvé ' + window.IR_SPECTRES.length);
+  window.IR_SPECTRES.forEach(s => {
+    assert(`Spectre ${s.id} : statut documenté (reconstruction ou experimental)`, s.statut === 'reconstruction' || s.statut === 'experimental');
+    assert(`Spectre ${s.id} : au moins une bande`, s.bandes && s.bandes.length >= 1);
+    s.bandes.forEach(b => {
+      assert(`Spectre ${s.id}, bande ${b.id} : nombre d'onde plausible (100-4000 cm⁻¹)`, b.centre >= 100 && b.centre <= 4000, 'centre=' + b.centre);
+      assert(`Spectre ${s.id}, bande ${b.id} : intensité valide`, ['forte', 'moyenne', 'faible'].includes(b.intensite));
+    });
+  });
+
+  function checkSingleQuestions(list, label){
+    list.forEach(q => {
+      if (q.type === 'single'){
+        assert(`${label} ${q.id} : index correct valide`, Number.isInteger(q.correct) && q.correct >= 0 && q.correct < q.options.length);
+      }
+      if (q.type === 'multi'){
+        assert(`${label} ${q.id} : indices corrects valides`, Array.isArray(q.correct) && q.correct.every(i => i >= 0 && i < q.options.length));
+      }
+      if (q.type === 'numeric'){
+        assert(`${label} ${q.id} : réponse numérique définie`, typeof q.reponse === 'number');
+      }
+    });
+  }
+  checkSingleQuestions(window.IR_DIAGNOSTIC_INITIAL, 'Diagnostic initial');
+  window.IR_ACTIVITES.forEach(a => checkSingleQuestions(a.exercices, 'Activité ' + a.id));
+  dKeys.forEach(k => checkSingleQuestions(window.IR_DIAGNOSTICS_SORTIE[k].questions, k));
+
+  // ============================================================ MOTEUR DE CORRECTION (partagé avec le module RMN)
+  (function(){
+    const qSingle = { type: 'single', correct: 1, options: ['a', 'b', 'c'] };
+    assert('gradeQuestion single : bonne réponse', window.GradingEngine.gradeQuestion(qSingle, 1).correct === true);
+    assert('gradeQuestion single : mauvaise réponse', window.GradingEngine.gradeQuestion(qSingle, 0).correct === false);
+
+    const qMulti = { type: 'multi', correct: [0, 2], options: ['a', 'b', 'c', 'd'] };
+    assert('gradeQuestion multi : correspondance exacte -> crédit plein', window.GradingEngine.gradeQuestion(qMulti, [0, 2]).fraction === 1);
+    const withWrong = window.GradingEngine.gradeQuestion(qMulti, [0, 2, 1]);
+    assert('gradeQuestion multi : une proposition fausse cochée en plus -> pas le maximum', withWrong.correct === false && withWrong.fraction < 1);
+
+    const qNumAbs = { type: 'numeric', reponse: 2000, tolerance: { type: 'abs', value: 50 } };
+    assert('gradeQuestion numeric (abs) : dans la tolérance', window.GradingEngine.gradeQuestion(qNumAbs, 2030).correct === true);
+    assert('gradeQuestion numeric (abs) : hors tolérance', window.GradingEngine.gradeQuestion(qNumAbs, 2200).correct === false);
+  })();
+
+  // ============================================================ MOTEUR DE MAÎTRISE (espace de noms IR_*)
+  (function(){
+    assert('sessionLevel : acc=0 -> niveau 0', window.MasteryEngine.sessionLevel(0, 0) === 0);
+    assert('sessionLevel : acc=1, maxDiff=1 -> niveau 3 (jamais 4 sur des questions faciles)', window.MasteryEngine.sessionLevel(1, 1) === 3);
+    assert('sessionLevel : acc=1, maxDiff=3 -> niveau 4', window.MasteryEngine.sessionLevel(1, 3) === 4);
+
+    let state = window.IrStorage.defaultState();
+    let levels = window.MasteryEngine.computeLevels(state);
+    assert('Aucune évaluation -> toutes les compétences sont "non évaluées" (null)', window.IR_COMPETENCES.every(c => levels[c.id] === null));
+    assert('Score global sans aucune évaluation : null (pas 0%)', window.MasteryEngine.computeGlobalPct(levels).pct === null);
+
+    function pushEvidence(state, ts, records){
+      records.forEach(r => state.evidence.push(Object.assign({ timestamp: ts }, r)));
+    }
+
+    state = window.IrStorage.defaultState();
+    pushEvidence(state, 1000, [
+      { competence: 'C1', correct: true, difficulte: 3, source: 'initial' },
+      { competence: 'C1', correct: true, difficulte: 3, source: 'initial' }
+    ]);
+    levels = window.MasteryEngine.computeLevels(state);
+    assert('Diagnostic initial parfait -> niveau plafonné à 2', levels.C1 === 2, 'obtenu ' + levels.C1);
+
+    pushEvidence(state, 2000, [
+      { competence: 'C1', correct: true, difficulte: 4, source: 'D1' },
+      { competence: 'C1', correct: true, difficulte: 3, source: 'D1' }
+    ]);
+    levels = window.MasteryEngine.computeLevels(state);
+    assert('Diagnostic de sortie D1 parfait sur questions difficiles -> niveau 4 possible', levels.C1 === 4, 'obtenu ' + levels.C1);
+
+    pushEvidence(state, 3000, [
+      { competence: 'C1', correct: false, difficulte: 2, source: 'D2' },
+      { competence: 'C1', correct: false, difficulte: 2, source: 'D2' }
+    ]);
+    levels = window.MasteryEngine.computeLevels(state);
+    assert('Un échec lors d\'un diagnostic ultérieur fait DIMINUER le niveau', levels.C1 === 0, 'obtenu ' + levels.C1);
+
+    state = window.IrStorage.defaultState();
+    state.activites['A1'] = { exercices: { 'a1-ex1': { correct: true } }, completed: true, exerciseIndex: 5 };
+    levels = window.MasteryEngine.computeLevels(state);
+    assert('Activité terminée sans diagnostic -> compétences toujours "non évaluées"', window.IR_COMPETENCES.every(c => levels[c.id] === null));
+  })();
+
+  // ============================================================ STORAGE (espace de noms IR_*, distinct du module RMN)
+  (function(){
+    const d = window.IrStorage.defaultState();
+    assert('État par défaut : diagnostic initial non fait', d.diagnosticInitial.done === false);
+    assert('État par défaut : historique de maîtrise vide', Array.isArray(d.masteryHistory) && d.masteryHistory.length === 0);
+  })();
+
+  // ============================================================ RENDU
+  document.getElementById('summary').innerHTML =
+    `<span class="${fail === 0 ? 'pass' : 'fail'}">${pass} / ${pass + fail} tests réussis</span>` +
+    (fail > 0 ? ` — <span class="fail">${fail} échec(s)</span>` : ' — tout est vert.');
+  document.getElementById('results').innerHTML = cases.map(c =>
+    `<div class="case ${c.ok ? 'pass' : 'fail'}">${c.ok ? '✓' : '✗'} ${c.name}${c.detail ? ' — ' + c.detail : ''}</div>`
+  ).join('');
+})();
+</script>
+</body>
+</html>

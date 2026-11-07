@@ -31,6 +31,7 @@ window.MODULES = [
   {id:'pc-acide-base', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Révisions de Terminale', title:"Acides et bases, Henderson-Hasselbalch", pages:"C.2", status:'available', accent:'var(--ochre)', href:'physique-chimie/acide-base.html'},
   {id:'pc-chimie-organique', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Chimie organique — BCPST Trainer', title:"Familles d'entités chimiques organiques et nomenclature (CC03)", pages:"6 modes d'entraînement", status:'available', accent:'var(--ochre)', href:'chimie-organique/index.html'},
   {id:'pc-rmn', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Chimie — RMN du proton', title:"RMN du proton : cours, méthode, parcours et diagnostics", pages:"C.1.3", status:'available', accent:'var(--ochre)', href:'physique-chimie/rmn/index.html'},
+  {id:'pc-ir', subject:'pc', subjectLabel:'Physique-Chimie', cat:'Chimie — Spectroscopie infrarouge', title:"Spectroscopie IR : cours, méthode, activités et diagnostics", pages:"C.1.3", status:'available', accent:'var(--ochre)', href:'physique-chimie/ir/index.html'},
 
   // ---------- Mathématiques ----------
   {id:'ma-fractions-puissances', subject:'maths', subjectLabel:'Mathématiques', cat:'Calcul de base', title:"Fractions et puissances", pages:"Fiches 1, 2", status:'soon', accent:'var(--slate)', href:null},

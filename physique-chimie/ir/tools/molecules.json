@@ -1,0 +1,30 @@
+[
+  { "id": "ethanol-plain", "chemfig": "H_3C-[:-30]H_2C-[:30]OH" },
+  { "id": "ethanol-highlight-oh", "chemfig": "H_3C-[:-30]H_2C-[:30]{\\color{rust}OH}" },
+
+  { "id": "aceticacid-plain", "chemfig": "H_3C-[:30]C(=[:90]O)-[:-30]OH" },
+  { "id": "aceticacid-highlight", "chemfig": "H_3C-[:30]{\\color{rust}C}(=[:90]{\\color{rust}O})-[:-30]{\\color{rust}OH}" },
+
+  { "id": "propanal-plain", "chemfig": "H_3C-[:30]H_2C-[:-30]CHO" },
+  { "id": "propanal-highlight", "chemfig": "H_3C-[:30]H_2C-[:-30]{\\color{rust}CHO}" },
+
+  { "id": "propanone-plain", "chemfig": "H_3C-[:30]C(=[:90]O)-[:-30]H_3C" },
+  { "id": "propanone-highlight-co", "chemfig": "H_3C-[:30]{\\color{rust}C}(=[:90]{\\color{rust}O})-[:-30]H_3C" },
+
+  { "id": "ethylacetate-plain", "chemfig": "H_3C-[:30]C(=[:90]O)-[:-30]O-[:30]H_2C-[:-30]H_3C" },
+  { "id": "ethylacetate-highlight-co", "chemfig": "H_3C-[:30]{\\color{rust}C}(=[:90]{\\color{rust}O})-[:-30]{\\color{rust}O}-[:30]H_2C-[:-30]H_3C" },
+
+  { "id": "butan2one-plain", "chemfig": "H_3C-[:30]C(=[:90]O)-[:-30]H_2C-[:30]H_3C" },
+  { "id": "butan2one-highlight-co", "chemfig": "H_3C-[:30]{\\color{rust}C}(=[:90]{\\color{rust}O})-[:-30]H_2C-[:30]H_3C" },
+
+  { "id": "ethanamine-plain", "chemfig": "H_3C-[:30]H_2C-[:-30]NH_2" },
+  { "id": "ethanamine-highlight-nh2", "chemfig": "H_3C-[:30]H_2C-[:-30]{\\color{rust}NH_2}" },
+
+  { "id": "propanamide-plain", "chemfig": "H_3C-[:30]H_2C-[:-30]C(=[:90]O)-[:30]NH_2" },
+  { "id": "propanamide-highlight", "chemfig": "H_3C-[:30]H_2C-[:-30]{\\color{rust}C}(=[:90]{\\color{rust}O})-[:30]{\\color{rust}NH_2}" },
+
+  { "id": "propene-plain", "chemfig": "H_2C=[:30]HC-[:-30]H_3C" },
+  { "id": "propene-highlight-cc", "chemfig": "{\\color{rust}H_2C}=[:30]{\\color{rust}HC}-[:-30]H_3C" },
+
+  { "id": "benzene-plain", "chemfig": "*6(=-=-=-)" }
+]
