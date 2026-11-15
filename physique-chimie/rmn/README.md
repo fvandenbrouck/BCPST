@@ -31,9 +31,14 @@ Quatre composantes, accessibles à tout moment par la barre de navigation :
 - **Diagnostic initial** (12 questions, C1 à C7) puis **Parcours
   d'apprentissage** : 6 activités (3-5 exercices chacune), chacune suivie d'un
   **diagnostic de sortie indépendant** (D1 à D6, 5 questions chacun, situations
-  inédites). Une remédiation ciblée est proposée automatiquement si une
-  compétence reste fragile (taux de réussite < 60 % sur le diagnostic), suivie
-  d'une nouvelle vérification.
+  inédites). Aucune correction n'est affichée pendant le diagnostic ; une fois
+  toutes les réponses soumises, chaque diagnostic affiche automatiquement un
+  **bilan écrit** (taux de réussite qualifié, compétences solides/fragiles,
+  évolution par rapport à la mesure précédente, recommandation — généré
+  localement, sans appel réseau ni clé API) puis la **correction détaillée**
+  de chaque question. Une remédiation ciblée est proposée automatiquement si
+  une compétence reste fragile (taux de réussite < 60 % sur le diagnostic),
+  suivie d'une nouvelle vérification.
 - **Tableau de maîtrise** — toujours visible en haut de l'écran pendant tout le
   parcours (barre de maîtrise brun→vert + avancement du parcours), détaillé sur
   sa propre page (7 barres de compétences, historique des progrès, calcul
@@ -212,7 +217,14 @@ Vérifications manuelles effectuées dans le navigateur avant mise en ligne
 (voir aussi la liste de critères du cahier des charges, partie 15) :
 
 - Diagnostic initial complet (12 questions, tous types de réponse) : soumission,
-  calcul correct par compétence, bilan rédigé généré automatiquement.
+  calcul correct par compétence, bilan écrit généré automatiquement (taux
+  qualifié, forces/faiblesses, recommandation), puis correction détaillée de
+  chaque question affichée automatiquement (y compris pour chaque diagnostic
+  de sortie D1-D6, qui n'avaient pas cette correction auparavant).
+- Évolution d'une compétence d'un diagnostic à l'autre : vérifié qu'une
+  compétence en progrès est annoncée comme telle dans le bilan, et qu'une
+  compétence dont le niveau diminue après un diagnostic ultérieur est
+  signalée (« le niveau a diminué depuis la dernière évaluation »).
 - Parcours complet d'une activité (y compris mauvaise réponse → indice →
   nouvelle tentative → explication), persistance de la progression après
   rechargement en plein milieu d'un exercice.

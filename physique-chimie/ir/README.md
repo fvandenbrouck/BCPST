@@ -35,8 +35,13 @@ Activités | Tableau de maîtrise**) :
 - **Diagnostic initial** (14 questions, C1 à C7, aucune correction affichée
   pendant le test) puis **activités** : 6 activités (4-5 exercices
   socratiques chacune), chacune suivie d'un **diagnostic de sortie
-  indépendant** (D1-D6, 6 questions chacun, situations inédites), avec
-  **remédiation automatique** ciblée sur les compétences fragiles.
+  indépendant** (D1-D6, 6 questions chacun, situations inédites). Une fois
+  toutes les réponses soumises, chaque diagnostic affiche automatiquement un
+  **bilan écrit** (taux de réussite qualifié, compétences solides/fragiles,
+  évolution par rapport à la mesure précédente, recommandation — généré
+  localement, sans appel réseau ni clé API) puis la **correction détaillée**
+  de chaque question, avec **remédiation automatique** ciblée sur les
+  compétences fragiles.
 - **Tableau de maîtrise** : barre brun→vert à interpolation continue, toujours
   visible, strictement distincte de l'avancement du parcours ; 7 barres de
   compétence ; historique des progrès ; calcul transparent et explicable.
@@ -197,8 +202,15 @@ Vérifications manuelles effectuées dans le navigateur avant mise en ligne :
 - Neuf fiches de groupes fonctionnels avec bascule structure seule / groupe
   coloré.
 - Diagnostic initial complet (14 questions, tous types de réponse) :
-  soumission, calcul correct par compétence, bilan rédigé généré
-  automatiquement, maîtrise plafonnée à 50 % (niveau 2/4) comme attendu.
+  soumission, calcul correct par compétence, bilan écrit généré
+  automatiquement (taux qualifié, forces/faiblesses, recommandation), puis
+  correction détaillée de chaque question affichée automatiquement (y
+  compris pour chaque diagnostic de sortie D1-D6), maîtrise plafonnée à 50 %
+  (niveau 2/4) comme attendu.
+- Évolution d'une compétence d'un diagnostic à l'autre : vérifié qu'une
+  compétence en progrès est annoncée comme telle dans le bilan, et qu'une
+  compétence dont le niveau diminue après un diagnostic ultérieur est
+  signalée (« le niveau a diminué depuis la dernière évaluation »).
 - Parcours complet d'une activité (mauvaise réponse → indice → nouvelle
   tentative → explication), persistance exacte après rechargement en plein
   milieu d'un exercice.

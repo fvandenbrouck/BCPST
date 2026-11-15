@@ -275,21 +275,19 @@
   function renderDiagnosticInitial(body){
     if (STATE.diagnosticInitial.done){
       renderDiagnosticResultsView(body, 'Diagnostic initial', STATE.diagnosticInitial.results, STATE.diagnosticInitial.bilan);
-      const btn = document.createElement('button');
-      btn.className = 'btn ghost'; btn.style.marginTop = '12px';
-      btn.textContent = 'Revoir les questions et explications';
-      btn.addEventListener('click', () => renderDiagnosticReview(body, window.IR_DIAGNOSTIC_INITIAL, STATE.diagnosticInitial.answers));
-      body.appendChild(btn);
+      renderCorrectionSection(body, window.IR_DIAGNOSTIC_INITIAL, STATE.diagnosticInitial.answers);
       return;
     }
     body.innerHTML = `<div class="card"><h3>Diagnostic initial</h3>
-      <p>${window.IR_DIAGNOSTIC_INITIAL.length} questions couvrant les sept compétences du module. Aucune correction n'est affichée pendant le diagnostic : un bilan détaillé par compétence apparaîtra une fois toutes les réponses soumises.</p></div>`;
+      <p>${window.IR_DIAGNOSTIC_INITIAL.length} questions couvrant les sept compétences du module. Aucune correction n'est affichée pendant le diagnostic : un bilan détaillé par compétence, puis la correction complète, apparaîtront une fois toutes les réponses soumises.</p></div>`;
     const mount = document.createElement('div');
     body.appendChild(mount);
     window.QuestionUI.renderDiagnosticForm(mount, window.IR_DIAGNOSTIC_INITIAL, (answers) => {
+      const levelsBefore = window.MasteryEngine.computeLevels(STATE);
       const results = gradeAndAggregate(window.IR_DIAGNOSTIC_INITIAL, answers, 'initial');
-      STATE.diagnosticInitial = { done: true, answers, results: results.perCompetence, timestamp: Date.now(), bilan: buildBilan(results.perCompetence) };
       window.MasteryEngine.pushHistoryPoint(STATE, 'Diagnostic initial');
+      const levelsAfter = window.MasteryEngine.computeLevels(STATE);
+      STATE.diagnosticInitial = { done: true, answers, results: results.perCompetence, timestamp: Date.now(), bilan: buildBilan(results.perCompetence, levelsBefore, levelsAfter) };
       persist();
       render();
     }, 'Valider le diagnostic initial');
@@ -311,19 +309,54 @@
     return { perCompetence };
   }
 
-  function buildBilan(perCompetence){
-    const acquis = [], fragiles = [];
-    window.IR_COMPETENCES.forEach(c => {
+  /*
+   * Commentaire écrit, généré localement (aucun appel réseau, aucune clé
+   * API), sur le niveau de réussite d'un diagnostic. Combine : un taux de
+   * réussite global qualifié, le détail par compétence (solide / en cours
+   * d'acquisition / fragile), l'évolution par rapport à l'état de maîtrise
+   * précédent quand il est disponible (niveaux 0-4 avant/après ce
+   * diagnostic), et une recommandation concrète pour la suite.
+   */
+  function buildBilan(perCompetence, levelsBefore, levelsAfter){
+    const tested = window.IR_COMPETENCES.filter(c => perCompetence[c.id]);
+    let totalCorrect = 0, totalQ = 0;
+    const solides = [], partielles = [], fragiles = [];
+    tested.forEach(c => {
       const r = perCompetence[c.id];
-      if (!r) return;
-      const acc = r.correct / r.total;
-      if (acc >= 0.7) acquis.push(c.titre);
-      else fragiles.push(c.titre);
+      totalCorrect += r.correct; totalQ += r.total;
+      const acc = Math.round((r.correct / r.total) * 100);
+      if (acc >= 80) solides.push(`${c.titre} (${acc}%)`);
+      else if (acc >= 50) partielles.push(`${c.titre} (${acc}%)`);
+      else fragiles.push(`${c.titre} (${acc}%)`);
     });
-    let txt = '';
-    if (acquis.length) txt += `Les bases sont acquises pour : ${acquis.join(', ')}. `;
-    if (fragiles.length) txt += `Le parcours mettra particulièrement l'accent sur : ${fragiles.join(', ')}.`;
-    if (!fragiles.length) txt += "Aucune compétence fragile identifiée sur ce diagnostic initial : les activités permettront tout de même de consolider le transfert vers des situations plus complexes.";
+    const globalAcc = totalQ > 0 ? Math.round((totalCorrect / totalQ) * 100) : 0;
+
+    let niveau;
+    if (globalAcc >= 85) niveau = "Excellente réussite à cette évaluation";
+    else if (globalAcc >= 70) niveau = "Bonne réussite globale à cette évaluation";
+    else if (globalAcc >= 50) niveau = "Réussite partielle à cette évaluation";
+    else niveau = "Réussite fragile à cette évaluation";
+
+    let txt = `${niveau} (${totalCorrect}/${totalQ} réponses correctes, soit ${globalAcc} %). `;
+    if (solides.length) txt += `Compétences solides : ${solides.join(', ')}. `;
+    if (partielles.length) txt += `Compétences en cours d'acquisition : ${partielles.join(', ')}. `;
+    if (fragiles.length) txt += `Compétences fragiles, à retravailler en priorité : ${fragiles.join(', ')}. `;
+
+    if (levelsBefore && levelsAfter){
+      const progres = [], regression = [];
+      tested.forEach(c => {
+        const before = levelsBefore[c.id], after = levelsAfter[c.id];
+        if (before === null || before === undefined) return;
+        if (after > before) progres.push(c.titre);
+        else if (after < before) regression.push(c.titre);
+      });
+      if (progres.length) txt += `Progression confirmée depuis la dernière évaluation sur : ${progres.join(', ')}. `;
+      if (regression.length) txt += `Le niveau a diminué depuis la dernière évaluation sur : ${regression.join(', ')} — cela peut arriver face à des situations plus exigeantes, c'est précisément l'occasion de reprendre ce point. `;
+    }
+
+    if (fragiles.length) txt += `Recommandation : reprendre en priorité « ${fragiles[0].split(' (')[0]} » avant de poursuivre.`;
+    else if (partielles.length) txt += `Recommandation : consolider « ${partielles[0].split(' (')[0]} » à l'occasion des prochaines activités.`;
+    else txt += "Recommandation : ce niveau de maîtrise permet de poursuivre sereinement vers la suite du parcours.";
     return txt;
   }
 
@@ -340,6 +373,15 @@
         <table class="result-table"><thead><tr><th>Compétence</th><th>Score</th><th>%</th></tr></thead><tbody>${rows}</tbody></table>
         <div class="reco"><b>Bilan</b><br>${escapeXml(bilan)}</div>
       </div>`;
+  }
+
+  /* Correction complète (une question à la fois, avec explication), affichée après chaque diagnostic. */
+  function renderCorrectionSection(body, questions, answers){
+    const head = document.createElement('div');
+    head.className = 'card';
+    head.innerHTML = '<h3>Correction détaillée</h3><p class="m-meta">Chaque question de ce diagnostic, avec la réponse attendue et son explication.</p>';
+    body.appendChild(head);
+    renderDiagnosticReview(body, questions, answers);
   }
 
   function renderDiagnosticReview(body, questions, answers){
@@ -442,6 +484,7 @@
 
     if (saved && saved.done){
       renderDiagnosticResultsView(body, def.titre, saved.results, saved.bilan);
+      renderCorrectionSection(body, def.questions, saved.answers);
       if (saved.remediationOffered && saved.fragiles && saved.fragiles.length){
         renderRemediationSection(body, saved.fragiles, dKey);
       }
@@ -453,7 +496,7 @@
     }
 
     body.innerHTML = `<div class="card"><h3>${escapeXml(def.titre)}</h3>
-      <p>${def.questions.length} questions inédites, sur de nouvelles situations. Aucune correction affichée avant la validation complète.</p></div>`;
+      <p>${def.questions.length} questions inédites, sur de nouvelles situations. Aucune correction affichée avant la validation complète ; le bilan et la correction détaillée apparaîtront une fois toutes les réponses soumises.</p></div>`;
     if (def.spectreId){
       const specCard = document.createElement('div');
       specCard.className = 'card';
@@ -464,16 +507,18 @@
     const mount = document.createElement('div');
     body.appendChild(mount);
     window.QuestionUI.renderDiagnosticForm(mount, def.questions, (answers) => {
+      const levelsBefore = window.MasteryEngine.computeLevels(STATE);
       const results = gradeAndAggregate(def.questions, answers, dKey);
       const fragiles = Object.keys(results.perCompetence).filter(cid => {
         const r = results.perCompetence[cid];
         return (r.correct / r.total) < 0.6;
       });
+      window.MasteryEngine.pushHistoryPoint(STATE, dKey);
+      const levelsAfter = window.MasteryEngine.computeLevels(STATE);
       STATE.diagnosticsSortie[dKey] = {
         done: true, answers, results: results.perCompetence, timestamp: Date.now(),
-        bilan: buildBilan(results.perCompetence), fragiles, remediationOffered: fragiles.length > 0
+        bilan: buildBilan(results.perCompetence, levelsBefore, levelsAfter), fragiles, remediationOffered: fragiles.length > 0
       };
-      window.MasteryEngine.pushHistoryPoint(STATE, dKey);
       persist();
       render();
     }, 'Valider le diagnostic ' + dKey);
