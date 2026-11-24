@@ -8,6 +8,7 @@
 (function () {
   let STATE = window.ThermoStorage.load();
   const root = document.getElementById('app');
+  let currentDestroy = null; // nettoyage d'un atelier avec boucle d'animation (atelier 4)
 
   function persist() { window.ThermoStorage.save(STATE); }
   function escapeXml(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
@@ -46,6 +47,7 @@
     STATE.nav.page = page;
     persist();
 
+    if (currentDestroy) { currentDestroy(); currentDestroy = null; }
     root.innerHTML = '';
     const nav = document.createElement('div');
     nav.innerHTML = topNav(page === '/atelier' ? '/atelier/' + parts[1] : page);
@@ -110,7 +112,7 @@
     body.innerHTML = window.ThermoVideos.videoBoxHtml(def.id);
     const mount = document.createElement('div');
     body.appendChild(mount);
-    mod.render(mount, ctx);
+    currentDestroy = mod.render(mount, ctx) || null;
   }
 
   if (!location.hash) location.hash = '#/accueil';
