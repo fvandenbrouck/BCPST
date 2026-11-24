@@ -99,6 +99,9 @@ input[type=range]::-moz-range-thumb { width: 26px; height: 26px; border-radius: 
 /* ---------- GAZ MICROSCOPIQUE (atelier 4) ---------- */
 .gaz-canvas-wrap { background: #1d1a14; border-radius: var(--radius); overflow: hidden; margin-bottom: 10px; touch-action: none; }
 .gaz-canvas-wrap canvas { display: block; width: 100%; height: auto; touch-action: none; }
+.gaz-canvas-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
+.gaz-canvas-row .gaz-canvas-wrap { margin-bottom: 0; flex: 1 1 280px; min-width: 0; }
+.gaz-canvas-row .gaz-hist-wrap { flex: 1 1 220px; }
 .gaz-mesure { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
 
 /* ---------- VIDÉOS ---------- */

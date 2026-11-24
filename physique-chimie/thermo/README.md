@@ -97,7 +97,10 @@ ateliers 1 et 2.
 4. **Gaz microscopique** — simulation 2D qualitative (canvas, ~150 disques
    durs, collisions élastiques), curseurs agitation/volume, pression mesurée
    par les chocs comparée à la tendance P ∝ T/V, option d'interaction
-   attractive simplifiée (Lennard-Jones). L'atelier 4 est le seul à avoir
+   attractive simplifiée (Lennard-Jones). À côté de l'animation, un
+   histogramme des vitesses individuelles (canvas) se met à jour en temps
+   réel, avec la moyenne ⟨v⟩ (ligne) et une bande ⟨v⟩ ± σ (écart-type) pour
+   visualiser la dispersion des vitesses. L'atelier 4 est le seul à avoir
    une boucle `requestAnimationFrame` : son `render()` retourne une fonction
    `destroy()` que `js/app.js` appelle avant de changer de page, pour éviter
    toute double boucle.

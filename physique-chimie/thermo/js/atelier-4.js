@@ -11,6 +11,18 @@
   const R = 4; // rayon d'un disque, px (résolution interne du canvas)
   const CANVAS_W = 640, CANVAS_H = 360;
   const WINDOW_FRAMES = 40; // fenêtre glissante pour la mesure de pression (~0,66 s à 60 fps)
+  const HIST_W = 380, HIST_H = 270, HIST_BINS = 16;
+
+  function speedsOf(particles) {
+    return particles.map(p => Math.hypot(p.vx, p.vy));
+  }
+
+  function meanStd(values) {
+    const n = values.length;
+    const mean = values.reduce((a, b) => a + b, 0) / n;
+    const variance = values.reduce((a, b) => a + (b - mean) * (b - mean), 0) / n;
+    return { mean, std: Math.sqrt(variance) };
+  }
 
   function defaultInput() {
     return { agitation: 1.5, volume: 1.0, lj: false, predictions: { agitation: null, volume: null } };
@@ -25,6 +37,7 @@
     let impulseBuffer = [];
     let rafId = null;
     let canvas, canvasCtx;
+    let histCanvas, histCanvasCtx;
     let destroyed = false;
 
     function boxWidth() { return CANVAS_W * (0.35 + 0.65 * input.volume); }
@@ -140,10 +153,89 @@
       });
     }
 
+    function drawHistogram() {
+      if (!histCanvasCtx) return;
+      const speeds = speedsOf(particles);
+      const { mean, std } = meanStd(speeds);
+      const padL = 32, padR = 10, padT = 30, padB = 26;
+      const plotW = HIST_W - padL - padR, plotH = HIST_H - padT - padB;
+
+      histCanvasCtx.clearRect(0, 0, HIST_W, HIST_H);
+      histCanvasCtx.fillStyle = '#1d1a14';
+      histCanvasCtx.fillRect(0, 0, HIST_W, HIST_H);
+
+      const vMax = Math.max(mean + 3.2 * std, 0.6) * 1.05;
+      const bins = new Array(HIST_BINS).fill(0);
+      speeds.forEach(s => {
+        const idx = Math.min(HIST_BINS - 1, Math.floor((s / vMax) * HIST_BINS));
+        bins[idx]++;
+      });
+      const maxCount = Math.max.apply(null, bins.concat([1]));
+      const barW = plotW / HIST_BINS;
+      const xOf = (v) => padL + (v / vMax) * plotW;
+
+      // bande moyenne ± écart-type
+      const xLo = Math.max(padL, xOf(Math.max(0, mean - std)));
+      const xHi = Math.min(padL + plotW, xOf(mean + std));
+      histCanvasCtx.fillStyle = 'rgba(232,220,192,0.14)';
+      histCanvasCtx.fillRect(xLo, padT, xHi - xLo, plotH);
+
+      // barres de l'histogramme
+      histCanvasCtx.fillStyle = '#C89B3C';
+      bins.forEach((count, i) => {
+        const h = (count / maxCount) * plotH;
+        histCanvasCtx.fillRect(padL + i * barW + 1, padT + plotH - h, Math.max(1, barW - 2), h);
+      });
+
+      // axes
+      histCanvasCtx.strokeStyle = '#6b6354';
+      histCanvasCtx.lineWidth = 1;
+      histCanvasCtx.beginPath();
+      histCanvasCtx.moveTo(padL, padT);
+      histCanvasCtx.lineTo(padL, padT + plotH);
+      histCanvasCtx.lineTo(padL + plotW, padT + plotH);
+      histCanvasCtx.stroke();
+
+      // bornes à ±σ (tirets)
+      histCanvasCtx.strokeStyle = '#E8DCC0';
+      histCanvasCtx.lineWidth = 1;
+      histCanvasCtx.setLineDash([4, 3]);
+      [mean - std, mean + std].forEach(v => {
+        if (v < 0) return;
+        const x = xOf(v);
+        histCanvasCtx.beginPath();
+        histCanvasCtx.moveTo(x, padT);
+        histCanvasCtx.lineTo(x, padT + plotH);
+        histCanvasCtx.stroke();
+      });
+      histCanvasCtx.setLineDash([]);
+
+      // ligne de la moyenne
+      const xMean = xOf(mean);
+      histCanvasCtx.strokeStyle = '#A6512B';
+      histCanvasCtx.lineWidth = 2;
+      histCanvasCtx.beginPath();
+      histCanvasCtx.moveTo(xMean, padT);
+      histCanvasCtx.lineTo(xMean, padT + plotH);
+      histCanvasCtx.stroke();
+
+      // titre et repère d'axe
+      histCanvasCtx.fillStyle = '#E8DCC0';
+      histCanvasCtx.font = '11px "IBM Plex Mono", monospace';
+      histCanvasCtx.textAlign = 'left';
+      histCanvasCtx.fillText('Vitesses individuelles', padL, 14);
+      histCanvasCtx.textAlign = 'center';
+      histCanvasCtx.fillText('vitesse (u.a.) →', padL + plotW / 2, HIST_H - 6);
+
+      const txt = mount.querySelector('#hist-stats');
+      if (txt) txt.innerHTML = `<span style="color:#A6512B;font-weight:600;">⟨v⟩ = ${mean.toFixed(2)}</span> · écart-type σ = ${std.toFixed(2)} (unités arbitraires ; bande claire = [⟨v⟩−σ, ⟨v⟩+σ])`;
+    }
+
     function loop() {
       if (destroyed) return;
       const diag = step();
       drawFrame(diag);
+      drawHistogram();
       updateJauges(diag);
       rafId = requestAnimationFrame(loop);
     }
@@ -203,7 +295,13 @@
           </div>
         </div>
 
-        <div class="gaz-canvas-wrap"><canvas id="gaz-canvas" width="${CANVAS_W}" height="${CANVAS_H}"></canvas></div>
+        <div class="gaz-canvas-row">
+          <div class="gaz-canvas-wrap"><canvas id="gaz-canvas" width="${CANVAS_W}" height="${CANVAS_H}"></canvas></div>
+          <div class="gaz-canvas-wrap gaz-hist-wrap">
+            <canvas id="gaz-hist-canvas" width="${HIST_W}" height="${HIST_H}"></canvas>
+          </div>
+        </div>
+        <p class="m-meta" id="hist-stats" style="margin-top:-4px;">⟨v⟩ = — · écart-type σ = —</p>
 
         <div class="card">
           <h3>Pression mesurée par les chocs</h3>
@@ -227,6 +325,8 @@
 
       canvas = mount.querySelector('#gaz-canvas');
       canvasCtx = canvas.getContext('2d');
+      histCanvas = mount.querySelector('#gaz-hist-canvas');
+      histCanvasCtx = histCanvas.getContext('2d');
       wire();
       if (window.MathRender) window.MathRender.render(mount);
     }
