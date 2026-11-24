@@ -100,7 +100,10 @@ ateliers 1 et 2.
    attractive simplifiée (Lennard-Jones). À côté de l'animation, un
    histogramme des vitesses individuelles (canvas) se met à jour en temps
    réel, avec la moyenne ⟨v⟩ (ligne) et une bande ⟨v⟩ ± σ (écart-type) pour
-   visualiser la dispersion des vitesses. L'atelier 4 est le seul à avoir
+   visualiser la dispersion des vitesses. Son axe des vitesses est fixe
+   (0 à 9, cohérent avec la plage du curseur agitation) plutôt que
+   recalculé à chaque image, pour que la moyenne et l'écart-type se
+   déplacent visiblement quand on manipule le curseur. L'atelier 4 est le seul à avoir
    une boucle `requestAnimationFrame` : son `render()` retourne une fonction
    `destroy()` que `js/app.js` appelle avant de changer de page, pour éviter
    toute double boucle.

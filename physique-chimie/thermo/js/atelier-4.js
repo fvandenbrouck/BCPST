@@ -12,6 +12,15 @@
   const CANVAS_W = 640, CANVAS_H = 360;
   const WINDOW_FRAMES = 40; // fenêtre glissante pour la mesure de pression (~0,66 s à 60 fps)
   const HIST_W = 380, HIST_H = 270, HIST_BINS = 16;
+  // Échelle fixe de l'histogramme (ne dépend jamais de la distribution
+  // instantanée) : le curseur agitation va de 0,3 à 3,0 (cf. #agitation),
+  // la vitesse initiale d'une particule vaut agitation×(0,5 à 1,5), d'où
+  // une vitesse courante presque toujours sous 3×agitation_max ≈ 9 même
+  // après redistribution par les chocs. Avec une échelle fixe, la moyenne
+  // et l'écart-type se déplacent visiblement sur l'axe quand on manipule
+  // le curseur ; une échelle recalculée à chaque image s'auto-ajusterait
+  // et donnerait l'impression trompeuse que rien ne change.
+  const HIST_VMAX = 9;
 
   function speedsOf(particles) {
     return particles.map(p => Math.hypot(p.vx, p.vy));
@@ -157,22 +166,22 @@
       if (!histCanvasCtx) return;
       const speeds = speedsOf(particles);
       const { mean, std } = meanStd(speeds);
-      const padL = 32, padR = 10, padT = 30, padB = 26;
+      const padL = 32, padR = 10, padT = 30, padB = 34;
       const plotW = HIST_W - padL - padR, plotH = HIST_H - padT - padB;
 
       histCanvasCtx.clearRect(0, 0, HIST_W, HIST_H);
       histCanvasCtx.fillStyle = '#1d1a14';
       histCanvasCtx.fillRect(0, 0, HIST_W, HIST_H);
 
-      const vMax = Math.max(mean + 3.2 * std, 0.6) * 1.05;
+      const vMax = HIST_VMAX; // échelle fixe : voir le commentaire sur HIST_VMAX
       const bins = new Array(HIST_BINS).fill(0);
       speeds.forEach(s => {
-        const idx = Math.min(HIST_BINS - 1, Math.floor((s / vMax) * HIST_BINS));
+        const idx = Math.min(HIST_BINS - 1, Math.max(0, Math.floor((s / vMax) * HIST_BINS)));
         bins[idx]++;
       });
       const maxCount = Math.max.apply(null, bins.concat([1]));
       const barW = plotW / HIST_BINS;
-      const xOf = (v) => padL + (v / vMax) * plotW;
+      const xOf = (v) => padL + Math.min(1, Math.max(0, v / vMax)) * plotW;
 
       // bande moyenne ± écart-type
       const xLo = Math.max(padL, xOf(Math.max(0, mean - std)));
@@ -224,6 +233,15 @@
       histCanvasCtx.font = '11px "IBM Plex Mono", monospace';
       histCanvasCtx.textAlign = 'left';
       histCanvasCtx.fillText('Vitesses individuelles', padL, 14);
+
+      // graduations numériques (échelle fixe, 0 à HIST_VMAX)
+      histCanvasCtx.fillStyle = '#9b9484';
+      histCanvasCtx.textAlign = 'left';
+      histCanvasCtx.fillText('0', padL, padT + plotH + 13);
+      histCanvasCtx.textAlign = 'right';
+      histCanvasCtx.fillText(String(vMax), padL + plotW, padT + plotH + 13);
+
+      histCanvasCtx.fillStyle = '#E8DCC0';
       histCanvasCtx.textAlign = 'center';
       histCanvasCtx.fillText('vitesse (u.a.) →', padL + plotW / 2, HIST_H - 6);
 
