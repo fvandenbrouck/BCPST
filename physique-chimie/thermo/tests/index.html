@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tests — Module Thermodynamique</title>
+<style>
+  body{font-family:'IBM Plex Mono',ui-monospace,monospace; background:#161512; color:#eee; padding:20px; max-width:940px; margin:0 auto;}
+  h1{font-size:20px;}
+  .pass{color:#8FAA68;} .fail{color:#E06A50; font-weight:700;}
+  .case{padding:4px 0; border-bottom:1px solid #2a2820; font-size:13px;}
+  #summary{position:sticky; top:0; background:#161512; padding:10px 0; font-size:16px; border-bottom:2px solid #444;}
+</style>
+</head>
+<body>
+<h1>Tests automatisés — Module Thermodynamique</h1>
+<p>Valide le code réel de <code>js/physics.js</code> (fonctions pures, aucun DOM) et le composant vidéos. Entièrement local, sans dépendance externe.</p>
+<div id="summary">Exécution…</div>
+<div id="results"></div>
+
+<script src="../js/physics.js"></script>
+<script src="../data/videos.js"></script>
+
+<script>
+(function(){
+  const cases = [];
+  let pass = 0, fail = 0;
+  function assert(name, cond, detail){
+    cases.push({ name, ok: !!cond, detail: detail || '' });
+    if (cond) pass++; else fail++;
+  }
+  function approxPct(a, b, pct){
+    pct = pct === undefined ? 0.5 : pct;
+    return Math.abs(a - b) <= Math.abs(b) * pct / 100 + 1e-9;
+  }
+  function approxAbs(a, b, tol){
+    return Math.abs(a - b) <= tol;
+  }
+
+  const T = window.ThermoPhysics;
+  const P0 = T.P0, V0 = T.V0, T0 = T.T0, NR = T.NR;
+  const Cv = T.CV_MONO, Cp = T.cpOf(Cv), GAMMA = T.GAMMA_MONO;
+
+  // ============================================================ CONSTANTES
+  assert('nR = P0 V0 / T0 ≈ 1/3 J/K', approxPct(NR, 1/3, 0.1), 'obtenu ' + NR);
+  assert('Cv monoatomique = 3nR/2', approxPct(Cv, 1.5 * NR, 0.01));
+  assert('Relation de Mayer : Cp − Cv = nR', approxAbs(Cp - Cv, NR, 1e-9));
+  assert('γ monoatomique = 5/3', approxPct(GAMMA, 5/3, 0.01));
+
+  // ============================================================ ISOTHERME QUASI-STATIQUE A -> B
+  (function(){
+    const r = T.isotherme(V0, 2 * V0, T0);
+    assert('Isotherme A→B : W ≈ −69,3 J', approxPct(r.W, -69.3), 'obtenu ' + r.W.toFixed(2));
+    assert('Isotherme A→B : Q ≈ +69,3 J', approxPct(r.Q, 69.3), 'obtenu ' + r.Q.toFixed(2));
+    assert('Isotherme A→B : ΔU = 0', approxAbs(r.dU, 0, 1e-6));
+  })();
+
+  // ============================================================ DÉTENTE BRUTALE A -> B (thermostat, Pa = P0/2)
+  (function(){
+    const r = T.brutalThermostat(P0, V0, T0, P0 / 2, T0, Cv);
+    assert('Brutal A→B (Pa=P0/2) : W = −50,0 J', approxPct(r.W, -50.0), 'obtenu ' + r.W.toFixed(2));
+    assert('Brutal A→B (Pa=P0/2) : Q = +50,0 J', approxPct(r.Q, 50.0), 'obtenu ' + r.Q.toFixed(2));
+    assert('Brutal A→B (Pa=P0/2) : ΔU = 0', approxAbs(r.dU, 0, 1e-6));
+    assert('Brutal A→B (Pa=P0/2) : Vf = 2V0', approxPct(r.Vf, 2 * V0));
+  })();
+
+  // ============================================================ COMPRESSION BRUTALE B -> A (thermostat, Pa = P0)
+  (function(){
+    const r = T.brutalThermostat(P0 / 2, 2 * V0, T0, P0, T0, Cv);
+    assert('Compression brutale B→A (Pa=P0) : W = +100 J', approxPct(r.W, 100), 'obtenu ' + r.W.toFixed(2));
+    assert('Compression brutale B→A (Pa=P0) : Q = −100 J', approxPct(r.Q, -100), 'obtenu ' + r.Q.toFixed(2));
+    assert('Compression brutale B→A (Pa=P0) : ΔU = 0', approxAbs(r.dU, 0, 1e-6));
+  })();
+
+  // ============================================================ CHAUFFAGE MONOBARE, Pa = P0, Q = +250 J
+  (function(){
+    const r = T.brutalMonobareQImpose(P0, V0, T0, P0, 250, Cv);
+    assert('Chauffage monobare : Tf = 600 K', approxPct(r.Tf, 600), 'obtenu ' + r.Tf.toFixed(1));
+    assert('Chauffage monobare : Vf = 2V0', approxPct(r.Vf, 2 * V0), 'obtenu ' + r.Vf.toExponential(3));
+    assert('Chauffage monobare : W = −100 J', approxPct(r.W, -100), 'obtenu ' + r.W.toFixed(2));
+    assert('Chauffage monobare : ΔU = +150 J', approxPct(r.dU, 150), 'obtenu ' + r.dU.toFixed(2));
+    assert('Chauffage monobare : ΔH = +250 J (Pi=Pf=Pa)', approxPct(r.dH, 250), 'obtenu ' + r.dH);
+    assert('Chauffage monobare : ΔU = W + Q', approxAbs(r.dU, r.W + r.Q, 1e-6));
+  })();
+
+  // ============================================================ CHAUFFAGE ISOCHORE, Q = +250 J
+  (function(){
+    const r = T.isochoreFromQ(P0, V0, T0, 250, Cv);
+    assert('Chauffage isochore : Tf = 800 K', approxPct(r.Tf, 800), 'obtenu ' + r.Tf.toFixed(1));
+    assert('Chauffage isochore : Pf ≈ 2,67×10⁵ Pa', approxPct(r.Pf, 2.67e5), 'obtenu ' + r.Pf.toExponential(3));
+    assert('Chauffage isochore : ΔH non défini (volume constant)', r.dH === null);
+  })();
+
+  // ============================================================ MÊME Q = 250 J : ΔT selon la transformation
+  (function(){
+    const riso = T.isochoreFromQ(P0, V0, T0, 250, Cv);
+    const risob = T.isobareFromQ(P0, V0, T0, 250, Cv);
+    assert('Q=250 J à volume constant : ΔT = 500 K', approxPct(riso.Tf - T0, 500), 'obtenu ' + (riso.Tf - T0).toFixed(1));
+    assert('Q=250 J à pression constante : ΔT = 300 K', approxPct(risob.Tf - T0, 300), 'obtenu ' + (risob.Tf - T0).toFixed(1));
+    assert('Chauffage isobare : ΔH = Q (Pi=Pf)', approxPct(risob.dH, 250));
+  })();
+
+  // ============================================================ JOULE–GAY-LUSSAC
+  (function(){
+    const r = T.jouleGayLussac(P0, V0, T0, 2 * V0);
+    assert('Joule–Gay-Lussac : W = 0', approxAbs(r.W, 0, 1e-9));
+    assert('Joule–Gay-Lussac : Q = 0', approxAbs(r.Q, 0, 1e-9));
+    assert('Joule–Gay-Lussac : ΔU = 0', approxAbs(r.dU, 0, 1e-9));
+    assert('Joule–Gay-Lussac : ΔT = 0', approxAbs(r.Tf - r.Ti, 0, 1e-9));
+  })();
+
+  // ============================================================ SEGMENT ADIABATIQUE RÉVERSIBLE A -> C (Vc = 2V0)
+  let segAC;
+  (function(){
+    segAC = T.segmentAdiabatiqueReversibleVersV(P0, V0, T0, 2 * V0, GAMMA, Cv);
+    assert('A→C adiabatique réversible : Pc ≈ 0,315×10⁵ Pa', approxPct(segAC.Pf, 0.315e5, 0.5), 'obtenu ' + segAC.Pf.toExponential(3));
+    assert('A→C adiabatique réversible : Tc ≈ 189 K', approxPct(segAC.Tf, 189, 0.5), 'obtenu ' + segAC.Tf.toFixed(1));
+    assert('A→C adiabatique réversible : W = ΔU ≈ −55,5 J', approxPct(segAC.W, -55.5, 0.5), 'obtenu ' + segAC.W.toFixed(2));
+    assert('A→C adiabatique réversible : Q = 0', approxAbs(segAC.Q, 0, 1e-9));
+  })();
+
+  // ============================================================ CHEMIN 4 : A -> C adiabatique, C -> B isochore
+  (function(){
+    const segCB = T.segmentIsochore(segAC.Pf, segAC.Vf, segAC.Tf, P0 / 2, Cv);
+    const Wtot = segAC.W + segCB.W, Qtot = segAC.Q + segCB.Q, dUtot = segAC.dU + segCB.dU;
+    assert('Chemin 4 : C→B isochore atteint bien B (Tf=T0)', approxPct(segCB.Tf, T0, 0.5), 'obtenu ' + segCB.Tf.toFixed(1));
+    assert('Chemin 4 : W_total ≈ −55,5 J', approxPct(Wtot, -55.5, 0.5), 'obtenu ' + Wtot.toFixed(2));
+    assert('Chemin 4 : Q_total ≈ +55,5 J', approxPct(Qtot, 55.5, 0.5), 'obtenu ' + Qtot.toFixed(2));
+    assert('Chemin 4 : ΔU = 0 (A et B même température)', approxAbs(dUtot, 0, 0.5), 'obtenu ' + dUtot.toFixed(3));
+  })();
+
+  // ============================================================ SEGMENT ADIABATIQUE RÉVERSIBLE A -> D (Pd = P0/2)
+  let segAD;
+  (function(){
+    segAD = T.segmentAdiabatiqueReversibleVersP(P0, V0, T0, P0 / 2, GAMMA, Cv);
+    assert('A→D adiabatique réversible : Vd ≈ 1,516 L', approxPct(segAD.Vf, 1.516e-3, 0.5), 'obtenu ' + segAD.Vf.toExponential(4));
+    assert('A→D adiabatique réversible : Td ≈ 227 K', approxPct(segAD.Tf, 227, 0.5), 'obtenu ' + segAD.Tf.toFixed(1));
+    assert('A→D adiabatique réversible : W = ΔU ≈ −36,3 J', approxPct(segAD.W, -36.3, 0.5), 'obtenu ' + segAD.W.toFixed(2));
+    assert('A→D adiabatique réversible : Q = 0', approxAbs(segAD.Q, 0, 1e-9));
+  })();
+
+  // ============================================================ CHEMIN 5 : A -> D adiabatique, D -> B isobare
+  (function(){
+    const segDB = T.segmentIsobare(segAD.Pf, segAD.Vf, segAD.Tf, 2 * V0, Cv);
+    const Wtot = segAD.W + segDB.W, Qtot = segAD.Q + segDB.Q, dUtot = segAD.dU + segDB.dU;
+    assert('Chemin 5 : D→B isobare atteint bien B (Tf=T0)', approxPct(segDB.Tf, T0, 0.5), 'obtenu ' + segDB.Tf.toFixed(1));
+    assert('Chemin 5 : W_total ≈ −60,5 J', approxPct(Wtot, -60.5, 0.5), 'obtenu ' + Wtot.toFixed(2));
+    assert('Chemin 5 : Q_total ≈ +60,5 J', approxPct(Qtot, 60.5, 0.5), 'obtenu ' + Qtot.toFixed(2));
+    assert('Chemin 5 : ΔU = 0 (A et B même température)', approxAbs(dUtot, 0, 0.5), 'obtenu ' + dUtot.toFixed(3));
+  })();
+
+  // ============================================================ VÉRIFICATION NUMÉRIQUE DES SEGMENTS ADIABATIQUES
+  (function(){
+    const Wnum = T.integraleAdiabatique(P0, V0, 2 * V0, GAMMA);
+    assert('A→C : −∫P dV ≈ Cv ΔT à 0,5% près', approxPct(Wnum, segAC.dU, 0.5), 'intégrale=' + Wnum.toFixed(3) + ' Cv·ΔT=' + segAC.dU.toFixed(3));
+    const WnumAD = T.integraleAdiabatique(P0, V0, segAD.Vf, GAMMA);
+    assert('A→D : −∫P dV ≈ Cv ΔT à 0,5% près', approxPct(WnumAD, segAD.dU, 0.5), 'intégrale=' + WnumAD.toFixed(3) + ' Cv·ΔT=' + segAD.dU.toFixed(3));
+  })();
+
+  // ============================================================ COHÉRENCE ΔU = W + Q, INDÉPENDANCE DU CHEMIN
+  (function(){
+    const scenarios = [
+      T.isotherme(V0, 2 * V0, T0),
+      T.brutalThermostat(P0, V0, T0, P0 / 2, T0, Cv),
+      T.brutalMonobareQImpose(P0, V0, T0, P0, 250, Cv),
+      T.isochoreFromQ(P0, V0, T0, 250, Cv),
+      T.isobareFromQ(P0, V0, T0, 250, Cv),
+      T.jouleGayLussac(P0, V0, T0, 2 * V0),
+      segAC, segAD
+    ];
+    scenarios.forEach((r, i) => {
+      assert('Cohérence ΔU = W + Q, scénario ' + (i + 1), approxAbs(r.dU, r.W + r.Q, Math.max(1e-6, Math.abs(r.dU) * 0.005)), 'ΔU=' + r.dU.toFixed(3) + ' W+Q=' + (r.W + r.Q).toFixed(3));
+    });
+
+    // Cinq chemins A -> B (tous Ti=Tf=T0) : ΔU doit être nul pour chacun.
+    const segCB = T.segmentIsochore(segAC.Pf, segAC.Vf, segAC.Tf, P0 / 2, Cv);
+    const segDB = T.segmentIsobare(segAD.Pf, segAD.Vf, segAD.Tf, 2 * V0, Cv);
+    const chemins = [
+      { nom: '1 — isotherme', dU: T.isotherme(V0, 2 * V0, T0).dU },
+      { nom: '2 — isobare puis isochore', dU: T.segmentIsobare(P0, V0, T0, 2 * V0, Cv).dU + T.segmentIsochore(P0, 2 * V0, T.segmentIsobare(P0, V0, T0, 2 * V0, Cv).Tf, P0 / 2, Cv).dU },
+      { nom: '3 — isochore puis isobare', dU: T.segmentIsochore(P0, V0, T0, P0 / 2, Cv).dU + T.segmentIsobare(P0 / 2, V0, T.segmentIsochore(P0, V0, T0, P0 / 2, Cv).Tf, 2 * V0, Cv).dU },
+      { nom: '4 — adiabatique + isochore', dU: segAC.dU + segCB.dU },
+      { nom: '5 — adiabatique + isobare', dU: segAD.dU + segDB.dU }
+    ];
+    chemins.forEach(c => {
+      assert('Atelier 2, chemin ' + c.nom + ' : ΔU indépendant du chemin (= 0)', approxAbs(c.dU, 0, 0.5), 'obtenu ' + c.dU.toFixed(3));
+    });
+  })();
+
+  // ============================================================ CHEMIN LIBRE (trapèzes)
+  (function(){
+    // Un chemin libre qui suit exactement l'isotherme doit redonner le même W.
+    const n = 50;
+    const points = [];
+    for (let i = 0; i <= n; i++) {
+      const V = V0 + (2 * V0 - V0) * i / n;
+      points.push({ P: T.pressionDe(V, T0), V });
+    }
+    const r = T.cheminLibre(points, Cv);
+    const ref = T.isotherme(V0, 2 * V0, T0);
+    assert('Chemin libre suivant l\'isotherme : W ≈ W isotherme', approxPct(r.W, ref.W, 1), 'obtenu ' + r.W.toFixed(2) + ' attendu ' + ref.W.toFixed(2));
+    assert('Chemin libre suivant l\'isotherme : ΔU ≈ 0', approxAbs(r.dU, 0, 0.1), 'obtenu ' + r.dU.toFixed(3));
+  })();
+
+  // ============================================================ VIDÉOS
+  if (window.THERMO_VIDEOS) {
+    const V = window.THERMO_VIDEOS;
+    const ids = V.videos.map(v => v.id);
+    assert('Vidéos : identifiants uniques', ids.length === new Set(ids).size);
+    V.videos.forEach(v => {
+      assert('Vidéo ' + v.id + ' : titre non vide', !!v.titre && v.titre.length > 0);
+      assert('Vidéo ' + v.id + ' : url nulle ou YouTube', v.url === null || v.url.indexOf('https://www.youtube.com/') === 0 || v.url.indexOf('https://youtu.be/') === 0, String(v.url));
+    });
+    const ateliersValides = ['atelier-1', 'atelier-2', 'atelier-3', 'atelier-4'];
+    V.videos.forEach(v => {
+      (v.ateliers || []).forEach(a => {
+        assert('Vidéo ' + v.id + ' : atelier "' + a + '" existe', ateliersValides.includes(a));
+      });
+    });
+  }
+
+  // ============================================================ RENDU
+  document.getElementById('summary').innerHTML =
+    `<span class="${fail === 0 ? 'pass' : 'fail'}">${pass} / ${pass + fail} tests réussis</span>` +
+    (fail > 0 ? ` — <span class="fail">${fail} échec(s)</span>` : ' — tout est vert.');
+  document.getElementById('results').innerHTML = cases.map(c =>
+    `<div class="case ${c.ok ? 'pass' : 'fail'}">${c.ok ? '✓' : '✗'} ${c.name}${c.detail ? ' — ' + c.detail : ''}</div>`
+  ).join('');
+})();
+</script>
+</body>
+</html>
