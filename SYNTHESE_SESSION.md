@@ -3,7 +3,7 @@
 > **À lire en premier dans tout nouveau fil de discussion sur ce projet.**
 > Ce fichier documente l'état réel du projet, les arbitrages pris en cours de route (au-delà du cahier des charges initial) et les consignes à respecter pour continuer sans rupture. Le cahier des charges complet et stable est dans [`CAHIER_DES_CHARGES.md`](CAHIER_DES_CHARGES.md) (copie verbatim du brief initial, ne pas le modifier). **Ce fichier-ci doit être mis à jour à la fin de chaque session de travail** (nouveaux modules construits, nouvelles décisions, nouveaux points en attente).
 
-Dernière mise à jour : **2026-08-22**.
+Dernière mise à jour : **2026-11-24** (ajout du module Thermodynamique, cf. §8 ci-dessous — ce fichier n'avait pas été mis à jour depuis la fin de la Phase 2 PC le 2026-08-22, alors que `git log` montre que plusieurs modules ont été construits entre-temps sans mise à jour correspondante de ce fichier : RMN du proton, Spectroscopie infrarouge, 60 exercices de nomenclature, identification par prénom. **Se fier à `git log --oneline` et à `assets/js/modules-registry.js` pour l'état réel du dépôt, pas uniquement à ce fichier**, tant que ces modules n'auront pas été documentés ici rétroactivement.).
 
 ---
 
@@ -246,3 +246,27 @@ L'idée d'"Observations" évoquée en cours de session a été précisée par l'
   ```
   Le déploiement apparaît dans `/deployments` en général en quelques secondes après le push (pas besoin de longue boucle d'attente comme avec l'ancienne méthode), mais peut prendre jusqu'à 20-30s pour passer de `queued`/`in_progress` à `success` — sondable via Bash en arrière-plan (`run_in_background: true`) si besoin. Vérifier aussi visuellement une page modifiée sur https://fvandenbrouck.github.io/BCPST/ pour confirmation finale.
   Si l'utilisateur signale ne "rien voir" alors que git/Pages confirment que c'est en ligne, c'est presque toujours un cache navigateur côté utilisateur (déjà arrivé deux fois : carnet de terrain, puis Ch.9) — lui suggérer un rechargement forcé (Cmd+Maj+R) plutôt que de re-committer inutilement.
+
+---
+
+## 8. Module Thermodynamique (Physique-Chimie) — ajouté le 2026-11-24
+
+Nouvelle sous-application autonome **`physique-chimie/thermo/`**, construite sur le modèle exact des modules `physique-chimie/ir/` et `physique-chimie/rmn/` (page unique, routeur à hash, `storage.js` dédié, `tests/index.html`), mais **sans** moteur de diagnostic/maîtrise (`grading-engine.js`/`mastery-engine.js`) : ce module est fait de quatre **ateliers de simulation** (prédire/observer/expliquer), pas de QCM notés. Programme BCPST1 thème E (codes E.1, E.2).
+
+**Consigne de vocabulaire appliquée dans tout le module** (et à respecter pour tout futur contenu PC) : le mot « chaleur » est banni, remplacé systématiquement par « transfert thermique », y compris dans le titre de l'application lui-même (« Thermodynamique : travail, transfert thermique et bilans »). Le symbole `Q` reste `Q`.
+
+**Architecture** (cf. [`physique-chimie/thermo/README.md`](physique-chimie/thermo/README.md) pour le détail) :
+- `js/physics.js` : toutes les fonctions pures de thermodynamique (isotherme, évolutions brutales monobares avec Q imposé ou thermostat, segments quasi-statiques isobare/isochore/adiabatique réversible avec loi de Laplace « formule fournie, jamais démontrée », Joule-Gay-Lussac, chemin libre par sommation de trapèzes). `tests/index.html` fait passer au vert les 13 cas numériques chiffrés imposés (détente isotherme, détentes/compressions brutales, chauffages iso-P/iso-V, segments adiabatiques A→C et A→D avec vérification numérique −∫PdV ≈ CvΔT, cohérence ΔU=W+Q) + les tests du composant vidéos (79 tests au total, tous verts).
+- `js/clapeyron.js` : diagramme de Clapeyron en SVG responsive, générique (points, segments, courbes, rectangle d'aire, droite P=Pa), réutilisé par les ateliers 1 et 2.
+- `js/videos.js` + `data/videos.js` : composant « Vidéo associée » et page `#/videos`, mêmes règles que spécifiées (bouton `aria-disabled` si `url:null`, jamais de `href="#"`). **`data/videos.js` est le seul fichier à modifier pour renseigner un lien** (5 vidéos prévues, toutes `url:null` pour l'instant).
+- Un atelier = un fichier `js/atelier-N.js` enregistré dans `window.ThermoAteliers`, avec une fonction `render(body, ctx)` ; l'atelier 4 (seul à avoir une boucle d'animation `requestAnimationFrame`) retourne une fonction `destroy()` que `app.js` appelle avant de changer de page, pour éviter toute double boucle (vérifié dans le navigateur après plusieurs allers-retours).
+
+**Les 4 ateliers, un commit par atelier** (comme demandé) :
+1. **Piston, gaz et chemins** : état initial réglable, choix du gaz (mono/diatomique), évolution brutale (Q imposé ou thermostat à T0) ou quasi-statique (isotherme/isobare/isochore/adiabatique réversible), bilan écrit en LaTeX, prédiction avant simulation avec retour encourageant.
+2. **Tracer son chemin de A à B** : cinq chemins quasi-statiques prédéfinis (dont deux avec état intermédiaire C/D et vérification numérique du travail adiabatique) + un chemin libre tracé à main levée (pointer events, calcul par trapèzes), tableau comparatif cumulatif démontrant que W et Q dépendent du chemin mais ΔU jamais.
+3. **Frontières et bilan** : explorateur système (gaz seul / gaz+piston / gaz+piston+résistance) avec propriétés de frontière togglables (mobile/diatherme/perméable/conducteur), classification isolé/fermé/ouvert et forme dynamique du premier principe, puis 3 exercices guidés corrigés (piston bloqué ; piston libre sous P0 ; Joule-Gay-Lussac).
+4. **Gaz microscopique** : simulation 2D qualitative (canvas, ~150 disques durs, collisions élastiques), curseurs agitation/volume, pression mesurée par les chocs comparée à la tendance P∝T/V, option d'interaction attractive simplifiée (Lennard-Jones). Explicitement annoncé comme qualitatif (modèle 2D).
+
+**Intégration au site** : enregistré dans `assets/js/modules-registry.js` (id `pc-thermo`, accent ocre, section « Chimie — RMN/IR » renommée implicitement en restant dans la liste PC) ; un paragraphe de lien a été ajouté en fin de [`physique-chimie/premier-principe.html`](physique-chimie/premier-principe.html) vers le nouveau module (sans dupliquer son contenu : le module Thermo *prolonge* la révision de Terminale, il ne la refait pas).
+
+**Pour ajouter un lien de vidéo plus tard** : ouvrir `physique-chimie/thermo/data/videos.js`, remplacer un `url: null` par l'adresse YouTube, enregistrer, committer et pousser — `tests/index.html` échoue si l'adresse n'est pas valide (doit commencer par `https://www.youtube.com/` ou `https://youtu.be/`).
