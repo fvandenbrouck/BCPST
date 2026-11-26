@@ -264,7 +264,7 @@
             </div>
             <div class="gp-law-card">
               <h4>Loi générale</h4>
-              <p>$$\\dfrac{PV}{T} = \\text{cste}$$ Toujours vraie, quels que soient tes réglages.</p>
+              <p>$$\\dfrac{PV}{T} = \\text{cste}$$ Toujours vraie, quels que soient tes réglages : cette constante, c'est $nR$, et elle ne peut changer que si $n$ change. PV/T constant traduit donc la conservation de la matière (aucune particule n'entre ni ne sort de l'enceinte).</p>
             </div>
           </div>
           <p class="m-meta">Exemple numérique (unités du reste du module) : à $P_0=1{,}00\\times10^5$ Pa, $V_0=1{,}00$ L, $T_0=300$ K, on vérifie $P_0 V_0 = ${(Physics.P0 * Physics.V0).toFixed(2)}$ J $= nR\\,T_0 = ${(Physics.NR * Physics.T0).toFixed(2)}$ J.</p>
