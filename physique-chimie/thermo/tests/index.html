@@ -19,7 +19,9 @@
 <div id="results"></div>
 
 <script src="../js/physics.js"></script>
+<script src="../js/grading-engine.js"></script>
 <script src="../data/videos.js"></script>
+<script src="../data/quiz-gaz-parfait.js"></script>
 
 <script>
 (function(){
@@ -211,11 +213,35 @@
       assert('Vidéo ' + v.id + ' : titre non vide', !!v.titre && v.titre.length > 0);
       assert('Vidéo ' + v.id + ' : url nulle ou YouTube', v.url === null || v.url.indexOf('https://www.youtube.com/') === 0 || v.url.indexOf('https://youtu.be/') === 0, String(v.url));
     });
-    const ateliersValides = ['atelier-1', 'atelier-2', 'atelier-3', 'atelier-4'];
+    const ateliersValides = ['atelier-0', 'atelier-1', 'atelier-2', 'atelier-3', 'atelier-4'];
     V.videos.forEach(v => {
       (v.ateliers || []).forEach(a => {
         assert('Vidéo ' + v.id + ' : atelier "' + a + '" existe', ateliersValides.includes(a));
       });
+    });
+  }
+
+  // ============================================================ QUIZZ ATELIER 0
+  if (window.THERMO_QUIZ_GAZ_PARFAIT && window.GradingEngine) {
+    const Q = window.THERMO_QUIZ_GAZ_PARFAIT;
+    const ids = Q.map(q => q.id);
+    assert('Quizz atelier 0 : identifiants uniques', ids.length === new Set(ids).size);
+    Q.forEach(q => {
+      assert('Quizz ' + q.id + ' : énoncé non vide', !!q.enonce && q.enonce.length > 0);
+      assert('Quizz ' + q.id + ' : explication non vide', !!q.explication && q.explication.length > 0);
+      if (q.type === 'single') {
+        assert('Quizz ' + q.id + ' : au moins 2 options', Array.isArray(q.options) && q.options.length >= 2);
+        assert('Quizz ' + q.id + ' : correct dans les bornes des options', q.correct >= 0 && q.correct < q.options.length);
+        const r = window.GradingEngine.gradeQuestion(q, q.correct);
+        assert('Quizz ' + q.id + ' : la bonne réponse est notée correcte', r.correct === true);
+        const wrongAnswer = (q.correct + 1) % q.options.length;
+        const rw = window.GradingEngine.gradeQuestion(q, wrongAnswer);
+        assert('Quizz ' + q.id + ' : une mauvaise réponse est notée incorrecte', rw.correct === false);
+      } else if (q.type === 'numeric') {
+        assert('Quizz ' + q.id + ' : réponse numérique définie', typeof q.reponse === 'number');
+        const r = window.GradingEngine.gradeQuestion(q, q.reponse);
+        assert('Quizz ' + q.id + ' : la bonne réponse numérique est notée correcte', r.correct === true);
+      }
     });
   }
 

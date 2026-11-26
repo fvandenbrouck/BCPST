@@ -23,6 +23,7 @@
   };
 
   const ATELIERS = [
+    { id: 'atelier-0', n: 0, titre: 'Découvrir la loi des gaz parfaits' },
     { id: 'atelier-1', n: 1, titre: 'Piston, gaz et chemins' },
     { id: 'atelier-2', n: 2, titre: 'Tracer son chemin de A à B' },
     { id: 'atelier-3', n: 3, titre: 'Frontières et bilan' },

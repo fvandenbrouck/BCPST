@@ -3,7 +3,7 @@
 > **À lire en premier dans tout nouveau fil de discussion sur ce projet.**
 > Ce fichier documente l'état réel du projet, les arbitrages pris en cours de route (au-delà du cahier des charges initial) et les consignes à respecter pour continuer sans rupture. Le cahier des charges complet et stable est dans [`CAHIER_DES_CHARGES.md`](CAHIER_DES_CHARGES.md) (copie verbatim du brief initial, ne pas le modifier). **Ce fichier-ci doit être mis à jour à la fin de chaque session de travail** (nouveaux modules construits, nouvelles décisions, nouveaux points en attente).
 
-Dernière mise à jour : **2026-11-24** (ajout du module Thermodynamique, cf. §8 ci-dessous — ce fichier n'avait pas été mis à jour depuis la fin de la Phase 2 PC le 2026-08-22, alors que `git log` montre que plusieurs modules ont été construits entre-temps sans mise à jour correspondante de ce fichier : RMN du proton, Spectroscopie infrarouge, 60 exercices de nomenclature, identification par prénom. **Se fier à `git log --oneline` et à `assets/js/modules-registry.js` pour l'état réel du dépôt, pas uniquement à ce fichier**, tant que ces modules n'auront pas été documentés ici rétroactivement.).
+Dernière mise à jour : **2026-11-26** (ajout de l'atelier 0 du module Thermodynamique, cf. §9 ci-dessous ; le module lui-même a été ajouté le 2026-11-24, cf. §8 — ce fichier n'avait pas été mis à jour depuis la fin de la Phase 2 PC le 2026-08-22 avant cela, alors que `git log` montre que plusieurs modules ont été construits entre-temps sans mise à jour correspondante de ce fichier : RMN du proton, Spectroscopie infrarouge, 60 exercices de nomenclature, identification par prénom. **Se fier à `git log --oneline` et à `assets/js/modules-registry.js` pour l'état réel du dépôt, pas uniquement à ce fichier**, tant que ces modules n'auront pas été documentés ici rétroactivement.).
 
 ---
 
@@ -270,3 +270,49 @@ Nouvelle sous-application autonome **`physique-chimie/thermo/`**, construite sur
 **Intégration au site** : enregistré dans `assets/js/modules-registry.js` (id `pc-thermo`, accent ocre, section « Chimie — RMN/IR » renommée implicitement en restant dans la liste PC) ; un paragraphe de lien a été ajouté en fin de [`physique-chimie/premier-principe.html`](physique-chimie/premier-principe.html) vers le nouveau module (sans dupliquer son contenu : le module Thermo *prolonge* la révision de Terminale, il ne la refait pas).
 
 **Pour ajouter un lien de vidéo plus tard** : ouvrir `physique-chimie/thermo/data/videos.js`, remplacer un `url: null` par l'adresse YouTube, enregistrer, committer et pousser — `tests/index.html` échoue si l'adresse n'est pas valide (doit commencer par `https://www.youtube.com/` ou `https://youtu.be/`).
+
+## 9. Atelier 0 du module Thermodynamique — ajouté le 2026-11-26
+
+Nouvel atelier **« Découvrir la loi des gaz parfaits »**, inséré en premier
+dans la navigation (avant l'atelier 1, qui utilise déjà PV = nRT sans
+l'avoir introduite). Programme BCPST1 thème E.
+
+**Simulation** (`js/atelier-0.js`) : particules **sans interaction**
+(contrairement à l'atelier 4 : aucune collision particule-particule,
+seulement des rebonds élastiques sur les parois et sur un piston positionné
+directement par un curseur Volume/N). Pas de mode « piston libre » / pression
+extérieure imposée — première version qui l'incluait (piston à dynamique
+newtonienne pilotée par Pa) abandonnée en session après un bogue de mesure
+difficile à stabiliser ; le piston unique à curseur direct est plus simple
+et pédagogiquement suffisant (la loi de Charles s'explore en cherchant
+soi-même un réglage (V/N, T) qui conserve la pression mesurée). Thermostat
+forçant ⟨v²⟩ = 2T à chaque image (équipartition 2D, k_B = 1, unités choisies
+pour que R = 1) : théorie cinétique exacte P·A = N·T, sans facteur ad hoc.
+
+**Affichages** : histogramme des vitesses (composant `js/speed-histogram.js`
+extrait de l'atelier 4 pour être partagé entre les deux, au lieu d'être
+dupliqué) ; jauge verticale de la force sur le piston, qui fluctue choc par
+choc autour d'une moyenne glissante (trait repère) — pas un graphe
+défilant ; diagramme de Clapeyron (`clapeyron.js`, réutilisé) avec plusieurs
+isothermes tracées en arrière-plan (simples hyperboles, sans afficher leur
+équation) et un point d'état utilisant une moyenne lissée (pas la valeur
+instantanée bruitée) pour rester visuellement fixe ; vérification
+$P\cdot(V/N)/(RT) \approx 1$ aux fluctuations statistiques près (~1/√150 ≈
+8 %), en écrivant explicitement $R$ plutôt que de le laisser disparaître
+dans les unités choisies (R = 1 ici), jugé trompeur pour une élève qui
+découvre la loi.
+
+**Quizz** (6 questions) : réutilise la mécanique socratique d'IR/RMN —
+`js/grading-engine.js` et `js/ui-components.js` copiés tels quels depuis
+`ir/js/` (même convention de duplication que le reste du site), questions
+dans `data/quiz-gaz-parfait.js`.
+
+**Corrections apportées en cours de route à `js/clapeyron.js`** (partagé,
+donc avec effet sur les ateliers 0/1/2) : `padB` 30→40 et repositionnement
+du label d'unité de l'axe V, qui chevauchait la graduation la plus à droite
+quand celle-ci faisait 4 caractères (ex. « 12.0 »).
+
+**Tests** : `tests/index.html` passe à **114/114** (35 nouveaux tests sur le
+quizz — identifiants uniques, bornes de l'index `correct`, vérification via
+`GradingEngine` que la bonne réponse est notée correcte et qu'une mauvaise
+réponse ne l'est pas).

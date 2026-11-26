@@ -22,17 +22,6 @@
   // et donnerait l'impression trompeuse que rien ne change.
   const HIST_VMAX = 9;
 
-  function speedsOf(particles) {
-    return particles.map(p => Math.hypot(p.vx, p.vy));
-  }
-
-  function meanStd(values) {
-    const n = values.length;
-    const mean = values.reduce((a, b) => a + b, 0) / n;
-    const variance = values.reduce((a, b) => a + (b - mean) * (b - mean), 0) / n;
-    return { mean, std: Math.sqrt(variance) };
-  }
-
   function defaultInput() {
     return { agitation: 1.5, volume: 1.0, lj: false, predictions: { agitation: null, volume: null } };
   }
@@ -164,87 +153,8 @@
 
     function drawHistogram() {
       if (!histCanvasCtx) return;
-      const speeds = speedsOf(particles);
-      const { mean, std } = meanStd(speeds);
-      const padL = 32, padR = 10, padT = 30, padB = 34;
-      const plotW = HIST_W - padL - padR, plotH = HIST_H - padT - padB;
-
-      histCanvasCtx.clearRect(0, 0, HIST_W, HIST_H);
-      histCanvasCtx.fillStyle = '#1d1a14';
-      histCanvasCtx.fillRect(0, 0, HIST_W, HIST_H);
-
-      const vMax = HIST_VMAX; // échelle fixe : voir le commentaire sur HIST_VMAX
-      const bins = new Array(HIST_BINS).fill(0);
-      speeds.forEach(s => {
-        const idx = Math.min(HIST_BINS - 1, Math.max(0, Math.floor((s / vMax) * HIST_BINS)));
-        bins[idx]++;
-      });
-      const maxCount = Math.max.apply(null, bins.concat([1]));
-      const barW = plotW / HIST_BINS;
-      const xOf = (v) => padL + Math.min(1, Math.max(0, v / vMax)) * plotW;
-
-      // bande moyenne ± écart-type
-      const xLo = Math.max(padL, xOf(Math.max(0, mean - std)));
-      const xHi = Math.min(padL + plotW, xOf(mean + std));
-      histCanvasCtx.fillStyle = 'rgba(232,220,192,0.14)';
-      histCanvasCtx.fillRect(xLo, padT, xHi - xLo, plotH);
-
-      // barres de l'histogramme
-      histCanvasCtx.fillStyle = '#C89B3C';
-      bins.forEach((count, i) => {
-        const h = (count / maxCount) * plotH;
-        histCanvasCtx.fillRect(padL + i * barW + 1, padT + plotH - h, Math.max(1, barW - 2), h);
-      });
-
-      // axes
-      histCanvasCtx.strokeStyle = '#6b6354';
-      histCanvasCtx.lineWidth = 1;
-      histCanvasCtx.beginPath();
-      histCanvasCtx.moveTo(padL, padT);
-      histCanvasCtx.lineTo(padL, padT + plotH);
-      histCanvasCtx.lineTo(padL + plotW, padT + plotH);
-      histCanvasCtx.stroke();
-
-      // bornes à ±σ (tirets)
-      histCanvasCtx.strokeStyle = '#E8DCC0';
-      histCanvasCtx.lineWidth = 1;
-      histCanvasCtx.setLineDash([4, 3]);
-      [mean - std, mean + std].forEach(v => {
-        if (v < 0) return;
-        const x = xOf(v);
-        histCanvasCtx.beginPath();
-        histCanvasCtx.moveTo(x, padT);
-        histCanvasCtx.lineTo(x, padT + plotH);
-        histCanvasCtx.stroke();
-      });
-      histCanvasCtx.setLineDash([]);
-
-      // ligne de la moyenne
-      const xMean = xOf(mean);
-      histCanvasCtx.strokeStyle = '#A6512B';
-      histCanvasCtx.lineWidth = 2;
-      histCanvasCtx.beginPath();
-      histCanvasCtx.moveTo(xMean, padT);
-      histCanvasCtx.lineTo(xMean, padT + plotH);
-      histCanvasCtx.stroke();
-
-      // titre et repère d'axe
-      histCanvasCtx.fillStyle = '#E8DCC0';
-      histCanvasCtx.font = '11px "IBM Plex Mono", monospace';
-      histCanvasCtx.textAlign = 'left';
-      histCanvasCtx.fillText('Vitesses individuelles', padL, 14);
-
-      // graduations numériques (échelle fixe, 0 à HIST_VMAX)
-      histCanvasCtx.fillStyle = '#9b9484';
-      histCanvasCtx.textAlign = 'left';
-      histCanvasCtx.fillText('0', padL, padT + plotH + 13);
-      histCanvasCtx.textAlign = 'right';
-      histCanvasCtx.fillText(String(vMax), padL + plotW, padT + plotH + 13);
-
-      histCanvasCtx.fillStyle = '#E8DCC0';
-      histCanvasCtx.textAlign = 'center';
-      histCanvasCtx.fillText('vitesse (u.a.) →', padL + plotW / 2, HIST_H - 6);
-
+      const speeds = window.SpeedHistogram.speedsOf(particles);
+      const { mean, std } = window.SpeedHistogram.draw(histCanvasCtx, speeds, { w: HIST_W, h: HIST_H, bins: HIST_BINS, vMax: HIST_VMAX });
       const txt = mount.querySelector('#hist-stats');
       if (txt) txt.innerHTML = `<span style="color:#A6512B;font-weight:600;">⟨v⟩ = ${mean.toFixed(2)}</span> · écart-type σ = ${std.toFixed(2)} (unités arbitraires ; bande claire = [⟨v⟩−σ, ⟨v⟩+σ])`;
     }

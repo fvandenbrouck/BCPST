@@ -122,4 +122,32 @@ input[type=range]::-moz-range-thumb { width: 26px; height: 26px; border-radius: 
 .video-item .v-ordre { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--rust-deep); }
 .video-item h4 { margin: 2px 0 4px; }
 
+/* ---------- QUESTIONS / QUIZZ (atelier 0) ---------- */
+.q-opt-input{
+  display:flex; align-items:flex-start; gap:9px; background:var(--paper); border:1px solid var(--line);
+  border-radius:9px; padding:10px 12px; margin-bottom:7px; font-size:14px; cursor:pointer;
+}
+.q-opt-input:has(input:focus-visible){outline:2px solid var(--slate); outline-offset:1px;}
+.q-opt-input input{margin-top:3px; flex-shrink:0;}
+.q-form-body{margin:10px 0;}
+.diag-submit-row{margin-top:10px;}
+.diag-missing-note{color:var(--rust-deep); margin-bottom:8px;}
+.practice-feedback{margin:10px 0;}
+.practice-actions{display:flex; gap:8px; flex-wrap:wrap;}
+
+/* ---------- GAZ PARFAIT (atelier 0) ---------- */
+.gp-law-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 14px; }
+@media (min-width: 620px) { .gp-law-grid { grid-template-columns: 1fr 1fr; } }
+.gp-law-card { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.gp-law-card h4 { margin: 0 0 4px; font-size: 13.5px; }
+.gp-law-card p { margin: 0; font-size: 12.5px; color: var(--ink-soft); }
+.gp-combined { background: var(--parchment-deep); border-radius: 10px; padding: 10px 14px; margin: 10px 0; text-align: center; font-size: 14px; }
+.clap-curve.gp-isotherm-bg { stroke: var(--line); stroke-width: 1.3; }
+.clap-point.gp-point-actuel { fill: var(--rust); }
+.gp-gauge-row { display: flex; gap: 16px; align-items: flex-end; }
+.gp-gauge-track { position: relative; width: 46px; height: 180px; background: #1d1a14; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
+.gp-gauge-fill { position: absolute; left: 0; right: 0; bottom: 0; background: var(--ochre); }
+.gp-gauge-mean { position: absolute; left: 0; right: 0; height: 2px; background: var(--rust); z-index: 2; }
+.gp-gauge-label { flex: 1; min-width: 160px; }
+
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

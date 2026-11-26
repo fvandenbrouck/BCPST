@@ -24,7 +24,7 @@
   function render(container, opts) {
     const width = opts.width || 320;
     const height = opts.height || 240;
-    const padL = 40, padR = 12, padT = 22, padB = 30;
+    const padL = 40, padR = 12, padT = 22, padB = 40;
     const plotW = width - padL - padR;
     const plotH = height - padT - padB;
     const Vmin = 0, Vmax = opts.Vmax;
@@ -64,7 +64,7 @@
       svg += `<line x1="${(padL - 4).toFixed(1)}" y1="${y.toFixed(1)}" x2="${padL.toFixed(1)}" y2="${y.toFixed(1)}" stroke="var(--ink-soft)"/>`;
       svg += `<text x="${(padL - 7).toFixed(1)}" y="${(y + 3).toFixed(1)}" font-size="9" text-anchor="end" fill="var(--ink-soft)" font-family="IBM Plex Mono, monospace">${fmt(p)}</text>`;
     });
-    svg += `<text x="${(width - padR).toFixed(1)}" y="${(height - padB + 15).toFixed(1)}" font-size="10" text-anchor="end" fill="var(--ink-soft)" font-family="IBM Plex Mono, monospace">V (${opts.unitV || 'L'})</text>`;
+    svg += `<text x="${(width - padR).toFixed(1)}" y="${(height - padB + 27).toFixed(1)}" font-size="10" text-anchor="end" fill="var(--ink-soft)" font-family="IBM Plex Mono, monospace">V (${opts.unitV || 'L'})</text>`;
     svg += `<text x="${padL.toFixed(1)}" y="9" font-size="10" text-anchor="start" fill="var(--ink-soft)" font-family="IBM Plex Mono, monospace">P (${opts.unitP || 'bar'})</text>`;
 
     (opts.elements || []).forEach(el => {

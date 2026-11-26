@@ -50,10 +50,14 @@ physique-chimie/thermo/
     physics.js              Fonctions pures de thermodynamique, sans DOM (toute la physique)
     storage.js               Persistance locale, clé thermo:state:v1 (distincte des autres modules)
     clapeyron.js               Diagramme de Clapeyron en SVG responsive (viewBox), générique
-    videos.js                   Composant « Vidéo associée » et page « Vidéos »
-    app.js                        Routeur (hash) et orchestration
-    atelier-1.js, …, atelier-4.js  Un fichier par atelier, enregistré dans window.ThermoAteliers
+    speed-histogram.js          Histogramme des vitesses (canvas), partagé par les ateliers 0 et 4
+    videos.js                     Composant « Vidéo associée » et page « Vidéos »
+    grading-engine.js               Moteur de correction QCM/numérique (copié depuis ir/, cf. atelier 0)
+    ui-components.js                 Composants de question/exercice d'entraînement (copié depuis ir/)
+    app.js                             Routeur (hash) et orchestration
+    atelier-0.js, …, atelier-4.js        Un fichier par atelier, enregistré dans window.ThermoAteliers
   data/videos.js           Catalogue des vidéos pédagogiques (seul fichier à modifier pour un lien)
+  data/quiz-gaz-parfait.js Questions du quizz de l'atelier 0
   tests/index.html          Suite de tests exécutée dans le navigateur, comme ir/tests/
 ```
 
@@ -79,9 +83,33 @@ ne recalcule une formule par lui-même.
 Composant de dessin pur : il place des éléments déclaratifs (`point`,
 `segment`, `curve`, `hline`, `rect`) dans un repère (V, P) à origine P = 0,
 sans connaître la physique sous-jacente. Réutilisé à l'identique par les
-ateliers 1 et 2.
+ateliers 0, 1 et 2.
 
-### Les 4 ateliers
+### Atelier 0 — Découvrir la loi des gaz parfaits
+
+Précède les ateliers 1 à 4 (qui utilisent déjà PV = nRT sans l'avoir
+introduite) : équation d'état, et les trois lois particulières
+(Boyle-Mariotte, Gay-Lussac, Charles) obtenues en bloquant tour à tour une
+des trois grandeurs. Simulation de particules **sans interaction**
+(contrairement à l'atelier 4 : aucune collision entre elles, seulement des
+rebonds élastiques sur les parois et sur un piston positionné directement
+par un curseur Volume/N — pas de mode « piston libre »). Un thermostat force
+⟨v²⟩ = 2T à chaque image (équipartition 2D, k_B = 1), si bien que T est un
+paramètre d'entrée fiable, jamais une mesure bruitée. Avec m = 1 et k_B = 1
+(unités choisies pour que R = 1 aussi), la théorie cinétique donne
+exactement P·A = N·T. Affichages : histogramme des vitesses (composant
+partagé avec l'atelier 4), jauge verticale de la force sur le piston
+(fluctue choc par choc autour de sa moyenne), diagramme de Clapeyron avec
+plusieurs isothermes et un point d'état lissé (moyenne glissante, pas la
+valeur instantanée bruitée), et la vérification $P\cdot(V/N)/(RT)$ ≈ 1 aux
+fluctuations statistiques près (~1/√150). Un quizz de 6 questions clôt
+l'atelier, avec la même mécanique socratique (indices progressifs puis
+explication) que les modules IR et RMN : `js/grading-engine.js` et
+`js/ui-components.js` y sont copiés tels quels depuis `ir/js/` (même
+convention de duplication que le reste du site : chaque module reste
+autonome), questions dans `data/quiz-gaz-parfait.js`.
+
+### Les ateliers 1 à 4
 
 1. **Piston, gaz et chemins** — état initial réglable, choix du gaz,
    évolution brutale (Q imposé ou thermostat) ou quasi-statique
@@ -154,8 +182,9 @@ l'adresse de la vidéo.
 des charges (détente isotherme, détentes/compressions brutales, chauffages
 isochore/isobare, segments adiabatiques avec vérification numérique
 −∫P dV ≈ C_v·ΔT, cohérence ΔU = W + Q, indépendance de ΔU au chemin dans
-l'atelier 2) ainsi que l'intégrité du catalogue de vidéos. **79/79 tests
-réussis** lors de la dernière exécution.
+l'atelier 2) ainsi que l'intégrité du catalogue de vidéos et des questions du
+quizz de l'atelier 0 (via `GradingEngine`). **114/114 tests réussis** lors de
+la dernière exécution.
 
 ## Instructions pour lancer localement l'application
 

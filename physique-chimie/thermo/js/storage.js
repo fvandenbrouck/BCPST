@@ -9,6 +9,7 @@
     return {
       version: 1,
       nav: { page: 'accueil' },
+      atelier0: {},
       atelier1: {},
       atelier2: { cheminsRetenus: [] },
       atelier3: {},
