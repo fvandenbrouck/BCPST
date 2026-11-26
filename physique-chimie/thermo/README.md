@@ -90,14 +90,18 @@ ateliers 0, 1 et 2.
 Précède les ateliers 1 à 4 (qui utilisent déjà PV = nRT sans l'avoir
 introduite) : équation d'état, et les trois lois particulières
 (Boyle-Mariotte, Gay-Lussac, Charles) obtenues en bloquant tour à tour une
-des trois grandeurs. Simulation de particules **sans interaction**
-(contrairement à l'atelier 4 : aucune collision entre elles, seulement des
-rebonds élastiques sur les parois et sur un piston positionné directement
-par un curseur Volume/N — pas de mode « piston libre »). Un thermostat force
-⟨v²⟩ = 2T à chaque image (équipartition 2D, k_B = 1), si bien que T est un
-paramètre d'entrée fiable, jamais une mesure bruitée. Avec m = 1 et k_B = 1
+des trois grandeurs. Simulation de disques durs en collision élastique les
+uns avec les autres (même modèle que l'atelier 4) et avec les parois, dont
+un piston positionné directement par un curseur Volume/N — pas de mode
+« piston libre ». Ce sont les collisions particule-particule qui
+thermalisent réellement l'ensemble (la distribution des vitesses se reforme
+vers une vraie maxwellienne, quelle que soit la condition initiale) ; un
+thermostat rééchelonne en plus ⟨v²⟩ vers 2T à chaque image (équipartition
+2D, k_B = 1) pour corriger toute dérive numérique et garder T fiable comme
+paramètre d'entrée, jamais comme une mesure bruitée. Avec m = 1 et k_B = 1
 (unités choisies pour que R = 1 aussi), la théorie cinétique donne
-exactement P·A = N·T. Affichages : histogramme des vitesses (composant
+exactement P·A = N·T — un résultat qui ne dépend pas des collisions entre
+particules (seul le flux aux parois compte). Affichages : histogramme des vitesses (composant
 partagé avec l'atelier 4), jauge verticale de la force sur le piston
 (fluctue choc par choc autour d'un repère fixe : la force attendue par la
 loi des gaz parfaits, pas une moyenne glissante des chocs mesurés),

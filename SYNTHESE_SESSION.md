@@ -277,17 +277,32 @@ Nouvel atelier **« Découvrir la loi des gaz parfaits »**, inséré en premier
 dans la navigation (avant l'atelier 1, qui utilise déjà PV = nRT sans
 l'avoir introduite). Programme BCPST1 thème E.
 
-**Simulation** (`js/atelier-0.js`) : particules **sans interaction**
-(contrairement à l'atelier 4 : aucune collision particule-particule,
-seulement des rebonds élastiques sur les parois et sur un piston positionné
-directement par un curseur Volume/N). Pas de mode « piston libre » / pression
-extérieure imposée — première version qui l'incluait (piston à dynamique
-newtonienne pilotée par Pa) abandonnée en session après un bogue de mesure
-difficile à stabiliser ; le piston unique à curseur direct est plus simple
-et pédagogiquement suffisant (la loi de Charles s'explore en cherchant
-soi-même un réglage (V/N, T) qui conserve la pression mesurée). Thermostat
-forçant ⟨v²⟩ = 2T à chaque image (équipartition 2D, k_B = 1, unités choisies
-pour que R = 1) : théorie cinétique exacte P·A = N·T, sans facteur ad hoc.
+**Simulation** (`js/atelier-0.js`) : disques durs en collision élastique les
+uns avec les autres (même modèle que l'atelier 4) et avec les parois, dont
+un piston positionné directement par un curseur Volume/N. Pas de mode
+« piston libre » / pression extérieure imposée — première version qui
+l'incluait (piston à dynamique newtonienne pilotée par Pa) abandonnée en
+session après un bogue de mesure difficile à stabiliser ; le piston unique
+à curseur direct est plus simple et pédagogiquement suffisant (la loi de
+Charles s'explore en cherchant soi-même un réglage (V/N, T) qui conserve la
+pression mesurée). Thermostat rééchelonnant ⟨v²⟩ vers 2T à chaque image
+(équipartition 2D, k_B = 1, unités choisies pour que R = 1) : théorie
+cinétique exacte P·A = N·T, sans facteur ad hoc, valable que les particules
+interagissent ou non (seul le flux aux parois compte).
+
+*Ajout du 2026-11-26 (suite) : les particules étaient initialement **sans
+interaction**, sur le modèle « seulement des rebonds élastiques sur les
+parois ». Problème relevé par l'utilisateur : le thermostat ne fait que
+rééchelonner globalement les vitesses, il ne reforme jamais leur
+distribution — sans collisions entre particules, la forme figée à
+l'initialisation (non maxwellienne) restait telle quelle indéfiniment,
+juste mise à l'échelle. Passage aux disques durs (collisions
+particule-particule copiées de l'atelier 4) : l'échange d'énergie entre
+particules thermalise réellement l'ensemble vers une vraie distribution de
+Maxwell-Boltzmann (confirmé visuellement : l'histogramme a maintenant une
+vraie forme de cloche asymétrique), sans rien changer à la vérification
+P = NT/A ni à la performance (toujours 60 fps mesurés, O(N²) à N=150 comme
+l'atelier 4).*
 
 **Affichages** : histogramme des vitesses (composant `js/speed-histogram.js`
 extrait de l'atelier 4 pour être partagé entre les deux, au lieu d'être

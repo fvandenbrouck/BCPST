@@ -4,20 +4,24 @@
  * Gay-Lussac, Charles) avant les ateliers 1 à 4, qui utilisent déjà PV = nRT
  * sans l'avoir démontrée.
  *
- * Simulation : particules SANS INTERACTION (aucune collision entre elles,
- * contrairement à l'atelier 4), uniquement des rebonds élastiques sur les
- * parois, dont une paroi mobile (le piston) positionnée directement par un
- * curseur Volume/N — pas de mode « piston libre » : la pression n'est
- * jamais imposée, seulement mesurée. Un thermostat force à chaque image
- * ⟨v²⟩ = 2T (équipartition en 2D, k_B = 1 en unités de simulation), si bien
- * que T est un paramètre d'entrée fiable, jamais une mesure bruitée.
+ * Simulation : disques durs en collision élastique les uns avec les autres
+ * (même modèle que l'atelier 4) et avec les parois, dont une paroi mobile
+ * (le piston) positionnée directement par un curseur Volume/N — pas de mode
+ * « piston libre » : la pression n'est jamais imposée, seulement mesurée.
+ * Les collisions particule-particule sont ce qui thermalise réellement
+ * l'ensemble (la distribution des vitesses se reforme vers une vraie
+ * maxwellienne, quelle que soit la condition initiale) ; un thermostat
+ * rééchelonne en plus, à chaque image, ⟨v²⟩ vers 2T (équipartition en 2D,
+ * k_B = 1) pour corriger toute dérive numérique et garder T fiable comme
+ * paramètre d'entrée, jamais comme une mesure bruitée.
  *
  * Avec m = 1 et k_B = 1 (unités choisies pour que R = 1 aussi), la théorie
- * cinétique (2D, parois dures) donne exactement P·A = N·T, la même relation
- * PV = NkT qu'en 3D. On affiche une seule pression, MESURÉE par les chocs
- * sur le piston, volontairement bruitée (elle fluctue autour de sa valeur
- * moyenne, comme une vraie mesure) — contrairement à l'atelier 4, qualitatif,
- * qui ne comparait qu'une tendance.
+ * cinétique (2D, parois dures) donne exactement P·A = N·T — ce résultat ne
+ * dépend pas des collisions entre particules (seul le flux aux parois
+ * compte). On affiche une seule pression, MESURÉE par les chocs sur le
+ * piston, volontairement bruitée (elle fluctue autour de sa valeur
+ * attendue, comme une vraie mesure) — contrairement à l'atelier 4,
+ * qualitatif, qui ne comparait qu'une tendance.
  *
  * Unités d'affichage : arbitraires (comme l'atelier 4), choisies pour que
  * V/N et P restent dans des plages lisibles. DISPLAY_K est un facteur
@@ -122,6 +126,33 @@
           p.vx = -p.vx;
         }
       });
+
+      // Collisions élastiques disque-disque (masses égales : on échange la
+      // composante de vitesse portée par la ligne des centres). C'est ce qui
+      // thermalise réellement l'ensemble : sans elles, le thermostat ne fait
+      // que rééchelonner globalement les vitesses, sans jamais reformer leur
+      // distribution — celle-ci resterait figée à sa forme initiale.
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i], b = particles[j];
+          const dx = b.x - a.x, dy = b.y - a.y;
+          const d2 = dx * dx + dy * dy;
+          const minD = 2 * R;
+          if (d2 < minD * minD && d2 > 1e-6) {
+            const d = Math.sqrt(d2);
+            const nx = dx / d, ny = dy / d;
+            const overlap = minD - d;
+            a.x -= nx * overlap / 2; a.y -= ny * overlap / 2;
+            b.x += nx * overlap / 2; b.y += ny * overlap / 2;
+            const relVx = b.vx - a.vx, relVy = b.vy - a.vy;
+            const relN = relVx * nx + relVy * ny;
+            if (relN < 0) {
+              a.vx += relN * nx; a.vy += relN * ny;
+              b.vx -= relN * nx; b.vy -= relN * ny;
+            }
+          }
+        }
+      }
 
       forceHistory.push(pistonImpulse);
       if (forceHistory.length > WINDOW_FRAMES) forceHistory.shift();
