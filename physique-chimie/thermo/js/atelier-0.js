@@ -58,7 +58,6 @@
     let particles = [];
     let pistonX = fractionToPistonX(input.fraction);
     let forceHistory = [];
-    let pEma = null; // moyenne lissée de la pression, pour un point fixe dans le diagramme de Clapeyron
     let frameCount = 0;
     let rafId = null;
     let destroyed = false;
@@ -94,6 +93,10 @@
     // particules à l'instant présent, pas une mesure accumulée au cours
     // du temps.
     function forceAttendueRaw() { return N * input.T / areaPx() * CANVAS_H; }
+    // Pression attendue par la loi des gaz parfaits (N·T/A, exacte) : utilisée
+    // pour le point du diagramme de Clapeyron, qui doit rester fixe (comme la
+    // jauge de force), pas suivre la mesure bruitée par les chocs.
+    function pAttendueDisplay() { return DISPLAY_K * N * input.T / areaPx(); }
 
     function step() {
       // Thermostat : force <v^2> = 2T à chaque image (équipartition 2D, k=1).
@@ -122,9 +125,6 @@
 
       forceHistory.push(pistonImpulse);
       if (forceHistory.length > WINDOW_FRAMES) forceHistory.shift();
-
-      const pmFull = pMeasuredDisplay();
-      pEma = pEma === null ? pmFull : pEma + (pmFull - pEma) * 0.01;
     }
 
     function drawFrame() {
@@ -185,8 +185,7 @@
         const vStart = Math.max(0.5, T / Pmax);
         return { type: 'curve', points: isothermPoints(T, vStart, Vmax, 40), cls: 'gp-isotherm-bg' };
       });
-      const pPoint = pEma === null ? pMeasuredDisplay() : pEma;
-      elements.push({ type: 'point', V: Math.min(Vmax, vDisplay()), P: Math.min(Pmax, pPoint), label: 'État actuel', cls: 'gp-point-actuel' });
+      elements.push({ type: 'point', V: Math.min(Vmax, vDisplay()), P: Math.min(Pmax, pAttendueDisplay()), label: 'État actuel', cls: 'gp-point-actuel' });
       Clapeyron.render(clapMount, { width: 380, height: 280, Vmax, Pmax, elements, unitV: 'u.a.', unitP: 'u.a.' });
     }
 
@@ -319,7 +318,7 @@
         <div class="card">
           <h3>Diagramme de Clapeyron</h3>
           <div id="gp-clapeyron"></div>
-          <p class="m-meta">Les courbes tracées en arrière-plan sont des hyperboles, une par valeur de $T$ (0,3 / 1,0 / 1,5 / 2,2 / 3,0 u.a.). Le point marque l'état courant (V/N, pression moyenne).</p>
+          <p class="m-meta">Les courbes tracées en arrière-plan sont des hyperboles, une par valeur de $T$ (0,3 / 1,0 / 1,5 / 2,2 / 3,0 u.a.). Le point marque l'état courant (V/N, pression attendue par la loi des gaz parfaits) — il ne fluctue pas.</p>
         </div>
 
         <div class="card">

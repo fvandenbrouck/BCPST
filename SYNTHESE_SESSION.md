@@ -291,15 +291,15 @@ pour que R = 1) : théorie cinétique exacte P·A = N·T, sans facteur ad hoc.
 
 **Affichages** : histogramme des vitesses (composant `js/speed-histogram.js`
 extrait de l'atelier 4 pour être partagé entre les deux, au lieu d'être
-dupliqué) ; jauge verticale de la force sur le piston, qui fluctue choc par
-choc autour d'une moyenne glissante (trait repère) — pas un graphe
-défilant — sa valeur moyenne (trait) est la force **attendue par la loi des
-gaz parfaits** (N·T/A, calculée directement, pas une moyenne glissante des
-chocs mesurés : un repère fixe, comme ⟨v⟩ sur l'histogramme des vitesses) ;
-diagramme de Clapeyron (`clapeyron.js`, réutilisé) avec plusieurs isothermes
-tracées en arrière-plan (simples hyperboles, sans afficher leur équation) et
-un point d'état utilisant une moyenne lissée (pas la valeur instantanée
-bruitée) pour rester visuellement fixe ; vérification
+dupliqué) ; jauge verticale de la force sur le piston — pas un graphe
+défilant —, qui fluctue choc par choc autour d'un repère fixe : la force
+**attendue par la loi des gaz parfaits** (N·T/A, calculée directement, pas
+une moyenne glissante des chocs mesurés) ; diagramme de Clapeyron
+(`clapeyron.js`, réutilisé) avec plusieurs isothermes tracées en
+arrière-plan (simples hyperboles, sans afficher leur équation) et un point
+d'état qui utilise, lui aussi, directement la pression **attendue** par la
+loi des gaz parfaits plutôt que la mesure bruitée par les chocs — il ne
+fluctue donc jamais ; vérification
 $P\cdot(V/N)/(RT) \approx 1$ aux fluctuations statistiques près (~1/√150 ≈
 8 %), en écrivant explicitement $R$ plutôt que de le laisser disparaître
 dans les unités choisies (R = 1 ici, jugé trompeur pour une élève qui

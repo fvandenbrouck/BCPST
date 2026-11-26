@@ -102,8 +102,9 @@ partagé avec l'atelier 4), jauge verticale de la force sur le piston
 (fluctue choc par choc autour d'un repère fixe : la force attendue par la
 loi des gaz parfaits, pas une moyenne glissante des chocs mesurés),
 diagramme de Clapeyron avec
-plusieurs isothermes et un point d'état lissé (moyenne glissante, pas la
-valeur instantanée bruitée), et la vérification $P\cdot(V/N)/(RT)$ ≈ 1 aux
+plusieurs isothermes et un point d'état fixe (pression attendue par la loi
+des gaz parfaits, pas la mesure bruitée par les chocs), et la vérification
+$P\cdot(V/N)/(RT)$ ≈ 1 aux
 fluctuations statistiques près (~1/√150). Un quizz de 6 questions clôt
 l'atelier, avec la même mécanique socratique (indices progressifs puis
 explication) que les modules IR et RMN : `js/grading-engine.js` et
