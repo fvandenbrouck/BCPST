@@ -99,7 +99,9 @@ paramètre d'entrée fiable, jamais une mesure bruitée. Avec m = 1 et k_B = 1
 (unités choisies pour que R = 1 aussi), la théorie cinétique donne
 exactement P·A = N·T. Affichages : histogramme des vitesses (composant
 partagé avec l'atelier 4), jauge verticale de la force sur le piston
-(fluctue choc par choc autour de sa moyenne), diagramme de Clapeyron avec
+(fluctue choc par choc autour d'un repère fixe : la force attendue par la
+loi des gaz parfaits, pas une moyenne glissante des chocs mesurés),
+diagramme de Clapeyron avec
 plusieurs isothermes et un point d'état lissé (moyenne glissante, pas la
 valeur instantanée bruitée), et la vérification $P\cdot(V/N)/(RT)$ ≈ 1 aux
 fluctuations statistiques près (~1/√150). Un quizz de 6 questions clôt

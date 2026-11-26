@@ -88,6 +88,12 @@
       return meanImpulse / CANVAS_H;
     }
     function pMeasuredDisplay(windowLen) { return DISPLAY_K * pMeasuredRaw(windowLen); }
+    // Force moyenne attendue par la loi des gaz parfaits (N·T/A, exacte,
+    // sans bruit de comptage) : sert de repère fixe sur la jauge, comme
+    // ⟨v⟩ sur l'histogramme des vitesses est une moyenne sur les 150
+    // particules à l'instant présent, pas une mesure accumulée au cours
+    // du temps.
+    function forceAttendueRaw() { return N * input.T / areaPx() * CANVAS_H; }
 
     function step() {
       // Thermostat : force <v^2> = 2T à chaque image (équipartition 2D, k=1).
@@ -154,13 +160,13 @@
 
     function updateForceGauge() {
       const instant = pMeasuredRaw(GAUGE_WINDOW) * CANVAS_H; // revient en unités de force brute
-      const mean = pMeasuredRaw() * CANVAS_H;
+      const mean = forceAttendueRaw(); // repère fixe (loi des gaz parfaits), pas une moyenne mesurée
       const fillEl = mount.querySelector('#gp-gauge-fill');
       const meanEl = mount.querySelector('#gp-gauge-mean');
       if (fillEl) fillEl.style.height = Math.min(100, Math.max(0, instant / FORCE_YMAX * 100)) + '%';
       if (meanEl) meanEl.style.bottom = Math.min(100, Math.max(0, mean / FORCE_YMAX * 100)) + '%';
       const txt = mount.querySelector('#gp-force-stats');
-      if (txt) txt.innerHTML = `<span style="color:#A6512B;font-weight:600;">Force moyenne</span> ≈ ${mean.toFixed(2)} u.a. (moyenne glissante sur ${WINDOW_FRAMES} images)`;
+      if (txt) txt.innerHTML = `<span style="color:#A6512B;font-weight:600;">Force moyenne attendue</span> ≈ ${mean.toFixed(2)} u.a. (loi des gaz parfaits)`;
     }
 
     function updateReadouts() {
@@ -307,7 +313,7 @@
           <h3>Pression mesurée</h3>
           <p class="m-meta">Volume/N = <span id="gp-txt-vn">—</span> u.a.</p>
           <div class="gp-combined">$\\dfrac{P\\cdot (V/N)}{R\\,T}$ = <span id="gp-combined-value">—</span></div>
-          <p class="m-meta">Les unités sont choisies ici de sorte que $R = 1$ : cette quantité doit rester proche de 1, aux fluctuations statistiques près (~1/√150 ≈ 8 %), quels que soient tes réglages — c'est la loi des gaz parfaits.</p>
+          <p class="m-meta">Cette quantité doit rester proche de 1, aux fluctuations statistiques près (~1/√150 ≈ 8 %), quels que soient tes réglages — c'est la loi des gaz parfaits.</p>
         </div>
 
         <div class="card">

@@ -293,14 +293,18 @@ pour que R = 1) : théorie cinétique exacte P·A = N·T, sans facteur ad hoc.
 extrait de l'atelier 4 pour être partagé entre les deux, au lieu d'être
 dupliqué) ; jauge verticale de la force sur le piston, qui fluctue choc par
 choc autour d'une moyenne glissante (trait repère) — pas un graphe
-défilant ; diagramme de Clapeyron (`clapeyron.js`, réutilisé) avec plusieurs
-isothermes tracées en arrière-plan (simples hyperboles, sans afficher leur
-équation) et un point d'état utilisant une moyenne lissée (pas la valeur
-instantanée bruitée) pour rester visuellement fixe ; vérification
+défilant — sa valeur moyenne (trait) est la force **attendue par la loi des
+gaz parfaits** (N·T/A, calculée directement, pas une moyenne glissante des
+chocs mesurés : un repère fixe, comme ⟨v⟩ sur l'histogramme des vitesses) ;
+diagramme de Clapeyron (`clapeyron.js`, réutilisé) avec plusieurs isothermes
+tracées en arrière-plan (simples hyperboles, sans afficher leur équation) et
+un point d'état utilisant une moyenne lissée (pas la valeur instantanée
+bruitée) pour rester visuellement fixe ; vérification
 $P\cdot(V/N)/(RT) \approx 1$ aux fluctuations statistiques près (~1/√150 ≈
 8 %), en écrivant explicitement $R$ plutôt que de le laisser disparaître
-dans les unités choisies (R = 1 ici), jugé trompeur pour une élève qui
-découvre la loi.
+dans les unités choisies (R = 1 ici, jugé trompeur pour une élève qui
+découvre la loi — le texte affiché à l'écran ne mentionne donc jamais
+« R = 1 », seulement que la quantité reste proche de 1).
 
 **Quizz** (6 questions) : réutilise la mécanique socratique d'IR/RMN —
 `js/grading-engine.js` et `js/ui-components.js` copiés tels quels depuis
